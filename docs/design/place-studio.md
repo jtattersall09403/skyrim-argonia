@@ -1018,6 +1018,23 @@ fixture it belongs to, and a fixture's lights. Moving, turning, resizing, seatin
 takes its lights with it in the same undo step, each keeping its place in the fixture's frame and its height through
 its own seat. A light selected by itself moves or goes alone.
 
+**A fixture added comes with its light** (`wallsnap.js` `lightFor`). A fixture added from Add things (the rule above
+says what a fixture is) is added with a light in the same undo step, seated `on` it: the lights stage's own pairing
+read off the place, so a fixture of the same base already lit in the place gives its light's base and its place in
+the fixture's frame; where none is, Skyrim's own no-shadow light for its kind at the top of its bounds over their
+middle (a campfire, fire pit or hearth WRLightFire01 at half its height; a candle, lantern, lamp or chandelier
+DefaultCandleLight01NS; a torch, sconce or brazier DefaultTorch01NS). A duplicate's light is the copy of its own.
+
+**Wall things** (`wallsnap.js`). A thing whose record names a sconce, torch holder, shelf, sign, banner, plaque,
+tapestry or trophy, and whose bounds run from about its origin out along one level axis, hangs on a wall: Bethesda
+builds these models with their back on the origin, and its own placements stand with the origin on the wall face and
+that axis along the face's normal. Added from Add things, a wall thing tapped onto a wall goes there; a selected one
+has Hang on a wall, then a tap on the wall. The face is the nearest triangle the pen's ray meets in the meshes under
+it (their real triangles, never a box); a face leaning more than 60 degrees from upright is not a wall. The thing's
+origin goes on that point, turned so its out axis is the face's level normal, seated `on` the piece it hangs on (so
+it moves with it), with its light as any fixture's. `test/wallsnap.test.mjs` proves a sconce on a turned wall sits on
+the face within 2 cm facing out, and an added sconce's light.
+
 **Invisible walls** (`objects.js`, `prims.js`). A ref with a primitive (a kept collision box, or a trigger, room or
 sound volume) has no model either. With the lights, and only then, each is drawn as a faint box of its real size (its
 half extents round the ref's origin, turned with the ref) with its edges outlined a pixel or two wide, or a faint wire

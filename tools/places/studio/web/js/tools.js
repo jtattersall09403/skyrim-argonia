@@ -2,7 +2,9 @@
 import * as THREE from 'three';
 import { ICON } from './icons.js';
 import { mintId } from './ids.js';
-import { fitRot, turnRot, tiltRot } from './xform.js';
+import { fitRot, turnRot, tiltRot, rotationMatrix } from './xform.js';
+import { wallMount, rayTriangles, onWall, lightFor } from './wallsnap.js';
+import { partsOf } from './objects.js';
 import { seatZ } from './bundle.js';
 import { vegKey } from './edits.js';
 import { segDist } from './geom.js';
@@ -669,12 +671,66 @@ export class Tools {
   placeAt(e) {
     const a = this.app, g = e.ground(); if (!g) { a.toast('Tap on the ground to put it there.'); return; }
     const p = this.placing; let ops;
-    if (p.from === 'search') ops = [{ op: 'ref.add', ref: this.newRef(p.base, g) }];
+    if (p.from === 'search') {
+      const r = this.newRef(p.base, g), mount = wallMount(p.base), w = mount && this.wallAt(e, mount);
+      if (w) Object.assign(r, w);
+      else if (mount) a.toast('Tap on a wall to hang it there; it went where you tapped.');
+      ops = [{ op: 'ref.add', ref: r }, ...this.lightOps(r, p.base)];
+    } else if (p.from === 'wall') {
+      const r = this.app.placeRefsById().get(p.id), base = r && this.baseOf(r), w = r && this.wallAt(e, wallMount(base) || { out: [0, 1] });
+      if (!w) { a.toast('Tap on a wall: the face under the pen must be a wall.'); return; }
+      this.placing = null; a.panels.placingChanged?.();
+      const before = clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat });
+      a.push(this.withFollowers([r], [{ op: 'ref.move', id: r.id, before, after: { ...clone(before), ...w } }]));
+      return;
+    }
     else ops = this.copyGroup(p.refs, p.space, g);
     a.push(ops);
     const added = ops.filter((o) => (o.space || a.ours.space) === a.ours.space).map((o) => o.ref.id);
     a.selection = new Set(added); this.selectionChanged();
     if (p.from === 'search') { this.placing = null; this.current = 'search'; a.panels.placingChanged(); this.selectionChanged(); }
+  }
+  // The wall face under the pen, on the real triangles of the place's meshes there: the wall thing's pose on it
+  // ({pos, rot, seat}: its origin on the face, turned to face out; seated on that piece, so it moves with it), or null.
+  wallAt(e, mount) {
+    const a = this.app, v = a.ours.view, o = v.origin, ext = a.ours.space === 'exterior';
+    const O = [e.ray.origin.x + o[0], e.ray.origin.y + o[1], e.ray.origin.z + o[2]], D = [e.ray.direction.x, e.ray.direction.y, e.ray.direction.z];
+    let best = null;
+    for (const h of a.ours.place.pick(e.ray)) {
+      const r = h.ref; if (!r || r.kind === 'light' || r.kind === 'marker') continue;
+      const parts = partsOf(this.baseOf(r)?.model); if (!parts) continue;
+      const at = a.seated(r), R = rotationMatrix(at.rot || [0, 0, 0]), s = at.scale ?? 1;
+      // the ray in the piece's own frame: R is a rotation, so its inverse is its transpose
+      const tl = (w) => [R[0] * w[0] + R[1] * w[1] + R[2] * w[2], R[3] * w[0] + R[4] * w[1] + R[5] * w[2], R[6] * w[0] + R[7] * w[1] + R[8] * w[2]];
+      const lo = tl([(O[0] - at.pos[0]) / s, (O[1] - at.pos[1]) / s, (O[2] - at.pos[2]) / s]), ld = tl(D);
+      for (const p of parts) {
+        const pos = p.geometry.attributes.position?.array; if (!pos) continue;
+        const hit = rayTriangles(lo, ld, pos, p.geometry.index?.array || null);
+        if (!hit || (best && hit.t * s >= best.t)) continue;
+        const n = hit.normal, wn = [R[0] * n[0] + R[3] * n[1] + R[6] * n[2], R[1] * n[0] + R[4] * n[1] + R[7] * n[2], R[2] * n[0] + R[5] * n[1] + R[8] * n[2]];
+        best = { t: hit.t * s, ref: r, point: [O[0] + D[0] * hit.t * s, O[1] + D[1] * hit.t * s, O[2] + D[2] * hit.t * s], normal: wn };
+      }
+    }
+    if (!best) return null;
+    const pose = onWall(mount, best.point, best.normal); if (!pose) return null;
+    pose.pos = pose.pos.map((x) => rnd(x));
+    const sz = a.seated(best.ref).pos[2];
+    pose.seat = ext && best.ref.layer === 'place' ? { mode: 'on', on: best.ref.id, dz: rnd(pose.pos[2] - sz) } : { mode: 'free' };
+    return pose;
+  }
+  // A light source added to the place comes with its light (wallsnap.js lightFor: the lights stage's pairing), seated
+  // on it, so it moves, turns and goes with it as every fixture's light does.
+  lightOps(r, base) {
+    const a = this.app, refs = [...a.placeRefsById().values()];
+    const l = lightFor(r, base, refs, (x) => this.baseOf(x)); if (!l) return [];
+    l.id = mintId(a.place.place_id);
+    l.seat = a.ours.space === 'exterior' ? { mode: 'on', on: r.id, dz: rnd(l.pos[2] - r.pos[2]) } : { mode: 'free' };
+    return [{ op: 'ref.add', ref: l }];
+  }
+  // Put the selected wall thing on the next wall tapped.
+  hangOnWall() {
+    const r = this.selRefs()[0]; if (!r) return;
+    this.placing = { from: 'wall', id: r.id }; this.app.toast('Tap the wall to hang it on.');
   }
   newRef(base, g) {
     const a = this.app, ext = a.ours.space === 'exterior';

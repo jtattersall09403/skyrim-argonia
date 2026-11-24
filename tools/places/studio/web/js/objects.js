@@ -106,6 +106,8 @@ function pump() {
   }
 }
 const meshCache = new Map(); // model -> Promise<[{geometry, material}]>
+const readyParts = new Map(); // model -> its loaded parts, once any level of it has loaded (the wall snap reads triangles)
+export const partsOf = (model) => readyParts.get(String(model || '').toLowerCase()) || null;
 // `alt`: a base key whose alternate textures make its own variant of the model (the converter swaps them).
 export function loadModel(model, pri = 0, level = 0, kind = 'other', tint = null, alt = null) {
   const key = `${model}|${level}|${tint || ''}|${alt || ''}`;
@@ -127,6 +129,7 @@ export function loadModel(model, pri = 0, level = 0, kind = 'other', tint = null
             for (const k of Object.keys(g.attributes)) if (!['position', 'normal', 'uv', 'color'].includes(k)) g.deleteAttribute(k);
             parts.push({ geometry: g, material: plainMaterial(o.material, kind, tint) });
           });
+          if (!level || !readyParts.has(String(model).toLowerCase())) readyParts.set(String(model).toLowerCase(), parts);
           resolve(parts);
         } catch (e) { console.info(`studio: ${e.message}`); const none = []; none.failed = e.message; resolve(none); }
       } });

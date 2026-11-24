@@ -16,6 +16,12 @@ baseline carried from the source (its lights with fixtures, its lanterns, its co
 - What we add is lit as Skyrim lights it: an added forge carries LightForgeFire01 in its own frame (`draft check`
   fails an unlit added forge); an added smelter or alchemy lab carries none. Added walks and steps are lit at the rate
   the source lit its own, usually none.
+- A fixture added by hand comes with its light, seated on it: the light a lit fixture of the same base has in the
+  place, in the fixture's own frame, else Skyrim's no-shadow default for its kind (`docs/design/place-studio.md`,
+  A fixture added comes with its light). A fixture found unlit is given its light the same way, never a light placed
+  by eye.
+- A sconce, torch holder, shelf, sign or banner hangs on a wall: in the studio Hang on a wall and a tap on the face
+  (or tap a wall when adding one) puts its back on the wall's real face, turned to face out, seated on that wall.
 - A guard's torch is stock (`place-stock`).
 
 ## Hanging lanterns

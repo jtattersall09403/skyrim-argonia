@@ -11,6 +11,7 @@ import { Contents } from './contents.js';
 import { identityOf } from './stock.js';
 import { groupsOf, touched } from './note_groups.js';
 import { FIXTURE_REACH, fixtureOf, lightFacts, lightsOf } from './lights.js';
+import { wallMount } from './wallsnap.js';
 import { comesWith, hasPrim, halfExtents, primFacts, resized, wallsOf } from './prims.js';
 
 const $ = (s) => document.querySelector(s);
@@ -119,6 +120,7 @@ export class Panels {
       parts.push(ang);
       const acts = el('<div class="row"></div>');
       acts.append(btn('Sit on the ground', () => T.snapToGround()), btn('Duplicate', () => T.duplicate()));
+      if (refs.length === 1 && wallMount(T.baseOf(refs[0]))) acts.append(btn('Hang on a wall', () => T.hangOnWall()));
       const rm = el('<button class="danger">Remove from our place</button>'); rm.onclick = () => T.remove(); acts.append(rm);
       parts.push(acts);
       const nb = el(`<button class="quiet">Leave a note about ${refs.length === 1 ? 'this' : 'these'} for the agent</button>`);
