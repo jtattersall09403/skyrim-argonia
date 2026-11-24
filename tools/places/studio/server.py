@@ -411,7 +411,8 @@ async def save_get(req: web.Request) -> web.Response:
 
 def flush_needs(cfg, pid: str, sid: str) -> list[str]:
     """A named save carries the needs changes the owner made since the last one: written into the change log and
-    loaded into the database in this step; returns the tracked paths written (relative to the tree), to commit."""
+    loaded into the database in this step, and the story digest (which names the database's revision) generated
+    again so the gate takes the commit; returns the tracked paths written (relative to the tree), to commit."""
     root = cfg.sources / "needs"
     if not needs.flush_held(pid, record(pid), cfg.out / AUTOSAVE, sid, root):
         return []
@@ -419,10 +420,15 @@ def flush_needs(cfg, pid: str, sid: str) -> list[str]:
     if not p.is_relative_to(ROOT):
         return []
     from tools.argonia_world import db
-    from tools.newworld import needsdb
+    from tools.newworld import needsdb, story_digest
     w = needsdb.reload()
     tables = [Path(w.root) / db.DB_DIR / f"{t}.jsonl" for t in needsdb.TABLES]
-    return [str(p.relative_to(ROOT)), *[str(t.relative_to(ROOT)) for t in tables if t.exists()]]
+    story_digest.generate()
+    out = story_digest.OUT   # the generated files only: the folder's numbered lore notes are written by hand
+    digest = [out / "index.md", out / "province.md", out / "people.md", *sorted((out / "regions").glob("*.md"))] \
+        if out.is_relative_to(ROOT) else []
+    return [str(p.relative_to(ROOT)), *[str(t.relative_to(ROOT)) for t in tables if t.exists()],
+            *[str(d.relative_to(ROOT)) for d in digest]]
 
 
 async def save_put(req: web.Request) -> web.Response:

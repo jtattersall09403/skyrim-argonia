@@ -30,7 +30,17 @@ BASE_TYPE = {"static": "STAT", "door": "DOOR", "furniture": "FURN", "container":
              "activator": "ACTI", "plant": "FLOR", "tree": "TREE", "marker": "IDLM", "actor": "NPC_"}
 FILES = ("people", "paths", "clear", "land", "walk", "paint", "states")
 TOOL = "tools/places/draft_bundle.py v9"
-CATALOGUE = ROOT / "out" / "places" / "catalogue" / "bases.jsonl"
+def _catalogue_path(root: Path = ROOT) -> Path:
+    """This tree's asset catalogue, else the nearest enclosing tree's (a lane's worktree has none of its own, as
+    scene.data_out finds the bundles)."""
+    for r in (root, *root.parents):
+        p = r / "out" / "places" / "catalogue" / "bases.jsonl"
+        if p.exists():
+            return p
+    return root / "out" / "places" / "catalogue" / "bases.jsonl"
+
+
+CATALOGUE = _catalogue_path()
 _catalogue: dict = {}
 
 
