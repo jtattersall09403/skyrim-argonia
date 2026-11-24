@@ -156,107 +156,145 @@ All 18 cultures are colour-named tribes (`kits.json` overlays `tribe-*`). Collis
   tail bands/bells, crocodile-tooth/jasper necklaces, jade masks of our own, shell/bone/pearl ornaments. Shields: 35 records in
   the whole ladder; BM-themed shields exist only at T1 1, T2 12, T3 3, T4 1, T6 2; none turtle-shell or reed.
 
-## Step 2: Nexus candidates (not already rows in `mods/dependencies.json`; checked against its 193 rows)
+## Step 2: Nexus candidates (both games, names and descriptions)
 
-Search note: `tooling/nexus_search.py` does name-wildcard only (asterisks return nothing); I used about 120 terms. Nothing found for:
-loincloth Argonian, sarong, grass skirt, Aztec, Maya, Polynesian, Inca, tiki, atlatl, javelin, harpoon, stone axe, jade weapons,
-turtle shell, reed, pearl armour. Most "tribal/rustic" clothing is Nordic/Reachman or CBBE glamour wear.
+What was searched: `tooling/nexus_search.py` (Special Edition and the 2011 game, name wildcard plus whole-word description match, 30
+hits per term per game and field), 64 terms: Argonian, Saxhleel, Black Marsh, tribal, loincloth, sarong, wrap, sash, grass skirt, reed,
+feather, headdress, crest, bone armour/armor, shell armour/armor, turtle shell, scale armor, jade, obsidian, flint, macuahuitl, club,
+tooth, shark, crocodile, harpoon, gaff, blowgun, atlatl, straw hat, sandals, necklace, amulet, bracelet, mask, shield, Aztec, Mayan,
+Polynesian, jungle, swamp, witch doctor, voodoo, fisher, slave rags, "armor resource", "clothing resource", "weapon resource",
+"modders resource", "modder's resource", lizard, mesoamerican, tiki, totem, spear, javelin, pike, halberd, quarterstaff, rapier, whip,
+claw (4,309 hits, 1,691 gear-category mods after de-duplication; names and summaries read for the top of each term; about 45
+descriptions read in full with the API). Terms with no fitting gear-category hit by name or description: sarong, grass skirt, Polynesian, tiki, mesoamerican, gaff, atlatl returned no
+gear-category mod by name or description that fits (the hits were body/skin mods and unrelated words). Nexus pages and UESP return
+403 to the fetch tool, so descriptions, summaries and permission lines are from the API only; I looked at no screenshots and no
+meshes of any candidate, so "Argonian fit" is only what a description states. A 2011-game mod (`skyrim:<id>`) is usable only after its
+meshes are converted to Special Edition format (nif version, BSLightingShaderProperty, "44" in the community's phrase); the port
+route for each is named.
 
-| Candidate | Nexus id | Author, endorsements | Fills | Worry |
+### 2a. Special Edition (assets usable as player downloads)
+
+| Candidate | Id | Author, endorsements | Holds | Argonian fit and permission |
 |---|---|---|---|---|
-| Shifts-Sand's Saxhleel Sundries (DEMO) | 191593 | YourFellowFern, 6 | ESO Argonian pieces: Nisswo robe, shell armour, Argonian Warrior armour, Tribalwear (m), Tribalwrap (f), Voskrona set, Argonian robe set, Deathmask, Shadowscale set: the single best match to the clothing/shell/robe gap | ESO rips ("I do not own any rights"); demo, weight-paint issues, dark armour; forge-recipe only; unverified Argonian-race support |
-| Argonian (Saxhleel) Weapon pack | 67137 | MetalMonsterFNV, 340 | battleaxe, sword, dagger, greatsword, mace, waraxe, warhammer; ebony-level -> relabel T4/T5 | ebony recipe (ours replaces); no bow |
-| Saxhleel War Club | 35555 | Muoviori, 187 | club, acts as warhammer/greatsword-speed | modder's resource? unverified |
-| Simple Straw Hats | 89962 | GolinskiPRH, 516 | straw hats worn by man/woman/cat/lizard, circlet slot (head-safe); credit required; "modder's resource" | needs CC basket content |
-| Argonian/Saxhleel clothing gap (mod 7260 Tail Binder, 85894 tail slot cloaks, 44986 Lizards Don't Wear Shoes) | 7260, 85894, 44986 | various | tail/footwear fixes only | utilities |
-| I'noh-Ssu-Keh War Mask | 82282 | Mihail, 231 | rigid tribal war mask (helmet slot) | check Argonian ARMA |
-| Giant Club Variety | 104029 | Mihail, 1,230 | crude club meshes (mace / warhammer, giant scale) | size; take meshes |
-| Ultimate Voodoo and Witch Doctor Arsenal (port) | 181332 | SolidSnonk, 7 | modular witch-doctor armour, masks, mojos and charms | needs SKSE perk system; take items only |
-| Ancient Bone Armor | 119440 | Aokili, 6,141 | bones and leather modular set (CBBE/3BA/UBE/BHUNP only): light bone plate that the stock lacks | female-body fit; "warmaiden" look |
-| Tribal Clothes | 120203 | contentcat, 6,169 | tribal cloth set, 4 colours, CBBE/BHUNP + SMP | body fit; physics |
-| Riverfolk Clothes | 135136 | Pulcharm, 6,563 | "Bjoulsae tribes" themed set | needs FSMP; body fit |
-| Common Clothing Expansion | 134088 | Horn, 9,414 | 4 lore-friendly commoner outfits + hood, vanilla-like | Nordic-ish; body fit |
-| Kreiste's Fisher Outfit | 59836 | Kreiste, 303 | a fisher outfit (our fisher kit has none) | body fit |
-| Slave Rags | 68917 | (SE port), 305 | ragged slave/bonded-labour outfit | topless variants; body fit |
-| Bosmer WoodElf LEAF Armor | 7869 | Jameza007, 634 | leaf camouflage armours (reed/leaf feel) | LE-era (2017) |
-| Valenwood Ranger Armor Mashup | 126887 | W00DENKNIGHT, 7,644 | greenwood light armour (we already hold the Bosmer pack 5597) | overlaps |
-| Racc's Headdress / Hunter's Headdress | 147060 / 50429 | raccoondance 255 / Caged_Disorder 41 | rigid headdress pieces (Forsworn-style) | Reach/Nordic look |
-| Rustic Clothing / Rustic Amulets | 4703 / 35485 | Gamwich 79,228 / 12,135 | retextures of ALL vanilla clothes/amulets (lifts the vanilla pool, does not add models) | global retexture, would hit Skyrim clothes everywhere (acceptable?) |
-| Immersive Jewelry / Amulets of Skyrim / Rustic amulets | 5336 / 487 / 35485 | various, 12-16k | many jewellery models (generic) | not Black Marsh |
-| Easthold Totemic Set | 100401 | Pulcharm, 6,943 | totem/tribal armour (Nordic Easthold) | Nordic; rejected by 0006 |
+| Shifts-Sand's Saxhleel Sundries (DEMO) | 191593 | YourFellowFern, 6 | ESO ports: Nisswo robe, shell armour, "Argonian Warrior" armour, Tribalwear (m), Tribalwrap (f), Voskrona set, Argonian robe set, Deathmask, Shadowscale set | Made for Argonians ("my Egg-Siblings"); weight-paint faults, some dark armour; author owns no rights (ESO rips); forge-recipe only. Strongest match to the clothing and shell gap |
+| Argonian (Saxhleel) Weapon pack | 67137 | MetalMonsterFNV, 340 | battleaxe, sword, dagger, greatsword, mace, waraxe, warhammer (no bow) | ebony-level stats, we re-tier; no permission line found |
+| Saxhleel War Club | 35555 | Muoviori, 187 | one two-handed club (warhammer reach, greatsword speed) | no permission line found |
+| Simple Straw Hats | 89962 | GolinskiPRH, 516 | straw hats in the circlet slot, "man, woman, cat or lizard" | states lizard fit; credit required; "modder's resource" |
+| Argonian Warrior Armour SSE Port | 96624 | gUISTASSI, 59 | the Reel-Ka warrior set (ESL, plus an integrated edition and a Heart Stone necklace and shield) | ported with the original author's open permission; our King of the Murkmire already holds this set as Masu plate (`argonianwarriorarmour/...` models), so only the shield and necklace are new |
+| Equipable Beast Tails (HDT SMP) | 31745 | ansav042, 1,714 | an equippable Argonian/Khajiit tail item | tail node utility; physics framework |
+| Feathery Argonian Tails (SSE) | 40560 | Nikikuriton, port by Byrdworker, 2 | fatter spiked, feathered tail, female | credit required; original author left Nexus |
+| Argonian Fins / Kabu's Argonian Fins | 2504 / 65428 | Chilean Wolf 2,304; Kabunouveau 2,131 | head-fin and horn meshes | body-part replacers, not gear |
+| I'noh-Ssu-Keh War Mask | 82282 | Mihail, 231 | rigid tribal war mask | check ArgonianRace in ARMA |
+| Giant Club Variety | 104029 | Mihail, 1,230 | crude giant club meshes | giant scale; take as two-handed hammers |
+| Ancient Bone Armor | 119440 | Aokili, 6,141 | bones-and-leather modular set | CBBE/3BA/UBE/BHUNP only |
+| Tribal Clothes | 120203 | contentcat, 6,169 | tribal cloth outfit, 4 colours | CBBE/BHUNP, SMP physics |
+| Riverfolk Clothes | 135136 | Pulcharm, 6,563 | "Bjoulsae tribes" outfit | needs FSMP |
+| Common Clothing Expansion | 134088 | Horn, 9,414 | 4 lore-friendly commoner outfits and a hood | vanilla-like, Nordic-ish |
+| Kreiste's Fisher Outfit | 59836 | Kreiste, 303 | fisher outfit | body fit |
+| Slave Rags | 68917 | SE port, 305 | ragged slave outfit | body fit |
+| Voodoo and Witch Doctor Arsenal (port) | 181332 | SolidSnonk, 7 | modular witch-doctor armour, masks, mojos, charms | SKSE perk system; take items |
+| Red Eagle Reborn SSE | 43042 | Araanim, 471 | Reachman/Forsworn bone-and-feather trophies, ruin assets | Reach, Nordic-adjacent look |
+| Aegyptus | 165651 | cc, 5,079 | headdress and loincloth outfit, SMP | Egyptian style, CBBE/BHUNP |
+| Barbarian Loincloths | 9325 | Viltuska, 786 | six male loincloths | Nordic barbarian look, male |
+| Katie's Beast Race Aesthetics Compendium | 45654 | katiexmongo, 397 | a curated list of Argonian mods with an "ESO Lore Preset" section (Naga-Kur, Saxhleel Sundries, Argonian weapons, Argonian Warrior Armour, Black Marsh Weapon Set, "Assorted Argonian Accoutrement"); a map of what exists, not gear | the list names the two LE finds below |
+| Zim's Immersive Artifacts, Immersive Weapons, Expanded Skyrim Weaponry, Bob's Armory | 9138, 16788, 2300, skyrim:12060 | Zim, Hothtrooper, EngineersLogic, Mr Dave | generic medieval weapon variety (spear, halberd, club) | not Black Marsh; no use |
 
-Big authors checked: Mihail (clothes/weapons: Rustic Weapons Pack 27475 translation only; Giant Club Variety, Netch/Dres/Temple
-already held), Billyro (generic swords), NordWarUA (Nordic/Imperial replacers), zzjay (glamour), 4thUnknown (Dark Brotherhood,
-Mythic Dawn: DB already via 57539), Vicn (creatures), Stroti/Tamira (architecture), Elianora (houses). Oaristys, Blary, Lolicept,
-LupusHegemonia: no usable hits by name. ESO ports other than Shifts-Sand: 11729 is a quest/lore mod, not gear.
-Not verifiable: any permission text beyond the API's first lines; Argonian race support; real appearance (no screenshots read).
+Not new but confirmed: Argonian Macuahuitl, Black Marsh weapons set, Ancient Argonian, Naga-Kur, Funerary Masks are already rows.
+
+### 2b. 2011-game mods (need conversion to Special Edition meshes)
+
+| Candidate | Id | Author, endorsements | Holds | Argonian fit and permission, port |
+|---|---|---|---|---|
+| AmA - Argonian Mercenary Armor with Armored Tail | skyrim:27676 | Spyke-Mayfly53, 3,353 | Argonian-based armour with an armoured tail piece; lizard scale armour | made for Argonians, tail slot included. Permission line: none found. Convert in the Creation Kit and optimise (Cathedral Assets Optimizer), the route Katie's list gives |
+| Marsh Armor, Custom Ebony Argonian Heavy | skyrim:23920 | Spyke, 1,007 | heavy ebony armour made for Argonians | male only; no permission line; same conversion |
+| HistBone and Bonewood Argonian Armors | skyrim:99144 | Sabbath6100, 48 | male and female bone and wood armour, heavy and light | "for all races", moss details; no permission line; conversion needed. Fills light bone plate |
+| Argonian Warrior Armour (LE original) | skyrim:105061 | gUISTASSI, 107 | the Reel-Ka set | already ported (96624) |
+| Edhildil's Argonian War Tails | skyrim:28502 | Edhildil, 281 | tail replacers: spiked ball, scorpion stinger, thorned, spiked, trident | "use at will, credit required": clearest permission line of the lot |
+| Edhildil's Witch Doctor BBP | skyrim:44827 | Edhildil, 3,315 | witch doctor armour, one weapon, 7 items | female BBP only; credit required |
+| Argonian Raptor Feet | skyrim:19283 | J Hamilton, 4,128 | Argonian-specific models for every vanilla boot and shoe | made for Argonians, conflicts with any boot mod; no permission line; solves the footwear clipping problem |
+| Ghosu - Helmets, Bone Shield and Tribal Staff | skyrim:43293 | Ghosu, 3,010 | skull helmets, a bone shield, a tribal staff | "ALL MY ASSETS ARE FREE TO USE"; rigid pieces |
+| Gemling Queen Resources | skyrim:54483 | Saerileth, 536 | jewellery meshes and textures | "blanket permission to use, modify, rehost or port to Special Edition, credit given": the clearest permission for necklaces and rings |
+| Gemling Queen Jewelry | skyrim:52266 | Saerileth, 16,805 | jewellery set | same author; same permission statement |
+| Static Armors and Clothing Resource | skyrim:69691 | Zylice, 122 | static (non-skinned) armour and clothing pieces | resource, credit required; suited to rigid head and shoulder pieces |
+| Lizard Frog Hats | skyrim:88009 | 0Theara, 35 | two frog and lizard hats | "free to use assets" |
+| Feathers for humanoid males and females | skyrim:25393 | zzjay, 1,856 | a craftable feather ornament (jewellery slot) | a feather ornament; no permission line |
+| Poison Dart Launcher | skyrim:29514 | rcavanah, 115 | a crossbow that fires darts | an alternative blowgun; needs Dawnguard |
+| Aztec Macahuitl | skyrim:20216 | Tzontlimixtli, 182 | macuahuitl and large macuahuitl weapons and armour | duplicates our Argonian Macuahuitl row |
+| Jade Blade LE Port | skyrim:110218 | spaz490 and turtlegodking, 15 | a jade blade | credit given; the only jade weapon found; a katana-type |
+| Obsidian Axe, Obsidian Sword | skyrim:14550, 36121 | Nicoroshi 160, LordStuff 70 | single obsidian pieces | the axe may be converted but model/texture "remain specific" |
+| Barbarian Loincloths | skyrim:16167 | Viltuska, 953 | same as 9325 | SE version exists |
+| Leather Sandals | skyrim:75905 | DenenC, 1,441 | sandals (heavy, light, cloth), female | human feet |
+| Tribal Might Armor, Tribal Hunter Armor, Warchief Armor | skyrim:10235, 71705, 13366 | Hairon, Cursist, Hothtrooper | tribal-named armour (glass retexture; female hunter; orc/Nordic barbarian) | not Argonian; Warchief uses CD Projekt assets "with permission" |
+
+LE note: the 2011-game port route needs the owner's decision on the conversion step (our "asset-only" rule: we copy records and the
+player downloads the mod; a 2011-game mod downloaded by the player would need conversion by the player or by us, which is a
+file change, not a record copy). I did not verify any permission line beyond the description text.
 
 ## Step 3: what remains for our own models
 
-Owner steer applied: simplest first = a NEW MODEL that is held and swung exactly like an existing type, so every existing
-animation, record template and perk reuse applies ("acts as ..."). Where Nexus adopts leave a gap in the lore's list:
+Owner rulings applied: (1) own weapons are new models that copy an existing record and swing exactly like it; (2) any weapon type in
+Animated Armoury or another of our sources has animations taken as good: our own version copies that record and swaps the model;
+(3) long thin shafts are a generator weakness: generate only the head or blade, build the shaft by script (a parametric cylinder
+in Blender), then join and set the node. Head-and-shaft assembly is therefore part of every polearm and staff row.
 
-### A. Plain swaps (rigid, static, no skinning: new nif + copy a vanilla record)
+### A. Weapon swaps (new model, copy this record)
 
-| Object | Acts as | Where seen | How often | Size | Difficulty |
+| Object | Copies the record of | Swings as | Where seen | Size | Difficulty |
 |---|---|---|---|---|---|
-| Jade / jadeflint sword | sword | priests, chiefs, shrine/ruin rewards (T2-T3) | rare, but a lore stand-out; unique rewards | 0.9 m | easy (single static blade, no moving parts; the game keeps every animation) |
-| Jade dagger / ritual knife | dagger | Hist priests, Sisei-Xul, Sul-Xan | uncommon | 0.35 m | easy |
-| Jade or flint war axe | waraxe | hunters, Naga | uncommon | 0.7 m | easy |
-| Crocodile-tooth club / maul | mace (one-handed) and warhammer (two-handed) | tribal camps, Naga, fisher guard | common (tribal hide-and-flint issue) | 0.8 to 1.2 m | easy |
-| Shark/fishbone-toothed sword (saw edge, "machete and saw" Xit-Xaht) | sword | Xit-Xaht, Spray-Folk, harbour | uncommon | 0.9 m | easy |
-| Naga-Kur bone-and-frill sword and dagger ("weapons from their own dead") | sword, dagger | Naga-Kur camps and raiders | uncommon; lore lists them in "Still no model" | 0.9 / 0.35 m | easy |
-| Skull-topped Hist staff (Xit-Xaht) | quarterstaff (AA type, swings as battleaxe) | Hist-branch priests, grave-singers | uncommon | 1.8 m | easy-medium: long thin mesh; Tripo struggles with thin staffs |
-| Eel-gaff / fishing hook | dagger or sword (1H) | fishers, Eelskins | common | 0.8 m | easy |
-| Reed-bundle or obsidian-edged heavy club | battleaxe / warhammer | tribal | common | 1 m | easy |
-| Wamasu-tooth halberd head, harpoons | halberd / greatsword | boats | uncommon | 2 m | easy-medium: long, thin |
-| Turtle-shell round shield, reed-wicker shield | shield (copy a vanilla shield record; rigid; must match the shield attach node and a convention for bash/block) | tribal, harbour, guard (T2) | common | 0.6 m | easy-medium: static, but the nif needs correct pivot/collision/node names (copy a vanilla shield nif's structure) |
-| Boss-and-bone round shield | shield | guards | common | 0.6 m | easy-medium |
-| Feather crest / head-fan | helmet-slot or circlet-slot, rigid attach to the head | elders, naheesh, priests: every settlement | very common close view | 0.3 m | medium: rigid, but must be fitted to the Argonian head and needs its own ARMA for ArgonianRace |
-| Copper horn caps, silver frill clips | circlet/hair slot, rigid, left/right pair | the fashionable lukiul, Gideon youths | common | 0.1 m | medium (Argonian ARMA; symmetrical pairs) |
-| Shell/jade/blue-jasper death mask or mask | helmet slot, rigid | Sul-Xan, Hist-priests (stock holds funerary 1 model, Moon Monk, Mihail 82282) | uncommon | 0.25 m | easy-medium (rigid, must clear snout) |
-| Crocodile-tooth / jasper / pearl necklace | amulet slot (copy a vanilla amulet record, a skinned small mesh) | everyone with an adult trial (lore) | high: replaces 32 vanilla silver rings and amulets | 0.2 m | medium: the amulet nif is skinned to spine bones, so the model needs 1-2 bone weights; Blender job |
-| Rings/bracelets of shell, bone, jade | ring (rigid, finger bone) | everyone | high | 0.03 m | easy |
+| Jade or jadeflint sword | an existing sword record (our `ladder` sword of the tier) | sword | priests, chiefs, shrine rewards | 0.9 m | easy |
+| Jade dagger / ritual knife | a dagger record | dagger | Hist priests, Sisei-Xul, Sul-Xan | 0.35 m | easy |
+| Jade or flint war axe | a waraxe record | waraxe | hunters, Naga | 0.7 m | easy |
+| Crocodile-tooth club | a mace record | mace | tribal camps, Naga | 0.8 m | easy |
+| Crocodile-tooth maul | a warhammer record | warhammer | tribal camps | 1.2 m | easy |
+| Reed-bundle or obsidian-edged club | battleaxe record | battleaxe | tribal | 1 m | easy |
+| Toothed or fishbone sword (saw edge) | a sword record (`SilvBone` shotel is the nearest) | sword | Xit-Xaht, Spray-Folk | 0.9 m | easy |
+| Naga-Kur bone-and-frill sword, dagger | sword, dagger records | sword, dagger | Naga-Kur camps | 0.9 / 0.35 m | easy |
+| Eel gaff / fishing hook | dagger record | dagger | fishers, Eelskins | 0.8 m | easy |
+| Pike with a bone or obsidian head | the Animated Armoury pike record (`power_kind` pike, keyed on AA's keyword) | greatsword | Warden Marches (crimson-red) wardens | 2.4 m | easy-medium: generate the head, make the shaft by script |
+| Spear / trident / harpoon with a fishbone or flint head | the Heavy Armory, HTBM or New Armory spear record (typed greatsword); Seagrave trident is the nearest | greatsword (shortspear: sword) | river hunters, harbour folk, fishers | 1.8 to 2.4 m | easy-medium: head only plus scripted shaft |
+| Halberd / glaive with an obsidian blade | the Animated Armoury halberd record | battleaxe | Stone-Sleepers (sky-blue) | 2 m | easy-medium: blade only plus shaft |
+| Skull-topped Hist staff, plain quarterstaff | the Animated Armoury quarterstaff record (Heavy Armory has one too) | battleaxe | Root-Folk (forest-green), priests | 1.8 m | easy-medium: skull or finial only plus shaft |
+| Rapier with a shell or bone guard | the rapier record under the SkySA rapier pack (AA keyword) | sword | Lilmoth (rose) | 1 m | easy |
+| Flail / whip with bone segments | the Animated Armoury whip record | mace | Three Waters (plum) | 1 m | easy-medium: a rigid chain in one nif |
+| Claws with bone or chitin | the Animated Armoury claw record under SkySA claw | dagger | Agaceph (lime), Chainbreakers | 0.3 m | easy-medium: paired, two meshes |
 
-### B. NOT plain swaps (state which)
+### B. Shields, masks, headdresses, jewellery (rigid, copy an existing record)
 
-- Bows (feathered reed bow, bone bow): rigged string/limb animation; vanilla bow skeleton nodes needed. Hard-ish; existing bows suffice (bamboo, chitin, ivory, Argonian, Arrowsong).
-- Crossbows / blowgun: a crossbow uses Dawnguard's crossbow animations and loads a bolt; our blowgun (Ruddy88 12910) is the template (mesh swap only: acts as crossbow; easy mesh, but not a free record).
-- Spears, tridents, harpoons, pikes: no spear animation set is loaded. Our approach: Heavy Armory (6308), HTBM (Cipactli), New Armory Argonian and Seagrave type them as greatsword (2H spear = greatsword swing) or sword (short spear = 1H sword): `items.md` table "Spear, trident, harpoon -> greatsword; Shortspear -> sword; Pike -> greatsword; Halberd -> battleaxe; Quarterstaff -> battleaxe". A new spear is therefore "acts as greatsword" and is easy; it just has no thrust animation. A real spear set would need a Nexus animation mod (Spear of Skyrim 89785, True Spear Combat 10483): not our plan.
-- Thrown weapons, atlatl, nets, throwing knives: need new animation or script: outside "act as".
-- Claw/whip/rapier: already via SkySA packs keyed on Animated Armoury keywords; a new model would copy those records (acts as dagger/mace/sword) and is easy as a mesh, but the six AA types have the animation only on AA's keywords, so a new model must reuse AA's record, not vanilla.
+| Object | Copies | Difficulty |
+|---|---|---|
+| Turtle-shell round shield, reed-wicker shield, boss-and-bone shield | a vanilla shield record (arm attach node) | easy-medium: static; copy a vanilla shield nif's node structure |
+| Feather crest, head-fan, copper horn caps, silver frill clips | a circlet or helmet record with an ArgonianRace ARMA | medium: rigid but must fit the Argonian head |
+| Jade or shell death mask, Hist mask | a helmet record (e.g. Mihail 82282 or Funerary Masks) | easy-medium |
+| Crocodile-tooth, jasper, pearl necklace | an amulet record (the nif is skinned to 1 to 2 spine bones) | medium: Blender weight copy |
+| Shell, bone, jade rings and bracelets | a ring record (rigid, finger bone) | easy |
 
-### C. Skinned outfits and wearables (harder; say so)
+### C. Still not plain swaps
 
-| Object | Kind | Difficulty | Reason |
-|---|---|---|---|
-| Loincloth / wrap / sash + tail band outfits | skinned torso+legs, tail | hard | weight paint, tail bone, body-fit; a poor texture wrapped round a skinned body is the hardest case; use Shifts-Sand or retexture |
-| Commoner cloth tunics, robes in marsh dyes | skinned | hard to model; EASY to retexture vanilla meshes (UVs exist) | textures only is the cheapest way |
-| Reed rain-cape / grass skirt | skinned or cloak-slot | hard | physics-free cape slot is easier than a skirt |
-| Shell/scale pauldrons, bracers, leg wraps | skinned | medium-hard | small pieces, simple weights if copied from a vanilla pauldron nif |
-| Tail bands with bells; tail stockings | skinned to tail bones | medium-hard | tail chain bones differ; mod 85894's slot handling needed |
-| Bone/shell armour sets (light) | skinned | hard | whole-set; use 119440/191593 first |
+- Bows and crossbows: bows need string rigging; crossbows use Dawnguard's animation (the blowgun and Poison Dart Launcher are templates).
+- Thrown weapons, atlatl, nets: need new animation or script.
+- Skinned outfits: loincloth, wrap, sash, tail band, reed cape, bone and shell light armour, tail stockings: hard (weight painting, tail and head fit). Cheaper: re-texture vanilla clothes or use Sundries/HistBone.
 
 ## Step 4: ranking by player impact per unit of difficulty
 
-1. NEXUS: Shifts-Sand's Saxhleel Sundries 191593 (tribal wear/wrap, shell, robes, deathmask): largest breadth for no modelling. Verify race support first.
-2. NEXUS: Saxhleel Weapon pack 67137 + War Club 35555 + Simple Straw Hats 89962 (lizard-ready head item).
-3. OWN, easy: crocodile-tooth/bone clubs (mace, warhammer), jade blades (sword, dagger, axe), Naga-Kur bone-and-frill blades, gaff: all "acts as" a vanilla type, rigid, T1-T3, the tribal camps' common issue.
-4. OWN, easy-medium: turtle-shell shield and reed-wicker shield: they fill the ladder's one "no model anywhere" shield slot; seen on every guard.
-5. OWN, medium: rigid head ornaments: feather crest, horn caps, frill clips, masks (replace vanilla leather helmets and hoods on tribal NPCs): highest Black Marsh feel per object; needs an ArgonianRace ARMA.
-6. OWN, medium: crocodile-tooth/jasper necklaces and shell/bone/jade rings: one record family replaces the 32 vanilla silver rings worn in the six stocked places.
-7. OWN, medium (textures only): marsh-dye retextures of vanilla farm/monk clothes (6 models) so the commoner pool is not Nordic-looking; Argonian tribal tinting by culture (18) is where "tint, not dress" differences could be fixed cheapest.
-8. HARD: skinned loincloth/sash/tail outfits and bone/shell light armour: only if 1 does not deliver.
+1. NEXUS (SE): Shifts-Sand's Saxhleel Sundries 191593; Saxhleel Weapon pack 67137 and War Club 35555; Simple Straw Hats 89962. No modelling, largest breadth. Verify ArgonianRace in each ARMA first.
+2. NEXUS (SE, small): the Argonian Warrior Armour Heart Stone shield and necklace (96624); Mihail 82282 mask; Giant Club Variety.
+3. OWN, easy weapon swaps: crocodile-tooth club and maul, jade blades, Naga-Kur bone blades, gaff (rows A, first nine): the tribal camps' common issue.
+4. OWN, easy-medium polearm swaps with scripted shafts: pike, spear, halberd, staff, rapier, whip, claws (rows A, last eight): these six types are the signature weapons of six tribes and currently all look like generic medieval weapons; the animation and record work is done by Animated Armoury and SkySA.
+5. OWN, easy-medium: turtle-shell and reed shields.
+6. NEXUS (2011 game, needs conversion): AmA Argonian Mercenary Armor with tail 27676, HistBone and Bonewood 99144, Argonian Raptor Feet 19283, Edhildil War Tails 28502, Gemling Queen Resources 54483 (jewellery), Ghosu bone shield and tribal staff 43293. Cheap if conversion is acceptable; ranked here because the file conversion is a new step.
+7. OWN, medium: rigid head ornaments and necklaces (crest, horn caps, frill clips, tooth and jasper necklaces, shell rings).
+8. OWN, textures only: marsh-dye retexture of the 6 vanilla clothes.
+9. HARD: skinned outfits, only if 1 and 6 do not deliver.
 
-Do-nothing impact: Argonian towns look identical; villages identical; six tribes' signature weapons look like medieval pikes/rapiers.
-Do-least: items 1 + 2 (no model). Do-more: + 3, 4. Do-most: + 5, 6, 7.
+Options: do nothing (identical town watches); do least = 1 and 2; do more = 3 to 5; do most = 6 to 9.
 
 ## Recommendations (each with its evidence)
 
-- File arcane-mage-armor and dx-necromancer-robes items: the rows exist (`mods/dependencies.json`), reward-gear.md lists them, `item` has none.
-- Fix the tribe table: gold, pearl, rust name light shell/bone-plate armour that does not exist (ladder table rows, `items.md`); either add the armour (#191593 shell armour) or change the overlay.
-- The scale guard set's cuirass `BMArgBody` has no ground model and two of its three pieces are other sets' meshes (`bases`): decide whether that issue should be replaced.
-- Replace the vanilla-relabelled T1 "bog iron" weapons if any Black Marsh iron/steel model arrives: they are the commonest weapons in the province.
-- Cheap check before adopting any clothing mod: read its ARMA race list (my reader: `/tmp/claude-1000/-home-ubuntu-skyrim-argonia/044f6198-1702-4213-9f22-0f888669a49a/scratchpad/p.py`).
+- File arcane-mage-armor and dx-necromancer-robes items: rows exist (`mods/dependencies.json`), reward-gear.md lists them, `item` has none.
+- Fix the gold, pearl and rust overlays: they name light shell or light bone-plate armour that does not exist (ladder table, `items.md`).
+- The scale guard set's cuirass `BMArgBody` has no ground model; two of its three pieces are other sets' meshes (`bases.jsonl`).
+- Replace the vanilla-relabelled T1 "bog iron" weapons when a Black Marsh iron model arrives.
+- Before adopting any clothing mod, read its ARMA race lists (my reader: `/tmp/claude-1000/-home-ubuntu-skyrim-argonia/044f6198-1702-4213-9f22-0f888669a49a/scratchpad/p.py`).
+- Add the 2011-game search as a standing step in the Nexus method: it found the only Argonian armour with a tail slot, the Argonian-specific footwear and the clearest permission lines.
 
-Covered: docs/design/items.md, newworld/sources/stock/{kits,materials,scale,regions}.json, story/design/quests/reward-gear.md, material-culture.md, province-vibe.md, world.sqlite (item, person_item, guard_issue), out/places/catalogue, mods/dependencies.json, ~120 Nexus queries and ~25 mod descriptions. Skipped: item_material.json/unique.json line by line (counts came from sqlite); story/design/quests/lines per-line outfits (reward-gear.md used); UESP pages (403); mesh/screenshots (not read); 21 Animated Armoury records' models (unresolved).
+Covered: docs/design/items.md, newworld/sources/stock/{kits,materials,scale,regions}.json, story/design/quests/reward-gear.md, material-culture.md, province-vibe.md, world.sqlite (item, person_item, guard_issue), out/places/catalogue, mods/dependencies.json, 64 Nexus terms in both game domains, about 45 mod descriptions. Skipped: the per-line quest outfits (reward-gear.md used instead), UESP pages (403), meshes and screenshots, 21 unresolved Animated Armoury models, description hits beyond the top of each term (noisy).

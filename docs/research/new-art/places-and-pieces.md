@@ -103,7 +103,7 @@ Lore building types against models:
 | grave-stakes (Naga-Kur deeps signature) | none; lore says so itself (material-culture.md:334) | GAP |
 | fish weir / fish trap / net rack | none (search "weir" 0, "fishtrap" 0; only HearthFires `byohfishnet01/02`, CC fishing gear, vanilla fishrack01/02) | GAP, and Reed-Sill Weir and Teel-Fen Weir are Act I places |
 | dugout canoe / twin-hull platform canoe / raft (lore boat kit) | none (canoe 0, pirogue 0, raft only workbenches); KotM boat01-03 and shiprowboat01, vanilla row/jolly boats | GAP |
-| reed mat / hammock / bedroll | BM&V 2 hammocks; KotM bedsingle01, beddouble01, rusticbed(double), bedroll01/bedrollhay01 are the VANILLA bedroll model; Xanmeer bed_covered | no sleeping mat in any mod |
+| reed mat / hammock / bedroll | 4 hammock statics (BM&V `01hammock`, `01hammockDUPLICATE001`; Baan Malur `SOMRHammock`, `SOMRHammockLegs`), no furniture record; KotM bedsingle01, beddouble01, rusticbed(double), bedroll01/bedrollhay01 are the VANILLA bedroll model; Xanmeer bed_covered | no reed sleeping mat in any held mod |
 | totems (lore: "everywhere") | 4 skeleton totems + 3 totem + 1 argoniantotem01 | thin (about 8 models) |
 | chimes (root kit signature), xeech'ki seed dolls, turtle platters, frog pipes | chimes: KotM tamwindchime01, LakeHouse 2 bone chimes; dolls: KotM doll_turtle, doll_spriggan etc.; the rest none | partial |
 
@@ -177,72 +177,90 @@ Grep of owner-rulings.md for "bedroll", "hammock", "fur", "tent": only mechanica
 The gap list is the difference between section A3's lore list and this table. Most striking: the Argonian set is rich in buildings of two kits and in Xanmeer ruin, thin in domestic and working
 clutter and in anything that is neither wood nor stone: no mat, hammock, canoe, weir, net rack, stake, ball court, root-grown house.
 
-## D. Step 2: Nexus (mods/dependencies.json rows excluded; the 193 held mods were checked for overlap)
+## D. Nexus, searched in both Nexus games, by name and by description
 
-The Nexus name-wildcard search is substring-noisy and found no Argonian or tropical-native building kit. Candidates by gap (id, author, endorsements, remarks):
+What was searched (python3 tooling/nexus_search.py after the 2026-11-24 fix: Special Edition and the 2011 game, mod names and description text, most endorsed first): hammock, sleeping mat, bedroll,
+reed, bamboo, thatch, stilt, hut, tiki, jungle, tropical, swamp, tribal, Polynesian, Aztec, Mayan, Khmer, wicker, basket, pottery, clay, gourd, fish trap, weir, net, canoe, dugout, drying rack,
+totem, grave, stake, lantern, tent, market stall, Argonian, Saxhleel, Black Marsh, primitive, village kit, hut kit, native huts, boardwalk, dock resource, fishing resource, "modders resource",
+"clutter resource", "furniture resource", "architecture resource", and the authors Phitt, Kelretu, Elinen, Ztree, Vurt, Berticus, Lolicept, Runspect, Lorsakyamuni, Sheogorad, Telvanni, Morrowind resource.
+Hits were read in the "Modders Resources" category (all terms) and unfiltered for Polynesian, Khmer, Mayan, weir, canoe, dugout, drying rack, fish trap, totem, market stall; then candidate descriptions were read
+with --mod or the API description. Description hits are noisy (guides and player homes), so a zero below means zero relevant summaries among the hits read, not that nothing exists.
+A mod marked "2011" (`skyrim:` id) is usable only if its meshes are converted to Special Edition format (NifSkope/optimiser pass); marked "SE" it is already in that format.
+All are used here as asset-only player dependencies, so a resource licence is not needed, but the permission line is noted.
 
-| gap | candidate | permission/notes |
-|---|---|---|
-| hammock | Tcz Modders Resources 65061 (Tcz, file `tcz_uvremap_hammockstatic_darkelf`, 15 KB): a Telvanni/Phitt hammock static remapped to vanilla Dark Elf textures | a static: needs a furniture marker; Dunmer look; resource, credit |
-| bedroll replacers (all Skyrim-fur type) | Bedroll Alternative 132480 sothasimp 7,629; Fluffy Beds and Bedrolls 93201 FrankBlack 2,097; Fur Bedroll 13354; Simple Bedroll 17283 | all swap the SAME vanilla bedroll with a nicer fur bedroll; do not make it Argonian. A replacer changes vanilla Skyrim too: fine for us |
-| Dunmer bedrolls and tents | Ash Nomad 184382 sothasimp 618 (+ LessPoly 186127) | Dunmer ash-waste look: fits Dunmer outposts, not Argonian |
-| tent overhaul | Kaidan Exterior Tent Overhaul 154480 Cizzy 5,765 | uses Oaristys/Lorsakyamuni/Tesak1243 resources; not Argonian |
-| stilt house | Stroti's Stilt House Resource (Nexus LE 61824, Stroti/Tamira; SSE conversion not verified; its page allows use with credit) | one generic Oblivion stilt house, would need reed retexture |
-| bamboo huts | Assorted Resources for Skyrim SE 4491 Tamira 172 (huts assembled from orc kit, straw/wicker roof, bamboo sides) | modder's resource; Cipactli already has bamboo huts |
-| tree house | Stroti's Treehouse Resource 2378 (186); Stroti Resource Pack I/II 4559/4679 (BM&V already uses Stroti mushroom house) | credit; relevant to root-kit look only as a base |
-| docks/boardwalks | Skyrim 3D Docks and Boardwalks 28781 mathy79 6,400 (+ weathered Riften textures) | replacer of vanilla docks: better planks, still Nordic shapes |
-| Morrowind-style props | Phitt's Morrowind Resources Remapped SSE 107571 (pancake, 49); Phitt's Morrowind Style Lanterns 4736 (Phitt/Tamira); Phitt's Sheogorad Shack Texture Remapped 34458 | free with credit; Dunmer/Sheogorad. BM&V already draws on Phitt |
-| Argonian homes (meshes only as player homes) | Xalfek 55595 DexMods 309; Darkwater Den 189608 Elianora 51; Roots of the Tree (Hist-themed home) 62422 Nateguy 42; Argonian Hut 59517 luposcainus (a 36 KB tree base, tiny); Tuktura houseboat 58753 (needs CC Fishing) | no resource licence; homes, not kits; Xalfek is 36 MB and could hold Argonian clutter meshes (unverified) |
-| ESO Argonian/Murkmire furnishings | none ported; Elder Scrolls Online Imports 11729 (Sarthes Arai, 3,324) is a quest/ruin port (CC Ayleid resources derive from it) and its BOS add-on 141484 Lumendea | confirmed by search; ESO Argonian mat/reed furniture are only on UESP |
-| Dunmer furniture | Rally's Dark Elf Furniture 112042; Weathered Dark Elf Furniture 84732; Dunmeri Furniture in Gray Quarter 60077 | fits Dunmer outposts only |
-| orc furniture | Rally's Orc Furniture 111457; Malacath's Chosen 133717 sothasimp 7,427 | not Argonian |
-| barrels/crates/baskets | HFs Barrels All-in-One 137509; Awesome HD Barrels 20698; Rally's Crates 80417; TB's HD Wicker Basket 133863 (5,589); Skyland Crates and Barrels 88573 | all HD replacers of the vanilla shape. A retexture/mesh replacer changes vanilla too; fine, but yields "better Nordic", not Argonian |
-| clay/pottery | Ancient Pottery 24039 mathy79; HFs Glazed Pottery 152278; Halffaces Nordic Ruins Pottery 115926 | same: vanilla shapes |
-| pelts | Better Pelts and Hides 87277, Peltapalooza 5442 (32,464), Fluffy Hanging and Floor Pelts 103120 | better fur, still fur; the Argonian answer is to remove pelts, not improve them |
-| fish racks | Diverse Catches BOS 98989 FrankBlack 7,962 (12 variants); Fish Rack 54144 | BOS swap of vanilla fishrack01 |
-| hay | Rudy HQ Hay 25125 (8,850); Real Hay Redux 41473; Mihail Haystacks 125021 | vanilla shape |
-| shrines | JS Shrines of the Divines 33394 | Nine again: wrong |
-| totems | Easthold Totemic Set 100401 (armour/clothes, not a static; unverified); Totemic Tombstones clutter remesh 157281 | no Argonian totem resource found |
-| market stalls | Rally's Market Stalls Animated 81282; Improved Market Stall Canvas 37294 | vanilla look |
-| lanterns | Lanterns of Skyrim 2429 (MannyGT, 53,208); Lanterns of Skyrim II 30817; Phitt lanterns 4736 | Skyrim/Morrowind lantern sets; Argonian ones are in LakeHouse only |
-| jungle/tropical kits | none beyond Project Rainforest 20636 (land), TSOP 36153, Lagoon 37394 (island home) | no building kit |
-| creators checked | Stroti/Tamira (resource packs listed above), Oaristys Witcher pack 137706, Mihail Shards of Immersion (Whale Bones on Coasts 91958, Beehive 79344, Haystacks 125021), Jokerine 801, Blary Booksets 159303 | Blary, Lolicept, Berticus, LorSakyamuni, Runspect, Elianora (homes only): nothing Argonian found by name search; Nexus search is name-only so mod text was not searched |
+### D1. Gaps Nexus now fills (or partly fills)
 
-Result: no held or Nexus mod supplies a reed/woven sleeping mat, Argonian-themed barrel/crate set, canoe, weir, net rack, grave-stake, ball court or root-grown house. Replacers
-that exist improve vanilla Nordic shapes only. Not verified: mod bodies were not read for loose clutter inside the player-home mods; Khmer, tiki, Polynesian, stilt, hammock name searches returned 0.
+| gap | candidate (id, author, endorsements) | what it holds (from its description) | format | permission line |
+|---|---|---|---|---|
+| hammock (static) | already held: BM&V North `01hammock` (`architecture/phitt/dagonfel/hammock.nif`), BM&V `01hammockDUPLICATE001`, Journey to Baan Malur `SOMRHammock` and `SOMRHammockLegs` (Tcz remap) | catalogue, four hammock statics; no FURN record for them, so it still needs a furniture marker | in load order | n/a |
+| hammocks, baskets, fishing net with herrings, tapestries, rug, 5 shacks, dock kit, 2 awnings, 5 overhangs | skyrim:60125 Phitt's Sheogorad Resource Part Two (Phitt and Tamira, 435) | the same Phitt/Sheogorad set Baan Malur already carries under `morrowind/sheogorad/` | 2011, convert | "may not be used in paid mods"; credit; read the included Sheogorad Terms of Use |
+| yurt-type Ashlander huts with interiors, paper lanterns, plants, rocks, mushrooms | skyrim:59632 Phitt's Sheogorad Resource Part One (466) | BM&V already holds `vvardenfell/ashlanderhut/*` (incl. `001Swamptent`) | 2011, convert | same |
+| wicker furniture | skyrim:66282 Wicker Set (Garnet, 398) | wicker chair, sofa, table, animated chest, Morrowind-style basket | 2011, convert | free to use the resources, credit appreciated, do not redistribute changed |
+| bamboo huts and interiors and doors, animated wind chimes | 4491 (SE) / skyrim:57394 Assorted Resources (Tamira, 172 / 468) | huts assembled from the orc hut kit with straw/wicker roof and bamboo sides; moving wind chimes with sound; made "for tropical/desert/caribbean surroundings" | SE | "none of these resources may be used in paid mods" |
+| bamboo trunk | skyrim:14812 Bamboo modders resource (Scot, 131) | one trunk; trees already held (KotM `bamboo01/02`, Cipactli) | 2011 | do not put on Steam Workshop |
+| tiki torch | skyrim:24711 Tiki Torch Modders Resource Pack (Teirdalin, 65) | tiki torches and a "Tiki Dog" torch, merged from vanilla parts (no new textures) | 2011, convert | free, credit |
+| stilt house | skyrim:61824 Stroti's Stilt House Resource (Stroti and Tamira, 270) | stilt house with animated folding-shutter door, grill, hut and platform split | 2011, convert | "not in paid mods" |
+| rustic furniture | skyrim:24450 Strotis Rustic Furniture Resource (383) | rustic furniture set (list not read) | 2011, convert | same family terms |
+| tents | skyrim:12104 Meos Tents for All (Meo, 204); skyrim:82985 Kelretu's Modders Resources (433, Nordic tent variations, ropes, small chests, farmhouse line, ovens) | recoloured Imperial-type tents | 2011, convert | credit; do not port to other games; Kelretu "as open as possible" |
+| docks | skyrim:63982 tamu75 Wood Dock Resources (94) | 3 docks, 7 planks, pole | 2011 | credit; already in KotM (`tamu_wooddock*`), so held |
+| docks and farmhouse kits | skyrim:58262 Building kits and other items (Elianora, 596) | 383 meshes: farmhouse kit 235 parts, modular dock kit, upgraded upper-class bed with mattress | 2011, convert | credit with a link on the mod page, or removal |
+| ships and boats | 41653 Ships and boats of Tamriel (SE, ThatShipGuy, 829); skyrim:75965 DK's Lore-Friendly Ships Vol.1 Nords | resource sets with interiors, rowboats and barges (Imperial, Bretic, Nord) | SE / 2011 | credit; none is a dugout or platform canoe |
+| canoe | 40057 Sailboats Script Free Sailing EXPANDED (SE, Araanim and others, 191); skyrim:67727 Script free ship sailing (ElstarTomas, 941) | the 2011 mod advertises a canoe model; the SE expanded mod adds rowboats and sailboats (canoe in SE not confirmed) | SE / 2011 | mod page terms not read |
+| tropical assets | 33446 Tropical Lands Assets, Cathnoquey (SE, CreatyChameleon, 43) | 440 MB asset dump of a Padomaic tropical-isles project made by over 150 volunteers; page does not list its contents | SE | free to use any asset, textures and sounds, credit requested; files starting `s3d` removed (not resources). Strongest unknown: needs one look inside the archive |
+| big warehouses | 83445 Mad Modder's Assets (SE, ManyMadModders, 160) | thousands of meshes: wall mounts, trophies, furniture, outdoor decor, tents, market stalls, containers (categories only) | SE | per-asset credits; contents not itemised |
+| pots, jars, baskets, food containers | skyrim:16525 Oaristys and Tony67 Modder's Resource Pack (2,637, ~500 meshes: pottery, ingredient jars, food baskets, platters); skyrim:53022 Jokerine's Misc Resources (602); skyrim:14133 Blary FoodContainer (982: 6 vegetable baskets, 5 food crates, hanging meat); skyrim:53192 Elianora's Extra Resources (1,275: retextured furniture, coloured baskets) | statics for pottery, baskets, crates in vanilla styles | 2011, convert | free to use with credit |
+| lanterns | skyrim:59977 / 4736 Phitt's Morrowind Style Lanterns (275 / 104); skyrim:59632 paper lanterns | Morrowind-style movable and static lanterns | 2011 / SE | not in paid mods |
+| flora and trees (not a gap) | skyrim:19268 GKB Green Trees (910); skyrim:22018 Tamira New Plants; skyrim:38651 Hoddminir | jungle, cypress and cedar trees; palms; tropical shrubs | 2011 | Tropical Skyrim already carries GKB trees |
 
-## E. Step 3: our own models, and the route for each (nothing here is made; sizes are estimates)
+### D2. Searched, no relevant candidate in the hits read
 
-Route key: R1 = keep the vanilla record, furniture markers and collision, swap only geometry/texture (the markers sit in the NIF as the furniture-marker node, so Blender/Tripo geometry must
-be merged under the vanilla file's marker node: engine-format knowledge, not verified here); R2 = plain retexture of an existing vanilla mesh (loose texture replacer, no geometry: cheapest);
-R3 = new static base record with a collision shape; R4 = new record plus markers/animation (hardest).
+Polynesian (3 hits: a bird mod, an NPC mod), Khmer (2 hits, none relevant), Mayan (11, only King of the Murkmire, Cipactli and a Markarth retexture), Aztec (23; one unrelated resource pack),
+weir (20, no relevant), dugout (2; campsite mods only), drying rack (14, none relevant), fish trap (60, none relevant), grave (160 hits read by category only: none relevant), stake (69, none), net (166, none relevant),
+totem (106; only werewolf-totem retextures, a Nord religion mod, Nord totemic armour), gourd (87; plant and food retextures), market stall (106; stall retextures and a vendor mod, all vanilla shapes),
+Argonian (163) and Saxhleel (57) and Black Marsh (88): races, skins, weapons, armour, player homes (Xalfek 55595, Darkwater Den 189608, Roots of the Tree 62422), no building or clutter kit.
+Replacers of vanilla shapes (Nexus names above in the first draft: HFs Barrels 137509, Rally's Crates 80417, Better Pelts and Hides 87277, Bedroll Alternative 132480, Diverse Catches 98989) change vanilla Skyrim province-wide, which is fine for us,
+but they make the Nordic shape nicer, not Argonian. Not verified: Cathnoquey's contents, Mad Modder's Assets' contents, Lolicept Resources (description gives no list), Kelretu's full list, Stroti Rustic Furniture's list;
+the SE bodies of no 2011 mod were checked for existing SE conversions beyond those listed.
 
-| # | object | where seen, how often | size | solid/static | needs | route | difficulty |
-|---|---|---|---|---|---|---|---|
-| 1 | reed sleeping mat / hammock (replaces Bedroll01 look) | every camp, outpost, tent, prison cell; 27 of 97 drafted furniture refs, 139+ in src54 | 1 x 2 m | solid; flat | furniture marker node (rest), collision | R1 (vanilla FURN and markers kept) | easy: single flat object, texture is a woven pattern |
-| 2 | clay pot / wicker basket / hollow-log barrel (replace barrel01/02, sacks, crates) | everywhere: 3,541 vanilla barrels, 4,084 crates, 1,790 baskets in src54 (about 10% of source refs) | 0.5-1 m | solid | container records keep; collision | R2 first (retexture barrel to dark wood and wet clay), R1 for a gourd/pot shape | easy |
-| 3 | woven reed fence/screen panel and reed door mat | huts, fish camps | 2 m | solid | collision | R3 | easy (but KotM woven fences exist: check first) |
-| 4 | Argonian door set (re-skin 41 Nordic ruin doors and Solitude doors in BM&V sources) | Helstrom: 56 of 119 doors | 1 x 2 m | the door record has an animation (open/close) | R1 keeps record and animation graph, new geometry on same rig; or just swap records to KotM mud/bamboo doors (no art) | | easy as swap; medium as new rigged door |
-| 5 | totem, grave-stake, bone chime, seed doll (xeech'ki), turtle platter, frog-pipe | every village, every grave (lore: everywhere) | 0.3-3 m | solid | none | R3 | easy (skull totem exists: 8 models only) |
-| 6 | fish weir, fish trap basket, net drying rack, fish smoking rack | Reed-Sill Weir, Teel-Fen Weir, every fishing camp and dock | 2-6 m | solid; weir sits in water | collision, water interaction only visual | R3 | easy to medium (weir needs water-line fit) |
-| 7 | dugout canoe and platform canoe, moored | docks, creeks, stilt towns | 4-6 m | solid, no moving part | static only | R3 | easy as static; do not make rideable |
-| 8 | reed/hide Argonian tent with scale or reed cover (outposts, war camps) | camps: 312 tents in src54; scale tents exist (KotM 3, LakeHouse 2) | hut size | solid | entrance collision | R3 | medium; first try swaps to KotM/LakeHouse tents |
-| 9 | reed-thatch house wall/roof panels (stilt kit pieces) | Murkmire coast villages | house sized | solid | collision | R3 | medium to hard: big surfaces, one texture stretched thin |
-| 10 | hist-root grown house (root-kit kit) | Helstrom basin, Middle Argonia: 19 forest-green places | house sized | | stairs, doors, collision | R3 | hard: a whole kit and walk-in interiors |
-| 11 | Teeba-Enoo ball court | 1-3 places | 40 m | solid | | R3 | medium, rare: skip |
-| 12 | Nine shrine/statue replacement (Hist shrine, snake statue) | any foreign source with shrines | 1-2 m | | | R3 or swap to KotM shrine01/wayshrine01 (held) | easy as swap |
-| 13 | lantern (re-skin CandleLanternWithCandle01, 173 drafted refs; 833 src54) | every interior and street | 0.3 m | solid light | light record keep | R2 or swap to LakeHouse argonianlanterns (held) | easy |
+### D3. Net effect on the gap list of A3
 
-## F. Step 4: rank by player impact per unit of difficulty
+- Hammock: not a gap in assets (4 statics held); the gap is a usable furniture record (static plus marker) and an Argonian cover.
+- Bamboo/thatch hut, wicker furniture, wind chimes, tiki torch, tents, docks, baskets and pots: obtainable by conversion, mostly duplicating what BM&V, Cipactli and Baan Malur already hold.
+- Still unfilled by any search above: reed sleeping mat as an Argonian object, grown-root house, fish weir/trap/net rack, grave-stake, ball court, dugout or platform canoe (only a possible canoe in 67727), Hist-themed totems beyond the 8 held, woven reed wall/roof panels.
+- One unopened lead could change this: Cathnoquey Tropical Assets (33446).
 
-1. Swap, no art: lanterns (13), doors (4 as swap), banners, shrines (12), tents (8 as swap), fences. Held Argonian models already exist; the gain is by record swaps. 173 + 56 + ... refs in the six drafts, 833+ in the 54 sources. Highest impact per effort; not an art question.
-2. Barrel/crate/sack/basket retexture (2, R2): the biggest single bulk family (about 14,000 refs, 8% of the source sample), seen close up in every dwelling; easy.
-3. Sleeping mat / hammock (1, R1): the most-placed furniture in the drafts (27 of 97), the object the player uses to rest at; Skyrim-fur bedroll is the strongest Nordic tell at close range; easy.
-4. Signature small props (5): totem, grave-stake, chime, seed doll: low count each, very high distinctiveness; the lore says "everywhere" and gives grave-stakes no mesh at all; easy.
-5. Fish weir / net rack (6): two Act I places and every fishing camp; distinctive; easy-medium.
-6. Canoe (7), woven reed screen (3): moderate breadth, easy statics.
-7. Thatch/stilt wall and roof (9), tent (8 as new), then root house (10): large surfaces, hard; weigh only after 1 to 6 land.
-8. Ball court (11): rare; skip.
+## E. What remains for our own models (after D), and the route for each
+
+Route key: R1 = keep the vanilla record, furniture markers and collision, swap only geometry/texture (markers live inside the NIF as a furniture-marker node, so new geometry must be merged under the vanilla
+file's marker node: format knowledge, not verified here); R2 = plain retexture of an existing vanilla mesh (a loose texture replacer, cheapest); R3 = new static base record with a collision shape; R4 = record plus markers/animation.
+"First try" lists the held or Nexus item to use before making anything.
+
+| # | object | where seen, how often | size | static | needs | first try | route | difficulty |
+|---|---|---|---|---|---|---|---|---|
+| 1 | reed sleeping mat (Argonian cover over the hammock/bedroll) | camps, outposts, tents, prison cells: 27 of 97 drafted furniture refs, 139 bedrolls and 539 beds in src54 | 1 x 2 m | solid, flat | furniture marker node, collision | the four held hammock statics plus a vanilla bedroll marker | R1 | easy |
+| 2 | clay pot / wicker basket / hollow-log barrel look (replace barrel01/02, crates, sacks) | 3,541 vanilla barrels, 4,084 crates, 1,790 baskets in src54 | 0.5-1 m | solid | container records kept | Wicker Set, Oaristys/Blary/Jokerine statics (convert) for the wicker and clay forms; a barrel retexture is R2 | R2 first, R1 for new shapes | easy |
+| 3 | grave-stake, totem, bone chime, seed doll (xeech'ki), turtle platter | every village and grave; lore says "everywhere", grave-stakes have no mesh (material-culture.md:334) | 0.3-3 m | solid | none | held skull totems, bone chimes, doll_turtle; Tamira wind chimes | R3 | easy |
+| 4 | fish weir, fish trap basket, net drying rack, smoking rack | Reed-Sill Weir, Teel-Fen Weir, every fishing camp and dock | 2-6 m | solid; weir at the water line | collision | Phitt's net with herrings (Part Two) for a rack; nothing for a weir | R3 | easy to medium |
+| 5 | dugout and platform canoe (moored statics) | docks, creeks, stilt towns | 4-6 m | solid | static only | 67727's canoe (verify), KotM boat01-03 | R3 | easy as static |
+| 6 | woven reed screen / mat panel and reed door curtain | huts, fish camps | 2 m | solid | collision | KotM woven fences, Cipactli bamboo hut walls | R3 | easy |
+| 7 | woven reed-thatch wall and roof panels (stilt kit pieces) | Murkmire coast villages | house size | solid | collision | Cipactli bamboo huts, Tamira/Stroti stilt house, KotM thatch houses | R3 | medium to hard: large surface, stretched texture |
+| 8 | scale/reed Argonian tent | outposts and war camps: 312 tents in src54 | hut size | solid | entrance collision | held KotM scaletent01-03, LakeHouse argoniantent01-02 | R3 | medium (usually a record swap) |
+| 9 | grown-root house (settlement-root-v1) | Helstrom basin, Middle Argonia: 19 forest-green places | house size | solid | stairs, doors, collision | none | R3 | hard |
+| 10 | Teeba-Enoo ball court | 1-3 places | 40 m | solid | none | none | R3 | medium, rare: skip |
+| 11 | Argonian door (replace 41 Nordic-ruin and 15 Solitude doors in Helstrom) | 56 of 119 drafted doors | 1 x 2 m | animated open/close | door record and rig | KotM mud/shack doors and Cipactli bamboo hut door (held, no art) | R1 only if a new look is wanted | easy as swap |
+
+## F. Ranking by player impact per unit of difficulty
+
+1. Record swaps to held models (lanterns 173 refs in the drafts and 833 in src54, doors, banners, shrines, tents, fences): no art, large and immediate. Not an art question.
+2. Conversions of 2011 resources that duplicate held kit: low value, since BM&V, Cipactli and Baan Malur already hold the same bamboo huts, hammocks, Phitt props and wicker; take only a missing piece (tiki torch, wicker chest).
+3. Barrel/crate/basket retexture or swap (#2): the largest bulk family (about 14,000 source refs, 8%), seen close up in every dwelling; easy.
+4. Sleeping mat (#1): most-placed furniture in the drafts, the thing the player rests on; a held hammock static plus marker gets most of the way; easy.
+5. Signature small props (#3): totem, grave-stake, chime, seed doll; few per place, high distinctiveness; easy.
+6. Fish weir / net rack (#4): two Act I places and every fishing camp; easy to medium.
+7. Canoe (#5) and woven screen (#6): moderate breadth; easy static.
+8. Open Cathnoquey Tropical Assets (33446) once before starting items 9 and 10, since it may supply tropical huts and props.
+9. Reed-thatch panels (#7), tents as new models (#8), then the grown-root house (#9): large surfaces, hard.
+10. Ball court (#10): rare; skip.
 
 ## Recommendations (beyond the brief; evidence cited)
 
@@ -251,4 +269,4 @@ R3 = new static base record with a collision shape; R4 = new record plus markers
 - Keep section C's gap list in `story/lore/topics/material-culture.md` and remove the dangling "asset inventory gap 3" reference there (it leads nowhere).
 - Before any generated sleeping mat, check whether KotM's `bedroll01` copy has a distinct model (28 refs in src54 point at a KotM record with the vanilla model path): a first, free test of R1.
 
-Covered: newworld/world.sqlite, source_match, places/*, out/places/catalogue + bundles, mods/dependencies.json, owner-rulings, material-culture.md, Nexus API (about 120 term searches, 30 mod pages), 6 web searches · Skipped: 227 non-bundled sources' per-base counts (no ref files); loose-file replacers (invisible to the catalogue); mod bodies and archives (no downloads); hist-placement.md body (read headings only); decision 0006 text.
+Covered: newworld/world.sqlite, source_match, places/*, out/places/catalogue + bundles, mods/dependencies.json, owner-rulings, material-culture.md, Nexus API in both games (about 190 term searches, 45 mod descriptions), 6 web searches · Skipped: 227 non-bundled sources' per-base counts (no ref files); loose-file replacers (invisible to the catalogue); mod bodies and archives (no downloads); hist-placement.md body (read headings only); decision 0006 text.

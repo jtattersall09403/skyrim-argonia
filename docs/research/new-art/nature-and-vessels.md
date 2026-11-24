@@ -15,15 +15,15 @@ models, ranking). All counts are from `newworld/out/world.sqlite` (tables `flora
    (d) the whole boat/ship side is the thinnest of all: no Argonian craft model exists in our pool; the one ship
    placed is BM&V's Imperial `01Ship`; 10 of 11 wrecks come from vanilla Icerunner (4) and Journey to Baan Malur's
    Ink Lagoon (6) (not verified what the latter looks like), 1 from Wyrmstooth.
-2. Nexus has almost nothing swamp/jungle-specific that we do not already hold (searches in section 4). The best
-   unclaimed finds: Ships and Boats of Tamriel (41653, resource, ships + wrecks), Wreck of the Crown Petone
-   (17263, an Argonian-settled wreck), Waterplants (6092, reeds/lilies/water grass), Cathnoquey tropical asset dump
-   (33446, "Fractured Isles" tropical assets), DrJacopo/TB ferns (82978/72888), Whale Bones on Coasts (91958).
-   Nothing found for: canoe, dugout, raft, junk, dhow, banyan, mangrove prop roots, tree fern, cattail, rice.
-3. Own-model priority (impact per difficulty): (1) mangrove prop-root clusters, (2) native-craft kit (dugout canoe,
-   reed/log raft, twin-hull canoe, houseboat), (3) a second and third reed/sedge/cattail card set, (4) tree
-   ferns/cycads (trunk generated, fronds reused), (5) giant fungus/Hist state variants (sick, dying, egg pod),
-   (6) drowned/driftwood/stump set, (7) sunken/wreck hulls re-skinned or modelled low-poly. See section 6.
+2. Nexus (both games, name and description; section 3) fills the plants and ships, not the signature forms.
+   GKB Green Trees (skyrim:19268) is already our pool: 40 GKB meshes are in `flora_base`, among them all 5 mangroves.
+   New finds: Harvestables (skyrim:15108: saltrice, marshmerrow, hackle-lo, sugarcane, stoneflower, trama root, bamboo),
+   Ships and Boats of Tamriel (41653) plus Cyrodiil/Breton/Nord ship resources, Waterplants (6092), Cathnoquey (33446),
+   Mad Modder's Assets (83445), Bones (skyrim:94817), Whale Bones (91958), a canoe in Sailboats/Script Free Sailing.
+   No hit for: dugout, raft, houseboat, dhow, tree fern, banyan, cattail, rice, termite.
+3. Own-model priority: (1) Argonian craft kit (dugout, reed raft, twin-hull canoe, houseboat), (2) reed/cattail/rice
+   cards (Waterplants first), (3) driftwood/drowned set and mounds, (4) sick-Hist states and egg pod, (5) tree ferns,
+   (6) mangrove roots only after auditing GKB's unused numbers, (7) wreck hulls. See sections 4 and 5.
 4. Cheapest wins need no new art: place KotM's Saltrice (held, never placed, section 2.3); use unused vanilla
    Dragonborn/Blackreach giant mushrooms; recolour sick-Hist variants by texture swap.
 
@@ -202,142 +202,150 @@ Needs (sqlite):
   recoloured); no termite mound. Sap pools: one vanilla puddle mesh scaled (`docs/research/sap-water-bethesda.md:36-44`).
   Driftwood: not in the flora tables; dressing has `kelp-wrack` only.
 
-## 3. Step 2: Nexus (run with `tooling/nexus_search.py`, 2026-11-24; the name wildcard misses many names)
+## 3. Step 2: Nexus (re-run 2026-11-24 with the fixed `tooling/nexus_search.py`)
 
-Method note: searches for mangrove, banyan, canoe, dugout, galleon, dhow, fishing boat, skiff, longship, sugar cane,
-rice, paddy returned nothing; "mangrove" by web search found only Nexus 19268 (a Skyrim LE tree resource with 4
-mangrove trees, pages 403 here, so its permission, endorsement and SE port status are UNVERIFIED) and 2750 (New
-Plants resource). Nexus pages cannot be fetched (HTTP 403), so permission lines come from the API description only.
+What was searched: Special Edition AND the 2011 game (`skyrim:<id>`), by mod name and by description text, for:
+mangrove(s), cypress, "swamp tree", jungle, tropical, palm, bamboo, "tree fern", banyan, vines, moss, "lily pad", reeds,
+cattail, mushroom, "giant mushroom", coral, kelp, rice, saltrice, "sugar cane", papyrus, "water hyacinth", canoe, dugout,
+raft, houseboat, boat, ship, shipwreck, galleon, pier, driftwood, skeleton, bones, nest, termite, gkb, "Ga-Knomboe",
+"dead trees", fern, and the resource-pack words "modders resource", "tree resource", "flora resource",
+"plants resource", "boat resource", "ship resource"; then `--mod` on every strong candidate. Description hits are
+noisy (mod guides, followers), so the lists below are read by summary. A `skyrim:` mod is usable once its meshes are
+converted to Special Edition format (NifSkope/Cathedral-style conversion, textures kept); the permission line is
+quoted where the description gives one; where it does not, I say so. Nexus pages themselves return 403, so I read the
+API description only: file lists and model counts below are what the description or file list states, nothing more.
 
-### 3.1 Trees and plants
+### 3.1 What we already hold from the big resources
 
-| candidate | id / author / endorsements | what | gap / note |
+- GKB Green Trees (skyrim:19268, Ga-Knomboe Boy, 910 endorsements, 204 MB): "hundreds of new green tree models based
+  off re-textured vanilla models, and new models", "new trees with alternative textures and LODs", red/orange aspen
+  colour variants. Permission: "use in whatever mod you want, just don't rename the trees and give credit in your
+  read me files". LE mod, needs conversion. The description does not count mangroves.
+- Our pool is already GKB's: `flora_base` holds 40 distinct GKB meshes (30+ `gkbjungletreenew*` variants numbered
+  1 to 26, `gkbjunipertree`, `gkblillipad2`, `hodalder01gkb`, `hodsalixgkb09`, and the 4 `mangrovereachtree0gkb2/3/8/9`),
+  carried by BM&V and Tropical Skyrim. Numbers 10, 18, 21, 22 and 25 of the jungle series and the mangrove numbers
+  0/1/4-7 are not in our tables, so the pack probably holds siblings we do not use; whether they exist, and whether
+  any mangrove has true prop roots, is NOT verified (no mesh access). So GKB Green Trees is first an audit target
+  (list the unused numbers), not a new look. It is also the source of our temperate junipers and alders.
+
+### 3.2 Trees, plants, rocks and misc: what Nexus now fills
+
+| gap | candidate (id, author, endorsements) | what it holds | usable as | permission / note |
+|---|---|---|---|---|
+| Saltrice, marshmerrow, hackle-lo, sugarcane, stoneflower, trama root, ash yam, bamboo trees, apple trees, mandrake, alkanet | Harvestables (skyrim:15108, ChickenDownUnder, 354) | per its file list: Saltrice, Marshmerrow, Hackle lo, Sugarcane, Stoneflower, Trama Root, Ash Yam, Garlic, Carrot, Wheat, Blueberry, Bamboo Trees, Apple Trees, Mandrake, Alkanet | modder's resource, LE (convert); gives the Morrowind ingredient plants of `ingredients-alchemy.md:109-177` | permission line not in the description (UNVERIFIED). KotM's Saltrice/Marshmerrow/Hackle-Lo may well descend from these |
+| tropical plant resources | Tropical Lands Assets - Cathnoquey (33446, CreatyChameleon, 43) | the Fractured Isles project's tropical assets, 440 MB; "let us know if you use anything, credit us"; s3d-prefixed files are not resources | SE modder's resource | contents list unread |
+| plants/trees resource | New Plants (2750 SE and skyrim:22018, Tamira, 226/794) | plants as modder's resource (meshes derived from Yughues/Nobiax) | SE and LE | "use meshes and textures in your mods with credit; no paid mods; do not upload elsewhere" |
+| plants, trees | Tashenis Skyberry Resource - Plants (skyrim:120004, 287 MB) | weeds, flowers, bushes, shrubs, trees; "more than 500 unique textures"; meshes are vanilla, Hoddminir, one GKB tree and two Tamira trees | LE | texture-heavy, meshes not new |
+| tropical grass and plants | Tropical - Spring - Summer Grasses and Plants (skyrim:71674, unique1, 383); Tropical Skyrim Enhanced (skyrim:83982, Ewarre, 389) | Hoddminir-flower grass sets; TSE adds a new "fern" model and recolours | LE | credits go to original authors; TSE built on Tropical Skyrim (which we use in SE form) |
+| warehouse of free assets | Mad Modder's Assets (83445, ManyMadModders, 160) | 1.1 GB, "thousands of meshes and textures from every resource I could get permissions to use" | SE | contents unread: worth a download-and-index in a later phase |
+| lily pad | Unique Lily Pad Resource (skyrim:93338, mypillzes, 53) | one lily pad model converted from cadnav | LE | "free to use resource" |
+| reeds, cattails, water grass | Waterplants (6092, Halifax0815, 11,855), Waterplants Improved (20288), Flora Additions - Waterplants (116324) | water plants, reeds, grass and kelp; 6092 allows use as a resource with credits | SE | model list unread; searches for reed(s), cattail and papyrus in both games returned no reed or cattail resource, so this is the only lead |
+| water hyacinth, rice, paddy, sugar cane, termite | searched both games, name and description | nothing relevant except Harvestables' Sugarcane | | |
+| giant mushrooms | Solstheim Mushroom Trees are vanilla Dragonborn records (high-poly fix 79111, Janissrim, 2,036); Blackreach mushrooms vanilla (40418, 29179) | tall mushroom trees | SE, no conversion | the record needs no mod |
+| swamp trees, cypress | M.O.I.S.T. (99083, Alaxouche/BlubboDE, 756), Morthal Swamp Bald Cypress (189488), Flora Additions - Cypress (117459, 355), Cypresses improved (117560) | bigger cypress and swamp tree models | SE | replacers/additions on vanilla Reach and swamp trees; we hold 12 cypress |
+| carnivorous-looking plants | Detailed Landscapes - Poison Blooms (93179), Screaming Maw (93195), Thorn Hook (93196), Mushroom Trees (93193), Root Weeds (93192), BecomingNplus1 | detailed vanilla Morthal swamp plants via BOS | SE | vanilla stand-ins |
+| ferns | DrJacopo 3D Sword Ferns (82978, 8,044), TB's Better Ferns (72888, 4 models), Skyrim 3D Trees and Plants - Ferns only (87950) | sword fern replacers; none is a tree fern | SE | would add variety against ManFern only if loaded beside, not over |
+| hanging moss, vines | Rally's (33225), Mari's (34772), ValArt (170945), Vines Improved (196209) | better meshes | SE | replacers; no new form |
+| driftwood | TB's 3D Driftwood (80418, 2,209), HD Dead Trees and Driftwoods (35308) | driftwood and dead tree meshes | SE | replacers of Nordic tundra driftwood |
+| rocks | Tropical Based Rock Retexture (skyrim:34317, MSFoxhound, 140); Skyrim 3D Rocks (17732), DrJacopo 3D Rocks (132608) | retexture/replacers of Skyrim rock | LE/SE | no swamp-specific rock set found |
+| bones | Bones (skyrim:94817, RoboBirdie, 14 MB resource), Whale Bones on Coasts (91958, Mihail, 3,308), Swamp Skeletons (151282, 635) | bone sets, whale bones, swamp skeleton clutter | LE / SE | Mihail already a dependency author |
+| nests | Kanjs Bird Nests and Eggs (64905), Haladoon nests (45853) | nest meshes | SE | cosmetic |
+| tree resources that are not tropical | Paolos Tree Resource (skyrim:5929), Real Cherry Blossom (38980), Witcher 3 Flora (132962, "free modding use only"), Happy Little Trees, NOTWL, Ulvenwald, Cathedral Landscapes, Skyrim 3D Trees and Plants, Enhanced Vanilla Trees | temperate/Nordic tree sets | | replacers, not for Black Marsh (Paolos is "use as you like", unfinished) |
+
+### 3.3 Boats, ships, wrecks: what Nexus now fills
+
+| candidate | holds | usable as | permission |
 |---|---|---|---|
-| Tropical Lands Assets - Cathnoquey asset dump | 33446 CreatyChameleon, 43 | the "Fractured Isles" project's tropical assets: dump of permitted assets, credit requested; 440 MB; s3d-prefixed files are NOT resources | most promising unseen tropical pool; contents list UNVERIFIED, must be downloaded to know (do not download now) |
-| Flora Additions - Waterplants | 116324 Suinier, 1,425 | water plants | candidate for reeds/lily variety |
-| Waterplants / Waterplants Improved | 6092 Halifax0815 11,855 / 20288 Pfuscher 4,021 | realistic reeds, water grass, kelp, lilies; description says it may be used as a resource with credit | candidate second reed/cattail set (contents UNVERIFIED) |
-| Flora Additions - Cypress | 117459 Suinier, 355 | cypress variants | replacer-type; we already hold 12 |
-| Morthal Swamp Bald Cypress / M.O.I.S.T. | 189488 cb3hinn 19 / 99083 Alaxouche-BlubboDE 756 | giant swamp tree overhaul (Morthal swamp trees, textures 2K/4K, models by BlubboDE) | replacer of vanilla Reach/swamp trees: usable as "big swamp tree" source, permission by BlubboDE stated in credits |
-| Unique Marsh Trees | 54479 StephanoA 239 | ESL separating Reach trees in Morthal | plugin only |
-| Thickets to Marsh Plants | 60569 Kiddgimmick/xcal68 842 | marsh plant mesh replacing thicket | replacer |
-| Detailed Landscapes - Poison Blooms / Screaming Maw / Thorn Hook / Mushroom Trees / Root Weeds (BOS) | 93179, 93195, 93196, 93193, 93192 BecomingNplus1 (129 to 327) | higher-detail versions of vanilla Morthal swamp plants (carnivorous-looking pieces) | BOS replacers: possible stand-ins for "carnivorous plants" |
-| High Poly Solstheim Mushroom Trees | 79111 Janissrim 2,036 | big mushroom trees (vanilla Dragonborn pieces) | giant mushroom form; the vanilla record is usable without the mod |
-| Mushroom packs | Cathedral - Mushrooms 26103 (8,052), Rally's Blackreach 29179, Mari's Glowing 44464 | retextures | cosmetic |
-| Hanging moss | Rally's 33225 (6,740), Mari's 34772 (3,091), Skyking 150002, ValArt 170945 | 3D hanging moss meshes | upgrades the 42-ref signature; replacers |
-| Ferns | DrJacopo 3D Sword Ferns 82978 (8,044), TB's Better Ferns 72888, Mari's Reach Ferns 82527, ValArt 148127, Grumbledook 163949 | 3D sword/reach ferns | would break the ManFern monoculture only if used as additional meshes, not replacers |
-| Skyrim 3D Trees and Plants | 12371 mathy79, 42,480 | replacer pack | general, not tropical |
-| Enhanced Landscapes / Cathedral Landscapes / Happy Little Trees / NOTWL / Ulvenwald | various | temperate tree replacers | do not serve Black Marsh; note which are replacers vs resources: all of these are replacers |
-| Witcher 3 Flora resource | 132962 Elrian 492 | rhododendron, rose, grapevine, sunflower, hedge meshes; "strictly free modding use" | Toussaint look, not swamp |
-| Kemper's Tropical Fruits | 94050 Kemperer 94 | 9 fruits | clutter/harvest only |
-| Project Rainforest SE / Lagoon / TSOP | 20636 sa547 858 / 37394 OldSaitoType02 986 / 36153 | rainforest climate/island mods | Project Rainforest is a climate/environment overhaul (assets UNVERIFIED) |
-| Aquatic Jungle / Underwater plants | 43867 NeverLost 669 / 180035 renthal311 275 | underwater grass | seabed variety |
-| Seashells | 4492 Jokerine 871 | shell clutter | beach scatter |
-| TB's 3D Driftwood | 80418 Blender Animator 2,209; HD Dead Trees and Driftwoods 35308 | driftwood meshes | replacers of vanilla tundra driftwood (Nordic): usable as driftwood models |
-| Rocks | Skyrim 3D Rocks 17732, DrJacopo 3D Rocks 132608, ERM 121336 | rock replacers | still Skyrim rock |
-| Nests | Kanjs Bird Nests and Eggs 64905, Haladoon 45853, Diverse Bird's Nests BOS 100251 | nest meshes | cosmetic |
-| Whale bones | Whale Bones on Coasts 91958 Mihail 3,308 (Xtudo port 91989) | coastal whale bone sets | fills "bones of big beasts" on coasts; Mihail is already a dependency author (kagouti, nix-hounds) |
-| Swamp Skeletons | 151282 Chakra/Hexxagone 635 | swamp skeleton creature clutter | possible bone piles |
+| Ships and boats of Tamriel (41653, ThatShipGuy/DeviantKaled, 829) | "lore-friendly ships and boats with interiors and wrecks": v1.1 Skyrim, Iliac Bay (Breton) and Empire (EEC) ships; v1.2 ships, sloops, barges, ferries and more; no animation files; 206 MB | SE modder's resource | permission text not in the API description (UNVERIFIED); the same author's LE volumes say "use in your own mods ONLY with my permission; credit; not for profit" |
+| DK's Lore-Friendly Ships and Boats Resources Vol. 1 Nords (skyrim:75965) and Vol. 2 Bretons (skyrim:77174) | original ship and boat models | LE, convert | the permission above (ask the author) |
+| Cyrodiil Ship and boat resource (skyrim:59426, Markus Liberty, 475, Beyond Skyrim) | an Oblivion galleon remake and an Imperial rowboat | LE, convert | credit lines only in description |
+| Sailboats - Script Free Sailing EXPANDED (40057, 191) and Script free ship sailing (skyrim:67727, ElstarTomas, 4.7 MB) | a rideable tilting canoe (canoe1.nif per the old audit) plus rowboats and sailboats that "use the collisions of the original canoe" | SE / LE | the old audit found 11 canoe registry paths in 86 (`dependency-audit.md:247`) |
+| Dark Ship Retexture - unfolded sails (1054, Hannes821; skyrim:70287) | retextured longboat, large ship, rowboat and galley, added not replaced; "Free Ressource" | SE | free resource with credits |
+| Redania Ship in Windhelm (skyrim:87973, mypilzzes, 182) | a Witcher 2 ship model | LE | "more of a modders resource" |
+| Airship Resource (skyrim:68926), Moving Ships Resource (83140), Object Resource Moving Boat (109321, Vicn) | an airship; moving-ship meshes | | not Black Marsh |
+| Wreck of the Crown Petone (17263, mnikjom/Jokerine, 456), More Shipwrecks (133810), Plankside Bandit Shipwreck (48790), Wreck of the Argent Raptor (140763), Haunted Shipwrecks (142986, sound only) | wreck places on Nord/Imperial hulls; Crown Petone is an Argonian settlement on a wreck | SE | source places |
+| Skyrim Ferries / Carriage and Ferry (8379), Boats Operational (110882), Animated Ships (110260) | travel/animation | | not needed: our travel is data |
 
-Verdict: no Nexus mod fills the Black Marsh signature forms (prop-root mangrove, tree fern, reed/cattail variety,
-true giant fungus, Argonian craft). The held KoTM/HTBM/BM&V/TS pool already is the Nexus answer for trees. What Nexus
-adds is detail and water-plant variety.
+Searched and found nothing relevant: dugout, houseboat, junk, dhow, gondola, skiff, caravel, longship, raft (only the
+canoe above). So Argonian and Kothringi craft (dugout, reed raft, twin-hull platform canoe, houseboat), Dunmer
+coasters, Khajiit dhows and Topal Bay pirate hulls have no Nexus source; Imperial, Breton, Nord and EEC hulls do.
 
-### 3.2 Boats, ships, wrecks
+### 3.4 Verdict
 
-| candidate | id / author / endorsements | what | note |
-|---|---|---|---|
-| Ships and boats of Tamriel | 41653 ThatShipGuy/DeviantKaled, 829 | modder's resource: "lore-friendly ships and boats with interiors and wrecks", v1.1 Skyrim, Iliac Bay (Breton) and Empire (EEC) ships; v1.2 various ships, sloops, barges, ferries and more; no animation files; 206 MB | best single vessel source; the old audit had it as row 83 (b); Dunmer hulls not confirmed |
-| Sailboats - Script Free Sailing EXPANDED | 40057 ElstarTomas/DeviantKhaled/Araanim 191 | rowboats, sailboats, canoe1.nif; uses DK's resource | was row 86/87; canoe mesh present |
-| Skyrim Ferries / Carriage and Ferry Travel Overhaul | 8379 Kinaga 25,860 | ferries (travel) | already covered by our own travel network |
-| Boats - Operational Animated Travel | 110882 Enneal 1,206 | animated boats | was row 88; animation = not needed for static craft |
-| Animated Ships | 110260 Vicn 12,103 | vanilla ship animation | skeleton/animation, not new hulls |
-| Rowboats of Skyrim (35341 PraedythXVI), Skyrim Rowboats (1019), Real Boats In Skyrim (123321), Of Ships and Boats (57673), Joy of Ships (28308), Boats and Ships 8k (45601), Beautiful Boats (7239) | various | retextures/meshes of vanilla boats | replacers, Nordic hulls |
-| Wreck of the Crown Petone - Northern Argonian Settlement | 17263 mnikjom/Jokerine 456 | Argonian settlement built on a wreck, in the Sea of Ghosts | closest to an Argonian wreck dwelling; source-place candidate and mesh source |
-| Haunted Shipwrecks | 142986 Clofas 1,372 | sound markers on vanilla wrecks | sound only |
-| More Shipwrecks SE / Plankside Bandit Shipwreck / Wreck of the Argent Raptor | 133810 (57), 48790 (147), 140763 (232) | new wreck places | place sources, hull style UNVERIFIED |
-| Moving Ships Resource / Model Ship Replacer | 83140 AndrealletiusVIII 230 / 51673 sync67 184 | moving ships; modder's resource | not needed |
-| Skyrim 3D Docks and Boardwalks | 28781 mathy79 6,400; Better Docks 2384 | dock meshes | Nordic planks |
+Nexus fills: ingredient plants (Harvestables), water plants/reeds (Waterplants, unread), Imperial and Breton ships,
+wrecks as places, bones, whale bones, rocks (retextures only), lily pads, more GKB tree numbers, tropical asset dumps
+(33446, 83445). Nexus does not fill, by name or description in both games: a prop-root mangrove (beyond GKB's
+`mangrovereachtree` family, whose prop roots are unverified), tree fern/cycad, banyan, cattail, rice, termite mound,
+any Argonian/Dunmer/Khajiit craft, or sick-Hist variants.
 
-Nothing found for canoe, dugout, raft, junk, dhow, gondola, galleon, caravel, longship. Of the vessel lore, only
-the Imperial/Breton/EEC ships (small sloops, barges, ferries) are covered; Argonian rafts/canoes/houseboats, Dunmer
-coasters, Khajiit dhows and pirate (Topal Bay) ships are not.
+## 4. Step 3: what we would model ourselves (after Nexus)
 
-## 4. Step 3: what we would model ourselves
+What an image-to-3D generator does well: solid, closed forms with a strong silhouette and bark/wood/rock texture; it
+does badly with alpha-card foliage (leaves, fronds, reeds, grass, moss strands), because it makes one opaque mesh with
+a baked texture and no cut-out cards, and thickens thin parts. So: generate the SOLID part, reuse or hand-make the CARDS.
+- A. Solid only: stumps, logs, driftwood, prop-root masses, knees, mounds, boulders, giant mushrooms (stalk and cap),
+  egg pods, coral heads, bone sets, hulls, rafts, canoes, hut-sized things.
+- B. Hybrid (generated trunk/roots + leaf cards reused from a held tree): mangrove prop roots with GKB mangrove crown
+  cards, tree fern/cycad (fibrous trunk + TS/KoTM frond cards), palm variants, banyan.
+- C. Cards only (Fal alpha image, quads cut by hand, shader flags copied from KotM/BM&V foliage nodes): reeds, cattails,
+  sedge, rice clumps, hanging moss, water hyacinth. A generator cannot make the alpha.
 
-What an image-to-3D generator does well: solid, closed forms with strong silhouette and bark/wood/rock texture; it
-does badly with alpha-card foliage (thin leaves, fronds, reeds, grass, moss strands), because the output is a single
-opaque mesh with a baked texture and no cut-out cards; it also fakes thin parts as thick blobs. So: generate the
-SOLID part, hand-make or reuse the CARDS. Vegetation recipe family ("hybrid"):
-- A. Solid only (generator alone): stumps, logs, driftwood, prop-root masses, cypress knees, root buttresses,
-  termite/clay/mud mounds, boulders, giant mushrooms (stalk + cap, caps are solid), egg pods, gourds, coral heads,
-  sap-bulb, bone sets, hulls, rafts, canoes, hut-sized things.
-- B. Hybrid (generated trunk/roots + leaf cards reused from a held tree): mangrove (roots + BM&V mangrove crown cards),
-  tree fern/cycad (fibrous trunk + TS/KoTM fern fronds), banyan/aerial-root fig (trunk mass + KoTM willow or jungle
-  cards), palm variants (trunk + KoTM palm frond cards), sick Hist (existing Hist mesh, cards swapped by retexture).
-- C. Cards only (no 3D generator; Fal image with alpha, hand-built quads): reeds, cattails, sedge, rice/saltrice
-  clumps, lily pads, hanging moss/vines, grass. These need a person in Blender (or a script) to cut quads and set the
-  shader flags to match the KotM/BM&V foliage nodes; a generator cannot do the alpha.
-
-List, with player exposure and difficulty (E easy, M medium, H hard). "Where seen / how often" is from the measured region
-weights above.
-
-| # | object | size | solid? / skin / collision | where seen, how often | recipe | difficulty and reason |
+| # | object | size | solid / skin / collision | seen where, how often | recipe | difficulty |
 |---|---|---|---|---|---|---|
-| 1 | Mangrove prop-root cluster (3 to 4 variants, plus a seedling stand) | 6-12 m | static solid; roots need a collision proxy | Kotherra 19 percent, Cape Percar, Nushara, Tulmek, Banujha, Althii, Sea of Mists, Topal Bay; constantly, close up in boats | B (roots generated, crown cards from `mangrovereachtree0gkb*`) | M: bark texture stretches over a large mesh but roots are viewed from a boat at 3 to 20 m |
-| 2 | Argonian dugout canoe, bundle-reed raft, twin-hull platform canoe, small houseboat (4 models) | 3-9 m, houseboat hut-sized | static solid; NO skeleton needed (boats on the map are decoration or fixed travel props; our travel is a fast-travel boat, not driven); collision one box; hull sits in water | 31 boat stops, 22 are raft-masters; every ferry/landing/camp; close up at every boarding | A | E for the dugout and raft (simple shapes), M for twin hull and houseboat (needs interior kept closed); houseboat is nearly a small hut (largest object here) |
-| 3 | Reed/cattail/sedge/saltrice clump cards (6 to 8 clumps) | 0.5-2 m | cards, no collision | 11 wet regions, 7.4 percent of refs now on one mesh | C | M: modelling effort is the shader flags and LOD billboard; texture is a Fal alpha |
-| 4 | Tree fern and cycad (3 trunks) | 3-8 m | hybrid | Arnesian Jungle, Chixathe cuts, Murkwood edges; 20 percent understory | B | M |
-| 5 | Sick/dying Hist states (re-skins) and Hist seed pod (Mnemic egg), Hist sap bulb | 1-20 m | texture swap (re-skin of KotM HistTree) + pod solid | story: owner ruling says the endings show about 30 percent of trees dying; every Hist place | texture edits; pod A | E (texture) / E (pod) |
-| 6 | Big drowned and driftwood set (hollow log, snag, stump, half-sunk trunk, bleached driftwood pile) 6 pieces | 1-6 m | static solid | blackwater and beaches; every swamp; from boats and shore | A | E |
-| 7 | Hanging moss/liana curtains, lily-pad mat variants, water-hyacinth patch | cards | cards | Murkwood 11 percent, every water body | C | M |
-| 8 | Black-Marsh shipwreck hulls: low-poly Dunmer/Imperial coaster hulls half sunk, one reed-and-timber houseboat wreck | 15-30 m | static solid, interior closed | 11 wreck places; 4 stand on vanilla Nordic Icerunner; seen from water at 10-60 m, boarded rarely | A with simple hull | M-H: big surface for one texture; viewed at distance, so M if broken into 3 to 4 sectional pieces |
-| 9 | Giant fungus set (3 stalks, ledges/shelf fungus on trunks) | 2-8 m | stalk solid | Arnesian, Murkwood, Barsaebica floors | A | E-M (caps solid) |
-| 10 | Clay/mud/termite mounds (3 variants) | 1-3 m | static solid | Okuwun Rahei (lore: clay mounds), Cape Percar, Chixathe; currently Riften dirt mound recolours | A | E |
-| 11 | Whale/leviathan rib and beast skeleton set (4 pieces) | 2-10 m | static solid | coasts, Skeith, Chixathe | A | E; or Nexus whale bones 91958 first |
-| 12 | Rice paddy / saltrice field plants (model exists for saltrice) | cards | cards | Althii, Nushara, Thorn | C or use KotM saltrice | E if held model is used |
-| 13 | Coral heads and reef (3 to 5 shapes), kelp variants | 0.5-3 m | A solid for coral, C for kelp | the 4 sea regions | A | E coral, M kelp |
-| 14 | Banyan/strangler fig | 15-25 m | B | optional (no lore) | B | H: huge trunk; skip unless the owner wants it |
+| 1 | Argonian craft: dugout canoe, bundle-reed raft, twin-hull platform canoe, small houseboat (4 models) | 3-9 m | static solid, no skeleton (decoration and fixed travel props; our boats are fast travel), one box collision; hull rests in water | 31 boat stops (22 raft-master), ferries, camps, landings; close up at every boarding | A | E dugout and raft, M twin hull and houseboat (nearly a hut) |
+| 2 | Reed / cattail / sedge / rice clump cards, 6 to 8 | 0.5-2 m | cards | 11 wet regions; 7.4 percent of refs on one mesh | C, unless Waterplants (6092) holds usable ones | M |
+| 3 | Mangrove prop-root cluster, 3 to 4 variants | 6-12 m | solid roots + GKB crown cards | Kotherra 19 percent, Cape Percar, Nushara, Tulmek, Banujha, Althii, sea fringes | B | M; do only if a look at GKB's unused mangrove numbers (3.1) shows no real prop roots |
+| 4 | Tree fern and cycad, 3 trunks | 3-8 m | hybrid | Arnesian, Chixathe cuts, Murkwood edges | B | M |
+| 5 | Sick/dying/sealed Hist states (texture swaps of KotM Hist meshes), Hist seed pod (Mnemic egg), sap bulb | 1-20 m | texture edits; pod solid | story: endings show about 30 percent of trees dying (`owner-rulings.md:902-912`); every Hist place | texture; A | E |
+| 6 | Drowned/driftwood set: hollow log, snag, half-sunk trunk, bleached driftwood pile (6) | 1-6 m | solid | every blackwater swamp and beach, from boats | A | E |
+| 7 | Clay, mud and termite mounds (3) | 1-3 m | solid | Okuwun Rahei (clay mounds), Cape Percar, Chixathe; now Riften dirt mounds | A | E |
+| 8 | Dunmer coaster hull and Argonian houseboat wreck, half sunk; low-poly | 15-30 m | solid, interior closed, in 3 to 4 sections | 11 wreck places, viewed from water at 10-60 m; 4 now on vanilla Nordic Icerunner | A (Imperial/Breton hulls from 41653 instead) | M-H: large surface for one texture |
+| 9 | Hanging moss / liana curtains, water hyacinth mats | cards | cards | Murkwood, every water body | C | M |
+| 10 | Giant fungus ledges and a few extra stalks (vanilla Solstheim mushroom trees cover the tall form) | 2-8 m | A | Arnesian, Murkwood, Barsaebica floors | A | E |
+| 11 | Coral heads (3 to 5) and kelp variants | 0.5-3 m | A / C | the 4 sea regions | A / C | E coral, M kelp |
+| 12 | Beast and leviathan rib set (Nexus bones/whale bones first) | 2-10 m | solid | coasts, Skeith, Chixathe | A | E |
+| 13 | Banyan/strangler fig | 15-25 m | B | optional (no lore) | B | H: huge close trunk |
 
-Not worth generating: grass, bushes, palm fronds, bamboo leaf cards (held, 50 palm models), generic rocks (held).
-Cannot verify here: the in-engine look of any held mesh, KotM/HTBM mesh lists beyond the plugin tables, the exact
-contents of Nexus 33446/17263/41653.
+No longer on the own-model list because Nexus or our own files fill it: ingredient plants (Harvestables, plus KotM saltrice),
+Imperial/Breton/Nord ships and rowboats, bone and whale-bone clutter, lily pads, bamboo trees, extra GKB jungle trees,
+giant mushroom trees (vanilla). Not worth generating: grass, bushes, palm fronds, bamboo cards, generic rocks.
+Cannot verify here: the in-engine look of any held mesh, the model lists of Waterplants, Mad Modder's Assets, Cathnoquey and
+Ships and Boats of Tamriel, and the permission text of the SE pages.
 
-## 5. Step 4: ranking (screen impact x closeness / difficulty)
+## 5. Step 4: ranking (screen impact and closeness, per unit of difficulty)
 
-1. Reed and marsh-layer cards (#3, #7, #12): the biggest breadth win; 11 regions, 7.4 percent of refs on one mesh;
-   median difficulty, but no 3D generation (Fal alpha cards + hand-cut quads, or Waterplants 6092 first). Impact high,
-   difficulty M.
-2. Mangrove prop-root cluster (#1): defines the coast and boating views; B route; M.
-3. Native craft kit (#2): the biggest "Black Marsh feel" gap (no Argonian vessel at all, boats in 31 stops); A route,
-   simple shapes; E to M.
-4. Driftwood/drowned set (#6) and mounds (#10): fast, solid, many placements; E.
-5. Sick Hist states and egg pod (#5): small art, large story value; E.
-6. Tree fern/cycad (#4): breaks the ManFern look in jungle; B; M.
-7. Giant fungus (#9), coral (#13), bones (#11): E to M, narrow regions.
-8. Wreck hulls (#8): 11 places, viewed from a distance, large surface: do after Ships and Boats of Tamriel is tried.
-9. Banyan (#14): last.
+1. Argonian craft kit (#1): the largest Black Marsh gap with no source anywhere; simple solids; seen at every landing. E-M.
+2. Reed/cattail/rice cards (#2, #9): biggest breadth win (11 wet regions on one reed mesh); first try Waterplants, else cards. M.
+3. Drowned/driftwood (#6) and mounds (#7): fast solids, many placements. E.
+4. Sick Hist states and egg pod (#5): little art, large story value. E.
+5. Tree fern/cycad (#4): breaks the fern monoculture in the jungle. M.
+6. Mangrove prop roots (#3): conditional on auditing GKB's unused mangrove numbers first. M.
+7. Wreck hulls (#8) after trying 41653's hulls for Imperial wrecks; giant fungus (#10), coral (#11), bones (#12): narrow regions. E-M.
+8. Banyan (#13): last.
 
-"Do nothing / least / more / most" for the owner: nothing = current pool; least = place saltrice + unused vanilla
-mushroom trees + try Ships and Boats of Tamriel/Waterplants as dependencies (no art); more = least + #2, #1, #6, #10, #5;
-most = more + #3, #4, #8, #9, #13.
+Do nothing / least / more / most: nothing = current pool; least = place saltrice, add vanilla mushroom trees, audit GKB's
+unused numbers, adopt Harvestables, Waterplants and Ships and Boats of Tamriel/Cyrodiil boats as dependencies (no art);
+more = least + #1, #6, #7, #5; most = more + #2 (if Waterplants fails), #4, #3, #8, #10, #11.
 
 ## Recommendations (beyond the brief, each with evidence)
 
-- Place KotM's Saltrice in Nushara Bayou, Althii and Thorn-side regions: `ArgoniaDomesticSaltrice01/ArgoniaWildSaltrice01`
-  are in `harvest_bases.json` (name "Saltrice") but in no flora table or pool (query on `flora_base` for "rice" empty);
-  region notes name a "saltrice marsh" (Nushara, Arnesian ecology notes).
-- Add vanilla Dragonborn/Blackreach giant mushroom records as a giant fungus family: no `giant_mushroom` base is tall
-  (names tinyshroom/smallmushroom/bigshrub in `flora_base`).
-- Place the 5 unplaced KotM giant cypress knees and the 2 unplaced bamboo bases (`placed_refs`=0, `cypress_knee_giant`).
-- Restore `docs/research/lore/marsh-watercraft-and-argonian-boats.md` or retarget the reference at
-  `story/lore/topics/material-culture.md:267`, which cites a file that does not exist.
-- Re-add a boat/ship dependency row only if the owner wants vessels from a mod: none of the five boat mods in the
-  old 98-row audit is in the current 193 rows.
-- Rate the temperate set (`dwarfjunip*`, `poplar`, `oak-o`, `treeoak*`, `ESalixshrub03`, `braken`, gorse) at the next
-  owner walk: these carry the upland regions (Aphon, Skeith, Aunike, Chixathe) and are the likeliest "Nordic" read.
+- Audit GKB Green Trees (skyrim:19268) against the 40 GKB meshes in `flora_base` before any new tree work: unused
+  numbers in the jungle series (10, 18, 21, 22, 25) and the mangrove series are free variety and the same author's licence
+  ("credit, do not rename") is the easiest in this lane.
+- Place KotM's Saltrice in Nushara Bayou, Althii and the Thorn side: `ArgoniaDomesticSaltrice01/ArgoniaWildSaltrice01`
+  are in `harvest_bases.json` but in no flora table or pool; region notes name a "saltrice marsh".
+- Add vanilla Dragonborn/Blackreach mushroom-tree records as a giant fungus family: no `giant_mushroom` base is tall
+  (tinyshroom/smallmushroom/bigshrub in `flora_base`).
+- Place the 5 unplaced KotM giant cypress knees and the 2 bamboo bases with 0 refs (`placed_refs`=0).
+- Restore `docs/research/lore/marsh-watercraft-and-argonian-boats.md` or retarget `story/lore/topics/material-culture.md:267`
+  (the file it cites does not exist).
+- Re-add a boat/ship dependency row only if the owner wants vessels from a mod; none of the five in the old audit is
+  among the current 193 rows. Ask ThatShipGuy/DeviantKaled for permission text before any use: the LE volumes require it.
+- Rate the temperate set (`dwarfjunip*`, `poplar`, `oak-o`, `treeoak*`, `ESalixshrub03`, `braken`, gorse) at the next owner
+  walk: they carry Aphon, Skeith, Aunike and Chixathe.
 
-Covered: docs/design/{ecology,dressing}.md, newworld/sources/{ecology,dressing,flora,identity,travel}, world.sqlite (all
-flora, region, place, travel tables), nw-02-walk-5-handover, nw-03b-walk*, owner-rulings (grep), story/lore regions and topics
-(grep), mods/dependencies.json, Nexus API searches (about 150 terms) and 6 web searches. Skipped: atmosphere.md and lod.md
-(not about models), game archives and meshes (not on this machine, so every "look" claim is by name), Nexus pages
-(HTTP 403), mod downloads (forbidden by brief).
+Covered: docs/design/{ecology,dressing}.md, newworld/sources/{ecology,dressing,flora,identity,travel}, world.sqlite (flora,
+region, place, travel, place_source tables), nw-02-walk-5-handover, nw-03b-walk*, owner-rulings (grep), story/lore regions and
+topics (grep), mods/dependencies.json, Nexus API (both games, name and description, about 50 terms and 20 `--mod` reads) and
+6 web searches. Skipped: atmosphere.md and lod.md (not about models), game archives and meshes (not on this machine, so
+every "look" claim is by name), Nexus pages (HTTP 403), mod downloads (forbidden by the brief).

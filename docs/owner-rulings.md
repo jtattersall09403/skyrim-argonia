@@ -350,6 +350,14 @@ added here the day they are made, with the date and the issue.
 - Climb anything big enough, Breath of the Wild style, through FreeClimb (2026-11-01).
 - Parry, riposte and backstab are what the owner called souls-like (2026-10-29); the collection is used out of
   the box first, and that ruling is revisited only if the owner misses them.
+- 2026-11-24 (#93, new art, in session; binding only if the "no art" rule is relaxed, #94): the simplest models to make
+  are ones that reuse existing animations and behaviour: a new model held the same way as an existing sword, mace or
+  hammer that "acts like" it. Where a weapon type (pike, halberd, spear and the like) exists in Animated Armoury or
+  another of our sources, its animations are taken as good, and our own version of that type copies that record and
+  swaps the model. Anything we make must look like part of the same game while being its own thing, by a hierarchy:
+  the whole game first; then each culture, region or faction distinct from the others and consistent within; then
+  levels below that ([the proposal](research/new-art/PROPOSAL.md), sections 4 and 5). A search for mods covers both
+  Skyrim games on Nexus and description text, never names of the Special Edition alone (GKB Green Trees was missed).
 
 ## Writing
 
