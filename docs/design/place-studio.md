@@ -1066,12 +1066,12 @@ capped by kind: a save 64 MB, a note 512 KB, a finalise 4 KB; the page's log lin
   `out/places/search/look/thumbs/`, one status line per model (`status.jsonl`), so an interrupted run resumes
   where it stopped. A model it could not look at keeps its row and a reason: not found, stand-in box, conversion
   failed, empty, black, unresolved texture (drawn untextured and still looked at), error. "Could not look" is
-  never "not held". It then embeds each thumbnail (both views averaged) with CLIP ViT-B/32 (MIT; float32 ONNX on
+  never "not held". It then embeds the three-quarter thumbnail with CLIP ViT-B/32 (MIT; float32 ONNX on
   CPU, 580 MB in `~/.argonia/models`) into `look/vectors.npy`, only new keys. `search look-report` gives the counts.
 - *Query.* `search query <text>` (and the studio's `/api/search`) scores the bge cosine plus the CLIP cosine of
   "a 3d render of <text>" to the base's thumbnail above its typical level (`LOOK_WEIGHT`, `LOOK_FLOOR` in
   `index.py`). An editor id or name equal to the query (spaces and case ignored) always comes first, a prefix
-  next. Each hit says which half matched (`matched`: name, text, look or both; the studio tags look hits "Found by
+  next. Bases sharing one model are one hit, the best-scoring one, with the rest in `same_model`. Each hit says which half matched (`matched`: name, text, look or both; the studio tags look hits "Found by
   its look"); `--look` prints each hit's thumbnail path, or why it could not look. `scope=source` keeps the bases
   of `bundles/src.<source_id>/bases.jsonl`; a base's `kind` is its catalogue `kind`, else one derived from its type.
 - *Look at the hits.* `search sheet <text> [--n 48]` (or `--keys K ...`) writes one contact sheet of the top hits'

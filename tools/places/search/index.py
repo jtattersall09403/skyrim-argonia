@@ -7,7 +7,8 @@
 cosine similarity plus lexical boosts: an editor id or name equal to the query (spaces and case ignored) always
 ranks first, a prefix next, then a share of the query's words found in the base's words; to that it adds the look score, the
 CLIP similarity of the query to the model's thumbnail (look.py), on the query's own scale and weighted by LOOK_WEIGHT,
-and says per hit which half matched: name (exact or prefix), text, look or both."""
+and says per hit which half matched: name (exact or prefix), text, look or both. Bases sharing one model
+are one hit (the best), the others listed in `same_model`."""
 from __future__ import annotations
 
 import hashlib
@@ -37,7 +38,8 @@ GLOSS = {"boardwalk": "wooden walkway", "walkway": "boardwalk", "pier": "wooden 
          "stilt": "raised on posts", "lamp": "light", "clutter": "small item", "hay": "straw"}
 # The look score of a hit is its CLIP cosine placed on the query's own scale: 0 at the median thumbnail, 1 at the
 # 99.9th percentile (CLIP cosines bunch in a narrow band whose level differs by query); it adds LOOK_WEIGHT * z**2.
-LOOK_WEIGHT = 0.2
+LOOK_WEIGHT = 0.1   # swept 0.1 to 0.8 on eight have-get-make queries: 0.1 puts every named model in the top 10
+LOOK_HIT = 0.7      # a look z from which the look half counts as having matched
 LOOK_TEMPLATES = ("a 3d render of {}.", "a photo of {}.", "{}", "a 3d model of {}, a video game prop.")
 WORD_BOOST = 0.15   # times the share of the query's words (plurals folded) found in the base's words
 TEXT_FLOOR = 0.6    # a typical bge cosine of a query to an unrelated row
@@ -267,19 +269,32 @@ class Index:
         k = min(limit, int(mask.sum()))
         if k <= 0:
             return []
-        top = np.argpartition(-score, k - 1)[:k]
-        top = top[np.argsort(-score[top])]
+        # One hit per model: bases that share a model (a vanilla fence and its Ash and Snow copies) are one look; the
+        # best-scoring base stands for them and lists the others in `same_model`.
+        kk = min(int(mask.sum()), k * 4 + 32)
+        cand = np.argpartition(-score, kk - 1)[:kk]
+        cand = cand[np.argsort(-score[cand])]
+        top, seen = [], {}
+        for i in cand:
+            m = (rows[i].get("model") or "").lower() or rows[i]["key"]
+            if m in seen:
+                seen[m].append(rows[i]["key"])
+                continue
+            seen[m] = []
+            if len(top) < k:
+                top.append(i)
         from tools.places.search import look
         st = self.look_status() if q else {}
         out = []
         for i in top:
             t_part = float(text[i]) - TEXT_FLOOR
-            l_part = LOOK_WEIGHT * float(lookz[i]) ** 2
-            matched = ("name" if name[i] else "both" if t_part > 0.1 and l_part > 0.1 else
-                       "look" if l_part > t_part else "text")
+            l_hit, t_hit = float(lookz[i]) >= LOOK_HIT, t_part > 0.1
+            matched = ("name" if name[i] else "both" if l_hit and t_hit else "look" if l_hit else
+                       "text" if t_hit or LOOK_WEIGHT * float(lookz[i]) ** 2 <= t_part else "look")
             h = {k2: v for k2, v in rows[i].items() if k2 != "h"} | {
                 "score": round(float(score[i]), 4), "text_score": round(float(text[i]), 4),
-                "look_score": round(float(lookv[i]), 4), "look_z": round(float(lookz[i]), 3), "matched": matched}
+                "look_score": round(float(lookv[i]), 4), "look_z": round(float(lookz[i]), 3), "matched": matched,
+                "same_model": seen[(rows[i].get("model") or "").lower() or rows[i]["key"]]}
             if rows[i].get("model"):
                 k = look.model_key(rows[i]["model"])
                 p = look.thumb_path(k)

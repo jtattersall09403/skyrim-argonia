@@ -6,7 +6,7 @@ finds a model by what it looks like, not only by its names. Derived, under out/p
   status.jsonl                 one line per model looked at: {k, model, ok, why, ms}; `ok` false says why we could
                                not look (not found, stand-in box, conversion failed, empty, black, unresolved
                                texture, error), which is never the same as "not held"
-  vectors.npy, keys.jsonl      float16 [M, 512] unit CLIP image vectors (mean of the two views), keys in row order
+  vectors.npy, keys.jsonl      float16 [M, 512] unit CLIP image vectors of the three-quarter view, keys in row order
 
 `thumbs` draws every model not yet in status.jsonl (mods first, then vanilla) on N processes, appending as it
 goes, so an interrupted run resumes where it stopped. `embed` adds a vector for every looked model not yet
@@ -28,6 +28,10 @@ SIZE = 256
 VIEWS = {"": (225.0, 25.0), ".f": (180.0, 8.0)}
 BG = np.array([0.82, 0.86, 0.9]) * 255
 # A thumbnail drawn but not looked at by the image model (nothing of the thing is in it).
+# The view embedded. Measured on 2,523 thumbnails for eight queries: the three-quarter view alone ranked a dugout
+# canoe's nearest boat 1st and the grave-stakes 5th; averaging it with the front (9th, 10th), the best of four views
+# (4th, 13th) or cropping to the outline (7th, 12th) did worse, and ViT-B/16 worse again (20th, 381st).
+EMBED_VIEW = ""
 NO_LOOK = ("not found", "stand-in box", "conversion failed", "empty", "black", "error")
 
 
@@ -154,12 +158,11 @@ def embed(batch: int = 64, save_every: int = 2048) -> dict:
 
     def pic(k: str, view: str):
         p = thumb_path(k, view)
-        return Image.open(p if p.exists() else thumb_path(k))
+        return Image.open(p if p.exists() else thumb_path(k)).convert("RGB")
     for s in range(0, len(todo), batch):
         ks = todo[s:s + batch]
-        a, b = clip.images([pic(k, "") for k in ks]), clip.images([pic(k, ".f") for k in ks])
         new_k += ks
-        new_v.append(a + b)
+        new_v.append(clip.images([pic(k, EMBED_VIEW) for k in ks]))
         if len(new_k) >= save_every or s + batch >= len(todo):
             keys, vec = save_vectors(keys + new_k, np.concatenate([vec.astype(np.float32)] + new_v))
             print(f"embedded {s + len(ks)}/{len(todo)}", flush=True)

@@ -78,9 +78,21 @@ def index(out):
 
 
 def test_query_adds_the_look_score_and_names_the_half(index):
-    hits = index.query("thing in a pile", limit=5)
-    assert hits[0]["edid"] == "FxRopeCoil01" and hits[0]["matched"] == "look", hits[0]
-    assert hits[0]["look"] and hits[0]["look_score"] > 0.5
+    import tools.places.search.index as I
+
+    def rank(w):
+        I.LOOK_WEIGHT = w
+        hits = index.query("something to sit on", limit=40)
+        return next(i for i, h in enumerate(hits) if h["edid"] == "FxRopeCoil01"), hits
+    old = I.LOOK_WEIGHT
+    try:
+        blind, _ = rank(0.0)
+        seen, hits = rank(old)
+    finally:
+        I.LOOK_WEIGHT = old
+    assert seen < blind, (seen, blind)
+    h = hits[seen]
+    assert h["matched"] == "look" and h["look"] and h["look_score"] > 0.5, h
     exact = index.query("FxBarrel01", limit=3)
     assert exact[0]["edid"] == "FxBarrel01" and exact[0]["matched"] == "name"
 
