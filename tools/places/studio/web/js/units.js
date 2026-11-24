@@ -124,18 +124,33 @@ export function rigid(c, turn, d) {
   };
 }
 
-// The people's spots (work, routine stops, patrol points) and the quest spots standing in a unit, moved with it.
-// A bed, a station or anything a stop names by its ref goes with its ref, needing no change of the person.
+// What a unit's move carries (tools/places/edits.py unit_carried, the same rule): its people's own spots and drawn
+// ways standing in it, its quest spots and walking zones, its own doors' spurs. It leaves a spot another person also
+// stands at (a shared wander spot, within SHARED), a guard's post and every patrol point, and a path that only passes
+// or starts near it. A bed, a station or anything a stop names by its ref goes with its ref, needing no change.
+const SHARED = 64;
+const posSpots = (p) => {
+  const out = [];
+  if (p.work && !p.work.ref && Array.isArray(p.work.pos)) out.push(p.work.pos);
+  for (const st of p.routine || []) if (st.at && !st.at.ref && Array.isArray(st.at.pos) && (st.at.space || 'exterior') === 'exterior') out.push(st.at.pos);
+  for (const q of patrolOf(p)) if (Array.isArray(q)) out.push(q);
+  return out;
+};
 export function spotsMoved(model, S, u, moved, turn, refsById) {
   const people = [], quests = [];
+  const all = [...model.people.values()];
+  const shared = (p, pos) => all.some((o) => o.id !== p.id && posSpots(o).some((q) => Math.hypot(q[0] - pos[0], q[1] - pos[1]) <= SHARED));
   for (const p of model.people.values()) {
     const after = clone(p); let hit = false;
-    const at = (o) => { if (o && !o.ref && (o.space || 'exterior') === S && Array.isArray(o.pos) && spotIn(u, o.pos)) { o.pos = moved(o.pos); hit = true; } };
+    const guard = String(p.role || '').toLowerCase() === 'guard';
+    const at = (o) => {
+      if (!o || o.ref || (o.space || 'exterior') !== S || !Array.isArray(o.pos) || !spotIn(u, o.pos)) return;
+      if (guard || (S === 'exterior' && shared(p, o.pos))) return;
+      o.pos = moved(o.pos); hit = true;
+    };
     at(after.work); for (const st of after.routine || []) at(st.at);
     // a way drawn into a stop bends with the unit where it passes over or ends at it: each of its points standing in the unit moves with it
     if (S === 'exterior') for (const st of after.routine || []) (st.route || []).forEach((q, i) => { if (spotIn(u, q)) { st.route[i] = moved(q); hit = true; } });
-    const pts = patrolOf(after);
-    pts.forEach((q, i) => { if (Array.isArray(q)) { if (S === 'exterior' && spotIn(u, q)) { pts[i] = moved(q); hit = true; } } else at(q); });
     if (hit) people.push({ person: after, before: clone(p) });
   }
   for (const q of model.quests.values()) {
@@ -151,8 +166,8 @@ export function spotsMoved(model, S, u, moved, turn, refsById) {
     if ((w.space || 'exterior') !== S || !Array.isArray(pts) || !pts.length || !pts.every((q) => spotIn(u, q))) continue;
     walks.push({ walk: { ...clone(w), [k]: pts.map(moved) }, before: clone(w) });
   }
-  // a street that ends at one of its doors or on its footprint: its last point moves with it and the one before it
-  // half as far, so the street bends to the door rather than dragging its whole length
+  // a street that ends at one of its doors: its last point moves with it and the one before it half as far, so the
+  // street bends to the door rather than dragging its whole length
   const paths = [], doors = new Set(u.members.filter((id) => refsById.get(id)?.door));
   for (const w of model.paths.values()) {
     if (S !== 'exterior' || !Array.isArray(w.points) || w.points.length < 2) continue;
@@ -164,7 +179,8 @@ export function spotsMoved(model, S, u, moved, turn, refsById) {
       if (n > 2 && !spotIn(u, pts[j])) pts[j] = [rnd(pts[j][0] + dx / 2), rnd(pts[j][1] + dy / 2), ...pts[j].slice(2)];
       hit = true;
     };
-    end(0, 1, doors.has(w.from)); end(n - 1, n - 2, doors.has(w.to));
+    if (doors.has(w.from)) end(0, 1, true);
+    if (doors.has(w.to)) end(n - 1, n - 2, true);   // only its own doors' spurs: a path passing or starting near it stays
     if (hit) paths.push({ path: { ...clone(w), points: pts }, before: clone(w) });
   }
   return { ...(people.length ? { people } : {}), ...(quests.length ? { quests } : {}), ...(walks.length ? { walks } : {}), ...(paths.length ? { paths } : {}) };

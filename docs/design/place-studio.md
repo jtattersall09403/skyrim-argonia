@@ -868,10 +868,14 @@ Moving, turning (about the unit's centre) or raising a unit selected whole, by i
 moves every member rigidly as one `unit.move` op, one undo: what sits on the ground or on a member keeps its seat
 and is seated again where it lands; a free piece rises or falls with the ground under the unit's head, so the unit
 stays whole; a door's arrival turns with it and the door that leads to it (its room's door) lands as far along;
-the lights and invisible walls of its pieces follow as they follow any piece; and the spots standing in it move
-with it: a person's work place, routine stops and patrol points given as positions, the quest spots on it, and the
-owner's walking zones lying wholly in it. A street that ends at one of its doors (`from` or `to`) or on its footprint keeps its course: its end point moves with
-the unit and the point before it half as far, so it bends to the door; the panel says so. A
+the lights and invisible walls of its pieces follow as they follow any piece; and what is its own goes with it: a
+person's work place and routine stops given as positions standing in it, the points of a way drawn into a stop that
+stand in it, the quest spots on it, and the owner's walking zones lying wholly in it. It leaves what is not its own: a
+spot another person also stands at (within 64 units: a shared wander spot), a guard's post and every patrol point,
+and a street that only passes or starts near it. A street that ends at one of its own doors (`from` or `to`) keeps its
+course: its end point moves with the unit and the point before it half as far, so it bends to the door; the panel
+says so. The rule is one (units.js `spotsMoved` makes the op; edits.js `unitCarried` and edits.py `unit_carried`
+replay it), so an older save whose move carried more replays without it. A
 bed, a station or anything else a routine names by its ref needs no change: it moves as a member. A unit is never
 resized whole; its pieces are, one by one.
 

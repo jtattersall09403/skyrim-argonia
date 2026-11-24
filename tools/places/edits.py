@@ -371,8 +371,83 @@ def _move_unit(files, op) -> None:
             rows = _space(files, op)
             _link_partner(files, rows[_find(rows, m["id"])], (m["before"]["door"] or {}).get("arrival"))
     for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk"), ("paths", "path")):
-        for m in op.get(key) or []:
+        for m in unit_carried(files, op, key):
             _apply_one(files, {"n": op["n"], "op": f"{table}.edit", table: m[table], "before": m["before"]})
+
+
+SHARED = 64.0   # a positional spot another person also stands at within this is shared: a unit's move leaves it
+
+
+def _spots(p: dict):
+    """(path in the person, [x, y, ...]) of each positional spot outside: work, routine stops, patrol points."""
+    out = []
+    if isinstance(p.get("work"), dict) and not p["work"].get("ref") and isinstance(p["work"].get("pos"), list):
+        out.append((("work",), p["work"]["pos"]))
+    for i, st in enumerate(p.get("routine") or []):
+        at = st.get("at") or {}
+        if not at.get("ref") and isinstance(at.get("pos"), list) and (at.get("space") or "exterior") == "exterior":
+            out.append((("routine", i), at["pos"]))
+    pat = p.get("patrol") or []
+    pts = (pat.get("points") or []) if isinstance(pat, dict) else pat
+    for i, q in enumerate(pts):
+        if isinstance(q, list):
+            out.append((("patrol", i), q))
+    return out
+
+
+def _set_spot(p: dict, where, value) -> None:
+    if where[0] == "work":
+        p["work"]["pos"] = value
+    elif where[0] == "routine":
+        p["routine"][where[1]]["at"]["pos"] = value
+    else:
+        pts = p["patrol"]["points"] if isinstance(p["patrol"], dict) else p["patrol"]
+        pts[where[1]] = value
+
+
+def unit_carried(files, op, key: str) -> list[dict]:
+    """What a unit's move carries of `key` (the studio's units.js spotsMoved, the same rule): its own doors' spurs
+    (a path's end at a door of the unit, and the point before it half as far), its people's own spots and drawn ways
+    standing in it, its quest spots and walking zones. It leaves a path that only passes or starts near it (no door of
+    the unit at that end), another unit's spur, a spot another person also stands at (a shared wander spot) and a
+    guard's post or patrol point; an older save's move that carried those replays without them."""
+    items = copy.deepcopy(op.get(key) or [])
+    if key == "paths":
+        doors = {m["id"] for m in op.get("refs") or [] if (m.get("after") or {}).get("door") or (m.get("before") or {}).get("door")}
+        rows = {r["id"]: r for r in _space(files, op)}
+        doors |= {m["id"] for m in op.get("refs") or [] if (rows.get(m["id"]) or {}).get("door")}
+        out = []
+        for m in items:
+            b, a = m["before"], m["path"]
+            pts = [list(q) for q in b.get("points") or []]
+            n = len(pts)
+            if n < 2 or len(a.get("points") or []) != n:
+                continue
+            for end, nxt, link in ((0, 1, b.get("from")), (n - 1, n - 2, b.get("to"))):
+                if link in doors:
+                    pts[end] = list(a["points"][end])
+                    if n > 2:
+                        pts[nxt] = list(a["points"][nxt])
+            if pts != b.get("points"):
+                out.append({"path": dict(a, points=pts), "before": b})
+        return out
+    if key != "people":
+        return items
+    people = {p["id"]: p for p in files.get("people") or []}
+    out = []
+    for m in items:
+        b, a = m["before"], copy.deepcopy(m["person"])
+        guard = str(b.get("role") or "").lower() == "guard"
+        for (where, pos_b), (_, pos_a) in zip(_spots(b), _spots(a)):
+            if pos_a == pos_b:
+                continue
+            shared = any(math.dist(pos_b[:2], q[:2]) <= SHARED
+                         for pid, o in people.items() if pid != b["id"] for _, q in _spots(o))
+            if guard or where[0] == "patrol" or shared:
+                _set_spot(a, where, copy.deepcopy(pos_b))
+        if a != b:
+            out.append({"person": a, "before": b})
+    return out
 
 
 def _apply_one(files, op):

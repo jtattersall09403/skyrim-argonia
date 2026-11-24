@@ -33,11 +33,11 @@
     "kind": "street",
     "points": [
      [
-      1300,
+      1000,
       1900
      ],
      [
-      1550,
+      1400,
       1900
      ]
     ],
@@ -68,7 +68,7 @@
      {
       "at": {
        "pos": [
-        1400,
+        1000,
         1900,
         50
        ],
@@ -89,24 +89,6 @@
    "similar": [],
    "source_id": "bmv.fixture"
   },
-  "quests": [
-   {
-    "id": "q.fix/thing",
-    "pos": [
-     1290,
-     2020,
-     60
-    ],
-    "quest": "q.fix",
-    "ref": "thing",
-    "rot": [
-     0,
-     0,
-     0
-    ],
-    "space": "exterior"
-   }
-  ],
   "spaces": {
    "FixHouse01": {
     "refs": [
@@ -277,6 +259,24 @@
     "space": null
    }
   },
+  "quests": [
+   {
+    "id": "q.fix/thing",
+    "pos": [
+     1290,
+     2020,
+     60
+    ],
+    "quest": "q.fix",
+    "ref": "thing",
+    "rot": [
+     0,
+     0,
+     0
+    ],
+    "space": "exterior"
+   }
+  ],
   "walk": [
    {
     "by": "owner",
@@ -726,5 +726,6 @@
     }
    ]
   }
- ]
+ ],
+ "why": ""
 }

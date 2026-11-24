@@ -279,7 +279,7 @@ export function applyOp(m, op) {
         if ('door' in u.after) linkPartner(m, space(m, sp).refs.get(u.id), u.before.door?.arrival);
       }
       for (const [key, table] of [['people', 'person'], ['quests', 'quest'], ['walks', 'walk'], ['paths', 'path']])
-        for (const u of op[key] || []) applyOp(m, { n: op.n, op: `${table}.edit`, [table]: u[table], before: u.before });
+        for (const u of unitCarried(m, op, key)) applyOp(m, { n: op.n, op: `${table}.edit`, [table]: u[table], before: u.before });
       break;
     }
     case 'veg.clear': {
@@ -365,6 +365,55 @@ export function inverse(op) {
   return inv;
 }
 export function revertOp(m, op) { applyOp(m, inverse(op)); }
+// What a unit's move carries of `key` (edits.py unit_carried, the same rule; the studio's units.js spotsMoved makes
+// it so): its own doors' spurs only, its people's own spots, never a spot another person also stands at, a guard's
+// post or a patrol point; an older save's move that carried those replays without them.
+const SHARED = 64;
+function posSpots(p) {
+  const out = [];
+  if (p.work && !p.work.ref && Array.isArray(p.work.pos)) out.push([['work'], p.work.pos]);
+  (p.routine || []).forEach((st, i) => { const at = st.at || {}; if (!at.ref && Array.isArray(at.pos) && (at.space || 'exterior') === 'exterior') out.push([['routine', i], at.pos]); });
+  const pat = Array.isArray(p.patrol) ? p.patrol : p.patrol?.points || [];
+  pat.forEach((q, i) => { if (Array.isArray(q)) out.push([['patrol', i], q]); });
+  return out;
+}
+function setSpot(p, w, v) {
+  if (w[0] === 'work') p.work.pos = v;
+  else if (w[0] === 'routine') p.routine[w[1]].at.pos = v;
+  else (Array.isArray(p.patrol) ? p.patrol : p.patrol.points)[w[1]] = v;
+}
+export function unitCarried(m, op, key) {
+  const items = clone(op[key] || []);
+  if (key === 'paths') {
+    const rows = space(m, op.space || 'exterior').refs;
+    const doors = new Set((op.refs || []).filter((u) => u.after?.door || u.before?.door || rows.get(u.id)?.door).map((u) => u.id));
+    const out = [];
+    for (const it of items) {
+      const b = it.before, a = it.path, pts = (b.points || []).map((q) => [...q]), n = pts.length;
+      if (n < 2 || (a.points || []).length !== n) continue;
+      for (const [end, nxt, link] of [[0, 1, b.from], [n - 1, n - 2, b.to]]) {
+        if (!doors.has(link)) continue;
+        pts[end] = [...a.points[end]]; if (n > 2) pts[nxt] = [...a.points[nxt]];
+      }
+      if (!same(pts, b.points)) out.push({ path: { ...a, points: pts }, before: b });
+    }
+    return out;
+  }
+  if (key !== 'people') return items;
+  const people = [...(m.people?.values?.() || [])], out = [];
+  for (const it of items) {
+    const b = it.before, a = clone(it.person), guard = String(b.role || '').toLowerCase() === 'guard';
+    const sb = posSpots(b), sa = posSpots(a);
+    sb.forEach(([w, pb], k) => {
+      const pa = sa[k]?.[1]; if (!pa || same(pa, pb)) return;
+      const shared = people.some((o) => o.id !== b.id && posSpots(o).some(([, q]) => Math.hypot(q[0] - pb[0], q[1] - pb[1]) <= SHARED));
+      if (guard || w[0] === 'patrol' || shared) setSpot(a, w, clone(pb));
+    });
+    if (!same(a, b)) out.push({ person: a, before: b });
+  }
+  return out;
+}
+
 // The ops with each unit.move written as the plain ops it is made of (edits.py `expand`): a ref.move per member, a
 // person.edit and quest.edit per spot, each keeping the unit op's n, call, note and stroke.
 export function expand(ops) {
