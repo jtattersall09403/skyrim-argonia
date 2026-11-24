@@ -487,7 +487,7 @@ def lights_stage(st: Standing, log=print) -> None:
             lr.update({"status": "dropped", "why": lights_out(st.bound[row["src"]])})
             lr.pop("as", None)
         log(f"draft lights {st.place_id}: {row['id']} dropped, its fixture {st.bound[row['src']]} is left out")
-    want = lights.station_lights(st.place_id, st.ext, st.place.get("stations"))
+    want = lights.station_lights(st.place_id, st.ext, st.place.get("stations"), {a["id"] for a in rec.get("added") or []})
     have = {r["id"]: r for r in st.ext}
     for old in rec.get("added") or []:
         if old["id"] in have and old["id"] not in {r["id"] for r in want}:

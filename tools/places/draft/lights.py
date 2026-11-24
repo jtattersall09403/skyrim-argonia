@@ -124,10 +124,12 @@ def off_fixture(rows: list[dict], by_src: dict[str, dict], bound: dict[str, str]
 
 
 # --- what we add ---
-def station_lights(place_id: str, rows: list[dict], stations: dict) -> list[dict]:
+def station_lights(place_id: str, rows: list[dict], stations: dict, own=frozenset()) -> list[dict]:
     """The light rows what we add carries: each added light source the measured pairing holds
     (tools/places/light_pairs.py: the light Skyrim, its DLCs and our source mods place beside that base, at its offset
-    in the base's own frame), an added station by the same table, else a forge at FORGE_OFFSET; seated `on` it."""
+    in the base's own frame), an added station by the same table, else a forge at FORGE_OFFSET; seated `on` it.
+    `own`: the ids of the lights this stage added on its last run, which never count as a source already lit (else a
+    second run drops what the first added, and a third adds it again)."""
     from tools.places.light_pairs import light_row
     by_id = {r["id"]: r for r in rows}
     out, done = [], set()
@@ -153,7 +155,7 @@ def station_lights(place_id: str, rows: list[dict], stations: dict) -> list[dict
                     "seat": {"mode": "on", "on": st["id"], "dz": w}, "cluster": st.get("cluster"),
                     "why": f"the {a['station']}'s fire light, as Skyrim's forges carry it"})
     # every other light source we add (one the measured table pairs with a light) carries its light the same way
-    lit_on = {(r.get("seat") or {}).get("on") for r in rows if r.get("kind") == "light"}
+    lit_on = {(r.get("seat") or {}).get("on") for r in rows if r.get("kind") == "light" and r["id"] not in own}
     for r in rows:
         if r.get("src") or r.get("layer") != "place" or r["id"] in done or r["id"] in lit_on or r.get("removed"):
             continue

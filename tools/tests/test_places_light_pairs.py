@@ -54,3 +54,16 @@ def test_an_added_light_source_carries_its_light_turned_with_it():
     # a source row, or one already lit, gets none
     assert lights.station_lights("p", [dict(fix, src="s.1")], {}) == []
     assert lights.station_lights("p", [fix, dict(row, id="x")], {}) == []
+
+
+def test_a_second_run_keeps_the_lights_the_first_added():
+    """The lights stage's own lights never count as a source already lit: running it again keeps them (it had dropped
+    them, and a third run added them back)."""
+    from tools.places.draft import lights
+    fix = {"id": "p.F", "base": "Skyrim.esm:05D6EA", "kind": "static", "pos": [100.0, 200.0, 300.0],
+           "rot": [0.0, 0.0, 0.0], "scale": 1.0, "layer": "place"}
+    first = lights.station_lights("p", [fix], {})
+    assert len(first) == 1
+    again = lights.station_lights("p", [fix, *first], {}, {r["id"] for r in first})
+    assert [r["id"] for r in again] == [r["id"] for r in first]
+    assert lights.station_lights("p", [fix, *first], {}) == []   # a light the stage did not add does count as lit

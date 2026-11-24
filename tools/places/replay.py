@@ -30,10 +30,16 @@ def _rows(files: dict) -> dict:
     return out
 
 
-def _his_after(save: dict) -> dict:
-    """The row each of his ops leaves, the last op on a row winning (a unit's members as their own moves)."""
+def _his_after(save: dict, files: dict | None = None) -> dict:
+    """The row each of his ops leaves, the last op on a row winning (a unit's members as their own moves, and only
+    what the unit rule says the move carries: edits.unit_carried)."""
     out = {}
-    for op in edits.expand(save.get("ops") or []):
+    ops = []
+    for op in save.get("ops") or []:
+        if op.get("op") == "unit.move" and files is not None:
+            op = dict(op, **{k: edits.unit_carried(files, op, k) for k in ("people", "quests", "walks", "paths")})
+        ops.append(op)
+    for op in edits.expand(ops):
         rid = edits._row_id(op)
         if op["op"] == "ref.remove":
             out[("ref", rid)] = None
@@ -93,7 +99,7 @@ def replay(files: dict, save: dict, source=None, base: dict | None = None) -> di
         for rid in a.get("rows") or []:
             who[rid].add(a.get("answers"))
     where_left, by_answer, moved = 0, defaultdict(list), []
-    for key, want in _his_after(save).items():
+    for key, want in _his_after(save, cur).items():
         if _fits(now.get(key), want):
             where_left += 1
         elif who.get(key[1]):
