@@ -30,6 +30,8 @@ main{min-width:0;display:flex;flex-direction:column;gap:16px}
 #viewer{position:relative;background:var(--stage);border-radius:6px;overflow:hidden;aspect-ratio:16/10;max-width:100%}
 #viewer canvas{display:block;width:100%;height:100%;touch-action:none}
 #hud{position:absolute;left:10px;bottom:8px;color:#e8ece8;font-size:.82rem;background:#0008;padding:2px 8px;border-radius:4px;font-variant-numeric:tabular-nums}
+#hud2{position:absolute;right:10px;bottom:8px;color:#e8ece8;font-size:.82rem;background:#0008;padding:2px 8px;border-radius:4px}
+#split{position:absolute;left:50%;top:0;bottom:0;width:2px;background:#0009}
 #pinhint{position:absolute;left:50%;top:10px;transform:translateX(-50%);background:#000b;color:#fff;padding:4px 12px;border-radius:4px;font-size:.85rem}
 .bar{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;align-items:center}
 .chip{font:inherit;font-size:.86rem;color:inherit;background:transparent;border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer}
@@ -77,7 +79,7 @@ textarea{width:100%;min-height:70px;font:inherit;color:inherit;background:var(--
 "use strict";
 const $ = (s, r = document) => r.querySelector(s);
 const el = (t, a = {}, ...kids) => { const e = document.createElement(t); for (const k in a) { if (k === "text") e.textContent = a[k]; else if (k.startsWith("on")) e.addEventListener(k.slice(2), a[k]); else e.setAttribute(k, a[k]); } for (const c of kids) if (c != null) e.append(c); return e; };
-const S = { cat: null, asset: null, model: null, mode: "tex", scale: true, pinning: false, notes: [], batches: [], db: null, uid: "me", pendingPin: null };
+const S = { cat: null, asset: null, model: null, mode: "tex", scale: true, compare: null, pinning: false, notes: [], batches: [], db: null, uid: "me", pendingPin: null };
 const LS = "argonia-asset-explorer-drafts";
 
 /* ---------- data ---------- */
@@ -124,8 +126,8 @@ function pick(id) {
     el("dl", { class: "kv" }, el("dt", { text: "Why make it" }), el("dd", {}, tagFor(a.need.verdict), document.createTextNode(" " + a.need.why)), el("dt", { text: "Lore" }), el("dd", { text: a.need.lore }), el("dt", { text: "Where it goes" }), el("dd", { text: a.need.use }),
       el("dt", { text: "Brief" }), el("dd", { text: a.brief.length_m + " m long, " + a.brief.beam_m + " m wide; " + a.brief.material + ". None of: " + a.brief.no + "." }),
       el("dt", { text: "Fees" }), el("dd", { text: "About $" + a.fees.total.toFixed(2) + ". " + a.fees.note })));
-  const view = el("section", { class: "panel" }, el("h3", { text: "The model" }), el("div", { id: "viewer" }, el("div", { id: "hud" }), el("div", { id: "pinhint", hidden: "" , text: "Click the spot on the model. Press Escape to cancel." })),
-    el("div", { class: "bar", id: "models" }), el("div", { class: "bar", id: "modes" }), el("div", { id: "pinform" }));
+  const view = el("section", { class: "panel" }, el("h3", { text: "The model" }), el("div", { id: "viewer" }, el("div", { id: "hud" }), el("div", { id: "hud2", hidden: "" }), el("div", { id: "split", hidden: "" }), el("div", { id: "pinhint", hidden: "" , text: "Click the spot on the model. Press Escape to cancel." })),
+    el("div", { class: "bar", id: "models" }), el("div", { class: "bar", id: "cmp" }), el("div", { class: "bar", id: "modes" }), el("div", { id: "pinform" }));
   const stages = el("section", { class: "panel" }, el("h3", { text: "Stages" }), ...a.stages.map(stageNode));
   const notes = el("section", { class: "panel", id: "notes" });
   m.append(head, view, stages, notes); initViewer(); renderBars(); loadModel(a.default_model); renderNotes();
@@ -159,13 +161,18 @@ function initViewer() {
   const body = new THREE.Mesh(new THREE.CylinderGeometry(0.21, 0.19, 1.55, 16), mat); body.position.y = 0.775; const headM = new THREE.Mesh(new THREE.SphereGeometry(0.125, 16, 12), mat); headM.position.y = 1.675; man.add(body, headM); man.position.set(0, 0, 1.6); scene.add(man);
   const ctl = new THREE.OrbitControls(cam, renderer.domElement); ctl.target.set(0, 0.35, 0); ctl.enableDamping = true;
   const pins = new THREE.Group(); scene.add(pins);
-  R = { renderer, scene, cam, ctl, grid, man, pins, root: null, raf: 0 };
-  const size = () => { const w = box.clientWidth, h = box.clientHeight; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); };
+  const scene2 = new THREE.Scene(); scene2.background = scene.background; scene2.add(new THREE.HemisphereLight(0xffffff, 0x4a4f48, 0.95)); const sun2 = sun.clone(); scene2.add(sun2);
+  const grid2 = grid.clone(); scene2.add(grid2); const man2 = man.clone(); scene2.add(man2);
+  R = { renderer, scene, scene2, cam, ctl, grid, grid2, man, man2, pins, root: null, root2: null, raf: 0, box };
+  const size = () => { const w = box.clientWidth, h = box.clientHeight; renderer.setSize(w, h, false); cam.aspect = (S.compare ? w / 2 : w) / h; cam.updateProjectionMatrix(); }; R.size = size;
   new ResizeObserver(size).observe(box); size();
-  const tick = () => { R.raf = requestAnimationFrame(tick); ctl.update(); renderer.render(scene, cam); }; tick();
+  const tick = () => { R.raf = requestAnimationFrame(tick); ctl.update(); const w = box.clientWidth, h = box.clientHeight;
+    if (S.compare && R.root2) { renderer.setScissorTest(true); renderer.setViewport(0, 0, w / 2, h); renderer.setScissor(0, 0, w / 2, h); renderer.render(scene, cam);
+      renderer.setViewport(w / 2, 0, w / 2, h); renderer.setScissor(w / 2, 0, w / 2, h); renderer.render(scene2, cam); renderer.setScissorTest(false); }
+    else { renderer.setViewport(0, 0, w, h); renderer.render(scene, cam); } }; tick();
   renderer.domElement.addEventListener("pointerdown", e => { R.down = [e.clientX, e.clientY]; });
   renderer.domElement.addEventListener("pointerup", e => { if (!S.pinning || !R.root || !R.down || Math.hypot(e.clientX - R.down[0], e.clientY - R.down[1]) > 5) return;
-    const r = renderer.domElement.getBoundingClientRect(), p = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1), rc = new THREE.Raycaster(); rc.setFromCamera(p, cam);
+    const r0 = renderer.domElement.getBoundingClientRect(), r = S.compare ? { left: r0.left, top: r0.top, width: r0.width / 2, height: r0.height } : r0; if (e.clientX > r.left + r.width) return; const p = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1), rc = new THREE.Raycaster(); rc.setFromCamera(p, cam);
     const hit = rc.intersectObject(R.root, true)[0]; if (!hit) return;   // the real triangles of the model, never a box
     const nrm = hit.face ? hit.face.normal.clone().transformDirection(hit.object.matrixWorld) : new THREE.Vector3(0, 1, 0);
     setPinning(false); startNote({ kind: "pin", field: "model", label: "A spot on " + modelLabel(S.model), model: S.model, point: hit.point.toArray().map(v => +v.toFixed(4)), normal: nrm.toArray().map(v => +v.toFixed(3)), camera: { position: cam.position.toArray().map(v => +v.toFixed(3)), target: ctl.target.toArray().map(v => +v.toFixed(3)) } }); });
@@ -174,27 +181,33 @@ function initViewer() {
 const modelLabel = id => (S.asset.models.find(x => x.id === id) || {}).label || id;
 function renderBars() {
   $("#models").replaceChildren(el("span", { class: "muted", text: "Version:" }), ...S.asset.models.map(m => el("button", { class: "chip", "data-id": m.id, "aria-pressed": "false", onclick: () => loadModel(m.id) }, document.createTextNode(m.label), el("span", { class: "st", text: m.state }))));
+  $("#cmp").replaceChildren(el("span", { class: "muted", text: "Compare beside it:" }), el("button", { class: "chip", "aria-pressed": String(!S.compare), onclick: () => setCompare(null), text: "Nothing" }),
+    ...S.asset.models.filter(m => m.state === "candidate" || m.state === "alternative").map(m => el("button", { class: "chip", "aria-pressed": String(S.compare === m.id), onclick: () => setCompare(m.id), text: m.label })));
   const mode = (id, t) => el("button", { class: "chip", "data-mode": id, "aria-pressed": String(S.mode === id), onclick: () => { S.mode = id; applyMode(); renderBars(); markModel(); }, text: t });
   $("#modes").replaceChildren(el("span", { class: "muted", text: "Show as:" }), mode("tex", "Surfaced"), mode("clay", "Plain clay"), mode("wire", "Triangles"),
-    el("button", { class: "chip", "aria-pressed": String(S.scale), onclick: () => { S.scale = !S.scale; R.man.visible = S.scale; R.grid.visible = S.scale; renderBars(); markModel(); }, text: "1.8 m figure and 1 m grid" }),
+    el("button", { class: "chip", "aria-pressed": String(S.scale), onclick: () => { S.scale = !S.scale; R.man.visible = R.man2.visible = S.scale; R.grid.visible = R.grid2.visible = S.scale; renderBars(); markModel(); }, text: "1.8 m figure and 1 m grid" }),
     el("button", { class: "btn", id: "pinbtn", onclick: () => setPinning(!S.pinning), text: "Pin a note on the model" }));
 }
+function place(root) { root.traverse(o => { if (o.isMesh) { o.userData.mat = o.material; o.material.side = THREE.DoubleSide; } });
+  const b = new THREE.Box3().setFromObject(root), c = b.getCenter(new THREE.Vector3()); root.position.y -= b.min.y; root.position.x -= c.x; root.position.z -= c.z; return b.getSize(new THREE.Vector3()); }
+function setCompare(id) { const was = !!S.compare; if (was !== !!id) { const k = id ? 1.7 : 1 / 1.7; R.cam.position.sub(R.ctl.target).multiplyScalar(k).add(R.ctl.target); } S.compare = id; $("#split").hidden = !id; $("#hud2").hidden = !id; if (R.root2) { R.scene2.remove(R.root2); R.root2 = null; } R.size(); renderBars(); markModel();
+  if (!id) return; $("#hud2").textContent = "Loading " + modelLabel(id);
+  new THREE.GLTFLoader().load("models/" + S.asset.id + "." + id + ".gltf.json", g => { if (S.compare !== id) return; R.root2 = g.scene; R.scene2.add(R.root2); place(R.root2); R.man2.position.copy(R.man.position); $("#hud2").textContent = modelLabel(id); applyMode(); },
+    undefined, () => { $("#hud2").textContent = "This version could not be loaded."; }); }
 function markModel() { for (const c of document.querySelectorAll("#models .chip")) c.setAttribute("aria-pressed", String(c.dataset.id === S.model)); }
 function setPinning(on) { S.pinning = on; $("#pinhint").hidden = !on; R.renderer.domElement.style.cursor = on ? "crosshair" : ""; }
 function loadModel(id) {
   S.model = id; markModel(); $("#hud").textContent = "Loading " + modelLabel(id);
   new THREE.GLTFLoader().load("models/" + S.asset.id + "." + id + ".gltf.json", g => {
     if (S.model !== id) return; if (R.root) R.scene.remove(R.root); R.root = g.scene; R.scene.add(R.root);
-    R.root.traverse(o => { if (o.isMesh) { o.userData.mat = o.material; o.material.side = THREE.DoubleSide; } });
-    const b = new THREE.Box3().setFromObject(R.root), s = b.getSize(new THREE.Vector3()), c = b.getCenter(new THREE.Vector3());
-    R.root.position.y -= b.min.y; R.root.position.x -= c.x; R.root.position.z -= c.z;      // stand every version on the ground at the middle, whatever frame it came in
+    const s = place(R.root);      // stand every version on the ground at the middle, whatever frame it came in
     const mm = S.asset.measures[id] || {}; const dims = [s.x, s.y, s.z].sort((p, q) => q - p);
     $("#hud").textContent = modelLabel(id) + " · " + (mm.triangles ? mm.triangles.toLocaleString() + " triangles · " : "") + dims[0].toFixed(2) + " m long";
-    R.man.position.set(-dims[0] * 0.25, 0, -(Math.max(s.z, 0.6) / 2 + 0.6)); R.ctl.target.set(0, s.y / 2, 0); const d = Math.max(dims[0], 1.5); R.cam.position.set(d * 0.95, d * 0.5, d * 0.95);
+    R.man.position.set(-dims[0] * 0.25, 0, -(Math.max(s.z, 0.6) / 2 + 0.6)); R.man2.position.copy(R.man.position); R.ctl.target.set(0, s.y / 2, 0); const d = Math.max(dims[0], 1.5); R.cam.position.set(d * 0.95, d * 0.5, d * 0.95);
     applyMode(); drawPins();
   }, undefined, () => { $("#hud").textContent = "This version could not be loaded."; });
 }
-function applyMode() { if (!R || !R.root) return; R.root.traverse(o => { if (!o.isMesh) return;
+function applyMode() { if (!R) return; for (const root of [R.root, R.root2]) if (root) root.traverse(o => { if (!o.isMesh) return;
   if (S.mode === "tex") o.material = o.userData.mat; else if (S.mode === "clay") o.material = new THREE.MeshStandardMaterial({ color: 0x9c978c, roughness: 0.95, side: THREE.DoubleSide }); else o.material = new THREE.MeshBasicMaterial({ color: 0xe9ede8, wireframe: true }); }); }
 function drawPins() { if (!R) return; while (R.pins.children.length) R.pins.remove(R.pins.children[0]);
   const all = S.notes.concat(...S.batches.map(b => b.notes || [])).filter(n => n.kind === "pin" && n.item === S.asset.id && n.model === S.model && n.point);
