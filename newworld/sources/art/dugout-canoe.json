@@ -13,10 +13,10 @@
  },
  "brief": {
   "length_m": 4.5,
-  "beam_m": 0.7,
+  "beam_m": 0.8,
   "material": "one swamp cypress log, hewn with an adze",
   "no": "paint, metal, ornament, rope or any other thin part",
-  "text": "4.5 m long, 0.7 m wide; one swamp cypress log, hewn with an adze. None of: paint, metal, ornament, rope or any other thin part."
+  "text": "4.5 m long, 0.8 m wide; one swamp cypress log, hewn with an adze. None of: paint, metal, ornament, rope or any other thin part."
  },
  "fees": {
   "note": "Fal's list prices for the options used, read on 24 November 2026 from each model's Fal page; Fal's request history shows no charge per request, so these are not from a bill.",
@@ -146,12 +146,12 @@
    "id": "shape",
    "name": "4. Shaping",
    "verdict": "pass, with one open point",
-   "did": "Turned to its own long axis, found from the real vertices; set upright by which side is the open one; scaled so the length is 4.5 m; stood on the ground with its middle at the origin. The hull was then brought to the brief's beam: the generation was 1.18 m across at 4.5 m long, so its cross-section (width and depth together) was scaled to 0.7 m across, its length kept (tobrief.py).",
+   "did": "Turned to its own long axis, found from the real vertices; set upright by which side is the open one; scaled so the length is 4.5 m; stood on the ground with its middle at the origin. The hull was then brought to a dugout's proportions: the generation was 1.18 m across and 0.66 m deep at 4.5 m long, so its cross-section (width and depth together) was scaled to 0.8 m across, its length kept (tobrief.py). The brief's first 0.7 m was a guess; it gave way, because at 0.7 m the hull was only 0.39 m deep, too shallow to sit in, and a dugout 4.5 m long is commonly 0.6 to 0.9 m wide and 0.4 to 0.5 m deep.",
    "measured_models": [
     "shaped"
    ],
    "looked": "Upright, level, reads as a hewn dugout from all six views. The hole at the bow survives.",
-   "decision": "Kept at 4.5 m by 0.7 m, 0.39 m deep, as the brief asks.",
+   "decision": "Kept at 4.5 m by 0.8 m, 0.45 m deep: a hull a person sits down in, judged beside the 1.8 m person.",
    "images": [
     [
      "dugout-canoe.look-shaped.jpg",
@@ -383,7 +383,7 @@
  "size": {
   "rule": "length",
   "length_m": 4.5,
-  "beam_m": 0.7
+  "beam_m": 0.8
  },
  "versions": [
   {
@@ -408,7 +408,7 @@
   {
    "id": "shaped",
    "label": "Straightened",
-   "line": "Turned to its own long axis and sized to the brief: 4.5 m long, 0.7 m across.",
+   "line": "Turned to its own long axis and sized to the brief: 4.5 m long, 0.8 m across, 0.45 m deep.",
    "made_by": "By hand: shape.py and tobrief.py",
    "price_usd": 0,
    "verdict": "kept",

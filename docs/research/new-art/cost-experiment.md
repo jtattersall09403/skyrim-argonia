@@ -1,62 +1,78 @@
 # The 3D-generation cost experiment (owner call #94, 24 November 2026)
 
 The question: can a cheaper generator than Tripo H3.1 give a model we would keep, and how many models would $90
-buy? The same reference image of each of three things went once to each of five cheaper routes on Fal. Every
-result is in the asset explorer as a version of its asset, beside the kept Tripo H3.1 version, so any two can be
-turned side by side under one camera; each asset's record carries the table (stage "Cost experiment").
+buy? The same reference image of each of three things (the dugout canoe, the root hut, the glaive head) went once to
+each of five cheaper routes on Fal, and later to Meshy 7.1. Every result is in the asset explorer under its thing as
+"Other generators tried", ranked, scaled to the brief in true metres beside a 1.8 m person.
 
-Prices are Fal's list prices as read on 24 November, not a bill: the Fal tools report results and timings but no
-charge per request. Each route was tried once per thing, so every rate below rests on one to three results.
+**The owner's verdict:** Tripo H3.1 is clearly the best across all three things, and it gives the best textures. Our
+own shared material instead of the generator's texture looks worse to him; it stays on the page only as a comparison.
+
+## What changed in this version of the note
+
+The first version priced three routes wrongly: it read the Fal pricing tool's unit price as a price per run, and
+recorded no endpoint ids or options. Every run has now been traced to its exact endpoint and options in Fal's request
+history (the ids are in each asset record), and priced from that model's own Fal page as read on 24 November 2026.
+Fal's history shows no charge per request, so these are list prices for the options used, not a bill.
+
+| Route (endpoint, options used) | First note said | Fal's page says | Change |
+|---|---|---|---|
+| Trellis 2 (`fal-ai/trellis-2`, resolution 1024, texture 2048) | $0.05 | $0.30 (1024p; $0.25 at 512p, $0.35 at 1536p) | six times dearer |
+| Hunyuan 3.1 rapid (`fal-ai/hunyuan-3d/v3.1/rapid/image-to-3d`, no PBR) | $0.015 | $0.225 (+$0.15 with PBR) | fifteen times dearer |
+| Hunyuan 2 mini turbo, textured (`fal-ai/hunyuan3d/v2/mini/turbo`, `textured_mesh`) | $0.24 | $0.08 | a third |
+| Reference image, Nano Banana 2.1 at 2K | $0.12 | $0.059, or $0.063 as an edit | half |
+| Trellis (`fal-ai/trellis`) | $0.02 | $0.02 | none |
+| Idol max turbo (`speridlabs/idol/max/turbo`, no PBR) | $0.10 | $0.10 (+$0.10 with PBR) | none |
+| Tripo H3.1 (`tripo3d/h3.1/image-to-3d`, texture, PBR, detailed texture) | $0.40 | $0.40 ($0.20 untextured, $0.30 standard texture) | none |
+| Tripo P2 (`tripo3d/p2/image-to-3d`, detailed) | $1.20 | $1.20 | none |
+| Meshy 7.1 (`meshy/v7.1/image-to-3d`, textured), new | none | $1.20 ($0.80 untextured) | new |
 
 ## What came back
 
-Sixteen jobs: fourteen returned a model, two failed. Both failures were Hunyuan 3.1 rapid, which refused the
-canoe's and the hut's reference images before running because they were larger than its 950 KB limit (1,204 KB
-and 2,083 KB). That is our input, not the generator: a JPEG under about 700 KB would have gone through. Fal does
-not normally charge for a request rejected at input, but that was not confirmed from a bill.
+Nineteen jobs: seventeen returned a model, two failed. Both failures were Hunyuan 3.1 rapid, which refused the canoe's
+and the hut's reference images before running because they were over its 950 KB limit (1,204 KB and 2,083 KB). Fal
+does not charge a request refused at its input.
 
 | Route | Price per run | Canoe | Glaive head | Root hut |
 |---|---|---|---|---|
+| Tripo H3.1, detailed texture (the owner's pick) | $0.40 | kept, best | kept, best | kept, best |
+| Meshy 7.1, textured | $1.20 | kept: clean, smoother and greyer, fainter adze marks | kept: truer grey core, shallower flaking | kept after clean-up: 384 loose pieces, more windows than the brief |
 | Trellis | $0.02 | kept | thrown away (two spurs, not one) | kept after clean-up |
-| Trellis 2 | $0.05 | kept | kept after clean-up | thrown away (shell full of holes) |
-| Hunyuan 2 mini turbo, textured | $0.24 | kept after clean-up (flat texture) | kept | kept after clean-up |
-| Hunyuan 3.1 rapid | $0.015 | failed (image too large) | kept, the best head | failed (image too large) |
-| Idol max turbo | $0.10 | kept after clean-up | kept after clean-up | kept after clean-up |
-| Tripo H3.1, bare shape | $0.20 | kept, with our shared material | not tried | not tried |
-| Tripo H3.1, detailed texture (earlier, kept) | $0.40 | kept | kept | kept |
+| Trellis 2 | $0.30 | kept | kept after clean-up | thrown away (shell full of holes) |
+| Hunyuan 2 mini turbo, textured | $0.08 | thrown away (flat texture) | kept | thrown away (smooth roof, stray bits) |
+| Hunyuan 3.1 rapid | $0.225 | failed (image too large) | kept: crisp flaking | failed (image too large) |
+| Idol max turbo | $0.10 | thrown away (pointed bow) | kept after clean-up | kept after clean-up |
+| Tripo H3.1, no texture asked | $0.20 | came back painted anyway: buys nothing | not tried | not tried |
 
-"Kept after clean-up" means a clean-up our tools already do: removing loose pieces, straightening, cutting
-triangles. Nothing in the set needed hand modelling.
+## What $90 buys
 
-## The cheapest route we would keep, per kind of thing
+Like for like with the run we made through Fal: H3.1 with standard geometry, a texture, the HD texture and PBR maps.
+In Tripo's own web studio that is HD Generate (15 credits) + Texture Gen (+10) + HD Texture (+10) + PBR (+5) = 40
+credits. In Meshy's web app, Meshy 7.1 textured is 25 credits on a paid plan (it starts at Ultra 2K) + texture (+10) =
+35 credits. Both vendors' pricing pages were read on 24 November 2026 (supplied by the owner). Web-studio
+subscription credits do not pay for API or CLI use (the owner confirmed this for Tripo), so a web-studio route means
+someone generating in the studio by hand.
 
-| Kind | Cheapest kept route | Cost per kept model | Why it, and what to watch |
+| Route | Sum per model | Models for $90 | Notes |
 |---|---|---|---|
-| Small solid prop (the canoe) | Trellis, $0.02 | $0.02 | One closed piece of 3,258 triangles, right outline and colour; softer texture than H3.1. Trellis 2 ($0.05) has the better texture if that matters. |
-| Weapon head (the glaive) | Hunyuan 3.1 rapid, $0.015 | $0.015 (about $0.02 if one in four is refused and resent) | The crispest flaking of all seven heads, one closed piece. Needs a reference under 950 KB and a cut from 50,000 to about 12,000 triangles. |
-| Building (the hut) | Trellis, $0.02, after clean-up | $0.02 | Door, windows, roots and roof all read; 13 loose pieces to remove. Idol max turbo ($0.10) is the richest hut if the extra cost buys a look you want. |
+| Tripo H3.1 through Fal, as now | $0.40 + a $0.06 reference image = $0.46 | 195 (225 without the image) | runs from our tools, no subscription |
+| Tripo web studio, Max plan ($90 a month, 25,000 credits) | 40 credits x $90 / 25,000 = $0.144 | 625 a month (1,250 in the first month with the new-user half-price coupon) | by hand in the studio; 8K textures included; unspent credits are lost at the month's end |
+| Tripo web studio, Pro plan ($20 a month, 3,000 credits) | 40 x $20 / 3,000 = $0.27 | 75 a month; $90 is four and a half months | by hand |
+| Tripo extra credits ($100 for 12,000) | 40 x $100 / 12,000 = $0.33 | 270 | on top of a plan |
+| Meshy 7.1 through Fal | $1.20 | 75 | runs from our tools |
+| Meshy web app, Premium ($40 a month, 3,000 credits) | 35 x $40 / 3,000 = $0.47 | 85 a month; $90 is two and a quarter months, about 190 | by hand |
+| Meshy web app, Ultra ($100 a month, 8,000 credits) | 35 x $100 / 8,000 = $0.44 | 228 for $100 | by hand |
+| The cheapest kept route per kind, through Fal | Trellis $0.02 for props and buildings; Hunyuan 2 mini $0.08 for weapon heads | about 3,000 (generation only) | the owner judged these worse than H3.1 |
 
-Across all three kinds, the cost per kept model by route was: Trellis $0.03 (2 of 3 kept), Trellis 2 $0.075 (2 of
-3), Hunyuan 3.1 rapid $0.015 (1 of 1 that ran), Idol max turbo $0.10 (3 of 3), Hunyuan 2 textured $0.24 (3 of 3),
-Tripo H3.1 detailed $0.40 (3 of 3).
-
-## What $90 would buy
-
-| Route mix | Generation cost per kept model | Kept models for $90 (generation only) | With one $0.12 reference image each |
-|---|---|---|---|
-| Tripo H3.1 detailed for everything, as now | $0.40 | about 225 | about 170 |
-| Trellis for props and buildings, Hunyuan 3.1 rapid for weapon heads | about $0.03 | about 3,000 | about 600 |
-| Trellis 2 for props, Hunyuan 3.1 rapid for weapons, Idol max turbo for buildings | about $0.07 | about 1,300 | about 470 |
-| Two tries of the cheap mix per thing, the better one kept | about $0.06 | about 1,500 | about 500 |
-
-With the cheap routes, generation stops being the cost that matters: the reference image ($0.12 at 2K) costs four
-to eight times the model, and our time to look, shape and clean each one bounds the count long before $90 does. A
-sensible budget is several cheap tries per thing from one reference image, keeping the best.
+Tripo's own figure on its page ("25,000 credits, about 1,660 models") counts a 15-credit untextured model, not the
+textured one we make.
 
 ## What this changes
 
-1. Use Trellis first for props and buildings and Hunyuan 3.1 rapid first for weapon heads; go to Tripo H3.1
-   detailed only when the cheap result fails the look.
-2. Save every reference image as a JPEG under 700 KB before sending it, so Hunyuan 3.1 rapid accepts it.
-3. A "bare" Tripo H3.1 request still came back painted, so it buys nothing over the textured one for $0.20; our
-   shared material can go on any route's shape instead.
+1. Tripo H3.1 with the detailed texture stays the generator for every kind of thing, as the owner ruled. Meshy 7.1 is
+   close on the canoe and the glaive head but three times the price through Fal and worse on the hut.
+2. At volume, Tripo's Max plan in the web studio gives the same model for about a third of Fal's price, but only by
+   hand in the studio. Through Fal, $90 is about 195 models with their reference images.
+3. Save every reference image as a JPEG under 700 KB before sending it, so every route accepts it.
+4. Tripo's texture task takes a style reference image (+5 credits in the studio). That matters for making a family of
+   models look alike, and is part of the consistency test.

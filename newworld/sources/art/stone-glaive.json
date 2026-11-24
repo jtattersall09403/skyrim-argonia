@@ -158,10 +158,10 @@
     "cord_thickness_mm": 8.4,
     "butt_cap_m": "0.168 long, 0.095 across",
     "grip_band_m": "0.106 high, 0.144 across",
-    "triangles": "13850 in all (head 3000, shaft 1092, cord 5240, collar 730, cap 2192, band 1596)"
+    "triangles": "3202 in all (head 1320, shaft 460, cord 906, collar 180, cap 168, band 168); Skyrim's polearms: Animated Armoury's sixteen halberds 749 to 2,971, BM&V's staves and spears 180 to 3,909"
    },
-   "looked": "Reads as a finished, used weapon: the head seats under its collar, the grip stands proud of the wood, and the bone cap and grip band are the small carved ends the proposal asked for. Nothing hangs. The grip band is chunky; the cord grip is most of the triangles and can be thinned.",
-   "decision": "Kept as the best version. Open: 13,850 triangles against the donor's 2,409; the cord can be fewer turns, and the caps cut further, before it goes to the game.",
+   "looked": "Reads as a finished, used weapon: the head seats under its collar, the grip stands proud of the wood, and the bone cap and grip band are the small carved ends the proposal asked for. Nothing hangs. At this count the head keeps its flaking and the cord still stands proud; the grip band is chunky.",
+   "decision": "Kept as the best version, cut to a 2,400 triangle budget shared out by the tool; it came to 3,202, inside BM&V's range for a staff and a little above Animated Armoury's busiest halberd.",
    "images": [
     [
      "stone-glaive.look-finished.jpg",

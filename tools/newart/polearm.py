@@ -68,7 +68,9 @@ def assemble():
 # the hand-made shaft is remade with a raised cord grip, a binding collar over the joint where it seats into the head's
 # socket, wear painted along its own length, and two short generated end pieces (a bone butt cap and a carved grip band)
 # seated by measurement on the shaft's real radius. Every piece is closed onto the shaft: nothing hangs.
-# usage: polearm.py finish assembled_dir donor.json buttcap.glb gripband.glb outdir
+# The triangle budget (default 3,200) is shared out so the whole stays inside what Skyrim's polearms carry: Animated
+# Armoury's sixteen halberds measure 749 to 2,971 triangles, BM&V's staves and spears 180 to 3,909.
+# usage: polearm.py finish assembled_dir donor.json buttcap.glb gripband.glb outdir [budget]
 
 def tube(path, radius, sides=6):
     """A closed tube of `radius` along a polyline (a cord), its ends capped."""
@@ -85,8 +87,8 @@ def tube(path, radius, sides=6):
     return trimesh.Trimesh(V, np.array(F), process=False)
 
 
-def helix(r, y0, y1, pitch, cord, sides=5, phase=0.0):
-    turns = (y1 - y0) / pitch; t = np.linspace(0, turns * 2 * np.pi, max(int(turns * 10), 8))
+def helix(r, y0, y1, pitch, cord, sides=3, phase=0.0, per_turn=6):
+    turns = (y1 - y0) / pitch; t = np.linspace(0, turns * 2 * np.pi, max(int(turns * per_turn), 8))
     return tube(np.column_stack([r * np.cos(t + phase), y0 + (y1 - y0) * t / t[-1], r * np.sin(t + phase)]), cord, sides)
 
 
@@ -101,11 +103,7 @@ def end_piece(src, tris, fit):
     w = trimesh.Trimesh(g.vertices, g.faces, process=False); w.merge_vertices(merge_tex=True, merge_norm=True)
     lab = trimesh.graph.connected_component_labels(w.face_adjacency, node_count=len(w.faces)); area = np.bincount(lab, weights=w.area_faces)
     g.update_faces(np.isin(lab, np.where(area >= 0.01 * area.max())[0])); g.remove_unreferenced_vertices()
-    ms = pymeshlab.MeshSet(); ms.add_mesh(pymeshlab.Mesh(vertex_matrix=np.asarray(g.vertices, float), face_matrix=np.asarray(g.faces, np.int32), v_tex_coords_matrix=np.asarray(g.visual.uv, float)))
-    ms.compute_texcoord_transfer_vertex_to_wedge(); ms.meshing_decimation_quadric_edge_collapse_with_texture(targetfacenum=tris, qualitythr=0.5, extratcoordw=2.0, preserveboundary=True, optimalplacement=True, preservenormal=True)
-    ms.compute_texcoord_transfer_wedge_to_vertex(); cm = ms.current_mesh()
-    m = trimesh.Trimesh(cm.vertex_matrix(), cm.face_matrix(), process=False); m.visual = trimesh.visual.TextureVisuals(uv=cm.vertex_tex_coord_matrix(), material=g.visual.material)
-    c = m.vertices.mean(0); m.apply_translation([-c[0], 0, -c[2]]); m.apply_scale(1.0 / fit(m)); return m
+    m = cut(g, tris); c = m.vertices.mean(0); m.apply_translation([-c[0], 0, -c[2]]); m.apply_scale(1.0 / fit(m)); return m
 
 
 def inner_radius(m, y):
@@ -114,7 +112,26 @@ def inner_radius(m, y):
     loc, ri, _ = m.ray.intersects_location(O, D, multiple_hits=False); d = np.hypot(loc[:, 0], loc[:, 2]); return float(np.median(d)) if len(d) > 18 else None
 
 
-def finish(adir, donor, cap_src, band_src, out):
+def cut(m, tris):
+    """Fewer triangles, the texture layout kept, the surface whole: the mesh is welded by position first (its texture
+    seams carried per corner), cut, then split again only where a corner's texture place differs, so a seam never
+    opens into a crack."""
+    w = trimesh.Trimesh(m.vertices, m.faces, process=False); uvw = np.asarray(m.visual.uv, float)[m.faces].reshape(-1, 2)
+    w.merge_vertices(merge_tex=True, merge_norm=True)
+    import tempfile
+    with tempfile.TemporaryDirectory() as t:                           # an OBJ carries per-corner texture places and one texture, which MeshLab reads as wedges
+        Image.new('RGB', (4, 4)).save(f'{t}/t.png'); open(f'{t}/m.mtl', 'w').write('newmtl m\nmap_Kd t.png\n')
+        with open(f'{t}/m.obj', 'w') as f:
+            f.write('mtllib m.mtl\nusemtl m\n'); f.writelines(f'v {x:.7f} {y:.7f} {z:.7f}\n' for x, y, z in w.vertices); f.writelines(f'vt {u:.7f} {v:.7f}\n' for u, v in uvw)
+            f.writelines(f'f {a + 1}/{3 * i + 1} {b + 1}/{3 * i + 2} {c + 1}/{3 * i + 3}\n' for i, (a, b, c) in enumerate(w.faces))
+        ms = pymeshlab.MeshSet(); ms.load_new_mesh(f'{t}/m.obj')
+        ms.meshing_decimation_quadric_edge_collapse_with_texture(targetfacenum=tris, qualitythr=0.5, extratcoordw=2.0, preserveboundary=False, optimalplacement=True, preservenormal=True)
+        cm = ms.current_mesh(); F = cm.face_matrix(); V = cm.vertex_matrix()[F].reshape(-1, 3); UV = cm.wedge_tex_coord_matrix()
+    d = trimesh.Trimesh(V, np.arange(len(V)).reshape(-1, 3), process=False); d.visual = trimesh.visual.TextureVisuals(uv=UV, material=m.visual.material)
+    d.merge_vertices(merge_tex=False, merge_norm=True); return d
+
+
+def finish(adir, donor, cap_src, band_src, out, budget=3200):
     os.makedirs(out, exist_ok=True); sc = trimesh.load(f'{adir}/assembled.glb', force='scene')
     geo = {n: sc.geometry[sc.graph.get(n)[1]].copy() for n in sc.graph.nodes_geometry}
     for n in geo: geo[n].apply_transform(sc.graph.get(n)[0])
@@ -126,12 +143,13 @@ def finish(adir, donor, cap_src, band_src, out):
     col = tex[np.clip(((1 - uv[band, 1]) * (W - 1)).astype(int), 0, W - 1), np.clip((uv[band, 0] * (W - 1)).astype(int), 0, W - 1)]
     lum = col @ [0.2126, 0.7152, 0.0722]; sinew = np.median(col[(lum > np.percentile(lum, 30)) & (lum < np.percentile(lum, 60))], axis=0)
     # 1. the butt cap: its socket's measured inner radius made the shaft's, its bottom at the donor's butt
-    cap = end_piece(cap_src, 900, lambda m: 1.0)
+    head = cut(head, int(budget * 0.55)) if len(head.faces) > budget * 0.55 else head
+    cap = end_piece(cap_src, int(budget * 0.07), lambda m: 1.0)
     ys = np.linspace(cap.vertices[:, 1].max() - 0.02 * np.ptp(cap.vertices[:, 1]), cap.vertices[:, 1].max() - 0.25 * np.ptp(cap.vertices[:, 1]), 6)
     ir = [x for x in (inner_radius(cap, y) for y in ys) if x]; k = (r * 1.03) / float(np.median(ir)); cap.apply_scale(k)
     cap.apply_translation([0, butt_y - cap.vertices[:, 1].min(), 0]); cap_top = float(cap.vertices[:, 1].max())
     # 2. the shaft, from inside the cap up into the head's stub, wood unique along its length so wear can be painted where it falls
-    L = top - (cap_top - 0.05); n, rings = 14, 40; ys = np.linspace(cap_top - 0.05, top, rings); rng = np.random.default_rng(7)
+    L = top - (cap_top - 0.05); n, rings = 10, 24; ys = np.linspace(cap_top - 0.05, top, rings); rng = np.random.default_rng(7)
     rad = r * (1 + 0.03 * np.sin(ys * 9.0) + 0.015 * rng.standard_normal(rings)); bow = 0.006 * np.sin((ys - ys[0]) / L * np.pi)
     P, UV = [], []
     for i, y in enumerate(ys):
@@ -155,12 +173,12 @@ def finish(adir, donor, cap_src, band_src, out):
             xx, yv = (x0 + j) % 256, int(np.clip(y0 + j * t, 0, H - 1)); w[yv, xx] *= 0.55; w[max(yv - 1, 0), xx] = np.minimum(w[max(yv - 1, 0), xx] * 1.25, 255)
     shaft.visual = trimesh.visual.TextureVisuals(uv=np.array(UV), material=trimesh.visual.material.PBRMaterial(baseColorTexture=Image.fromarray(np.clip(w, 0, 255).astype(np.uint8)), metallicFactor=0.0, roughnessFactor=0.85))
     # 3. the raised cord grip: two cords wound tight over the grip span, real geometry, sinew-coloured, ends tucked under the turns
-    cord = 0.0042; grip = trimesh.util.concatenate([helix(r + cord * 0.7, g0, g1, cord * 2.4 * 2, cord, phase=p) for p in (0, np.pi)]); coloured(grip, sinew * 0.92)
+    cord = 0.0042; grip = helix(r + cord * 0.7, g0, g1, cord * 5.0, cord); coloured(grip, sinew * 0.92)
     # 4. the binding collar: a dense wrap over the joint where the shaft seats into the head's socket
     sr = float(np.percentile(np.hypot(head.vertices[np.abs(head.vertices[:, 1] - hb) < 0.03, 0], head.vertices[np.abs(head.vertices[:, 1] - hb) < 0.03, 2]), 90))
-    collar = helix(max(sr, r) + cord * 0.8, hb - 0.035, hb + 0.03, cord * 2.1, cord); coloured(collar, sinew)
+    collar = helix(max(sr, r) + cord * 0.8, hb - 0.035, hb + 0.03, cord * 3.0, cord); coloured(collar, sinew)
     # 5. the grip band: its hole's measured radius made the shaft's (over the cord), seated at the top of the grip
-    band_m = end_piece(band_src, 900, lambda m: 1.0); hr = inner_radius(band_m, float(band_m.vertices[:, 1].mean())); band_m.apply_scale((r + 2 * cord) * 1.02 / hr)
+    band_m = end_piece(band_src, int(budget * 0.07), lambda m: 1.0); hr = inner_radius(band_m, float(band_m.vertices[:, 1].mean())); band_m.apply_scale((r + 2 * cord) * 1.02 / hr)
     band_m.apply_translation([0, g1 + 0.005 - band_m.vertices[:, 1].min(), 0])
     whole = trimesh.Scene()
     for nm, m in (('head', head), ('shaft', shaft), ('grip_cord', grip), ('collar', collar), ('butt_cap', cap), ('grip_band', band_m)): whole.add_geometry(m, node_name=nm)
@@ -175,7 +193,7 @@ def finish(adir, donor, cap_src, band_src, out):
 
 
 if __name__ == '__main__' and len(sys.argv) > 1 and sys.argv[1] == 'finish':
-    print(json.dumps(finish(sys.argv[2], json.load(open(sys.argv[3])), sys.argv[4], sys.argv[5], sys.argv[6])))
+    print(json.dumps(finish(sys.argv[2], json.load(open(sys.argv[3])), sys.argv[4], sys.argv[5], sys.argv[6], int(sys.argv[7]) if len(sys.argv) > 7 else 3200)))
 
 
 if __name__ == '__main__' and len(sys.argv) > 1 and sys.argv[1] != 'finish':
