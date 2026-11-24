@@ -1,4 +1,4 @@
-// Our own bases (tools/places/own_bases.py says what and why): per place, a water type of ours (a copy of a vanilla
+// Our own bases (tools/places/own_bases.py says what and why): per place, a furniture and weathered statics with materials of ours, a water type of ours (a copy of a vanilla
 // water as the load order's winner has it, with the plan's values set) and a placed water of ours (an activator with a
 // vanilla model and bounds, carrying that water type), and a clear texture set with the copies of the mod statics whose
 // alternate textures point at no texture set, those rows pointed at the clear set. The plan's refs already name these records.
@@ -36,11 +36,36 @@ static class Own
                 var src = C.Fk(r.GetProperty("copy").GetString()!);   // a mod's static, read from its own plugin
                 var st = (Static)ctx.Fc.Plugin(src.ModKey.FileName).Statics.First(x => x.FormKey == src).Duplicate(fk);
                 st.EditorID = r.GetProperty("edid").GetString();
-                var clear = C.Fk(r.GetProperty("clear").GetString()!);
-                foreach (var a in st.Model?.AlternateTextures ?? new())
-                    if (a.NewTexture.IsNull || !Cache.TryResolve<ITextureSetGetter>(a.NewTexture.FormKey, out _))
-                        a.NewTexture.SetTo(clear);
+                if (r.TryGetProperty("clear", out var cl))
+                {
+                    var clear = C.Fk(cl.GetString()!);
+                    foreach (var a in st.Model?.AlternateTextures ?? new())
+                        if (a.NewTexture.IsNull || !Cache.TryResolve<ITextureSetGetter>(a.NewTexture.FormKey, out _))
+                            a.NewTexture.SetTo(clear);
+                }
+                if (r.TryGetProperty("material", out var mt))   // a weathered twin: the directional material, at its angle
+                {
+                    st.Material.SetTo(C.Fk(mt.GetString()!));
+                    st.MaxAngle = r.GetProperty("angle").GetSingle();
+                }
                 ctx.Mod.Statics.Add(st);
+                continue;
+            }
+            if (kind == "furniture")   // a copy of a mod's furniture (the hammock bed: its sleep markers kept)
+            {
+                var src = C.Fk(r.GetProperty("copy").GetString()!);
+                var f = (Furniture)ctx.Fc.Plugin(src.ModKey.FileName).Furniture.First(x => x.FormKey == src).Duplicate(fk);
+                f.EditorID = r.GetProperty("edid").GetString();
+                ctx.Mod.Furniture.Add(f);
+                continue;
+            }
+            if (kind == "material")   // a copy of a mod's directional material (by editor id) with members set
+            {
+                var src = r.GetProperty("copy").GetString()!.Split(':', 2);
+                var m = (MaterialObject)ctx.Fc.Find(src[0], src[1]).Duplicate(fk);
+                m.EditorID = r.GetProperty("edid").GetString();
+                foreach (var f in r.GetProperty("set").EnumerateObject()) SetMember(m, f.Name, f.Value);
+                ctx.Mod.MaterialObjects.Add(m);
                 continue;
             }
             if (kind == "water")
@@ -64,6 +89,17 @@ static class Own
                 });
             }
         }
+    }
+
+    /// one member of a MATO from JSON: a colour or vector [x, y, z] (single-pass colour is three floats), or a number
+    static void SetMember(MaterialObject m, string name, JsonElement val)
+    {
+        var p = typeof(MaterialObject).GetProperty(name) ?? throw new InvalidDataException($"MATO has no member {name}");
+        var ty = Nullable.GetUnderlyingType(p.PropertyType) ?? p.PropertyType;
+        object o = ty == typeof(P3Float) ? new P3Float(val[0].GetSingle(), val[1].GetSingle(), val[2].GetSingle())
+            : ty == typeof(float) ? (object)val.GetSingle()
+            : throw new InvalidDataException($"MATO member {name} is {ty.Name}");
+        p.SetValue(m, o);
     }
 
     /// one member of a WATR from JSON: a colour [r, g, b], a vector [x, y, z], or a number

@@ -185,7 +185,12 @@
    "standing_water_max_m": 2.0,
    "water_only": true,
    "cluster": 8,
-   "about": "Lilies and water weed: KoTM 100 % in water at 0.5 to 0.6 m; nn 3.1 m, R 0.09 (tight patches); rule 0.5 to 2 m."
+   "about": "Lilies and water weed: KoTM 100 % in water at 0.5 to 0.6 m; nn 3.1 m, R 0.09 (tight patches); rule 0.5 to 2 m.",
+   "pick_max": 8,
+   "pick_share": 1.0,
+   "main": {
+    "bm-v-01gkblillipad": 3.0
+   }
   },
   {
    "id": "mangrove",
@@ -209,7 +214,9 @@
    "match": "cypressknee",
    "standing_water_max_m": 1.5,
    "cluster": 4,
-   "about": "Cypress knees: KoTM 13 to 48 % flooded, median 0.5 m, max 1.5 m; knee with knee lift 32."
+   "about": "Cypress knees: KoTM 13 to 48 % flooded, median 0.5 m, max 1.5 m; knee with knee lift 32.",
+   "pick_max": 4,
+   "pick_share": 1.0
   },
   {
    "id": "moss_cypress",
@@ -361,7 +368,13 @@
    "match": "marshroom|giantmushroom",
    "standing_water_max_m": null,
    "cluster": 2,
-   "about": "Giant fungus."
+   "about": "Giant fungus.",
+   "pick_max": 8,
+   "pick_share": 1.0,
+   "main": {
+    "kotm-argoniatreemarshroom01blue": 2.0,
+    "kotm-argoniatreemarshroom01green": 2.0
+   }
   },
   {
    "id": "mushroom",
@@ -393,7 +406,12 @@
    "match": "(?<!t)reed|cattail",
    "standing_water_max_m": 1.5,
    "cluster": 8,
-   "about": "Reeds: vurt_reeds 99 % flooded, median 1.2 m; rule 0 to 1.5 m."
+   "about": "Reeds: vurt_reeds 99 % flooded, median 1.2 m; rule 0 to 1.5 m.",
+   "pick_max": 5,
+   "pick_share": 1.0,
+   "main": {
+    "bm-v-001reed": 3.0
+   }
   },
   {
    "id": "flowers",
@@ -402,6 +420,17 @@
    "standing_water_max_m": null,
    "cluster": 5,
    "about": "Flowering herbs of the open ground."
+  },
+  {
+   "id": "saltrice",
+   "class": "herb",
+   "match": "^$",
+   "standing_water_max_m": 0.3,
+   "opt_in": true,
+   "cluster": 6,
+   "pick_max": 2,
+   "pick_share": 1.0,
+   "about": "Saltrice, the Argonian paddy crop: grown only where a region's boost names it (opt_in), in the reed marsh, coastal grass and dry hammock habitats, to 0.3 m of still water (paddy depth)."
   },
   {
    "id": "marsh_herb",

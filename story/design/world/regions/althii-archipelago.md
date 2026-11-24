@@ -14,7 +14,7 @@ Mangrove coasts, paddy fauna, wading birds, guar and crabs fill the islands. <!-
 
 Its air is modelled as Islands, after small tropical islands in clean sea air (the Lakshadweep, Sabah's offshore islands): bright light, turquoise shallows, passing showers, the clearest air. Low islands under a steady sea wind and warm rain, paddies and mangrove coasts, sea on every side. <!-- region_atmosphere:althii-archipelago; atmosphere_class:island -->
 
-What grows commonest, by share of its plants: reed (13%), boulder (12%), marsh herb (10%), undergrowth (10%), coast palm (8%), mangrove (8%), flowers (6%), dry tree (5%). <!-- region_flora:althii-archipelago -->
+What grows commonest, by share of its plants: reed (12%), boulder (11%), undergrowth (9%), marsh herb (9%), mangrove (8%), coast palm (7%), flowers (5%), small palm (5%). <!-- region_flora:althii-archipelago -->
 
 ## Its peoples
 

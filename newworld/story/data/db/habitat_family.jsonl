@@ -11,6 +11,7 @@
 {"habitat_id":"coastal_grassland","flora_family_id":"dry_tree","share":0.14}
 {"habitat_id":"coastal_grassland","flora_family_id":"flowers","share":0.2}
 {"habitat_id":"coastal_grassland","flora_family_id":"marsh_herb","share":0.16}
+{"habitat_id":"coastal_grassland","flora_family_id":"saltrice","share":0.1}
 {"habitat_id":"coastal_grassland","flora_family_id":"small_palm","share":0.08}
 {"habitat_id":"coastal_grassland","flora_family_id":"undergrowth","share":0.24}
 {"habitat_id":"cypress_swamp","flora_family_id":"bald_cypress","share":0.22}
@@ -41,6 +42,7 @@
 {"habitat_id":"dry_hammock","flora_family_id":"erut","share":0.12}
 {"habitat_id":"dry_hammock","flora_family_id":"flowers","share":0.08}
 {"habitat_id":"dry_hammock","flora_family_id":"marsh_herb","share":0.08}
+{"habitat_id":"dry_hammock","flora_family_id":"saltrice","share":0.06}
 {"habitat_id":"dry_hammock","flora_family_id":"seju","share":0.12}
 {"habitat_id":"dry_hammock","flora_family_id":"small_palm","share":0.1}
 {"habitat_id":"dry_hammock","flora_family_id":"undergrowth","share":0.18}
@@ -88,6 +90,7 @@
 {"habitat_id":"reed_marsh","flora_family_id":"lily","share":0.12}
 {"habitat_id":"reed_marsh","flora_family_id":"marsh_herb","share":0.18}
 {"habitat_id":"reed_marsh","flora_family_id":"reed","share":0.45}
+{"habitat_id":"reed_marsh","flora_family_id":"saltrice","share":0.1}
 {"habitat_id":"reed_marsh","flora_family_id":"swamp_log","share":0.04}
 {"habitat_id":"reed_marsh","flora_family_id":"swamp_shrub","share":0.06}
 {"habitat_id":"reed_marsh","flora_family_id":"willow","share":0.04}

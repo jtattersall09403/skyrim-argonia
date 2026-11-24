@@ -67,6 +67,75 @@ STATICS = {
 REPLACES = {s["copy"]: k for k, s in STATICS.items()}
 
 
+# The hammock bed (blocks.md, the hammock bed): the held hammocks (Black Marsh North.esp `01hammock`, Journey to Baan
+# Malur `SOMRHammock`) are statics with no sleep marker. Journey to Baan Malur's own answer is the one used here: the
+# hammock static stays the look and a furniture of the mod's (SOMRHammockLeft, named Hammock, a single sleeper's half
+# of vanilla's commonbed01 markers) lies at the same spot. Ours is a copy of that furniture under our name; a draft
+# places it at the hammock's origin, the hammock static beside it unchanged.
+HAMMOCK_BED = f"{PLUGIN}:000A10"
+FURNITURE = {
+    HAMMOCK_BED: {"edid": "ArgoniaHammockBed", "copy": "Journey to Baan Malur.esp:0FFA2B", "name": "Hammock",
+                  "model": "furniture/common/commonbed01.nif", "bounds": [[-84, -88, 0], [52, 88, 74]],
+                  "keywords": ["RaceToScale"]},
+}
+
+
+# Weathered twins (blocks.md, the weathered twin): King of the Murkmire's pattern, one extra static per model with a
+# directional material (a layer drawn over the upward-facing surfaces by angle), the model and its alternate textures
+# unchanged. Our materials are copies of the mod's MossMaterialArgonia01 (a single-pass colour; the mod's moss colour
+# is Dragonborn's MossMaterialSolstheim01's) with the colour set: moss kept as the mod has it, silt a pale grey brown
+# (what settles below a waterline), algae a thin bright green. Falloff, thickness and projection are the mod's.
+MOSS_MATERIAL, SILT_MATERIAL, ALGAE_MATERIAL = (f"{PLUGIN}:000A{n}" for n in ("20", "21", "22"))
+MATERIALS = {
+    MOSS_MATERIAL: {"edid": "ArgoniaMoss", "copy": "King of the Murkmire.esp:MossMaterialArgonia01", "set": {}},
+    SILT_MATERIAL: {"edid": "ArgoniaSilt", "copy": "King of the Murkmire.esp:MossMaterialArgonia01",
+                    "set": {"SinglePassColor": [0.52, 0.47, 0.38]}},
+    ALGAE_MATERIAL: {"edid": "ArgoniaAlgae", "copy": "King of the Murkmire.esp:MossMaterialArgonia01",
+                     "set": {"SinglePassColor": [0.14, 0.30, 0.10]}},
+}
+VARIANTS = (("Moss", MOSS_MATERIAL), ("Silt", SILT_MATERIAL), ("Algae", ALGAE_MATERIAL))
+# the first family: the Ayleid, old Imperial and Xanmeer ruin pieces of King of the Murkmire that Black Marsh's ruins
+# source (id in the mod, editor id, model, bounds); the angle is the surface slope the layer takes: 90 the mod's
+# default, 75 for rubble (docs/research/new-art/ruins-and-weathering.md, R1)
+TWIN_FAMILY = (
+    ("03A82E", "AYLDExtArch01", "argonia/ayleidruins/exterior/ararch01.nif", [[-62, -267, -523], [62, 267, 937]]),
+    ("03A82F", "AYLDExtArch02", "argonia/ayleidruins/exterior/ararch02.nif", [[-62, -267, -523], [62, 267, 832]]),
+    ("03A830", "AYLDExtArch03", "argonia/ayleidruins/exterior/ararch03.nif", [[-62, -267, -523], [62, 267, 534]]),
+    ("03A831", "AYLDExtArchColumn01", "argonia/ayleidruins/exterior/ararchcolumn01.nif", [[-69, -222, -61], [61, 125, 807]]),
+    ("03FB4B", "AYLDExtColumn01", "argonia/ayleidruins/exterior/arcolumn01.nif", [[-146, -146, 0], [146, 146, 729]]),
+    ("03A836", "AYLDExtBlock01", "argonia/ayleidruins/exterior/arblock01.nif", [[-96, -96, -30], [96, 96, 32]]),
+    ("03A871", "AYLDExtStairs02", "argonia/ayleidruins/exterior/arstairs02.nif", [[-355, -1450, -284], [355, -366, 140]]),
+    ("03A877", "AYLDExtTower01", "argonia/ayleidruins/exterior/artower01.nif", [[0, -460, -650], [460, 0, 978]]),
+    ("03A86C", "AYLDExtRingOuterWall01", "argonia/ayleidruins/exterior/arringouterwall03.nif", [[645, 1556, 0], [1432, 2036, 552]]),
+    ("045C4F", "OldImpExtRuin01", "argonia/imperialruins/redruin1.nif", [[-692, -497, -65], [656, 462, 650]]),
+    ("045C50", "OldImpExtRuin02", "argonia/imperialruins/redruin2.nif", [[-1102, -473, -340], [1101, 473, 340]]),
+    ("045C51", "OldImpExtRuin03", "argonia/imperialruins/redruin3.nif", [[-486, -505, -629], [472, 519, 611]]),
+    ("045C52", "OldImpExtRuin04", "argonia/imperialruins/redruin4.nif", [[-701, -639, -272], [777, 745, 243]]),
+    ("045C53", "OldImpExtRuin05", "argonia/imperialruins/redruingate.nif", [[-432, -267, -9], [499, 77, 995]]),
+    ("015689", "OldImpRubblePile02", "tesak1243/mwimperialarchitecture/architecture/keep/rubbles/mwimparchrubblepile02.nif", [[-466, -439, -3], [461, 452, 580]]),
+    ("015683", "OldImpRubblePiece01", "tesak1243/mwimperialarchitecture/architecture/keep/rubbles/mwimparchrubblepiece01.nif", [[-294, -89, -74], [294, 89, 74]]),
+    ("005C85", "OldImpExtRuinWall01", "argonia/xanmeer/rubble/ruinedwall01.nif", [[-18, -469, -453], [21, 121, 573]]),
+    ("04B5D8", "XanmeerRubbleFloor03", "argonia/xanmeer/rubble/floorchunk01.nif", [[-280, -246, 0], [256, 286, 19]]),
+    ("5E249A", "XanmeerRubbleBlocks05", "architecture/xanmeer/furniture/xanmeer_murkmire_rubblewall1_1.nif", [[-27, -174, -1], [98, 158, 88]]),
+    ("01A81C", "AYLDRubble01", "creationclub/_shared/dungeons/ayleidruins/exterior/arextrubble01.nif", [[-466, -439, 55], [461, 452, 292]]),
+)
+RUBBLE = {"015689", "015683", "04B5D8", "5E249A", "01A81C", "005C85"}
+TWIN_BASE = 0x00B000
+
+
+def _twins() -> dict[str, dict]:
+    out = {}
+    for i, (fid, edid, model, bounds) in enumerate(TWIN_FAMILY):
+        for j, (name, mat) in enumerate(VARIANTS, 1):
+            out[f"{PLUGIN}:{TWIN_BASE + i * 4 + j:06X}"] = {
+                "edid": f"Argonia{edid}{name}", "copy": f"King of the Murkmire.esp:{fid}", "material": mat,
+                "angle": 75 if fid in RUBBLE else 90, "model": model, "bounds": bounds}
+    return out
+
+
+TWINS = _twins()
+
+
 def alt_tex(key: str, alt: list[dict] | None) -> list[dict] | None:
     """A base's alternate textures as the game will draw them with our plugin: a replaced base's rows that resolve to
     no texture set take our clear set."""
@@ -93,7 +162,11 @@ def look(water_key: str) -> dict:
 def own_rows() -> list[dict]:
     """The catalogue rows of our own placed bases."""
     return [{"key": k, "edid": a["edid"], "type": "ACTI", "model": a["model"], "bounds": a["bounds"],
-             "name": None, "plugin": PLUGIN, "keywords": [], "water": look(a["water"])} for k, a in ACTIVATORS.items()]
+             "name": None, "plugin": PLUGIN, "keywords": [], "water": look(a["water"])} for k, a in ACTIVATORS.items()] + [
+        {"key": k, "edid": f["edid"], "type": "FURN", "model": f["model"], "bounds": f["bounds"], "name": f["name"],
+         "plugin": PLUGIN, "keywords": f["keywords"]} for k, f in FURNITURE.items()] + [
+        {"key": k, "edid": t["edid"], "type": "STAT", "model": t["model"], "bounds": t["bounds"], "name": None,
+         "plugin": PLUGIN, "keywords": []} for k, t in TWINS.items()]
 
 
 def plan_own(refs: list[dict], ids, place_id: str) -> list[dict]:
@@ -122,6 +195,20 @@ def plan_own(refs: list[dict], ids, place_id: str) -> list[dict]:
                             "set": WATER[wk]["set"]})
         fk[k] = ids(f"acti:own:{k}")
         out.append({"kind": "activator", "fk": fk[k], "edid": f"{a['edid']}_{tag}", "model_from": a["model_from"], "water": fk[a["water"]]})
+    for k in [u for u in used if u in FURNITURE]:
+        f = FURNITURE[k]
+        fk[k] = ids(f"furn:own:{k}")
+        out.append({"kind": "furniture", "fk": fk[k], "edid": f"{f['edid']}_{tag}", "copy": f["copy"]})
+    for k in [u for u in used if u in TWINS]:
+        t = TWINS[k]
+        if t["material"] not in fk:
+            m = MATERIALS[t["material"]]
+            fk[t["material"]] = ids(f"mato:own:{t['material']}")
+            out.append({"kind": "material", "fk": fk[t["material"]], "edid": f"{m['edid']}_{tag}", "copy": m["copy"],
+                        "set": m["set"]})
+        fk[k] = ids(f"stat:own:{k}")
+        out.append({"kind": "static", "fk": fk[k], "edid": f"{t['edid']}_{tag}", "copy": t["copy"],
+                    "material": fk[t["material"]], "angle": t["angle"]})
     for r in refs:
         if r.get("base") in fk:
             r["base"] = fk[r["base"]]

@@ -4,6 +4,8 @@ Two steps:
   pull   out/newworld/research/flora_catalogue.json (the flora study's catalogue) -> newworld/sources/flora/bases.json:
          every catalogue row of BM&V, KoTM, Tropical Skyrim and Depths of Skyrim matched to a family
          (families.json), Nordic rows and props dropped, one base per mesh, seating from the measured refs.
+  extra  newworld/sources/flora/extra_bases.json: held bases the catalogue does not carry (hand-listed, with a why and
+         a look; `pull` never rewrites it); a family's `main` {base: weight} forces those bases into every pick, tilted.
   build  newworld/sources/flora/*.json -> the flora tables (schema.sql "Flora"); called by build_db.build() and
          runnable alone (`python -m tools.newworld.flora build`) to refresh only the flora tables.
 
@@ -32,6 +34,7 @@ TABLES = ("flora_class", "flora_family", "flora_base", "habitat", "habitat_famil
           "flora_guild_member", "region_habitat", "region_family", "region_flora")
 PICK_SHARE = 0.45      # of a family's bases a region grows (at least 2, at most PICK_MAX)
 PICK_MAX = 8
+PICK_KEYS = ("always", "pick_weight", "why")      # extra_bases.json: how a base is picked, not a db column
 
 
 def load(name: str) -> dict:
@@ -96,7 +99,7 @@ def pull(catalogue: Path = CATALOGUE) -> list[dict]:
 def rank(region: str, base_id: str, mod: str) -> float:
     """A region-seeded order inside a family: a stable hash, nudged toward the brief's first-choice mods."""
     hv = int(hashlib.sha1(f"{region}/{base_id}".encode()).hexdigest()[:8], 16) / 0xFFFFFFFF
-    return hv * (1.0 if MOD_RANK[mod] < 2 else 0.6)
+    return hv * (1.0 if MOD_RANK.get(mod, len(MODS)) < 2 else 0.6)
 
 
 def region_sets() -> tuple[dict, dict, dict, list[dict]]:
@@ -104,10 +107,12 @@ def region_sets() -> tuple[dict, dict, dict, list[dict]]:
     fam = load("families.json")
     families = {f["id"]: f for f in fam["families"]}
     habitats = {h["id"]: h for h in load("habitats.json")["habitats"]}
-    bases = load("bases.json")["bases"]
+    bases = load("bases.json")["bases"] + load("extra_bases.json")["bases"]
     by_family = defaultdict(list)
     for b in bases:
-        by_family[b["flora_family_id"]].append(b)
+        main = families[b["flora_family_id"]].get("main", {})      # the family's current look: always grown, tilted
+        by_family[b["flora_family_id"]].append({**b, "always": True, "pick_weight": main[b["id"]]}
+                                               if b["id"] in main else b)
     rows = []
     for rid, r in sorted(load("regions.json")["regions"].items()):
         boost = {k: v[0] for k, v in r.get("boost", {}).items()}
@@ -115,23 +120,28 @@ def region_sets() -> tuple[dict, dict, dict, list[dict]]:
         acc: dict[tuple, dict] = {}
         for hid, (hshare, aspect, hwhy) in r["habitats"].items():
             h = habitats[hid]
-            eff = {f: s * boost.get(f, 1.0) for f, s in h["families"].items()}
+            eff = {f: s * boost.get(f, 1.0) for f, s in h["families"].items()
+                   if not families[f].get("opt_in") or f in boost}
             eff = {f: s for f, s in eff.items() if s > 0 and by_family[f]
                    and not (families[f].get("water_only") and h["water"] == "dry")}
             tot = sum(eff.values())
             for f, s in eff.items():
                 if f not in picks:
                     cand = sorted(by_family[f], key=lambda b: -rank(rid, b["id"], b["mod"]))
-                    k = min(len(cand), max(2, min(PICK_MAX, math.ceil(len(cand) * PICK_SHARE))))
-                    picks[f] = cand[:k]
+                    pmax, pshare = families[f].get("pick_max", PICK_MAX), families[f].get("pick_share", PICK_SHARE)
+                    k = min(len(cand), max(2, min(pmax, math.ceil(len(cand) * pshare))))
+                    keep = [b for b in cand if b.get("always")]
+                    picks[f] = keep + [b for b in cand if not b.get("always")][:max(0, k - len(keep))]
                 fd = families[f]
                 water = None
                 if h["water"] == "standing" and fd.get("standing_water_max_m") is not None:
                     water = min(h["depth_max_m"], fd["standing_water_max_m"])
+                pw = sum(b.get("pick_weight", 1.0) for b in picks[f])
                 for b in picks[f]:
+                    share = b.get("pick_weight", 1.0) / pw
                     acc[(hid, b["id"])] = {"region_id": rid, "habitat_id": hid, "flora_base_id": b["id"],
-                                           "weight": hshare * s / tot / len(picks[f]),
-                                           "density_per_ha": round(h["density_per_ha"] * s / tot / len(picks[f]), 3),
+                                           "weight": hshare * s / tot * share,
+                                           "density_per_ha": round(h["density_per_ha"] * s / tot * share, 3),
                                            "water_max_m": water}
         wsum = sum(v["weight"] for v in acc.values())
         for v in acc.values():
@@ -165,7 +175,7 @@ def build(w: db.World) -> None:
         w.insert("flora_family", id=f["id"], flora_class_id=f["class"], standing_water_max_m=f.get("standing_water_max_m"),
                  water_only=int(bool(f.get("water_only"))), seabed_min_m=sb[0], seabed_max_m=sb[1],
                  cluster_size=f["cluster"], about=f["about"])
-    w.insert_many("flora_base", bases.values())
+    w.insert_many("flora_base", ({k: v for k, v in b.items() if k not in PICK_KEYS} for b in bases.values()))
     for h in habitats.values():
         w.insert("habitat", id=h["id"], name=h["name"], water=h["water"], depth_min_m=h.get("depth_min_m"),
                  depth_max_m=h.get("depth_max_m"), density_per_ha=h["density_per_ha"], about=h["about"])

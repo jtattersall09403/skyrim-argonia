@@ -1,12 +1,14 @@
 {"region_id":"althii-archipelago","flora_family_id":"bald_cypress","boost":0.0,"note_aspect_id":"ecology","why":"No cypress named: mangrove and paddy islands."}
 {"region_id":"althii-archipelago","flora_family_id":"coast_palm","boost":1.6,"note_aspect_id":"climate","why":"Sea winds and monsoon: the coconut coast."}
 {"region_id":"althii-archipelago","flora_family_id":"hanging_moss","boost":1.5,"note_aspect_id":"look","why":"Brick ruins in vines."}
+{"region_id":"althii-archipelago","flora_family_id":"saltrice","boost":1.0,"note_aspect_id":"look","why":"Research southeast/althii-archipelago: biome 'Coastal marsh and rice paddy' and 'Green rice paddies ... with sea on every side' (notes[6]). New family."}
 {"region_id":"aphon-isle","flora_family_id":"coast_palm","boost":0.5,"note_aspect_id":"climate","why":"Breezy and salt-swept: few tall palms."}
 {"region_id":"aphon-isle","flora_family_id":"dry_tree","boost":1.6,"note_aspect_id":"look","why":"Low grey hills and scrub."}
 {"region_id":"aphon-isle","flora_family_id":"jungle_tree","boost":0.0,"note_aspect_id":"ecology","why":"Scrub island, no forest."}
 {"region_id":"arnesian-jungle","flora_family_id":"giant_mushroom","boost":1.8,"note_aspect_id":"ecology","why":"Bright fungus."}
 {"region_id":"arnesian-jungle","flora_family_id":"hanging_moss","boost":1.6,"note_aspect_id":"look","why":"Velothi ruins under vines."}
 {"region_id":"arnesian-jungle","flora_family_id":"jungle_emergent","boost":1.8,"note_aspect_id":"look","why":"Tall hardwoods."}
+{"region_id":"arnesian-jungle","flora_family_id":"saltrice","boost":1.0,"note_aspect_id":"ecology","why":"Region habitat why 'Grass and saltrice near Thorn'; story/lore/regions/thornmarsh-and-east.md: 'Saltrice fields in Thorn's outskirts'. New family."}
 {"region_id":"arnesian-jungle","flora_family_id":"swamp_shrub","boost":1.5,"note_aspect_id":"ecology","why":"Tree-ferns."}
 {"region_id":"aunike-ridge","flora_family_id":"dry_tree","boost":1.5,"note_aspect_id":"ecology","why":"A few stunted trees."}
 {"region_id":"aunike-ridge","flora_family_id":"flowers","boost":1.3,"note_aspect_id":"climate","why":"A little drier, with morning mist."}
@@ -39,6 +41,7 @@
 {"region_id":"kotherra-mangroves","flora_family_id":"mangrove","boost":1.4,"why":"Mangrove swamp and estuary (biome)."}
 {"region_id":"lake-ulaish","flora_family_id":"mangrove","boost":0.0,"why":"Freshwater lake."}
 {"region_id":"lake-ulaish","flora_family_id":"reed","boost":1.3,"note_aspect_id":"ecology","why":"Reed beds."}
+{"region_id":"lake-ulaish","flora_family_id":"saltrice","boost":1.0,"note_aspect_id":"ecology","why":"Research heartland/lake-ulaish: 'rice paddies on raised banks' (notes[9]) and saltrice in the lake trade (notes[4]). New family."}
 {"region_id":"lake-ulaish","flora_family_id":"willow","boost":1.8,"note_aspect_id":"landscape","why":"Delta of river arms."}
 {"region_id":"murkwood","flora_family_id":"coast_palm","boost":0.0,"note_aspect_id":"look","why":"Dark wood."}
 {"region_id":"murkwood","flora_family_id":"giant_mushroom","boost":1.5,"note_aspect_id":"ecology","why":"Torchbugs and bright growth."}
@@ -49,6 +52,7 @@
 {"region_id":"nha-enasa","flora_family_id":"reed","boost":1.3,"note_aspect_id":"ecology","why":"Reeds."}
 {"region_id":"nushara-bayou","flora_family_id":"jungle_emergent","boost":0.0,"note_aspect_id":"landscape","why":"Flat, shifting; no tall forest."}
 {"region_id":"nushara-bayou","flora_family_id":"marsh_herb","boost":1.5,"note_aspect_id":"ecology","why":"Saltrice."}
+{"region_id":"nushara-bayou","flora_family_id":"saltrice","boost":1.0,"note_aspect_id":"ecology","why":"Research southeast/nushara-bayou: biome 'Bayou and saltrice marsh' and 'Reed, mangrove, saltrice, slaughterfish, wading birds and mud-crabs' (notes[9]). New family."}
 {"region_id":"nushara-bayou","flora_family_id":"willow","boost":1.3,"note_aspect_id":"look","why":"Hummocks of trees."}
 {"region_id":"okuwun-rahei","flora_family_id":"bamboo","boost":1.5,"note_aspect_id":"look","why":"Bright reed thatch."}
 {"region_id":"okuwun-rahei","flora_family_id":"flowers","boost":1.6,"note_aspect_id":"ecology","why":"Madder: ochre-stained marsh plants."}

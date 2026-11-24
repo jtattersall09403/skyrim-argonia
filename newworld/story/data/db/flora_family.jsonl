@@ -27,6 +27,7 @@
 {"id":"reed","flora_class_id":"reed","standing_water_max_m":1.5,"water_only":0,"cluster_size":8,"about":"Reeds: vurt_reeds 99 % flooded, median 1.2 m; rule 0 to 1.5 m."}
 {"id":"rock_den","flora_class_id":"cliff","water_only":0,"cluster_size":1,"about":"Den and cave mouths."}
 {"id":"rock_wall","flora_class_id":"cliff","water_only":0,"cluster_size":1,"about":"Large cliff walls and mountain pieces (sink 4 to 16 m)."}
+{"id":"saltrice","flora_class_id":"herb","standing_water_max_m":0.3,"water_only":0,"cluster_size":6,"about":"Saltrice, the Argonian paddy crop: grown only where a region's boost names it (opt_in), in the reed marsh, coastal grass and dry hammock habitats, to 0.3 m of still water (paddy depth)."}
 {"id":"seabed_rock","flora_class_id":"seabed_rock","water_only":0,"seabed_min_m":3.0,"seabed_max_m":33.0,"cluster_size":3,"about":"Depths moss rocks and seabed cliffs: 10 to 16 m median (3..33), sink 0 to 1 m."}
 {"id":"seaweed","flora_class_id":"seabed_plant","water_only":0,"seabed_min_m":7.5,"seabed_max_m":64.0,"cluster_size":3,"about":"Depths seaweed: deep floor, median 29 to 33 m (p10..p90 12..64); cluster 7.5 m."}
 {"id":"seju","flora_class_id":"palm","standing_water_max_m":0.5,"water_only":0,"cluster_size":3,"about":"Seju palms and saplings."}

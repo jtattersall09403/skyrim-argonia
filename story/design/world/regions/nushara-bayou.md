@@ -14,7 +14,7 @@ Reed, mangrove, saltrice, slaughterfish, wading birds and mud-crabs. <!-- region
 
 Its air is modelled as Green marsh and backwater, after kerala's backwaters and Kuttanad's paddies; Borneo's open freshwater marsh: bright green reed and paddy under a luminous white sky. A bayou of reed flats under heavy warm rain and low mist; 408 green-marsh cells. <!-- region_atmosphere:nushara-bayou; atmosphere_class:green-marsh -->
 
-What grows commonest, by share of its plants: reed (18%), marsh herb (14%), lily (14%), mangrove (7%), fern (6%), undergrowth (6%), swamp log (4%), swamp shrub (4%). <!-- region_flora:nushara-bayou -->
+What grows commonest, by share of its plants: reed (17%), marsh herb (14%), lily (13%), mangrove (7%), fern (6%), undergrowth (6%), swamp log (4%), swamp shrub (4%). <!-- region_flora:nushara-bayou -->
 
 ## Its peoples
 

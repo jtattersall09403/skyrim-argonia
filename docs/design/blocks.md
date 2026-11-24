@@ -134,6 +134,33 @@ before its first use. The middle column is where each was first asked for:
 | a hearing after a fade | the Lampbearers' cases and the Chainbreakers' last quest | a fade, the player moved to the hearing room, the magistrate speaking first |
 | a place that changes after a line ends | Gideon held by the pirates; the merchants' post on Skeith Isle growing in three steps | sets of people and things enabled and disabled away from the player |
 
+## Place blocks: records of ours the place layer mints
+
+Our own bases (`tools/places/own_bases.py`, key `ArgoniaOwn.esp:...`) are copies of a held record under our name; the
+draft places them by key, the build (`plan_own`, `Own.cs`) gives each place its own copy and swaps the refs' base. Each
+is proven once, then copied by adding a row to its table.
+
+### The hammock bed
+
+A held hammock (Black Marsh North `01hammock`, Journey to Baan Malur `SOMRHammock`) is a static with no sleep marker.
+Place the hammock static as the look and `ArgoniaHammockBed` (`own_bases.HAMMOCK_BED`) at the hammock's origin, same
+rotation. The bed is a copy of Journey to Baan Malur's `SOMRHammockLeft` (one sleeper, vanilla `commonbed01` markers);
+a second sleeper is a second ref of the bed turned half a metre aside. Precedent: that mod places exactly this pair
+(a hammock static and a bed furniture); vanilla puts invisible furniture in odd frames (`DA11AltarInvisibleBed`,
+`InvisibleChair*`). If the bed's own mesh shows through the net, swap its model for the invisible
+`furniture/invisible/laydownmarker01.nif` in the table. Owner check: stand at one placed hammock, press activate, and
+the player lies down in the net.
+
+### The weathered twin
+
+A ruin piece in a second state by record, King of the Murkmire's pattern: one extra static per model with a
+directional material (drawn over upward-facing surfaces by angle), model and alternate textures unchanged. Our three
+materials (`ArgoniaMoss`, `ArgoniaSilt` pale grey brown, `ArgoniaAlgae` thin green) are copies of the mod's
+`MossMaterialArgonia01` with the single-pass colour set. `TWIN_FAMILY` lists the 20 Ayleid, old Imperial and Xanmeer
+ruin pieces (3 twins each: key `0x00B000 + 4 * index + 1..3`); a draft places a twin by its key where the piece stands
+weathered. Angle 90, 75 for rubble. One material per static, never changed in play. Owner check: one placed
+`ArgoniaAYLDExtArch01Moss`, `...Silt` and `...Algae` beside the clean arch, seen from above at daylight.
+
 ## How record terms map to blocks
 
 The compiler maps every record term to the form's blocks, and refuses each term outside them, in

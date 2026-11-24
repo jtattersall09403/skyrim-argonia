@@ -14,7 +14,7 @@ Eels, reed fish, crocodiles in the delta, water-birds in the reed beds and rice 
 
 Its air is modelled as Green marsh and backwater, after kerala's backwaters and Kuttanad's paddies; Borneo's open freshwater marsh: bright green reed and paddy under a luminous white sky. A wide pale lake fringed with reed and delta marsh, squalls over open water and fog on the shores; 77 green-marsh cells round the lake. <!-- region_atmosphere:lake-ulaish; atmosphere_class:green-marsh -->
 
-What grows commonest, by share of its plants: reed (20%), lily (15%), kelp (14%), marsh herb (8%), boulder (6%), undergrowth (5%), shell (5%), fern (4%). <!-- region_flora:lake-ulaish -->
+What grows commonest, by share of its plants: reed (19%), lily (15%), kelp (14%), marsh herb (7%), boulder (6%), undergrowth (5%), shell (5%), fern (4%). <!-- region_flora:lake-ulaish -->
 
 ## Its peoples
 

@@ -106,8 +106,12 @@ judging, undoing. Records and shaders only make the dressing cheap to repeat.
 - R2 Texture-set twins: `Clean`, `Dirty`, `Wet`, `Mossy`, `Silted`, `Drowned` TXST per kit, chosen per shape by MODS
   (KotM does clean/dirty/wet/moss on Ayleid already). Cost: one TXST per kit state, no mesh.
 - R3 New material objects of our own (silt, algae, tide-line, soot): copy KotM's MossMaterialArgonia values, change
-  colour and falloff. Colour-only (single pass), no texture file needed (inference: the ShaderBox.nif these point to is in
-  no archive held, so the look rests on the record's colour; only a game look settles it).
+  colour and falloff. Colour-only (single pass), no texture file needed. The `Meshes\ShaderTests\ShaderBox.nif` that 23 material records name in
+  their MODL (16 Skyrim.esm, 1 Dawnguard, 5 Dragonborn, 3 KotM) is a mesh, not a texture, and ships in no BSA of the
+  game or our mods (all 41 archives' file tables read, no loose copy on disk): it is the Creation Kit's preview mesh.
+  The game draws a directional material from the record's DATA (falloff, UV scales, projection, single-pass colour),
+  which is why Bethesda's own moss and snow work without it. `Architecture\Markarth\mosscube.nif` (MarkarthMoss) is
+  likewise absent.
 - R4 Decals (TXST decal data): vanilla has 52 such sets in Skyrim, 7 in the DLCs, none in BM&V, KotM or Cipactli; what
   places them was not measured. Treat as trial.
 - R5 Variant naming: "MossLight/MossHeavy" copies Bethesda's `LightSN/HeavySN` ladder: one model, three amounts.
