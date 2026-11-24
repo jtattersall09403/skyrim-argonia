@@ -1,0 +1,184 @@
+{
+ "save_id": "agent-20261124T202712",
+ "place_id": "outpost-m11-m63",
+ "name": "worn clothes for Heeta-daro, Dee-kai and Nur-daro",
+ "at": "2026-11-24T20:27:12Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "stock.possessions.set",
+   "possessions": {
+    "person": "outpost-m11-m63.2D8TRNXGV4ZTY70CR2RRSPKDNQ",
+    "items": [
+     {
+      "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B",
+      "count": 1,
+      "worn": true,
+      "why": "her clothes: Rough Fiber Clothes, the native weavers' plain fibre dress (cloth, T1; kit guard's plain woven clothes), the same reed-fibre work as the weir fences she mends"
+     },
+     {
+      "item": "King of the Murkmire.esp:57AA3C",
+      "count": 1,
+      "worn": true,
+      "why": "a flint fishing knife at T1 (kit fisher): she cuts twine and reed when she reweaves the weir"
+     },
+     {
+      "item": "Skyrim.esm:013790",
+      "count": 1,
+      "worn": true,
+      "why": "an iron hatchet at T1, tolled in from the road (bog iron, traded in Barsaebica): she cuts the weir's stakes with it, the one tool here worth buying in metal"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 9,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Heeta-daro: resident, weir-warden of the levy; mends the woven weir's fences, W2; best tier T1"
+   },
+   "before": {
+    "person": "outpost-m11-m63.2D8TRNXGV4ZTY70CR2RRSPKDNQ",
+    "items": [
+     {
+      "item": "King of the Murkmire.esp:57AA3C",
+      "count": 1,
+      "worn": true,
+      "why": "a flint fishing knife at T1 (kit fisher): she cuts twine and reed when she reweaves the weir"
+     },
+     {
+      "item": "Skyrim.esm:013790",
+      "count": 1,
+      "worn": true,
+      "why": "an iron hatchet at T1, tolled in from the road (bog iron, traded in Barsaebica): she cuts the weir's stakes with it, the one tool here worth buying in metal"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 9,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Heeta-daro: resident, weir-warden of the levy; mends the woven weir's fences, W2; best tier T1"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T20:27:12Z"
+  },
+  {
+   "op": "stock.possessions.set",
+   "possessions": {
+    "person": "outpost-m11-m63.A18ZNRSB82MNW5N5XNFHP8324T",
+    "items": [
+     {
+      "item": "King of the Murkmire.esp:086670",
+      "count": 1,
+      "worn": true,
+      "why": "his clothes: a plain short Grey Tunic of the Saxhleel villages (cloth, T1; kit guard's plain woven clothes), short in the sleeve for gutting the catch at the landing"
+     },
+     {
+      "item": "Skyrim.esm:01397E",
+      "count": 1,
+      "worn": true,
+      "why": "an iron gutting knife at T1, tolled in (bog iron, traded): he guts the eels and gar at the landing, where a flint edge dulls"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 9,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Dee-kai: resident, weir-warden of the levy; guts the catch at the landing, W2; best tier T1"
+   },
+   "before": {
+    "person": "outpost-m11-m63.A18ZNRSB82MNW5N5XNFHP8324T",
+    "items": [
+     {
+      "item": "Skyrim.esm:01397E",
+      "count": 1,
+      "worn": true,
+      "why": "an iron gutting knife at T1, tolled in (bog iron, traded): he guts the eels and gar at the landing, where a flint edge dulls"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 9,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Dee-kai: resident, weir-warden of the levy; guts the catch at the landing, W2; best tier T1"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-24T20:27:12Z"
+  },
+  {
+   "op": "stock.possessions.set",
+   "possessions": {
+    "person": "outpost-m11-m63.Q8M0WVXC047WMHKQ1Q44E775VD",
+    "items": [
+     {
+      "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+      "count": 1,
+      "worn": true,
+      "why": "his clothes: Rough Fiber Clothes, the native weavers' plain fibre dress (cloth, T1; kit guard's plain woven clothes), light enough to keep his feet on the slick log walk"
+     },
+     {
+      "item": "Skyrim.esm:01397E",
+      "count": 1,
+      "worn": true,
+      "why": "an iron knife at T1, tolled in from the road (bog iron, traded in Barsaebica): he cuts the traps free from the weir on the log walk"
+     },
+     {
+      "item": "PrvtI_ArgonianWeapons.esp:00080D",
+      "count": 1,
+      "worn": true,
+      "why": "a bone fish-spear at T1 (kit fisher: a harpoon): he works the traps from the slick log walk at dusk"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 5,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Nur-daro: resident, weir-warden of the levy; walks the log walk at dusk, W2; best tier T1"
+   },
+   "before": {
+    "person": "outpost-m11-m63.Q8M0WVXC047WMHKQ1Q44E775VD",
+    "items": [
+     {
+      "item": "Skyrim.esm:01397E",
+      "count": 1,
+      "worn": true,
+      "why": "an iron knife at T1, tolled in from the road (bog iron, traded in Barsaebica): he cuts the traps free from the weir on the log walk"
+     },
+     {
+      "item": "PrvtI_ArgonianWeapons.esp:00080D",
+      "count": 1,
+      "worn": true,
+      "why": "a bone fish-spear at T1 (kit fisher: a harpoon): he works the traps from the slick log walk at dusk"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 5,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Nur-daro: resident, weir-warden of the levy; walks the log walk at dusk, W2; best tier T1"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-24T20:27:12Z"
+  }
+ ]
+}

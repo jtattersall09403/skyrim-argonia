@@ -1,2828 +1,396 @@
 {
  "place_id": "outpost-m11-m63",
  "about": "Reed-Sill Weir's stock (place-stock skill): derived by `stock derive`, read against the place's facts. The fish basket on the landing deck is the household's store (the wardens keep no chest: a camp of five in tents); the Owing's goods chest under the ground is the jail stage's and holds nothing; the thief's sack in the reeds delivers the treasure; the grey moss on the weir delivers the rare harvest. Who the people are is newworld/sources/people/outpost-m11-m63.json.",
- "facts": {
-  "wealth": "P1",
-  "ceiling": "T1",
-  "open": "T1",
-  "danger": "D1",
-  "why": "score 27 = outpost 6 + importance 1 5 + population 2 5 + trade 8 (2 roads, major, 0 traders) + economy +3 (+market) -> P1 Poor; ceiling T1 (friendly: its people's own goods, its wealth's T1; reward band D1 T1)"
- },
+ "facts": {"wealth": "P1", "ceiling": "T1", "open": "T1", "danger": "D1", "why": "score 27 = outpost 6 + importance 1 5 + population 2 5 + trade 8 (2 roads, major, 0 traders) + economy +3 (+market) -> P1 Poor; ceiling T1 (friendly: its people's own goods, its wealth's T1; reward band D1 T1)"},
  "goods": [
-  {
-   "good": "river-fish",
-   "relation": "makes",
-   "why": "Eels and gar from the traps are sold to Jal-Veesa's market and on to Stormhold (place note: economy)",
-   "cites": [
-    "place_note:outpost-m11-m63/economy"
-   ]
-  }
+  {"good": "river-fish", "relation": "makes", "why": "Eels and gar from the traps are sold to Jal-Veesa's market and on to Stormhold (place note: economy)", "cites": ["place_note:outpost-m11-m63/economy"]}
  ],
  "containers": [
-  {
-   "ref": "outpost-m11-m63.LOOK028PLACE",
-   "space": "exterior",
-   "kind": "sack",
-   "lock": null,
-   "security": "S0",
-   "tier": "T1",
-   "gold": 18,
-   "items": [
-    {
-     "item": "Here There Be Monsters - Curse of Cipactli.esp:85C5A9",
-     "count": 2,
-     "worn": false,
-     "why": "eel taken from the robbed weir traps (record hooks: the traps are robbed at night), stuffed in the thief's sack with the night's coin"
-    }
-   ],
-   "why": "the thief's sack hidden in the reeds at the weir's south end (treasure: 'a thief's sack of eels from the robbed traps and coin hidden in the reeds'): nobody's (a thief's stash on the bank), at the reward band's tier T1 (D1), its coin the night's takings from the traps",
-   "cites": [
-    "place_give:outpost-m11-m63/3",
-    "place_note:outpost-m11-m63/hooks"
-   ]
-  },
-  {
-   "ref": "outpost-m11-m63.LOOK030PLACE",
-   "space": "exterior",
-   "kind": "basket",
-   "owner_household": "outpost-m11-m63.household.exterior",
-   "lock": null,
-   "security": "S0",
-   "tier": "T1",
-   "gold": 0,
-   "items": [
-    {
-     "item": "Here There Be Monsters - Curse of Cipactli.esp:85C5A9",
-     "count": 4,
-     "worn": false,
-     "why": "the day's catch from the weir traps waiting at the landing (kit fisher: home river-fish; record gives: fishing, eels and gar), bound for Jal-Veesa's market"
-    }
-   ],
-   "why": "the wardens' fish basket on the landing deck: the household's catch, kept where it is landed (kit fisher, home river-fish); no gold, unlocked",
-   "cites": [
-    "place_give:outpost-m11-m63/0",
-    "place_note:outpost-m11-m63/economy"
-   ]
-  }
+  {"ref": "outpost-m11-m63.LOOK028PLACE", "space": "exterior", "kind": "sack", "lock": null, "security": "S0", "tier": "T1", "gold": 18, "items": [{"item": "Here There Be Monsters - Curse of Cipactli.esp:85C5A9", "count": 2, "worn": false, "why": "eel taken from the robbed weir traps (record hooks: the traps are robbed at night), stuffed in the thief's sack with the night's coin"}], "why": "the thief's sack hidden in the reeds at the weir's south end (treasure: 'a thief's sack of eels from the robbed traps and coin hidden in the reeds'): nobody's (a thief's stash on the bank), at the reward band's tier T1 (D1), its coin the night's takings from the traps", "cites": ["place_give:outpost-m11-m63/3", "place_note:outpost-m11-m63/hooks"]},
+  {"ref": "outpost-m11-m63.LOOK030PLACE", "space": "exterior", "kind": "basket", "owner_household": "outpost-m11-m63.household.exterior", "lock": null, "security": "S0", "tier": "T1", "gold": 0, "items": [{"item": "Here There Be Monsters - Curse of Cipactli.esp:85C5A9", "count": 4, "worn": false, "why": "the day's catch from the weir traps waiting at the landing (kit fisher: home river-fish; record gives: fishing, eels and gar), bound for Jal-Veesa's market"}], "why": "the wardens' fish basket on the landing deck: the household's catch, kept where it is landed (kit fisher, home river-fish); no gold, unlocked", "cites": ["place_give:outpost-m11-m63/0", "place_note:outpost-m11-m63/economy"]}
  ],
  "loose": [],
  "possessions": [
-  {
-   "person": "outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ",
-   "items": [
-    {
-     "item": "King of the Murkmire.esp:275050",
-     "count": 1,
-     "worn": true,
-     "why": "the levy's sidearm at T2 (kit guard): a Saxhleel bone sword, bone and leather work of the marsh, since Barsaebica tolls metal in and works none (region profile)"
-    },
-    {
-     "item": "King of the Murkmire.esp:00ADB5",
-     "count": 1,
-     "worn": true,
-     "why": "the levy's cuirass at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"
-    },
-    {
-     "item": "King of the Murkmire.esp:00ADB4",
-     "count": 1,
-     "worn": true,
-     "why": "the levy's boots at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"
-    },
-    {
-     "item": "King of the Murkmire.esp:000D6B",
-     "count": 1,
-     "worn": true,
-     "why": "the levy's gauntlets at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"
-    },
-    {
-     "item": "Skyrim.esm:013922",
-     "count": 1,
-     "worn": true,
-     "why": "the levy's helmet at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"
-    },
-    {
-     "item": "Skyrim.esm:01D4EC",
-     "count": 1,
-     "worn": false,
-     "why": "the levy's torch: Every guard carries one plain torch, as Skyrim's guards do through their gear lists: the night watch lights its way after dark. The torch itself, never a levelled list (decision 0035)."
-    },
-    {
-     "item": "Skyrim.esm:00000F",
-     "count": 3,
-     "worn": false,
-     "why": "carried gold, 2-10 for W2 Poor"
-    }
-   ],
-   "why": "Ula-ja: guard, weir-warden of the levy, night watch, W2; best tier T1"
-  },
-  {
-   "person": "outpost-m11-m63.PF9DWPC1Z8Q6BZZQGDCJPX7A7W",
-   "items": [
-    {
-     "item": "King of the Murkmire.esp:275050",
-     "count": 1,
-     "worn": true,
-     "why": "the levy's sidearm at T2 (kit guard): a Saxhleel bone sword like the night watch's, the wardens' own issue rather than tolled-in iron (region profile: no smiths)"
-    },
-    {
-     "item": "King of the Murkmire.esp:00ADB5",
-     "count": 1,
-     "worn": true,
-     "why": "the levy's cuirass at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"
-    },
-    {
-     "item": "King of the Murkmire.esp:00ADB4",
-     "count": 1,
-     "worn": true,
-     "why": "the levy's boots at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"
-    },
-    {
-     "item": "King of the Murkmire.esp:000D6B",
-     "count": 1,
-     "worn": true,
-     "why": "the levy's gauntlets at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"
-    },
-    {
-     "item": "Skyrim.esm:013922",
-     "count": 1,
-     "worn": true,
-     "why": "the levy's helmet at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"
-    },
-    {
-     "item": "Skyrim.esm:01D4EC",
-     "count": 1,
-     "worn": false,
-     "why": "the levy's torch: Every guard carries one plain torch, as Skyrim's guards do through their gear lists: the night watch lights its way after dark. The torch itself, never a levelled list (decision 0035)."
-    },
-    {
-     "item": "Skyrim.esm:00000F",
-     "count": 5,
-     "worn": false,
-     "why": "carried gold, 2-10 for W2 Poor"
-    }
-   ],
-   "why": "Zee-nassa: guard, weir-warden of the levy, day watch; leads the wardens on their turn at the weir, W2; best tier T1"
-  },
-  {
-   "person": "outpost-m11-m63.2D8TRNXGV4ZTY70CR2RRSPKDNQ",
-   "items": [
-    {
-     "item": "King of the Murkmire.esp:57AA3C",
-     "count": 1,
-     "worn": true,
-     "why": "a flint fishing knife at T1 (kit fisher): she cuts twine and reed when she reweaves the weir"
-    },
-    {
-     "item": "Skyrim.esm:013790",
-     "count": 1,
-     "worn": true,
-     "why": "an iron hatchet at T1, tolled in from the road (bog iron, traded in Barsaebica): she cuts the weir's stakes with it, the one tool here worth buying in metal"
-    },
-    {
-     "item": "Skyrim.esm:00000F",
-     "count": 9,
-     "worn": false,
-     "why": "carried gold, 2-10 for W2 Poor"
-    }
-   ],
-   "why": "Heeta-daro: resident, weir-warden of the levy; mends the woven weir's fences, W2; best tier T1"
-  },
-  {
-   "person": "outpost-m11-m63.A18ZNRSB82MNW5N5XNFHP8324T",
-   "items": [
-    {
-     "item": "Skyrim.esm:01397E",
-     "count": 1,
-     "worn": true,
-     "why": "an iron gutting knife at T1, tolled in (bog iron, traded): he guts the eels and gar at the landing, where a flint edge dulls"
-    },
-    {
-     "item": "Skyrim.esm:00000F",
-     "count": 9,
-     "worn": false,
-     "why": "carried gold, 2-10 for W2 Poor"
-    }
-   ],
-   "why": "Dee-kai: resident, weir-warden of the levy; guts the catch at the landing, W2; best tier T1"
-  },
-  {
-   "person": "outpost-m11-m63.Q8M0WVXC047WMHKQ1Q44E775VD",
-   "items": [
-    {
-     "item": "Skyrim.esm:01397E",
-     "count": 1,
-     "worn": true,
-     "why": "an iron knife at T1, tolled in from the road (bog iron, traded in Barsaebica): he cuts the traps free from the weir on the log walk"
-    },
-    {
-     "item": "PrvtI_ArgonianWeapons.esp:00080D",
-     "count": 1,
-     "worn": true,
-     "why": "a bone fish-spear at T1 (kit fisher: a harpoon): he works the traps from the slick log walk at dusk"
-    },
-    {
-     "item": "Skyrim.esm:00000F",
-     "count": 5,
-     "worn": false,
-     "why": "carried gold, 2-10 for W2 Poor"
-    }
-   ],
-   "why": "Nur-daro: resident, weir-warden of the levy; walks the log walk at dusk, W2; best tier T1"
-  }
+  {"person": "outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ", "items": [{"item": "King of the Murkmire.esp:275050", "count": 1, "worn": true, "why": "the levy's sidearm at T2 (kit guard): a Saxhleel bone sword, bone and leather work of the marsh, since Barsaebica tolls metal in and works none (region profile)"}, {"item": "King of the Murkmire.esp:00ADB5", "count": 1, "worn": true, "why": "the levy's cuirass at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"}, {"item": "King of the Murkmire.esp:00ADB4", "count": 1, "worn": true, "why": "the levy's boots at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"}, {"item": "King of the Murkmire.esp:000D6B", "count": 1, "worn": true, "why": "the levy's gauntlets at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"}, {"item": "Skyrim.esm:013922", "count": 1, "worn": true, "why": "the levy's helmet at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"}, {"item": "Skyrim.esm:01D4EC", "count": 1, "worn": false, "why": "the levy's torch: Every guard carries one plain torch, as Skyrim's guards do through their gear lists: the night watch lights its way after dark. The torch itself, never a levelled list (decision 0035)."}, {"item": "Skyrim.esm:00000F", "count": 3, "worn": false, "why": "carried gold, 2-10 for W2 Poor"}], "why": "Ula-ja: guard, weir-warden of the levy, night watch, W2; best tier T1"},
+  {"person": "outpost-m11-m63.2D8TRNXGV4ZTY70CR2RRSPKDNQ", "items": [{"item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B", "count": 1, "worn": true, "why": "her clothes: Rough Fiber Clothes, the native weavers' plain fibre dress (cloth, T1; kit guard's plain woven clothes), the same reed-fibre work as the weir fences she mends"}, {"item": "King of the Murkmire.esp:57AA3C", "count": 1, "worn": true, "why": "a flint fishing knife at T1 (kit fisher): she cuts twine and reed when she reweaves the weir"}, {"item": "Skyrim.esm:013790", "count": 1, "worn": true, "why": "an iron hatchet at T1, tolled in from the road (bog iron, traded in Barsaebica): she cuts the weir's stakes with it, the one tool here worth buying in metal"}, {"item": "Skyrim.esm:00000F", "count": 9, "worn": false, "why": "carried gold, 2-10 for W2 Poor"}], "why": "Heeta-daro: resident, weir-warden of the levy; mends the woven weir's fences, W2; best tier T1"},
+  {"person": "outpost-m11-m63.A18ZNRSB82MNW5N5XNFHP8324T", "items": [{"item": "King of the Murkmire.esp:086670", "count": 1, "worn": true, "why": "his clothes: a plain short Grey Tunic of the Saxhleel villages (cloth, T1; kit guard's plain woven clothes), short in the sleeve for gutting the catch at the landing"}, {"item": "Skyrim.esm:01397E", "count": 1, "worn": true, "why": "an iron gutting knife at T1, tolled in (bog iron, traded): he guts the eels and gar at the landing, where a flint edge dulls"}, {"item": "Skyrim.esm:00000F", "count": 9, "worn": false, "why": "carried gold, 2-10 for W2 Poor"}], "why": "Dee-kai: resident, weir-warden of the levy; guts the catch at the landing, W2; best tier T1"},
+  {"person": "outpost-m11-m63.PF9DWPC1Z8Q6BZZQGDCJPX7A7W", "items": [{"item": "King of the Murkmire.esp:275050", "count": 1, "worn": true, "why": "the levy's sidearm at T2 (kit guard): a Saxhleel bone sword like the night watch's, the wardens' own issue rather than tolled-in iron (region profile: no smiths)"}, {"item": "King of the Murkmire.esp:00ADB5", "count": 1, "worn": true, "why": "the levy's cuirass at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"}, {"item": "King of the Murkmire.esp:00ADB4", "count": 1, "worn": true, "why": "the levy's boots at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"}, {"item": "King of the Murkmire.esp:000D6B", "count": 1, "worn": true, "why": "the levy's gauntlets at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"}, {"item": "Skyrim.esm:013922", "count": 1, "worn": true, "why": "the levy's helmet at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"}, {"item": "Skyrim.esm:01D4EC", "count": 1, "worn": false, "why": "the levy's torch: Every guard carries one plain torch, as Skyrim's guards do through their gear lists: the night watch lights its way after dark. The torch itself, never a levelled list (decision 0035)."}, {"item": "Skyrim.esm:00000F", "count": 5, "worn": false, "why": "carried gold, 2-10 for W2 Poor"}], "why": "Zee-nassa: guard, weir-warden of the levy, day watch; leads the wardens on their turn at the weir, W2; best tier T1"},
+  {"person": "outpost-m11-m63.Q8M0WVXC047WMHKQ1Q44E775VD", "items": [{"item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69", "count": 1, "worn": true, "why": "his clothes: Rough Fiber Clothes, the native weavers' plain fibre dress (cloth, T1; kit guard's plain woven clothes), light enough to keep his feet on the slick log walk"}, {"item": "Skyrim.esm:01397E", "count": 1, "worn": true, "why": "an iron knife at T1, tolled in from the road (bog iron, traded in Barsaebica): he cuts the traps free from the weir on the log walk"}, {"item": "PrvtI_ArgonianWeapons.esp:00080D", "count": 1, "worn": true, "why": "a bone fish-spear at T1 (kit fisher: a harpoon): he works the traps from the slick log walk at dusk"}, {"item": "Skyrim.esm:00000F", "count": 5, "worn": false, "why": "carried gold, 2-10 for W2 Poor"}], "why": "Nur-daro: resident, weir-warden of the levy; walks the log walk at dusk, W2; best tier T1"}
  ],
  "traders": [],
  "deliveries": [
-  {
-   "give_seq": 3,
-   "by": "container",
-   "ref": "outpost-m11-m63.LOOK028PLACE",
-   "status": "delivered",
-   "why": "the thief's sack lies in the reeds at the south end of the weir's log walk, the far bank from the camp (placed by hand), stocked at T1"
-  },
-  {
-   "give_seq": 4,
-   "by": "ref",
-   "ref": "outpost-m11-m63.LOOK023PLACE",
-   "status": "delivered",
-   "why": "Sithis' beard: ten hanks of Skyrim's hanging moss draped on both faces of the woven weir's fences (placed by hand), picked from the log walk; the quest's own hank lies on the log walk at the weir's north bank end"
-  },
-  {
-   "give_seq": 0,
-   "by": "ref",
-   "status": "delivered",
-   "why": "the fish of the water below the weir: Skyrim's deep-pond critter spawner, fish only (placed by hand), just downstream of the woven weir",
-   "ref": "outpost-m11-m63.LOOK029PLACE"
-  },
-  {
-   "give_seq": 2,
-   "by": "record",
-   "status": "delivered",
-   "why": "combat-creature 'mudcrabs on the bank and two young crocodiles below the weir': the quest's own placements at a fixed level (main quest 2: two mudcrabs at level 2, two young crocodiles at level 3), each standing at its spot in the studio's Quests layer: quest.main.mn02/npc.mn02.mudcrab-1, quest.main.mn02/npc.mn02.mudcrab-2, quest.main.mn02/npc.mn02.crocodile-1, quest.main.mn02/npc.mn02.crocodile-2"
-  }
+  {"give_seq": 0, "by": "ref", "status": "delivered", "why": "the fish of the water below the weir: Skyrim's deep-pond critter spawner, fish only (placed by hand), just downstream of the woven weir", "ref": "outpost-m11-m63.LOOK029PLACE"},
+  {"give_seq": 2, "by": "record", "status": "delivered", "why": "combat-creature 'mudcrabs on the bank and two young crocodiles below the weir': the quest's own placements at a fixed level (main quest 2: two mudcrabs at level 2, two young crocodiles at level 3), each standing at its spot in the studio's Quests layer: quest.main.mn02/npc.mn02.mudcrab-1, quest.main.mn02/npc.mn02.mudcrab-2, quest.main.mn02/npc.mn02.crocodile-1, quest.main.mn02/npc.mn02.crocodile-2"},
+  {"give_seq": 3, "by": "container", "ref": "outpost-m11-m63.LOOK028PLACE", "status": "delivered", "why": "the thief's sack lies in the reeds at the south end of the weir's log walk, the far bank from the camp (placed by hand), stocked at T1"},
+  {"give_seq": 4, "by": "ref", "ref": "outpost-m11-m63.LOOK023PLACE", "status": "delivered", "why": "Sithis' beard: ten hanks of Skyrim's hanging moss draped on both faces of the woven weir's fences (placed by hand), picked from the log walk; the quest's own hank lies on the log walk at the weir's north bank end"}
  ],
  "taken_out": [
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:03B97C",
-   "edid": "JewelryRingSilver",
-   "chance": 0.031
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0877AB",
-   "edid": "JewelryRingSilverGarnet",
-   "chance": 0.031
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:03B97C",
-   "edid": "JewelryRingSilver",
-   "chance": 0.031
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0877AB",
-   "edid": "JewelryRingSilverGarnet",
-   "chance": 0.031
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:03B97C",
-   "edid": "JewelryRingSilver",
-   "chance": 0.031
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0877AB",
-   "edid": "JewelryRingSilverGarnet",
-   "chance": 0.031
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:03B97C",
-   "edid": "JewelryRingSilver",
-   "chance": 0.031
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0877AB",
-   "edid": "JewelryRingSilverGarnet",
-   "chance": 0.031
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC037",
-   "edid": "EnchNecklaceHealth01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC037",
-   "edid": "EnchNecklaceHealth01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC037",
-   "edid": "EnchNecklaceHealth01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC037",
-   "edid": "EnchNecklaceHealth01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC043",
-   "edid": "EnchNecklaceResistFire01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC043",
-   "edid": "EnchNecklaceResistFire01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC043",
-   "edid": "EnchNecklaceResistFire01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC043",
-   "edid": "EnchNecklaceResistFire01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC049",
-   "edid": "EnchNecklaceResistFrost01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC049",
-   "edid": "EnchNecklaceResistFrost01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC049",
-   "edid": "EnchNecklaceResistFrost01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC049",
-   "edid": "EnchNecklaceResistFrost01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC067",
-   "edid": "EnchNecklaceWaterbreathing",
-   "chance": 0.003
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC04F",
-   "edid": "EnchNecklaceResistShock01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC04F",
-   "edid": "EnchNecklaceResistShock01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC04F",
-   "edid": "EnchNecklaceResistShock01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC04F",
-   "edid": "EnchNecklaceResistShock01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC055",
-   "edid": "EnchNecklaceStamina01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC055",
-   "edid": "EnchNecklaceStamina01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC055",
-   "edid": "EnchNecklaceStamina01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC055",
-   "edid": "EnchNecklaceStamina01",
-   "chance": 0.001
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:10DF45",
-   "edid": "EnchNecklaceAlchemy01",
-   "chance": 0.003
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:10DF1B",
-   "edid": "EnchNecklaceBlock01",
-   "chance": 0.003
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:10DF27",
-   "edid": "EnchNecklaceHeavyArmor01",
-   "chance": 0.003
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:10DF2D",
-   "edid": "EnchNecklaceLightArmor01",
-   "chance": 0.003
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:10DF39",
-   "edid": "EnchNecklaceLockpicking01",
-   "chance": 0.003
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:10DF51",
-   "edid": "EnchNecklaceMagicka01",
-   "chance": 0.003
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:10DF10",
-   "edid": "EnchNecklaceOneHanded01",
-   "chance": 0.003
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:10DF33",
-   "edid": "EnchNecklacePickpocket01",
-   "chance": 0.003
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:10DF21",
-   "edid": "EnchNecklaceSmithing01",
-   "chance": 0.003
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:10DF3F",
-   "edid": "EnchNecklaceSneak01",
-   "chance": 0.003
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:10DF4B",
-   "edid": "EnchNecklaceSpeechcraft01",
-   "chance": 0.003
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:10DF15",
-   "edid": "EnchNecklaceTwoHanded01",
-   "chance": 0.003
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF3",
-   "edid": "EnchRingBlock01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF3",
-   "edid": "EnchRingBlock01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF3",
-   "edid": "EnchRingBlock01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF3",
-   "edid": "EnchRingBlock01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E0B",
-   "edid": "EnchRingHeavyArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E0B",
-   "edid": "EnchRingHeavyArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E0B",
-   "edid": "EnchRingHeavyArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E0B",
-   "edid": "EnchRingHeavyArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E23",
-   "edid": "EnchRingMarksman01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E23",
-   "edid": "EnchRingMarksman01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E23",
-   "edid": "EnchRingMarksman01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E23",
-   "edid": "EnchRingMarksman01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E29",
-   "edid": "EnchRingOneHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E29",
-   "edid": "EnchRingOneHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E29",
-   "edid": "EnchRingOneHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E29",
-   "edid": "EnchRingOneHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E4C",
-   "edid": "EnchRingTwoHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E4C",
-   "edid": "EnchRingTwoHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E4C",
-   "edid": "EnchRingTwoHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E4C",
-   "edid": "EnchRingTwoHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3B",
-   "edid": "EnchRingSmithing01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3B",
-   "edid": "EnchRingSmithing01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3B",
-   "edid": "EnchRingSmithing01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3B",
-   "edid": "EnchRingSmithing01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7DE",
-   "edid": "EnchRingAlteration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7DE",
-   "edid": "EnchRingAlteration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7DE",
-   "edid": "EnchRingAlteration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7DE",
-   "edid": "EnchRingAlteration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF9",
-   "edid": "EnchRingConjuration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF9",
-   "edid": "EnchRingConjuration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF9",
-   "edid": "EnchRingConjuration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF9",
-   "edid": "EnchRingConjuration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DFF",
-   "edid": "EnchRingDestruction01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DFF",
-   "edid": "EnchRingDestruction01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DFF",
-   "edid": "EnchRingDestruction01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DFF",
-   "edid": "EnchRingDestruction01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E11",
-   "edid": "EnchRingIllusion01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E11",
-   "edid": "EnchRingIllusion01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E11",
-   "edid": "EnchRingIllusion01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E11",
-   "edid": "EnchRingIllusion01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E34",
-   "edid": "EnchRingRestoration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E34",
-   "edid": "EnchRingRestoration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E34",
-   "edid": "EnchRingRestoration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E34",
-   "edid": "EnchRingRestoration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:10DFC8",
-   "edid": "EnchRingResistMagic01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E18",
-   "edid": "EnchRingLightArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E18",
-   "edid": "EnchRingLightArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E18",
-   "edid": "EnchRingLightArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E18",
-   "edid": "EnchRingLightArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E17",
-   "edid": "EnchRingLockpicking01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E17",
-   "edid": "EnchRingLockpicking01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E17",
-   "edid": "EnchRingLockpicking01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E17",
-   "edid": "EnchRingLockpicking01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E2F",
-   "edid": "EnchRingPickpocket01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E2F",
-   "edid": "EnchRingPickpocket01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E2F",
-   "edid": "EnchRingPickpocket01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E2F",
-   "edid": "EnchRingPickpocket01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3A",
-   "edid": "EnchRingSneak01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3A",
-   "edid": "EnchRingSneak01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3A",
-   "edid": "EnchRingSneak01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3A",
-   "edid": "EnchRingSneak01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7D2",
-   "edid": "EnchRingMagicka01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7D2",
-   "edid": "EnchRingMagicka01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7D2",
-   "edid": "EnchRingMagicka01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7D2",
-   "edid": "EnchRingMagicka01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEFD",
-   "edid": "EnchRingHealth01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEFD",
-   "edid": "EnchRingHealth01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEFD",
-   "edid": "EnchRingHealth01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEFD",
-   "edid": "EnchRingHealth01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEF7",
-   "edid": "EnchRingStamina01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEF7",
-   "edid": "EnchRingStamina01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEF7",
-   "edid": "EnchRingStamina01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEF7",
-   "edid": "EnchRingStamina01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF3",
-   "edid": "EnchRingBlock01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF3",
-   "edid": "EnchRingBlock01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF3",
-   "edid": "EnchRingBlock01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF3",
-   "edid": "EnchRingBlock01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E0B",
-   "edid": "EnchRingHeavyArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E0B",
-   "edid": "EnchRingHeavyArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E0B",
-   "edid": "EnchRingHeavyArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E0B",
-   "edid": "EnchRingHeavyArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E23",
-   "edid": "EnchRingMarksman01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E23",
-   "edid": "EnchRingMarksman01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E23",
-   "edid": "EnchRingMarksman01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E23",
-   "edid": "EnchRingMarksman01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E29",
-   "edid": "EnchRingOneHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E29",
-   "edid": "EnchRingOneHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E29",
-   "edid": "EnchRingOneHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E29",
-   "edid": "EnchRingOneHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E4C",
-   "edid": "EnchRingTwoHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E4C",
-   "edid": "EnchRingTwoHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E4C",
-   "edid": "EnchRingTwoHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E4C",
-   "edid": "EnchRingTwoHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3B",
-   "edid": "EnchRingSmithing01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3B",
-   "edid": "EnchRingSmithing01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3B",
-   "edid": "EnchRingSmithing01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3B",
-   "edid": "EnchRingSmithing01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7DE",
-   "edid": "EnchRingAlteration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7DE",
-   "edid": "EnchRingAlteration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7DE",
-   "edid": "EnchRingAlteration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7DE",
-   "edid": "EnchRingAlteration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF9",
-   "edid": "EnchRingConjuration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF9",
-   "edid": "EnchRingConjuration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF9",
-   "edid": "EnchRingConjuration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF9",
-   "edid": "EnchRingConjuration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DFF",
-   "edid": "EnchRingDestruction01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DFF",
-   "edid": "EnchRingDestruction01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DFF",
-   "edid": "EnchRingDestruction01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DFF",
-   "edid": "EnchRingDestruction01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E11",
-   "edid": "EnchRingIllusion01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E11",
-   "edid": "EnchRingIllusion01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E11",
-   "edid": "EnchRingIllusion01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E11",
-   "edid": "EnchRingIllusion01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E34",
-   "edid": "EnchRingRestoration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E34",
-   "edid": "EnchRingRestoration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E34",
-   "edid": "EnchRingRestoration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E34",
-   "edid": "EnchRingRestoration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:10DFC8",
-   "edid": "EnchRingResistMagic01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E18",
-   "edid": "EnchRingLightArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E18",
-   "edid": "EnchRingLightArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E18",
-   "edid": "EnchRingLightArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E18",
-   "edid": "EnchRingLightArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E17",
-   "edid": "EnchRingLockpicking01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E17",
-   "edid": "EnchRingLockpicking01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E17",
-   "edid": "EnchRingLockpicking01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E17",
-   "edid": "EnchRingLockpicking01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E2F",
-   "edid": "EnchRingPickpocket01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E2F",
-   "edid": "EnchRingPickpocket01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E2F",
-   "edid": "EnchRingPickpocket01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E2F",
-   "edid": "EnchRingPickpocket01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3A",
-   "edid": "EnchRingSneak01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3A",
-   "edid": "EnchRingSneak01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3A",
-   "edid": "EnchRingSneak01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3A",
-   "edid": "EnchRingSneak01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7D2",
-   "edid": "EnchRingMagicka01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7D2",
-   "edid": "EnchRingMagicka01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7D2",
-   "edid": "EnchRingMagicka01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7D2",
-   "edid": "EnchRingMagicka01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEFD",
-   "edid": "EnchRingHealth01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEFD",
-   "edid": "EnchRingHealth01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEFD",
-   "edid": "EnchRingHealth01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEFD",
-   "edid": "EnchRingHealth01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEF7",
-   "edid": "EnchRingStamina01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEF7",
-   "edid": "EnchRingStamina01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEF7",
-   "edid": "EnchRingStamina01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEF7",
-   "edid": "EnchRingStamina01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF3",
-   "edid": "EnchRingBlock01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF3",
-   "edid": "EnchRingBlock01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF3",
-   "edid": "EnchRingBlock01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF3",
-   "edid": "EnchRingBlock01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E0B",
-   "edid": "EnchRingHeavyArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E0B",
-   "edid": "EnchRingHeavyArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E0B",
-   "edid": "EnchRingHeavyArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E0B",
-   "edid": "EnchRingHeavyArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E23",
-   "edid": "EnchRingMarksman01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E23",
-   "edid": "EnchRingMarksman01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E23",
-   "edid": "EnchRingMarksman01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E23",
-   "edid": "EnchRingMarksman01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E29",
-   "edid": "EnchRingOneHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E29",
-   "edid": "EnchRingOneHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E29",
-   "edid": "EnchRingOneHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E29",
-   "edid": "EnchRingOneHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E4C",
-   "edid": "EnchRingTwoHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E4C",
-   "edid": "EnchRingTwoHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E4C",
-   "edid": "EnchRingTwoHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E4C",
-   "edid": "EnchRingTwoHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3B",
-   "edid": "EnchRingSmithing01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3B",
-   "edid": "EnchRingSmithing01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3B",
-   "edid": "EnchRingSmithing01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3B",
-   "edid": "EnchRingSmithing01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7DE",
-   "edid": "EnchRingAlteration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7DE",
-   "edid": "EnchRingAlteration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7DE",
-   "edid": "EnchRingAlteration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7DE",
-   "edid": "EnchRingAlteration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF9",
-   "edid": "EnchRingConjuration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF9",
-   "edid": "EnchRingConjuration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF9",
-   "edid": "EnchRingConjuration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF9",
-   "edid": "EnchRingConjuration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DFF",
-   "edid": "EnchRingDestruction01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DFF",
-   "edid": "EnchRingDestruction01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DFF",
-   "edid": "EnchRingDestruction01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DFF",
-   "edid": "EnchRingDestruction01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E11",
-   "edid": "EnchRingIllusion01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E11",
-   "edid": "EnchRingIllusion01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E11",
-   "edid": "EnchRingIllusion01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E11",
-   "edid": "EnchRingIllusion01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E34",
-   "edid": "EnchRingRestoration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E34",
-   "edid": "EnchRingRestoration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E34",
-   "edid": "EnchRingRestoration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E34",
-   "edid": "EnchRingRestoration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:10DFC8",
-   "edid": "EnchRingResistMagic01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E18",
-   "edid": "EnchRingLightArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E18",
-   "edid": "EnchRingLightArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E18",
-   "edid": "EnchRingLightArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E18",
-   "edid": "EnchRingLightArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E17",
-   "edid": "EnchRingLockpicking01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E17",
-   "edid": "EnchRingLockpicking01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E17",
-   "edid": "EnchRingLockpicking01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E17",
-   "edid": "EnchRingLockpicking01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E2F",
-   "edid": "EnchRingPickpocket01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E2F",
-   "edid": "EnchRingPickpocket01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E2F",
-   "edid": "EnchRingPickpocket01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E2F",
-   "edid": "EnchRingPickpocket01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3A",
-   "edid": "EnchRingSneak01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3A",
-   "edid": "EnchRingSneak01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3A",
-   "edid": "EnchRingSneak01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3A",
-   "edid": "EnchRingSneak01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7D2",
-   "edid": "EnchRingMagicka01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7D2",
-   "edid": "EnchRingMagicka01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7D2",
-   "edid": "EnchRingMagicka01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7D2",
-   "edid": "EnchRingMagicka01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEFD",
-   "edid": "EnchRingHealth01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEFD",
-   "edid": "EnchRingHealth01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEFD",
-   "edid": "EnchRingHealth01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEFD",
-   "edid": "EnchRingHealth01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEF7",
-   "edid": "EnchRingStamina01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEF7",
-   "edid": "EnchRingStamina01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEF7",
-   "edid": "EnchRingStamina01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEF7",
-   "edid": "EnchRingStamina01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF3",
-   "edid": "EnchRingBlock01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF3",
-   "edid": "EnchRingBlock01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF3",
-   "edid": "EnchRingBlock01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF3",
-   "edid": "EnchRingBlock01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E0B",
-   "edid": "EnchRingHeavyArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E0B",
-   "edid": "EnchRingHeavyArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E0B",
-   "edid": "EnchRingHeavyArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E0B",
-   "edid": "EnchRingHeavyArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E23",
-   "edid": "EnchRingMarksman01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E23",
-   "edid": "EnchRingMarksman01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E23",
-   "edid": "EnchRingMarksman01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E23",
-   "edid": "EnchRingMarksman01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E29",
-   "edid": "EnchRingOneHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E29",
-   "edid": "EnchRingOneHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E29",
-   "edid": "EnchRingOneHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E29",
-   "edid": "EnchRingOneHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E4C",
-   "edid": "EnchRingTwoHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E4C",
-   "edid": "EnchRingTwoHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E4C",
-   "edid": "EnchRingTwoHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E4C",
-   "edid": "EnchRingTwoHanded01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3B",
-   "edid": "EnchRingSmithing01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3B",
-   "edid": "EnchRingSmithing01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3B",
-   "edid": "EnchRingSmithing01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3B",
-   "edid": "EnchRingSmithing01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7DE",
-   "edid": "EnchRingAlteration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7DE",
-   "edid": "EnchRingAlteration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7DE",
-   "edid": "EnchRingAlteration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7DE",
-   "edid": "EnchRingAlteration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF9",
-   "edid": "EnchRingConjuration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF9",
-   "edid": "EnchRingConjuration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF9",
-   "edid": "EnchRingConjuration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DF9",
-   "edid": "EnchRingConjuration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DFF",
-   "edid": "EnchRingDestruction01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DFF",
-   "edid": "EnchRingDestruction01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DFF",
-   "edid": "EnchRingDestruction01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100DFF",
-   "edid": "EnchRingDestruction01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E11",
-   "edid": "EnchRingIllusion01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E11",
-   "edid": "EnchRingIllusion01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E11",
-   "edid": "EnchRingIllusion01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E11",
-   "edid": "EnchRingIllusion01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E34",
-   "edid": "EnchRingRestoration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E34",
-   "edid": "EnchRingRestoration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E34",
-   "edid": "EnchRingRestoration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E34",
-   "edid": "EnchRingRestoration01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:10DFC8",
-   "edid": "EnchRingResistMagic01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E18",
-   "edid": "EnchRingLightArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E18",
-   "edid": "EnchRingLightArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E18",
-   "edid": "EnchRingLightArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E18",
-   "edid": "EnchRingLightArmor01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E17",
-   "edid": "EnchRingLockpicking01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E17",
-   "edid": "EnchRingLockpicking01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E17",
-   "edid": "EnchRingLockpicking01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E17",
-   "edid": "EnchRingLockpicking01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E2F",
-   "edid": "EnchRingPickpocket01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E2F",
-   "edid": "EnchRingPickpocket01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E2F",
-   "edid": "EnchRingPickpocket01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E2F",
-   "edid": "EnchRingPickpocket01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3A",
-   "edid": "EnchRingSneak01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3A",
-   "edid": "EnchRingSneak01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3A",
-   "edid": "EnchRingSneak01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:100E3A",
-   "edid": "EnchRingSneak01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7D2",
-   "edid": "EnchRingMagicka01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7D2",
-   "edid": "EnchRingMagicka01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7D2",
-   "edid": "EnchRingMagicka01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FF7D2",
-   "edid": "EnchRingMagicka01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEFD",
-   "edid": "EnchRingHealth01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEFD",
-   "edid": "EnchRingHealth01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEFD",
-   "edid": "EnchRingHealth01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEFD",
-   "edid": "EnchRingHealth01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEF7",
-   "edid": "EnchRingStamina01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEF7",
-   "edid": "EnchRingStamina01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEF7",
-   "edid": "EnchRingStamina01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FCEF7",
-   "edid": "EnchRingStamina01",
-   "chance": 0.0
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC000",
-   "edid": "EnchCircletAlchemy01",
-   "chance": 0.006
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC006",
-   "edid": "EnchCircletAlteration01",
-   "chance": 0.006
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC00C",
-   "edid": "EnchCircletConjuration01",
-   "chance": 0.006
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC012",
-   "edid": "EnchCircletDestruction01",
-   "chance": 0.006
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC01E",
-   "edid": "EnchCircletIllusion01",
-   "chance": 0.006
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC024",
-   "edid": "EnchCircletMagicka01",
-   "chance": 0.006
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC02A",
-   "edid": "EnchCircletMarksman01",
-   "chance": 0.006
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:0FC030",
-   "edid": "EnchCircletRestoration01",
-   "chance": 0.006
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:063B45",
-   "edid": "GemGarnet",
-   "chance": 0.2
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:063B46",
-   "edid": "GemAmethyst",
-   "chance": 0.2
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:063B45",
-   "edid": "GemGarnet",
-   "chance": 0.2
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:063B46",
-   "edid": "GemAmethyst",
-   "chance": 0.2
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:063B45",
-   "edid": "GemGarnet",
-   "chance": 0.2
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:063B45",
-   "edid": "GemGarnet",
-   "chance": 0.05
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:063B46",
-   "edid": "GemAmethyst",
-   "chance": 0.05
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:063B45",
-   "edid": "GemGarnet",
-   "chance": 0.05
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:063B46",
-   "edid": "GemAmethyst",
-   "chance": 0.05
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:063B45",
-   "edid": "GemGarnet",
-   "chance": 0.05
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:00000F",
-   "edid": "Gold001",
-   "chance": 0.028
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:00000F",
-   "edid": "Gold001",
-   "chance": 0.028
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:00000F",
-   "edid": "Gold001",
-   "chance": 0.028
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:00000F",
-   "edid": "Gold001",
-   "chance": 0.028
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:00000F",
-   "edid": "Gold001",
-   "chance": 0.028
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:00000F",
-   "edid": "Gold001",
-   "chance": 0.028
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:00000F",
-   "edid": "Gold001",
-   "chance": 0.028
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:00000F",
-   "edid": "Gold001",
-   "chance": 0.028
-  },
-  {
-   "holder": "container",
-   "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "item": "Skyrim.esm:00000F",
-   "edid": "Gold001",
-   "chance": 0.028
-  },
-  {
-   "holder": "person",
-   "where": "outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ",
-   "item": "Skyrim.esm:01CE82",
-   "edid": "EnchEbonyGreatswordShock05",
-   "chance": 1.0
-  },
-  {
-   "holder": "person",
-   "where": "outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ",
-   "item": "Skyrim.esm:0302CA",
-   "edid": "DraugrBow",
-   "chance": 1.0
-  },
-  {
-   "holder": "person",
-   "where": "outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ",
-   "item": "Skyrim.esm:0E35D6",
-   "edid": "ArmorThievesGuildLeaderBoots",
-   "chance": 1.0
-  },
-  {
-   "holder": "person",
-   "where": "outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ",
-   "item": "Skyrim.esm:0E35D7",
-   "edid": "ArmorThievesGuildLeaderCuirass",
-   "chance": 1.0
-  },
-  {
-   "holder": "person",
-   "where": "outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ",
-   "item": "Skyrim.esm:0E35D8",
-   "edid": "ArmorThievesGuildLeaderGauntlets",
-   "chance": 1.0
-  },
-  {
-   "holder": "person",
-   "where": "outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ",
-   "item": "Skyrim.esm:0E35D9",
-   "edid": "ArmorThievesGuildLeaderHelmet",
-   "chance": 1.0
-  }
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:03B97C", "edid": "JewelryRingSilver", "chance": 0.031},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0877AB", "edid": "JewelryRingSilverGarnet", "chance": 0.031},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:03B97C", "edid": "JewelryRingSilver", "chance": 0.031},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0877AB", "edid": "JewelryRingSilverGarnet", "chance": 0.031},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:03B97C", "edid": "JewelryRingSilver", "chance": 0.031},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0877AB", "edid": "JewelryRingSilverGarnet", "chance": 0.031},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:03B97C", "edid": "JewelryRingSilver", "chance": 0.031},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0877AB", "edid": "JewelryRingSilverGarnet", "chance": 0.031},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC037", "edid": "EnchNecklaceHealth01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC037", "edid": "EnchNecklaceHealth01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC037", "edid": "EnchNecklaceHealth01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC037", "edid": "EnchNecklaceHealth01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC043", "edid": "EnchNecklaceResistFire01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC043", "edid": "EnchNecklaceResistFire01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC043", "edid": "EnchNecklaceResistFire01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC043", "edid": "EnchNecklaceResistFire01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC049", "edid": "EnchNecklaceResistFrost01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC049", "edid": "EnchNecklaceResistFrost01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC049", "edid": "EnchNecklaceResistFrost01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC049", "edid": "EnchNecklaceResistFrost01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC067", "edid": "EnchNecklaceWaterbreathing", "chance": 0.003},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC04F", "edid": "EnchNecklaceResistShock01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC04F", "edid": "EnchNecklaceResistShock01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC04F", "edid": "EnchNecklaceResistShock01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC04F", "edid": "EnchNecklaceResistShock01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC055", "edid": "EnchNecklaceStamina01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC055", "edid": "EnchNecklaceStamina01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC055", "edid": "EnchNecklaceStamina01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC055", "edid": "EnchNecklaceStamina01", "chance": 0.001},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:10DF45", "edid": "EnchNecklaceAlchemy01", "chance": 0.003},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:10DF1B", "edid": "EnchNecklaceBlock01", "chance": 0.003},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:10DF27", "edid": "EnchNecklaceHeavyArmor01", "chance": 0.003},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:10DF2D", "edid": "EnchNecklaceLightArmor01", "chance": 0.003},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:10DF39", "edid": "EnchNecklaceLockpicking01", "chance": 0.003},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:10DF51", "edid": "EnchNecklaceMagicka01", "chance": 0.003},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:10DF10", "edid": "EnchNecklaceOneHanded01", "chance": 0.003},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:10DF33", "edid": "EnchNecklacePickpocket01", "chance": 0.003},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:10DF21", "edid": "EnchNecklaceSmithing01", "chance": 0.003},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:10DF3F", "edid": "EnchNecklaceSneak01", "chance": 0.003},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:10DF4B", "edid": "EnchNecklaceSpeechcraft01", "chance": 0.003},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:10DF15", "edid": "EnchNecklaceTwoHanded01", "chance": 0.003},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF3", "edid": "EnchRingBlock01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF3", "edid": "EnchRingBlock01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF3", "edid": "EnchRingBlock01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF3", "edid": "EnchRingBlock01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E0B", "edid": "EnchRingHeavyArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E0B", "edid": "EnchRingHeavyArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E0B", "edid": "EnchRingHeavyArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E0B", "edid": "EnchRingHeavyArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E23", "edid": "EnchRingMarksman01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E23", "edid": "EnchRingMarksman01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E23", "edid": "EnchRingMarksman01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E23", "edid": "EnchRingMarksman01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E29", "edid": "EnchRingOneHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E29", "edid": "EnchRingOneHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E29", "edid": "EnchRingOneHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E29", "edid": "EnchRingOneHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E4C", "edid": "EnchRingTwoHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E4C", "edid": "EnchRingTwoHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E4C", "edid": "EnchRingTwoHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E4C", "edid": "EnchRingTwoHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3B", "edid": "EnchRingSmithing01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3B", "edid": "EnchRingSmithing01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3B", "edid": "EnchRingSmithing01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3B", "edid": "EnchRingSmithing01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7DE", "edid": "EnchRingAlteration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7DE", "edid": "EnchRingAlteration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7DE", "edid": "EnchRingAlteration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7DE", "edid": "EnchRingAlteration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF9", "edid": "EnchRingConjuration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF9", "edid": "EnchRingConjuration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF9", "edid": "EnchRingConjuration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF9", "edid": "EnchRingConjuration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DFF", "edid": "EnchRingDestruction01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DFF", "edid": "EnchRingDestruction01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DFF", "edid": "EnchRingDestruction01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DFF", "edid": "EnchRingDestruction01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E11", "edid": "EnchRingIllusion01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E11", "edid": "EnchRingIllusion01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E11", "edid": "EnchRingIllusion01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E11", "edid": "EnchRingIllusion01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E34", "edid": "EnchRingRestoration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E34", "edid": "EnchRingRestoration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E34", "edid": "EnchRingRestoration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E34", "edid": "EnchRingRestoration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:10DFC8", "edid": "EnchRingResistMagic01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E18", "edid": "EnchRingLightArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E18", "edid": "EnchRingLightArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E18", "edid": "EnchRingLightArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E18", "edid": "EnchRingLightArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E17", "edid": "EnchRingLockpicking01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E17", "edid": "EnchRingLockpicking01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E17", "edid": "EnchRingLockpicking01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E17", "edid": "EnchRingLockpicking01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E2F", "edid": "EnchRingPickpocket01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E2F", "edid": "EnchRingPickpocket01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E2F", "edid": "EnchRingPickpocket01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E2F", "edid": "EnchRingPickpocket01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3A", "edid": "EnchRingSneak01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3A", "edid": "EnchRingSneak01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3A", "edid": "EnchRingSneak01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3A", "edid": "EnchRingSneak01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7D2", "edid": "EnchRingMagicka01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7D2", "edid": "EnchRingMagicka01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7D2", "edid": "EnchRingMagicka01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7D2", "edid": "EnchRingMagicka01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEFD", "edid": "EnchRingHealth01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEFD", "edid": "EnchRingHealth01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEFD", "edid": "EnchRingHealth01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEFD", "edid": "EnchRingHealth01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEF7", "edid": "EnchRingStamina01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEF7", "edid": "EnchRingStamina01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEF7", "edid": "EnchRingStamina01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEF7", "edid": "EnchRingStamina01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF3", "edid": "EnchRingBlock01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF3", "edid": "EnchRingBlock01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF3", "edid": "EnchRingBlock01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF3", "edid": "EnchRingBlock01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E0B", "edid": "EnchRingHeavyArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E0B", "edid": "EnchRingHeavyArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E0B", "edid": "EnchRingHeavyArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E0B", "edid": "EnchRingHeavyArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E23", "edid": "EnchRingMarksman01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E23", "edid": "EnchRingMarksman01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E23", "edid": "EnchRingMarksman01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E23", "edid": "EnchRingMarksman01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E29", "edid": "EnchRingOneHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E29", "edid": "EnchRingOneHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E29", "edid": "EnchRingOneHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E29", "edid": "EnchRingOneHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E4C", "edid": "EnchRingTwoHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E4C", "edid": "EnchRingTwoHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E4C", "edid": "EnchRingTwoHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E4C", "edid": "EnchRingTwoHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3B", "edid": "EnchRingSmithing01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3B", "edid": "EnchRingSmithing01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3B", "edid": "EnchRingSmithing01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3B", "edid": "EnchRingSmithing01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7DE", "edid": "EnchRingAlteration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7DE", "edid": "EnchRingAlteration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7DE", "edid": "EnchRingAlteration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7DE", "edid": "EnchRingAlteration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF9", "edid": "EnchRingConjuration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF9", "edid": "EnchRingConjuration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF9", "edid": "EnchRingConjuration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF9", "edid": "EnchRingConjuration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DFF", "edid": "EnchRingDestruction01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DFF", "edid": "EnchRingDestruction01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DFF", "edid": "EnchRingDestruction01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DFF", "edid": "EnchRingDestruction01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E11", "edid": "EnchRingIllusion01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E11", "edid": "EnchRingIllusion01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E11", "edid": "EnchRingIllusion01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E11", "edid": "EnchRingIllusion01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E34", "edid": "EnchRingRestoration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E34", "edid": "EnchRingRestoration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E34", "edid": "EnchRingRestoration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E34", "edid": "EnchRingRestoration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:10DFC8", "edid": "EnchRingResistMagic01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E18", "edid": "EnchRingLightArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E18", "edid": "EnchRingLightArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E18", "edid": "EnchRingLightArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E18", "edid": "EnchRingLightArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E17", "edid": "EnchRingLockpicking01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E17", "edid": "EnchRingLockpicking01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E17", "edid": "EnchRingLockpicking01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E17", "edid": "EnchRingLockpicking01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E2F", "edid": "EnchRingPickpocket01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E2F", "edid": "EnchRingPickpocket01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E2F", "edid": "EnchRingPickpocket01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E2F", "edid": "EnchRingPickpocket01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3A", "edid": "EnchRingSneak01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3A", "edid": "EnchRingSneak01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3A", "edid": "EnchRingSneak01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3A", "edid": "EnchRingSneak01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7D2", "edid": "EnchRingMagicka01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7D2", "edid": "EnchRingMagicka01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7D2", "edid": "EnchRingMagicka01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7D2", "edid": "EnchRingMagicka01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEFD", "edid": "EnchRingHealth01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEFD", "edid": "EnchRingHealth01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEFD", "edid": "EnchRingHealth01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEFD", "edid": "EnchRingHealth01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEF7", "edid": "EnchRingStamina01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEF7", "edid": "EnchRingStamina01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEF7", "edid": "EnchRingStamina01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEF7", "edid": "EnchRingStamina01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF3", "edid": "EnchRingBlock01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF3", "edid": "EnchRingBlock01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF3", "edid": "EnchRingBlock01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF3", "edid": "EnchRingBlock01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E0B", "edid": "EnchRingHeavyArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E0B", "edid": "EnchRingHeavyArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E0B", "edid": "EnchRingHeavyArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E0B", "edid": "EnchRingHeavyArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E23", "edid": "EnchRingMarksman01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E23", "edid": "EnchRingMarksman01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E23", "edid": "EnchRingMarksman01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E23", "edid": "EnchRingMarksman01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E29", "edid": "EnchRingOneHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E29", "edid": "EnchRingOneHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E29", "edid": "EnchRingOneHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E29", "edid": "EnchRingOneHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E4C", "edid": "EnchRingTwoHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E4C", "edid": "EnchRingTwoHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E4C", "edid": "EnchRingTwoHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E4C", "edid": "EnchRingTwoHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3B", "edid": "EnchRingSmithing01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3B", "edid": "EnchRingSmithing01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3B", "edid": "EnchRingSmithing01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3B", "edid": "EnchRingSmithing01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7DE", "edid": "EnchRingAlteration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7DE", "edid": "EnchRingAlteration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7DE", "edid": "EnchRingAlteration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7DE", "edid": "EnchRingAlteration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF9", "edid": "EnchRingConjuration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF9", "edid": "EnchRingConjuration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF9", "edid": "EnchRingConjuration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF9", "edid": "EnchRingConjuration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DFF", "edid": "EnchRingDestruction01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DFF", "edid": "EnchRingDestruction01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DFF", "edid": "EnchRingDestruction01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DFF", "edid": "EnchRingDestruction01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E11", "edid": "EnchRingIllusion01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E11", "edid": "EnchRingIllusion01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E11", "edid": "EnchRingIllusion01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E11", "edid": "EnchRingIllusion01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E34", "edid": "EnchRingRestoration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E34", "edid": "EnchRingRestoration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E34", "edid": "EnchRingRestoration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E34", "edid": "EnchRingRestoration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:10DFC8", "edid": "EnchRingResistMagic01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E18", "edid": "EnchRingLightArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E18", "edid": "EnchRingLightArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E18", "edid": "EnchRingLightArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E18", "edid": "EnchRingLightArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E17", "edid": "EnchRingLockpicking01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E17", "edid": "EnchRingLockpicking01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E17", "edid": "EnchRingLockpicking01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E17", "edid": "EnchRingLockpicking01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E2F", "edid": "EnchRingPickpocket01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E2F", "edid": "EnchRingPickpocket01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E2F", "edid": "EnchRingPickpocket01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E2F", "edid": "EnchRingPickpocket01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3A", "edid": "EnchRingSneak01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3A", "edid": "EnchRingSneak01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3A", "edid": "EnchRingSneak01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3A", "edid": "EnchRingSneak01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7D2", "edid": "EnchRingMagicka01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7D2", "edid": "EnchRingMagicka01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7D2", "edid": "EnchRingMagicka01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7D2", "edid": "EnchRingMagicka01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEFD", "edid": "EnchRingHealth01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEFD", "edid": "EnchRingHealth01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEFD", "edid": "EnchRingHealth01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEFD", "edid": "EnchRingHealth01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEF7", "edid": "EnchRingStamina01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEF7", "edid": "EnchRingStamina01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEF7", "edid": "EnchRingStamina01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEF7", "edid": "EnchRingStamina01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF3", "edid": "EnchRingBlock01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF3", "edid": "EnchRingBlock01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF3", "edid": "EnchRingBlock01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF3", "edid": "EnchRingBlock01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E0B", "edid": "EnchRingHeavyArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E0B", "edid": "EnchRingHeavyArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E0B", "edid": "EnchRingHeavyArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E0B", "edid": "EnchRingHeavyArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E23", "edid": "EnchRingMarksman01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E23", "edid": "EnchRingMarksman01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E23", "edid": "EnchRingMarksman01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E23", "edid": "EnchRingMarksman01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E29", "edid": "EnchRingOneHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E29", "edid": "EnchRingOneHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E29", "edid": "EnchRingOneHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E29", "edid": "EnchRingOneHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E4C", "edid": "EnchRingTwoHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E4C", "edid": "EnchRingTwoHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E4C", "edid": "EnchRingTwoHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E4C", "edid": "EnchRingTwoHanded01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3B", "edid": "EnchRingSmithing01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3B", "edid": "EnchRingSmithing01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3B", "edid": "EnchRingSmithing01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3B", "edid": "EnchRingSmithing01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7DE", "edid": "EnchRingAlteration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7DE", "edid": "EnchRingAlteration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7DE", "edid": "EnchRingAlteration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7DE", "edid": "EnchRingAlteration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF9", "edid": "EnchRingConjuration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF9", "edid": "EnchRingConjuration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF9", "edid": "EnchRingConjuration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DF9", "edid": "EnchRingConjuration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DFF", "edid": "EnchRingDestruction01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DFF", "edid": "EnchRingDestruction01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DFF", "edid": "EnchRingDestruction01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100DFF", "edid": "EnchRingDestruction01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E11", "edid": "EnchRingIllusion01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E11", "edid": "EnchRingIllusion01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E11", "edid": "EnchRingIllusion01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E11", "edid": "EnchRingIllusion01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E34", "edid": "EnchRingRestoration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E34", "edid": "EnchRingRestoration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E34", "edid": "EnchRingRestoration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E34", "edid": "EnchRingRestoration01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:10DFC8", "edid": "EnchRingResistMagic01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E18", "edid": "EnchRingLightArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E18", "edid": "EnchRingLightArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E18", "edid": "EnchRingLightArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E18", "edid": "EnchRingLightArmor01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E17", "edid": "EnchRingLockpicking01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E17", "edid": "EnchRingLockpicking01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E17", "edid": "EnchRingLockpicking01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E17", "edid": "EnchRingLockpicking01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E2F", "edid": "EnchRingPickpocket01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E2F", "edid": "EnchRingPickpocket01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E2F", "edid": "EnchRingPickpocket01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E2F", "edid": "EnchRingPickpocket01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3A", "edid": "EnchRingSneak01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3A", "edid": "EnchRingSneak01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3A", "edid": "EnchRingSneak01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:100E3A", "edid": "EnchRingSneak01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7D2", "edid": "EnchRingMagicka01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7D2", "edid": "EnchRingMagicka01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7D2", "edid": "EnchRingMagicka01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FF7D2", "edid": "EnchRingMagicka01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEFD", "edid": "EnchRingHealth01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEFD", "edid": "EnchRingHealth01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEFD", "edid": "EnchRingHealth01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEFD", "edid": "EnchRingHealth01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEF7", "edid": "EnchRingStamina01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEF7", "edid": "EnchRingStamina01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEF7", "edid": "EnchRingStamina01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FCEF7", "edid": "EnchRingStamina01", "chance": 0.0},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC000", "edid": "EnchCircletAlchemy01", "chance": 0.006},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC006", "edid": "EnchCircletAlteration01", "chance": 0.006},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC00C", "edid": "EnchCircletConjuration01", "chance": 0.006},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC012", "edid": "EnchCircletDestruction01", "chance": 0.006},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC01E", "edid": "EnchCircletIllusion01", "chance": 0.006},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC024", "edid": "EnchCircletMagicka01", "chance": 0.006},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC02A", "edid": "EnchCircletMarksman01", "chance": 0.006},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:0FC030", "edid": "EnchCircletRestoration01", "chance": 0.006},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:063B45", "edid": "GemGarnet", "chance": 0.2},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:063B46", "edid": "GemAmethyst", "chance": 0.2},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:063B45", "edid": "GemGarnet", "chance": 0.2},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:063B46", "edid": "GemAmethyst", "chance": 0.2},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:063B45", "edid": "GemGarnet", "chance": 0.2},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:063B45", "edid": "GemGarnet", "chance": 0.05},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:063B46", "edid": "GemAmethyst", "chance": 0.05},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:063B45", "edid": "GemGarnet", "chance": 0.05},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:063B46", "edid": "GemAmethyst", "chance": 0.05},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:063B45", "edid": "GemGarnet", "chance": 0.05},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:00000F", "edid": "Gold001", "chance": 0.028},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:00000F", "edid": "Gold001", "chance": 0.028},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:00000F", "edid": "Gold001", "chance": 0.028},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:00000F", "edid": "Gold001", "chance": 0.028},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:00000F", "edid": "Gold001", "chance": 0.028},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:00000F", "edid": "Gold001", "chance": 0.028},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:00000F", "edid": "Gold001", "chance": 0.028},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:00000F", "edid": "Gold001", "chance": 0.028},
+  {"holder": "container", "where": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3", "item": "Skyrim.esm:00000F", "edid": "Gold001", "chance": 0.028},
+  {"holder": "person", "where": "outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ", "item": "Skyrim.esm:01CE82", "edid": "EnchEbonyGreatswordShock05", "chance": 1.0},
+  {"holder": "person", "where": "outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ", "item": "Skyrim.esm:0302CA", "edid": "DraugrBow", "chance": 1.0},
+  {"holder": "person", "where": "outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ", "item": "Skyrim.esm:0E35D6", "edid": "ArmorThievesGuildLeaderBoots", "chance": 1.0},
+  {"holder": "person", "where": "outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ", "item": "Skyrim.esm:0E35D7", "edid": "ArmorThievesGuildLeaderCuirass", "chance": 1.0},
+  {"holder": "person", "where": "outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ", "item": "Skyrim.esm:0E35D8", "edid": "ArmorThievesGuildLeaderGauntlets", "chance": 1.0},
+  {"holder": "person", "where": "outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ", "item": "Skyrim.esm:0E35D9", "edid": "ArmorThievesGuildLeaderHelmet", "chance": 1.0}
  ],
  "owner_kept": []
 }
