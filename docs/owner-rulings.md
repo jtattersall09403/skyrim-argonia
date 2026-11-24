@@ -358,6 +358,16 @@ added here the day they are made, with the date and the issue.
   the whole game first; then each culture, region or faction distinct from the others and consistent within; then
   levels below that ([the proposal](research/new-art/PROPOSAL.md), sections 4 and 5). A search for mods covers both
   Skyrim games on Nexus and description text, never names of the Special Edition alone (GKB Green Trees was missed).
+- 2026-11-24 (#93/#94, new art, in session, later the same day; binding only if the "no art" rule is relaxed): plan 3D
+  work for agents working BY HAND with eyes (placing, editing, moving, inspecting from several angles with the camera
+  tied to coordinates, distance and framing), never shrunk to what a blind script can do; be ambitious on buildings:
+  generated exteriors finished by hand, matching interior shells textured and hand-dressed, hand-designed
+  snap-together kits, or both; multi-floor interiors need stair kits agents can use reliably. Skyrim does not cut door
+  and window openings: they are added meshes and paint, and most interiors are reached by activating a door, window or
+  other entrance that teleports. All gear must be usable by all ten playable races and the body and head shapes of
+  character creation. The province is not only Argonian: Imperial remnants and their infrastructure, ruins of
+  different eras, Dunmer culture and architecture and more, each looking tropicalised, overgrown or kept according to
+  its place, age and upkeep ([the proposal](research/new-art/PROPOSAL.md)).
 
 ## Writing
 

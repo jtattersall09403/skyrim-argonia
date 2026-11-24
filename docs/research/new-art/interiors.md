@@ -1,5 +1,8 @@
 # Interiors and new buildings: what is possible, what we hold, what it would take
 
+> Superseded in part by [buildings.md](buildings.md): Tripo does publish an interior guide (a furnishings path: generate
+> pieces, stage them in another tool); new buildings and interiors are planned by hand there, with kits and stairs.
+
 Written 2026-11-24 for owner calls #93/#94 (the owner's interiors question). Research only; nothing generated,
 bought or downloaded. Web claims carry a tag: [PAGE] I fetched and read it; [SNIPPET] only a search-result summary
 (page not opened, or opening returned 403); [OWN] my inference. Local measurements are `file:line` or a command's output.

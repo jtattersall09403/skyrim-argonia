@@ -1,162 +1,149 @@
 # New art for Argonia: what we could do, and what I recommend
 
 Written 2026-11-24 for owner call #93; the choice is owner call #94. Nothing has been created or bought. This
-page is the proposal; the eight research reports behind it sit beside it in this folder:
+page is the proposal. The research behind it sits beside it in this folder:
 
 - [tooling.md](tooling.md): the tools, prices and policies for making 3D models with an agent.
-- [skyrim-asset-pipeline.md](skyrim-asset-pipeline.md): what it takes to turn a generated model into a working Skyrim asset.
+- [skyrim-asset-pipeline.md](skyrim-asset-pipeline.md): what it takes to turn a model into a working Skyrim asset.
 - [visual-consistency.md](visual-consistency.md): how sets of AI-made assets are kept looking like one game.
-- [interiors.md](interiors.md): how interiors work, and what a new building with an interior would take.
-- [gear-and-clothing.md](gear-and-clothing.md): weapons, armour and clothing.
-- [places-and-pieces.md](places-and-pieces.md): places against their source places, and the most Skyrim-looking pieces.
-- [identity-vs-lore.md](identity-vs-lore.md): every region, culture and faction against the lore.
-- [nature-and-vessels.md](nature-and-vessels.md): trees, plants, boats, ships and wrecks.
+- [gear-and-clothing.md](gear-and-clothing.md), [wearables-by-hand.md](wearables-by-hand.md): weapons, armour, clothing, and fitting all ten races.
+- [places-and-pieces.md](places-and-pieces.md), [identity-vs-lore.md](identity-vs-lore.md): places, pieces, and each culture against the lore.
+- [foreign-and-remnant.md](foreign-and-remnant.md), [ruins-and-weathering.md](ruins-and-weathering.md): Imperial, Dunmer and other peoples; ruins by era; making any kit look like it stands in Black Marsh.
+- [nature-and-vessels.md](nature-and-vessels.md), [vegetation-and-vessels-by-hand.md](vegetation-and-vessels-by-hand.md): plants, trees, boats, wrecks.
+- [interiors.md](interiors.md), [buildings.md](buildings.md): interiors, new buildings, kits and stairs.
 
 ## 1. The short answer
 
-**I recommend relaxing the rule, narrowly, in three steps, and stopping after any step that disappoints.**
+**I recommend relaxing the rule, and doing the work the way your place drafting already works: an agent making
+things by hand in a 3D scene, looking at them from fixed, named views, with the generators as helpers and not
+as the method.** An earlier version of this page planned around what a blind script could do, and so wrote off
+clothing, plants, bows and buildings. Planned by hand, all four are reachable.
 
-1. **Do the "least" option now.** Most of the cheapest gains need no new art at all: models we hold and do not
-   use, and mods on Nexus we had not found. The rest of that option needs only flat images on banner models
-   that already exist.
-2. **Run a five-model pilot** (about $15 of Fal fees), taken all the way into the game for you to look at. It
-   proves two things nobody seems to have published: the route from a generated model to a Skyrim model file,
-   and that our way of keeping the models consistent actually works.
-3. **If the pilot looks right in game, do the "more" option**: about 49 small solid models, every one made by
-   your "acts like an existing thing" route. Treat the "most" list as a menu to pick from afterwards, never as a block.
+Three steps, stopping after any that disappoints:
 
-The reason is what the audits found. The province is not short of models in number. It is short in a few
-specific, very visible spots, and after a proper search of Nexus the spots that remain are mostly small, solid
-things:
+1. **Do the "least" option now.** It needs no new models: mods on Nexus we had not found, models we hold and do
+   not use, mossy and wet variants of kits by record alone, places moved off sources that contradict the lore,
+   and flat emblems on banners that already exist.
+2. **Build the model workshop and run ten first proofs** (about $40 of Fal fees), one for each kind of thing we
+   might make, each taken into the game for you to see. They prove the tools, the consistency method, and the
+   agent cost, none of which I can promise from research alone.
+3. **Then widen track by track**, choosing which tracks to fund from what the proofs showed: small props and
+   weapons, plants, boats, wearables, buildings and interiors.
 
-- The commonest weapons in Black Marsh are Skyrim's own iron and steel swords under a new name.
-- Six tribes' signature weapons (pike, halberd, quarterstaff, rapier, whip, claw) are generic medieval models.
+Where the province is thin (all measured, section 2):
+
+- The commonest weapons are Skyrim's own iron and steel swords under a new name, and six tribes' signature
+  weapons are generic medieval models.
+- More than half of everything planted is ground-layer plants, and they barely vary: one reed model, one lily,
+  a fern family that is a quarter of all plant placements. Eleven wet regions come out near-identical.
 - No dugout or raft exists, though 22 of the 31 boat stops are worked by raft-masters.
-- The lore's best repeatable object, the carved grave-stake, was not found anywhere.
-- No tribe has a standard and no story line has a sign.
-
-The largest gap is still **what people wear**. The proper search found more Argonian clothing and armour than I
-first reported, which helps; making skinned clothing ourselves stays out of reach (section 8).
+- People have almost nothing to wear that is Black Marsh's.
+- The Root-Folk's 19 places hold three interiors between them. No tribe has a standard, no story line a sign.
+- The Imperial remnant uses eight different Skyrim fort bodies with no local mark; Stormhold sits on Markarth
+  stone; four places sit on Dwemer ruins that canon says do not exist here.
 
 ## 2. What the audits found
 
-### Where we are thin (measured)
-
 | Area | What we hold | Where it is thin |
 |---|---|---|
-| Weapons and armour | 767 records on 638 distinct models | The 11 lowest-tier "bog iron" weapons are vanilla iron and steel models. Two heavy sets use Nordic plate and Nordic carved models. Every Argonian village guard wears one set (Stormhold Warrior); every town watch wears one other. Three tribes are specified in light shell or bone-plate armour we do not hold. Six tribes' signature weapon types have no Black Marsh model. |
-| Clothing | About 30 non-armour clothing models in all | 12 of the 23 trade kits have no clothing row. In the six stocked places 126 of 165 people have no authored clothing, and half of the rest wear vanilla farm, monk or beggar clothes. The jewellery is 32 vanilla silver rings. The other 252 places are not stocked yet. |
-| Places | 258 places, each with its own first-choice source place (246 distinct) | 77 places take an Argonian-kit source. 126 take a source built from vanilla Skyrim pieces (110 from Skyrim itself, the rest from border and trading-post mods). The places that should feel most Argonian lean hardest on those: Murkwood 10 of 13, Banujha Basin 11 of 15, Cape Percar 12 of 17, the Root-Folk 13 of 19. Every farm, mine, estate and keep, 8 of 11 shipwrecks and 5 of 8 forts have no Argonian-kit candidate among their four choices. |
-| Pieces in places | About 3,500 placed objects in the six drafts | 47% of doors are Nordic-ruin or Solitude doors (nearly all in Helstrom). The vanilla candle lantern is placed 173 times. The fur bedroll is 27 of 97 furniture pieces. In a wider sample of 54 source places, barrels, crates, sacks, baskets and hay are about 8% of everything placed. Tropical Skyrim swaps none of these: it changes trees and grass only. |
-| Lore objects | Totems (about 8), bone chimes, a drum, a Sithis shrine, frog instruments, 12 Argonian banner types, the Dunmer house banners, four hammock models with no bed record | Not found in any mod we hold or on Nexus: grave-stake, sap jar and sap tap, a proper egg clutch (ours are vanilla dragon eggs), Hist stele and tablets, fish weir and net rack, dugout or raft, an emblem for any of the 18 cultures, a sign for any of the nine story lines. |
-| Trees and plants | 193 tree models over the 20 land regions; no two regions share more than about a third | One fern model is 11% of all plant placements. There is one reed model (7%). One lily model is 93% of lilies. Eleven wet regions come out near-identical. A handful of mangrove models carry the whole coast. The Hist has no sick or dying look, though your rulings want the endings to show trees dying. |
-| Boats and wrecks | Black Marsh & Valenwood's Imperial ship; King of the Murkmire's three boats and docks; vanilla rowboats | 31 boat stops and 11 wreck places. No native craft. Four wrecks stand on a vanilla Nordic ship. No boat mod is among our 193 dependencies. |
+| Weapons and armour | 767 records on 638 distinct models | The 11 lowest-tier "bog iron" weapons are vanilla iron and steel models. Two heavy sets use Nordic plate and Nordic carved models. Every Argonian village guard wears one set; every town watch one other. Three tribes are specified in light shell or bone-plate armour we do not hold. Six tribes' signature weapon types have no Black Marsh model. |
+| Clothing | About 30 non-armour clothing models | 12 of the 23 trade kits have no clothing row. In the six stocked places 126 of 165 people have no authored clothing, and half of the rest wear vanilla farm, monk or beggar clothes. The other 252 places are not stocked yet. |
+| Heads | The Argonian race has 37 tint entries over 18 masks | None of our mods adds an Argonian horn or feather head part, so the tribes differ by tint only. |
+| Places | 258 places on 246 distinct first-choice sources | 77 take an Argonian-kit source; 126 take a source built from vanilla Skyrim pieces. The most Argonian places lean hardest on those: Murkwood 10 of 13, Banujha Basin 11 of 15, Cape Percar 12 of 17, the Root-Folk 13 of 19. |
+| Interiors | About 21 one-piece Argonian interior shells in the mods we hold | In the four drafted places with rooms, 18 of 41 rooms are one Helstrom house interior repeated. The Root-Folk's 19 places have 3 source interiors for 22 households; the Sedge-Wardens' 6 places have 3 for 13. |
+| Pieces in places | About 3,500 placed objects in the six drafts | 47% of doors are Nordic-ruin or Solitude doors. The vanilla candle lantern is placed 173 times. The fur bedroll is 27 of 97 furniture pieces. |
+| Lore objects | Totems (about 8), chimes, a drum, a Sithis shrine, frog instruments, 12 Argonian banner types, four hammocks with no bed record | Not found anywhere: grave-stake, sap jar and tap, a proper egg clutch, Hist stele and tablets, fish weir and net rack, an emblem for any culture or story line. |
+| Imperial remnant | 11 forts and keeps (9 garrisoned), 12 Imperial ruins, 2 lighthouses, 3 planter estates, Gideon | Eight different Skyrim fort bodies with no local mark. Six of the 12 ruins sit on snowy Nordic forts. Gideon rests on Riften. No Company standard, toll bar or milestone. |
+| Dunmer | 7 living places, 12 Velothi tombs | Stormhold's source is Markarth. Three Velothi places sit on Daedric sources. Dunmer kits are built for ash and stone, not for a swamp. |
+| Other peoples | Khajiit, Bosmer and the Company appear only as crews, smugglers and wrecks; pirates hold 6 places | No marks, no craft of their own. Their gear is our most varied pool and needs nothing. |
+| Ruins | Ayleid 7, Kothringi 8, Lilmothiit 9, sunken 7, abandoned villages 8 | Four places sit on Dwemer sources. Kothringi ruins sit mostly on Nordic or Imperial stone. No place is a xanmeer apart from the sunken spires. |
+| Plants | 193 tree models; no two regions share more than a third of their trees | The ground layer is 57% of all plant placements. Reeds are 7.4% on one model; lilies 4% with one model at 93%; the fern family 26%, and the commonest fern does not sway. The held mangrove has fine roots but no tall stilt-root form. The Hist has no sick or dying look. |
+| Boats and wrecks | One Imperial ship, three King of the Murkmire boats, vanilla rowboats | 31 boat stops and 11 wreck places; no native craft; four wrecks on a vanilla Nordic ship. |
 
-Limits on these numbers:
+Limits: nothing was judged by eye (the lanes worked from records, counts and file reads, so every "reads as"
+is by name and you judge look); only six places are stocked and drafted, so province-wide shares of clothing
+and pieces are projections.
 
-- Nothing was judged by eye. The lanes worked from model names, counts and tables, so "reads as Nordic" is by
-  name, and how good the held Argonian models look is unchecked. You judge look.
-- Only six places are stocked and drafted, so province-wide shares of clothing and pieces are projections.
+## 3. What Nexus can fill without any art
 
-### What Nexus can fill without any art
+**How it was searched.** My first pass searched only the Special Edition's Nexus and only mod names, and missed
+GKB Green Trees, which you found. The tool now searches both Skyrim games and description text; the lanes ran
+about 400 terms and read about 250 descriptions. Two limits remain: nothing was downloaded, so the big packs'
+contents are known only from their descriptions, and permissions were read from description text only. A mod
+of the 2011 game needs its models converted at staging, a new step for us that would be proved once.
 
-**How it was searched, and what was wrong the first time.** My first pass searched only the Special Edition's
-Nexus and only mod names, and I told you Nexus had no mangroves, canoes, jade weapons or Argonian bone armour.
-You showed that was wrong with GKB Green Trees. The search tool now covers both the Special Edition and the
-2011 game, and matches description text as well as names; the four audit lanes re-ran about 220 terms and read
-about 140 descriptions. Two limits remain: nothing was downloaded, so the contents of the big resource packs
-are known only from their descriptions; and permissions were read from the description text only.
-
-A mod of the 2011 game needs its model files converted before the Special Edition can load them. That is a new
-kind of step for us (a conversion at staging, nothing committed) and would be proved once like any other.
-
-| Gap | Found (2011 = the 2011 game's Nexus, needs converting) | To check |
+| Gap | Found (2011 = the 2011 game's Nexus) | To check |
 |---|---|---|
-| Trees | GKB Green Trees (2011, 19268): free to use with credit. We already hold 40 of its models through Black Marsh & Valenwood, mangroves included; its numbering has gaps, so it probably holds unused jungle trees and mangroves. | open the pack and list what we do not hold |
-| Tropical plants and props | Tropical Lands Assets from the Cathnoquey project (33446): a 440 MB set, free with credit, contents unlisted. The strongest unopened lead. Also Tamira's New Plants (2011, 22018) and Waterplants (6092), the only lead for more reeds. | open and list |
-| Lore ingredient plants | Harvestables (2011, 15108): saltrice, marshmerrow, hackle-lo, sugarcane, stoneflower, trama root, ash yam, bamboo trees. | no permission line: ask the author |
-| Ships and wrecks | Ships and Boats of Tamriel (41653) and three 2011 ship packs: Nord, Breton, Imperial and East Empire hulls. Two sailing mods mention canoes and rowboats (2011, 67727; 40057). | one author's packs say "only with my permission": ask |
-| Banners | Incaendo's Banner Resource (17604, 59 banners) and Banner Resource 2 (94919, 163 banners), and Flags Resource (56152). The banner models exist; only our emblems are missing. | |
-| Argonian armour and dress | Argonian Mercenary Armor with Armored Tail (2011, 27676), Argonian Raptor Feet (2011, 19283), HistBone and Bonewood Argonian Armors (2011, 99144: the light bone plate three tribes are specified in), Edhildil's Argonian War Tails (2011, 28502, "use at will, credit"), Shifts-Sand's Saxhleel Sundries (191593: tribal wear, wraps, shell armour, robes, a death mask; a demo ported from Elder Scrolls Online with known faults), Simple Straw Hats (89962, says it fits Argonians), frog and lizard hats (2011, 88009). | Argonian fit of each; I would look at Saxhleel Sundries and not lean on it |
-| Jewellery and rigid tribal pieces | Gemling Queen Resources (2011, 54483, blanket permission with credit), a bone shield, skull helmets and a tribal staff (2011, 43293, free to use), a feather ornament, the I'noh-Ssu-Keh war mask (82282). | |
-| Weapons | Argonian (Saxhleel) Weapon Pack (67137, seven melee weapons), Saxhleel War Club (35555), one jade blade (2011, 110218). | |
-| Sleeping | Four hammock models are already held (Black Marsh & Valenwood, Baan Malur) but have no bed record, so nobody can sleep in them. | a record and a sleep marker, no modelling |
-| Buildings and clutter | Stroti's Stilt House Resource (2011, 61824: stilt house, hut, platform, shutter door, credit), a wicker furniture set, tiki torches, skull ropes and offering bowls, pots and baskets from three resource authors, tombstones, several statue resources, a Hawaiian deity statue that could base an idol. | one building-kit pack forbids porting without permission: leave it |
-| Bones and lily pads | Whale Bones on Coasts (91958), a bones pack and a lily pad resource (2011). | |
-| A map of Argonian mods | Katie's Beast Race Aesthetics Compendium (45654), a curated list worth reading end to end. | |
+| Trees and plants | GKB Green Trees (2011, 19268, free with credit; we hold 40 of its models already, its numbering suggests more). Tropical Lands Assets (33446, 440 MB, free with credit, contents unlisted). Waterplants (6092). Harvestables (2011, 15108: saltrice, marshmerrow, hackle-lo and more). | open and list; Harvestables has no permission line |
+| Ships | Ships and Boats of Tamriel (41653) and three 2011 packs: Nord, Breton, Imperial, East Empire hulls. Pirates of Skyrim and Pirates of the North. Two sailing mods mention canoes. | one author: "only with my permission" |
+| Banners and marks | Incaendo's Banner Resource (17604, 59 banners) and Banner Resource 2 (94919, 163), Flags Resource (56152), an East Empire strongbox mark. | |
+| Argonian dress | Argonian Mercenary Armor with Armored Tail (2011, 27676), Argonian Raptor Feet (2011, 19283), HistBone and Bonewood Argonian Armors (2011, 99144), Argonian War Tails (2011, 28502), Saxhleel Sundries (191593, a demo ported from Elder Scrolls Online: look, do not lean), Simple Straw Hats (89962). | fit on all ten races |
+| Jewellery, rigid pieces, weapons | Gemling Queen Resources (2011, 54483), a bone shield, skull helmets and tribal staff (2011, 43293), the Saxhleel weapon pack (67137) and war club (35555), one jade blade. | |
+| Dunmer in the marsh | Morrowind Hlaalu Architecture (157997), Phitt's Morrowind Resources Remapped (107571, a Velothi kit), Telvanni tower resources (2011), Den of Fen asset pack (167214), Morrowind lanterns, house capes. | several held Dunmer mods state no terms: ask |
+| Imperial | Beyond Skyrim Bruma and its asset release (terms unread), Imperial Stone (6481, "permissions completely open"), Imperial Castles of Skyrim, a castle wall resource. | |
+| Ruins and overgrowth | An Ayleid building kit (2011, 90667), hanging-moss and ivy packs, Tendril Vines (40196), two moss material mods. | permissions unread |
+| Buildings and clutter | Stroti's Stilt House Resource (2011, 61824), a wicker set, tiki torches, pots and baskets, tombstones, statue resources. | one building-kit pack forbids porting |
 
-**Still not found by any term in either game:** Argonian grave-stakes; totems beyond the eight we hold; sap
-vessels and tapping gear; egg nests; Hist steles; dugouts, reed rafts and houseboats; fish weirs, fish traps
-and drying racks; cattails and rice-field plants beyond the saltrice we hold; tree ferns; turtle-shell or reed
-shields; Black Marsh versions of the lowest-tier weapons and of the six signature weapon types. That is the
-own-model list, and I hold it more loosely than before: the unopened packs above may yet shorten it.
+**Still not found by any term in either game:** Argonian grave-stakes, sap vessels, egg nests, Hist steles;
+dugouts, reed rafts, houseboats; fish weirs and traps; cattails and rice-field plants; tree ferns; turtle-shell
+or reed shields; Black Marsh versions of the commonest weapons and the six signature types; an Imperial
+milestone or toll bar; a Khajiit coaster; a Dunmer plantation house for wet ground. This is a statement about
+the terms searched, and the unopened packs may shorten it.
 
-## 3. What the tools can and cannot do
+## 4. How things would be made: the model workshop
 
-**The pipeline you described works in pieces, and nobody seems to have joined them for Skyrim.** Each step is
-documented; the join from a generated model to a Skyrim model file is the unproven part.
+**The method is the one your place drafting uses.** An agent names what it wants to look at, the tool places
+the camera, the agent measures for truth and looks for judgement, changes one thing, and looks again. The
+research on agents doing 3D modelling says the same things make it succeed: exact numbers, small verified
+steps, fixed cameras, measuring tools, a reference picture alongside. Our studio's look tools already work
+that way, inside rooms as well as outside.
 
-- **Images:** Fal's image models make a clean reference of one object on a plain background. One of them takes
-  up to 14 reference pictures at once, which is the tool for consistency (section 5).
-- **3D:** Fal already hosts Tripo (four versions) and Hunyuan 3D, on the same account we use for music. No
-  separate Tripo account is needed. They can return a textured model or the bare shape.
-- **Clean-up:** generated models come out with 19,000 to 52,000 triangles, poor texture layouts and stray
-  faces. A Skyrim weapon wants 2,000 to 8,000. Blender, run without a screen on the build machine, does the
-  reduction, re-layout and scaling by script.
-- **Into Skyrim:** we already own tools that read every Skyrim model and write simple static ones. They do not
-  yet write collision, markers or anything worn. The standard Blender exporter for Skyrim is officially
-  Windows-only.
-- **What generators are good at:** solid, closed shapes with a strong outline: clubs, blades, pots, posts,
-  stumps, hulls, shells.
-- **What they are bad at:** thin parts (shafts, hafts, reeds), leaves and fronds (flat cut-out cards in a game,
-  which a generator cannot make), symmetry, and anything that must bend with a body.
+**The workshop is those same actions pointed at a model instead of a place.** It would be built once:
 
-**Your size instinct is right, with numbers.** One 2K texture gives 2,048 pixels per metre on a 1 m object, 683
-on a 3 m one, 256 on an 8 m one and 102 on a 20 m one. A surface two metres from the player fills about 480
-screen pixels per metre. So one texture stays sharp up to roughly 4 m of object and is visibly soft past 8 m.
-A 4K texture doubles those sizes. Big things stay possible only if seen from a distance, split into parts, or
-dressed in repeating materials instead of one stretched picture.
+| Piece | State today | What is needed |
+|---|---|---|
+| Blender, run without a screen on the build machine | not installed | install; shape views in seconds, lit views slower (to be timed) |
+| Views of a model | the studio's headless view already draws any Skyrim model, cut-out leaves included | let it load a model that is not yet in the catalogue; add fixed views at 2, 10 and 40 metres and on a body |
+| Writing a static model | our own tool does it | add collision |
+| The swap into a donor's file | not built | add to our own tool; keeps a donor's tags, markers and collision |
+| Collision | not built | boxes for flat pieces; for shells, the standard Blender exporter's compiler for walkable collision is plain Python and runs here |
+| Swaying plants | not built | a writer for the leaf-animation kind our palms, reeds and mangroves use (no skeleton needed) |
+| Anything worn | not built | a "graft onto a donor" command in our own tool, an estimated 250 to 400 lines; the one real obstacle for wearables |
+| Textures | our tools read them | a converter that writes the full chain of sizes, and keeps cut-out leaves from thinning at distance |
+| Assembly in the studio | place, move, turn, sink, duplicate exist | a grid snap, a piece palette, a stairs action that goes up, and a dress action that sits a piece on a surface |
 
-**Prices** (Fal's model pages, 24 November; they move often):
+**What the generators are for.** Fal already hosts Tripo and Hunyuan 3D on the account we use for music; no
+Tripo account is needed. They make solid objects seen from outside: good for clubs, blades, pots, posts,
+stumps, roots, hulls, carved ornaments, and for a 3D concept of a building that the agent then re-models
+cleanly over. They do not make rooms, leaves, cloth or anything that must snap or bend. Tripo's own guide to
+interiors (which I could read only in search summaries, since its site refuses automated reads) says the same:
+generate the furnishings one by one, then stage them in another tool. Our "other tool" is the studio.
 
-| Step | Price |
-|---|---|
-| One reference image, with up to 14 references fed in | $0.06 to $0.16 |
-| One bare shape, no texture (Tripo H3.1 to Tripo P2) | $0.20 to $1.00 |
-| One textured model (Hunyuan 3D, Tripo H3.1, Tripo P2) | $0.38 to $1.30 |
-| **One kept model, allowing three image tries and two model tries** | **$1.00 to $2.70** |
+**Tools worth having:** Blender without a screen, the studio additions above, a checker for kit pieces, and
+Hunyuan 3D's eight-view input for buildings (about $0.53 a run). Agent control of Blender through an MCP is
+optional. The paid architecture add-ons are not worth it.
 
-**Agent cost: I cannot estimate it reliably, and the pilot is where it gets measured.** The one outside figure
-is a vendor's write-up of five weapons cleaned up with an agent in about 2.7 hours in total, to an ordinary
-game engine and not to Skyrim. For scale, all of today's research lanes together used about 1.3 million tokens.
+**Prices** (Fal's pages, 24 November): a reference image $0.06 to $0.16; a bare shape $0.20 to $1.00; a
+textured model $0.38 to $1.30; a kept model, allowing three image tries and two model tries, $1.00 to $2.70.
+Hand work shifts the cost from fees to agent time. **I cannot estimate agent time or cost reliably**; the
+proofs in section 8 are where it gets measured, per kind of thing.
 
-**Policies:**
+**Policies:** Nexus allows AI-made content if labelled (announced 3 November 2026, existing mods to comply by 2
+January 2027) and requires an author's written consent to train on a mod; it only bites if we publish there,
+and the music already counts. Bethesda's paid Creations programme bans generative AI and is not our channel.
+Fal's output terms are recorded for the music as ours with commercial use; I would read and record them for
+the 3D models before bulk spend.
 
-- **Nexus** announced on 3 November 2026 that AI-made content is allowed but must be labelled, with existing
-  mods to comply by 2 January 2027, and that using a mod to train an AI needs its author's written consent.
-  The label only bites if we publish there; our Fal music already counts.
-- **Bethesda's paid Creations programme** bans generative AI. It is not our channel.
-- **Fal's output terms** are already recorded for our music as owned by us with commercial use allowed. Before
-  bulk spend I would read the same terms for the 3D models and record them the same way.
-- **King of the Murkmire** is the one mod of ours whose page says add-ons should "not make use of AI". Our
-  record says your permission from its author, held since 24 September, covers our use. See section 9.
+## 5. "Acts like an existing thing"
 
-## 4. The route: "acts like an existing thing"
+Your suggestion runs through every track. I call it the **template swap**: copy an existing model file and its
+record, replace only the visible shape, and keep everything else. I read the vanilla files to check it: the
+sword's file carries the tag for the bone it hangs from and its drop collision; the shield its own tag; the
+bedroll its sleep markers; a chest opens by three named parts and a hinge point; a bow is one shape on seven
+bones whose draw is one animation file shared by five vanilla bows.
 
-Your suggestion is the centre of the whole plan, and it reaches further than weapons. I call it the **template
-swap**: take a copy of an existing model file and its record, replace only the visible shape with the new one,
-and keep everything else.
-
-I read the vanilla files on the build machine to check this. The steel sword's file holds the visible blade,
-a blood-edge shape, a tag naming the bone it hangs from, and its drop collision. The warhammer is the same,
-hung from the back. The iron shield carries its own tag and collision. The bedroll carries its sleep markers
-and collision inside the file. None of that needs remaking: a new shape placed at the same grip point and
-along the same axis swings, sheathes, blocks, drops and sounds exactly like the donor, and a sleeper lies on a
-new mat exactly as on the old bedroll.
-
-**Your ruling on weapon types** (24 November): where a type exists in Animated Armoury or another of our
-sources, its animations are taken as good, and our own version copies that record and swaps the model. Our
-items page already records how each swings:
+**Your ruling on weapon types:** where a type exists in Animated Armoury or another of our sources, its
+animations are taken as good, and our own version copies that record and swaps the model.
 
 | Our own version of | Copies the record from | Swings as |
 |---|---|---|
@@ -164,322 +151,326 @@ items page already records how each swings:
 | Pike | Animated Armoury | greatsword |
 | Spear, trident, harpoon | Heavy Armory, Here There Be Monsters or New Armory | greatsword (short spear: sword) |
 | Halberd, quarterstaff | Animated Armoury | battleaxe |
-| Whip | Animated Armoury | mace |
-| Rapier | the collection's rapier animation pack | sword |
-| Claw | the collection's claw animation pack | dagger |
+| Whip, rapier, claw | Animated Armoury and the collection's animation packs | mace, sword, dagger |
+| Bow | a vanilla bow, keeping its bone names | bow |
 
-Long shafts are the generators' weak side, so for every long weapon only the head is generated; the shaft is a
-plain cylinder made by script and dressed in a shared wood material. Bows, crossbows, blowguns and thrown
-weapons stay out: their parts are animated.
+The same idea covers furniture (a mat in the bedroll's file), containers, lights, harvestable plants, doors,
+and worn things (a helmet's three head models, an outfit's fit). Two routes need even less: a **texture only**
+on a model that exists, and **replacing a file for the whole province** (a new model over the vanilla
+bedroll's path changes every bedroll at once).
 
-How far the swap reaches in other kinds (the research lane's estimates, to be confirmed by the pilot):
-
-| Kind | How much the swap covers | The catch |
-|---|---|---|
-| Melee weapons | about 95% | Keep the length within about 20% of the donor's. Two-handed shafts must be as long as the donor's or the second hand floats. |
-| Shields, rigid masks and helmets, jewellery | about 90% | Masks and helmets must clear the Argonian snout; that needs a fitting step. |
-| Movable clutter (bowls, jars, baskets) | about 85% | The collision is re-fitted if the size differs much. |
-| Furniture (mats, hammocks, stools) | about 80% | The lying or sitting surface must be within about 5 cm of the donor's height. |
-| Lanterns and other lights | about 80% | The flame must sit at the new wick. |
-| Harvestable plants; containers with fixed lids | about 60% | The picked and unpicked states must keep their names. |
-| Doors and things with moving parts | about 40% | The moving part must keep its pivot. |
-| Bows and crossbows; full outfits | about 10% | Animated limbs; cloth that must bend with the body. |
-
-**Two more routes need even less:**
-
-- **Texture only.** A banner or a door sign is a flat image on a model that already exists. The record can
-  point an existing model at a new texture without touching the model.
-- **Replace the file for the whole province.** A new model saved over the vanilla bedroll's path changes every
-  bedroll in every source place at once, with no record work and no place edits. It would also change Imperial
-  and Dunmer camps; a record-level swap by culture is the finer tool where that matters.
-
-## 5. Keeping it all one game: the consistency method
+## 6. Keeping it all one game
 
 You asked for a hierarchy: everything looks like the same game; within that, each culture, region or faction is
-distinct from the others and consistent within itself; and there may be levels below. This section is the plan
-for that.
+distinct from the others and consistent within; and levels below. And you pointed out that the province is not
+only Argonian: Imperial remnants, Dunmer, ruins of several eras, all standing in Black Marsh and changed by it.
 
-**What the research is worth.** Every source describes the same process, and almost every source is a vendor
-selling a tool. I found no independent account of a shipped AI-made 3D set that reports how consistent it came
-out, and no published recipe for matching an existing game's look. So the process below is well supported; the
-parts about matching Skyrim are my own reasoning, and the pilot is built to test them.
+**What the research is worth.** Every source describes the same process, and almost every source is a vendor.
+I found no independent account of a shipped AI-made set that reports its consistency, and no published recipe
+for matching an existing game. The process is well supported; the Skyrim-matching parts are my own reasoning
+and the proofs test them.
 
-**The main idea: fix the look at the material, not at the picture.** If every model gets its own generated
-texture, consistency depends on forty separate generations agreeing. If the generator supplies only the shape,
-and the surface comes from a small shared set of materials, then two models of the same wood are the same wood
-by construction. Skyrim itself is built this way.
+**The main idea: fix the look at the material, not at the picture.** The shape comes from the generator or the
+agent's hand; the surface comes from a small shared library of repeating materials, wrapped at a constant
+number of pixels per metre. Two things of the same wood are then the same wood by construction, and size no
+longer blurs anything, which is how Skyrim's own buildings and ships are made (the 29 m Imperial ship we hold
+has no texture of its own). A unique generated texture is kept only where the surface carries meaning (a
+carving, an emblem, a painted mask), and passes through one fixed script that pulls colour, brightness and
+sharpness into ranges measured from the game's textures.
 
-So each surface takes one of two routes:
+**The hierarchy:**
 
-1. **Shared material (the default).** The new shape is dressed in materials from a library: first the game's
-   own wood, bone, rope, straw, stone and metal textures, which match Skyrim perfectly because they are
-   Skyrim's; then a few of our own repeating marsh materials where the game has none (reed weave, wet clay,
-   jade, scale), each made once and approved once.
-2. **Unique texture (only where the surface carries meaning).** A grave-stake's carving, an emblem, a painted
-   mask. These are generated, then passed through one fixed script that pulls colour, brightness and sharpness
-   into ranges measured from the game's own textures, removes baked-in light, and converts to Skyrim's texture
-   layout. Measuring the game's colour ranges is arithmetic on files the player owns, not training a model.
+| Level | Fixed once | Who approves |
+|---|---|---|
+| 0. The game | measured colour, brightness and sharpness ranges; pixels per metre; triangle limits; the conversion script; one lighting set-up for review pictures; a size chart; a "never" list (clean, glossy, saturated, glowing, ornate fantasy) | you, on a line-up beside vanilla pieces |
+| 1. Material | one library material for each of the items ladder's materials and each building material: bone, bog iron, jade, reed weave, mud, thatch, plank, stucco, stone | you, once each |
+| 2. Builder | each of the 18 cultures, the nine story lines, and the foreign builders (Imperial-colonial, Warden, Dunmer by house, Kothringi, Ayleid, Company, pirate): its colours, its two or three materials, one sentence of shape, its emblem, three references, one hero piece | you, on the sheet and the hero |
+| 3. Family | a tribe's weapon set, the grave-stakes, a building kit: one anchor taken into the game; every sibling made from the anchor, never from another sibling, because copying drifts | you, on the anchor in game |
+| 4. Object | a brief: purpose, size, the record it copies, the one feature that makes its outline its own | automatic checks; you see the family as a line-up |
 
-**The hierarchy, and what is fixed once at each level:**
+**The Black Marsh treatment: two more axes for anything built.** A building or ruin is its builder, its
+**state**, and its **location**. State and location are applied mostly by record and by hand-dressing, not by
+new kits:
 
-| Level | What it is | Fixed once | Who approves |
+| State | By record (no art) | By placement, by hand | By art, where wanted |
 |---|---|---|---|
-| 0. The game | one sheet for everything we make | ranges of colour, brightness and sharpness measured from Skyrim's and our mods' textures; pixels per metre; triangle limits per kind; the fixed conversion script; the shared material library; one lighting set-up for all review pictures; a size chart; a "never" list (clean, glossy, saturated, glowing, ornate fantasy) | you, once, on a line-up beside vanilla pieces |
-| 1. Material | the items ladder's materials, which already exist as data: bog iron, bone, flint, jade, obsidian, reed, shell, clay | one library material each, so bone is the same bone on every tribe's weapons | you, once per material |
-| 2. Culture, region or faction | the 18 cultures, the nine story lines, the foreign enclaves | a one-page sheet: the culture's identity colour (already in our data) and five to seven more; which two or three materials it favours; one sentence of shape (for example "hooked and toothed" against "smooth and leaf-shaped"); its emblem, which is the standard from part B and recurs carved or painted on its things; three reference pictures; one approved hero piece | you, on the sheet and the hero |
-| 3. Family | one tribe's weapon set, the grave-stake set, the boat kit | one anchor model, taken into the game. Every sibling is made from the anchor and the culture sheet, never from another sibling, because picture-to-picture copying drifts after a few steps. One thing changes per batch. | you, on the anchor in game |
-| 4. Object | the single model | a short brief: what it is for, its size, the record it copies, and the one feature that makes its outline its own | automatic checks; you see the finished family as a line-up |
+| Maintained, lived in | the clean record | lamps lit, goods, washing, repairs in good order | the builder's marks |
+| Used but neglected | the dirty or wet texture set | weeds at the footings, a patched roof | repairs in local reed, timber and mud |
+| Abandoned | the moss twin; wet set | vines, roots, leaf litter, nests, no lights | hand-built vine and root pieces |
+| Ruined | moss twin; rubble pieces | fallen masonry, trees through floors | broken variants of kit pieces |
+| Drowned | wet set | sunk below the water line, silt, weed, barnacles | a water-line stain |
+| Reclaimed by Argonians | either | reed screens, totems, hammocks, a tribe's standard on a foreign wall | the tribe's marks |
 
-Material and culture cross each other: a Naga-Kur club is the ladder's bone and wood, in the Naga-Kur's shape,
-carrying the Naga-Kur mark. That gives "same game" from level 0 and 1, "this tribe" from level 2, and "this
-set" from level 3, without any model needing to be consistent by luck.
+Location bends the same treatments: more moss and hanging growth in Murkwood, salt and weed on the mangrove
+coast, dust and dry growth in the south.
 
-**How it is held in practice:**
+**This is Bethesda's own method, measured.** A second record of the same model with its own projected material
+is how Skyrim does snow, ice, ash and moss: 2,691 of its 15,804 statics carry one. King of the Murkmire
+already has three moss materials and 176 mossy records, each with a clean twin, and it and Black Marsh &
+Valenwood carry clean, dirty, wet and moss texture sets for Ayleid and Imperial stone. So "mossy in Murkwood,
+clean in Gideon" is one extra record per model. Our tools do not read or write that field yet, and whether
+King of the Murkmire's moss reads green in game needs one look.
 
-- The sheets are data files, like the music's shared palette. A script builds every image request from them
-  (game block, material block, culture block, family block, object brief), so no request is written freehand.
-- Every reference image is made with the approved hero and anchor fed in as references.
-- An automatic gate checks numbers only: colour and brightness inside the measured ranges, pixels per metre,
-  triangle count, size against the donor, materials from the library. An AI image judge may list suspected
-  faults for a person to look at, but never approves: such judges are known to invent details and pass them.
-- You judge look at three points only: the level sheets and their hero pieces, each family's anchor in game,
-  and one line-up picture per finished family beside its vanilla neighbours.
-- Sheets are written only for the cultures a batch touches, starting with the Act I places, not all 18 up front.
-- No style training. Fal's own guide says it pays only at hundreds of images, and we would never train on the
-  game's or a mod's textures.
+**How it is held:** the sheets are data files, like the music's palette, and a script builds every image
+request from them. An automatic gate checks numbers only. An AI image judge may list suspected faults but
+never approves; such judges are known to invent details and pass them. You judge look at the sheets and
+heroes, each family's anchor in game, and one line-up per family beside its neighbours. No style training.
 
-## 6. New buildings and interiors
+## 7. The tracks
 
-You asked what we would need to know to make new buildings with interiors. The short answer: **the generators
-cannot make a room, but a new building does not need them to**, because of how Skyrim and the Argonian mods
-already build houses.
+Each track is staged, starts with one proof, and can be funded or dropped on its own.
 
-**How it works today.** A Skyrim interior is a separate space behind a door; the game never shows inside and
-outside together. Bethesda's snap-together kits (on a grid of about two metres) are for dungeons. Houses are
-done differently, and the Argonian mods follow suit: King of the Murkmire, Here There Be Monsters and the lake
-house hold about 21 one-piece interior shells, each paired with a one-piece exterior. The interior's footprint
-runs from 80% to 120% of its exterior's (one mud hut is 708 by 932 units outside and 974 by 698 inside), and
-vanilla interiors are commonly said to be about one and a half times their exteriors. So a loose match is what
-players already accept; nobody measures.
+### A. Marks (flat images)
 
-**What we do now.** Our place skills carry each source place's rooms whole. In the four drafted places with
-rooms there are 41 rooms from 24 source rooms, and 18 of the 41 are the same one: Helstrom's Argonian house
-interior, repeated. About four rooms use a foreign kit (Dunmer, Orc) and about eight King of the Murkmire huts
-carry vanilla farmhouse clutter. So the interior problem today is sameness, not a missing kit. No model was
-opened for this, so how the held shells look is unjudged.
+An emblem for each of the 18 cultures and each of the nine story lines; the Company and Brethren flags; a
+Warden pennant; crate stencils and sign boards. They go on banner models that already exist, as door signs,
+and later carved or painted on each builder's things, so they are also the first half of each level 2 sheet.
+The emblems are new lore: each cites its lore and you judge them on one sheet.
 
-**What the tools can do.**
+### B. Props and weapons (small solids)
 
-- Tripo, Hunyuan 3D, Meshy, Rodin and Trellis make objects seen from outside. None has a feature that makes a
-  room; Tripo's "parts" features only split an object.
-- The "world" generators make either a cloud of coloured points or a single mesh of 600,000 to a million
-  triangles with holes: not walkable game rooms.
-- The research systems that lay out rooms place ready-made furniture inside a box; they do not make the box.
-- I found no Claude Code skill or write-up for matching an interior to an exterior, and no shipped
-  snap-together kit made by AI. Reviews of driving Blender by agent say room building is possible but the
-  positioning is hit and miss.
+About 49 models, every one a template swap or a static: five bog-iron weapons; nine tribal weapons (jade
+dagger, flint war axe, crocodile-tooth club and maul, toothed sword, Naga-Kur bone sword and dagger, eel gaff,
+obsidian-edged heavy club); the six signature types (pike, halberd, skull-topped quarterstaff, rapier, whip,
+claw); two shields (turtle shell, reed wicker); five grave-stakes; sap jar, tap, gourd and Hist seed pod; two
+egg clutches; two reed mats; a fish weir section, trap and net rack; a dugout and a reed raft; six pieces of
+driftwood and drowned timber; three mounds. Plus the foreign set: milestone, toll bar and chain, sluice, lamp
+room, Company crates. Generated shapes are finished by hand: an edge thinned, proportions fixed, shafts and
+lashings modelled from simple shapes.
 
-**Routes for us, easiest first:**
+### C. Plants
 
-| Route | What it is | What it needs | Verdict |
-|---|---|---|---|
-| 1. Vary the held shells | give each house a different one of the 21 Argonian interior shells instead of one repeated | records only; the place skills already do it | do now; part of "least, part A" |
-| 2. Re-dress a held shell | the same room in our shared materials: reed, mud, a tribe's colours | texture work only; shape, collision and walking mesh unchanged | part of "least, part B" if you want it; whether it reads as a different room is for your eye |
-| 3. A new exterior over a held interior | a new building outside (a static shell), with a door leading to one of the held interiors | one new building block: a model file with walkable collision; then a walking-mesh cut and a distant-view model. Built by script from simple shapes and dressed in shared repeating materials, so size does not blur it; a generator supplies only ornaments (a carved lintel, a roof finial) | the cheap way to a "new building"; only after the pilot has proved collision writing |
-| 4. A small scripted interior kit | 12 to 20 wall, floor, post and doorway pieces made by script, snapping on the game's grid | the same collision block, plus lighting and a walking mesh per room | one trial room at most, after route 3 works |
-| 5. An interior carved from a generated exterior | hollow out a generated hull | hand repair; probably not walkable | no |
-| 6. Fully generated rooms | | | not feasible today |
+The ground layer is what the player looks at most.
 
-**What this means for the plan.** Routes 1 and 2 change nothing in the rule and fix the fault we actually
-have. Route 3 is what "a new building with an interior" would mean for us: the outside is ours, the inside is
-a held shell behind the door, and the two match as loosely as Skyrim's own do. I have put one such trial in the
-"most" list. It would also be the way to the root-grown house the Root-Folk lack, if the trial goes well. One
-caution: a new shell would stand beside King of the Murkmire's huts, which sharpens the question for its
-author in section 9.
+1. A reed, cattail and sedge clump set, cards built by hand from Fal leaf images with painted sway weights,
+   judged at 2, 10 and 40 metres and from a boat. Reeds are 7.4% of all plant placements, on one model today.
+2. Ferns and lily mats (26% and 4%), including a fern that sways.
+3. A tall stilt-root mangrove: generated or hand-built roots in a shared bark material, a crown of hand-placed
+   cards, and its distant-view picture. New trees are capped: 87 of the game's 256 distant-tree slots are free.
+4. Tree ferns, rice and saltrice stands, giant fungus, hanging moss curtains.
+5. A signature planting per wet region, so the eleven stop looking alike. This changes planting tables, which
+   reach undrafted places at a world rebuild; swapping one whole plant for another province-wide may avoid
+   that, and whether such a swap counts as a rebuild is yours to say.
+6. The Hist in four states (healthy, sick, dying, dead). The held Hist trunks are one mod author's and the
+   glands and roots are King of the Murkmire's, whose page forbids AI use; the cheap sick state is a bark
+   texture swap by record; a Hist of our own in four states avoids both sets of terms.
 
-## 7. The four options
+### D. Boats and wrecks
 
-Each option includes the one before it. Fees are Fal's; agent work is extra and unmeasured.
+Boarding is a line of dialogue that fast-travels, so no boat needs a seat or a script. A native kit, modelled
+by hand in shared plank, reed-bundle and rope materials with boxes for the deck: dugout, bundled-reed raft,
+twin-hull platform canoe, poled ferry raft, houseboat. Wrecks are built from separate planks and ribs and then
+broken by hand: ribs snapped, a list, a sinking, weed. A Khajiit coaster and pirate hulks for the foreign side.
+
+### E. Wearables, for all ten races
+
+Everything worn must work on whichever of the ten races the player is. Measured on the game's records:
+
+- **Body items need one set of models for all ten.** A vanilla cuirass, boots, gauntlets and farm clothes each
+  carry one record naming every race; the eight human and elf races share one body, and Khajiit and Argonians
+  use it too, with Argonians adding their own hands and a tail in its own slot.
+- **Only headgear multiplies.** Vanilla helmets, hoods and circlets carry three head models (human and elf;
+  Argonian; Khajiit), a few a fourth for Orcs. The beast versions are the human model reshaped, vertex for
+  vertex, so one finished piece can be reshaped onto each beast head. Every head item of ours is a three-model
+  set from the start.
+- **Cost against a single model:** rings, shields and tail bands 1x; body items about 2x (both sexes, thin and
+  heavy); head items 3x to 4x.
+- Where a piece cannot sensibly fit a race (a snout mask on a human face), each race gets its own shape of the
+  same item, as vanilla does with helmets.
+
+The stages:
+
+1. **Rigid head pieces**: masks, feather crests, horn caps. Each is one shape on one bone, with no weight
+   painting; the work is fitting three heads by eye.
+2. **Outfits reshaped from vanilla ones.** Every vanilla outfit already fits every body, with thin and heavy
+   versions of one structure. Cut the sleeves off, shorten a robe to a kilt, strip the fur trim, add a sash:
+   the vertices kept keep their fit. Beggar and prisoner rags are the bases for wraps, monk robes for long
+   cloth, the Forsworn torso for hide and bone plate. Then real retextures: weave, dye, tribal motifs.
+3. **Plates on a cloth base**: generated turtle-shell, bone and scale plates fixed onto a reshaped outfit.
+   This is the light shell and bone-plate armour three tribes are specified in.
+4. **Tribes that differ in their heads**: a horn or feather head part per tribe, and tribal markings through
+   the race's own tint layers. Named people with baked faces would probably need a Creation Kit pass.
+5. **A bow**, on a vanilla bow's bones.
+
+Checked by eye on each race, male and female, thin and heavy, in six test poses.
+
+### F. The Black Marsh treatment and ruins
+
+1. Mossy, wet and dirty twins of the kits by record (no art), and the tool change to write them.
+2. Move the places whose sources contradict the lore: four on Dwemer ruins, three Velothi on Daedric, six
+   Imperial ruins on snowy Nordic forts, Kothringi on Nordic stone.
+3. Hand-dress by state and location with held vines, roots and rubble, using the table in section 6.
+4. Hand-built pieces where the held ones run out: vine and root masses, fallen masonry, repairs in reed and
+   timber, drowned variants.
+
+### G. Buildings and interiors
+
+**How Skyrim does it**, which you corrected me on and I then measured: a house exterior is a closed shell. Of
+288 rays cast at door and window height into each of three vanilla houses and a King of the Murkmire mud hut,
+none got through. The Riften farmhouse's door is a 4-triangle panel with a door texture, its window a
+16-triangle pane, and its lit window at night a separate glow plane. The working door is a separate door
+record placed in a recess, and it teleports to an interior that is a separate space. So "matching" means a
+believable footprint, doors and windows in corresponding places, and the same materials and motifs, never
+literal continuity. That frees multi-room and larger-inside layouts. The exceptions are open-sided structures:
+stilt platforms, market halls, tents, ruins.
+
+**What our build already does:** it makes a room's walking mesh from the collision placed in it, and a room
+with no source place behind it is already legal. Still to find out: lighting for such a room, and whether the
+game walks on collision we write.
+
+**Two routes, used together:**
+
+- **Organic buildings: generated concept, re-modelled by hand.** Mud domes, root-grown houses, hide and reed
+  tents, rock-cut and ruined forms. The generator gives a 3D concept from several views; the agent models a
+  clean shell over it, adds the door recess and window panes, and wraps it in shared mud, root and thatch
+  materials. The interior shell is modelled to the same footprint and character, as one room or several.
+- **Carpentry and masonry: a hand-designed snap-together kit**, following Bethesda's published method for
+  Skyrim's own kits: pieces on the game's grid, tested as grey boxes by assembling three different buildings
+  before any finish. About 24 pieces for an Argonian reed-and-stilt kit that serves outside and inside. Then
+  **culture skins**: the same geometry in other materials and trim for an Imperial-colonial kit (about 30
+  pieces with a Gideon mansion, courthouse and customs house as hero buildings) and a Dunmer-in-the-marsh kit
+  (about 25: plaster and timber walls on stone footings, a stilted variant, a plantation yard).
+
+**Stairs.** Thirteen vanilla stair pieces measured: steps rise 14.5 to 24 units, floors sit 257 to 264 units
+apart in small houses and 320 to 380 in larger ones. The loft stairs we hold in King of the Murkmire and a
+Dunmer mod have the same dimensions as the Riften loft stair, so one rule fits all three. An agent needs: a
+stairs action that takes two floor heights and a start point and lays a flight with its landings; a proof for
+each flight (a walk from foot to head, headroom along it, both ends meeting their floors); and fixed views
+from foot, head and side. Our own stair set per kit follows where the held pieces fall short. Skyrim has no
+climbable ladders; a ladder is a door or decoration.
+
+**Dressing** is what the place agents already do by hand, from each household's people and stock. A new room
+adds lights (four may cast shadows), a lighting set-up, and beds and seats reachable on the walking mesh.
+
+**Stages:** a walkable box; one root-grown hut with a multi-room interior and a loft stair; the 24-piece kit
+grey-boxed into three buildings; the culture skins; then scale.
+
+## 8. The options
+
+Each includes the one before it. Fees are Fal's. Agent time is on top, is the larger cost once work is done by
+hand, and is unmeasured until the proofs.
 
 ### Do nothing
 
-The rule stays. The audits' free findings still stand as ordinary work (below, "least, part A"), but nothing
-new is made.
-
-- **Benefit:** no risk, no policy question, no time off the story.
-- **Cost:** the tells in section 1 stay. The tribes keep differing by tint only.
+The rule stays. Part A below still stands as ordinary work.
 
 ### Do least: no new models
 
-**Part A needs no rule change and no art.** I would do this whatever you decide.
+**Part A: no rule change, no art.**
 
-1. **Open the packs the search found** and list what they hold that we do not: GKB Green Trees' unused trees,
-   the Cathnoquey tropical set, Waterplants, Harvestables, the banner packs, the stilt house, and the Argonian
-   armour, footwear, tail and jewellery mods in section 2. Add what is good as dependencies; ask the two
-   authors whose terms need it. This is the step most likely to shrink everything below it.
-2. **A swap table for Argonian places**, using Argonian models we already hold: the vanilla candle lantern
-   (173 placements in six drafts) to the Argonian lanterns; Nordic-ruin and Solitude doors (56 of 119 doors)
-   to King of the Murkmire's mud, thatch and bamboo doors where the frame fits; hide tents to the scale tents;
-   shrines of the Nine to the Hist shrine; generic banners to the Argonian banners; and inside, a different one
-   of the 21 held Argonian interior shells for each house, where today one is repeated 18 times. This is your ruling of 20
-   November ("an easy swap is taken where there is one") made into one table, and it matters most for the 126
-   places built from vanilla pieces.
-3. **Give the held hammocks a bed record**, so camps can sleep in hammocks instead of on fur bedrolls.
-4. **Place what we hold and never placed:** King of the Murkmire's saltrice (the "saltrice marsh" regions show
-   none), five giant cypress knees, two bamboo models, and the Dragonborn giant mushroom trees for the fungus
-   floors. These appear at the next world rebuild you ask for.
-5. **Fix the holes the audit found in our own tables:** the three tribes pointed at armour we do not hold; the
-   12 trade kits with no clothing row; the town guard's cuirass with no dropped model; two reward outfits with
-   no item rows.
+1. Open the packs in section 3, list what they hold, add what is good, ask the authors whose terms need it.
+2. A swap table for Argonian places using Argonian models we hold: lanterns (173 placements in six drafts),
+   Nordic-ruin and Solitude doors (56 of 119), hide tents, shrines of the Nine, banners; and a different held
+   interior shell for each house where today one is repeated 18 times.
+3. Mossy, wet and dirty twins of our kits by record (track F, stage 1), and one look in game at the moss.
+4. Move the 19 or so places whose sources contradict the lore (track F, stage 2).
+5. Give the four held hammocks a bed record.
+6. Place what we hold and never placed: saltrice, five giant cypress knees, two bamboo models, the Dragonborn
+   mushroom trees. These appear at the next world rebuild you ask for.
+7. Fix the holes in our own tables: three tribes pointed at armour we do not hold; 12 trade kits with no
+   clothing row; the town guard's cuirass with no dropped model; two reward outfits with no item rows; one
+   robe mod fitted to a body we do not use.
 
-**Part B is flat images only**, and needs a small change to the rule (today a Fal image is allowed only as one
-small piece you ask for):
+**Part B: flat images, a small change to the rule.** Track A (the marks), a sick-Hist bark by texture swap,
+marsh-dye recolours of the six vanilla commoner outfits, and a wet-wood retexture of barrels, crates and sacks.
 
-6. **An emblem for each of the 18 cultures and a sign for each of the nine story lines**, plus the Company
-   standard and a pirate flag: about 30 images on banner models that already exist, and as door signs. The
-   emblems are new lore, so each cites the tribe's lore and you judge them on one sheet. They are also the
-   first half of each culture's level 2 sheet in section 5, so this work is not thrown away if you stop here.
-7. **Recolours by code, not by image model**, as we already do for bamboo leaves: a sick and a dying Hist, marsh
-   dyes for the six vanilla commoner outfits, a colourway per tribe for the totems.
-8. **A wet-wood retexture of the vanilla barrels, crates and sacks**, the largest family of generic pieces.
+- **Fal fees:** under $40.
+- **Benefit:** marks for every culture, story line and foreign power; moss and wet where the marsh calls for
+  them; lore-true sources; the most-placed Nordic pieces in Argonian places gone. Nothing new has to work in
+  the engine.
+- **Cost:** weapons, plants, boats, dress and buildings stay as they are.
 
-- **Fal fees:** under $30.
-- **Benefit:** every culture and story line gets a mark the player can learn; the most-placed Nordic pieces in
-  Argonian places go; the marsh gains rice, knees, fungus and whatever the opened packs hold; dress improves
-  from mods made for Argonians. Low risk, because nothing new has to work in the engine.
-- **Cost:** the commonest weapons, the native boats and the lore objects stay as they are.
+### Do more: the workshop and ten first proofs, then the tracks they open (recommended)
 
-### Do more: about 49 small solid models (recommended, after the pilot)
+**The workshop** (section 4) is built once. **Ten first proofs**, each taken into the game for your check:
 
-**First a pilot of five**, each taken into the game for your check, about $15 of fees:
-
-| Pilot model | Proves |
-|---|---|
-| Crocodile-tooth club, acting as a mace, in shared wood and bone | the weapon swap; the shared-material route; a family's anchor |
-| Crocodile-tooth maul, acting as a warhammer, made from the club | that a sibling made from an anchor looks like its family |
-| Carved grave-stake, with its own generated texture | a new static prop; the unique-texture route and the grading script beside Skyrim's textures |
-| Reed sleeping mat, in the bedroll's file | the furniture swap: a person lies on it correctly |
-| A tribal pike: generated head, scripted shaft, copying Animated Armoury's pike | your weapon-type ruling and the shaft method |
-
-The pilot also builds everything once: Blender on the build machine, the swap step in our own model tool,
-texture conversion, the level 0 sheet with its measured ranges and first library materials, one culture sheet,
-and a record template per kind. It measures the agent cost per model, which I cannot estimate today.
-
-**Then the batch**, every item small, solid and without moving parts. Anything the opened packs turn out to
-hold comes off this list first.
-
-| Group | Models | Count | Acts as, or route |
-|---|---|---|---|
-| Bog-iron weapons, replacing the relabelled vanilla ones | sword, dagger, war axe, mace, greatsword | 5 | the same vanilla type |
-| Tribal weapons | jade dagger, flint war axe, crocodile-tooth club, crocodile-tooth maul, toothed sword, Naga-Kur bone sword and dagger, eel gaff, obsidian-edged heavy club | 9 | dagger, war axe, mace, warhammer, sword, sword and dagger, dagger, battleaxe |
-| The six signature types | pike, halberd, skull-topped quarterstaff, rapier, whip, claw | 6 | the existing record of each type |
-| Shields | turtle shell, reed wicker | 2 | shield |
-| Grave-stakes | skull, glyph, serpent, twinned, small | 5 | new static |
-| Hist tending | sap jar, sap tap, gourd, Hist seed pod | 4 | movable clutter and static |
-| Eggs | egg clutch in a shell cup, two sizes | 2 | static, replacing the dragon eggs |
-| Sleeping | reed mat, two weaves | 2 | the bedroll's file |
-| Fishing | weir section, fish trap, net drying rack | 3 | new static |
-| Boats | dugout canoe, bundled-reed raft, moored | 2 | new static, not rideable |
-| Shore and swamp | hollow log, snag, stump, half-sunk trunk, two driftwood piles | 6 | new static |
-| Mounds | clay, mud and termite mound | 3 | new static |
-
-- **Fal fees:** 49 models at $1.00 to $2.70 is $50 to $135. I would cap it at $200 to allow for more retries
-  than the estimate assumes.
-- **Benefit:** the commonest weapons, six tribes' signature weapons, the boats at 22 raft stops, the
-  grave-stake in 137 lived-in places, the two Act I weirs and the Hist's own gear all become Black Marsh's,
-  and each tribe's things carry its mark.
-- **Cost and risk:** the tooling is new and one link is unproven (the pilot settles it). The consistency
-  method's Skyrim-matching part is my own reasoning (the pilot tests it). Each new prop still has to be placed
-  by the place and stock skills, and scattered props reach undrafted places only at a world rebuild.
-
-### Do most: about 55 more, harder
-
-Everything above, plus the medium and hard kinds. Fal fees about $150 to $250 more. I would not approve this as
-a block; pick from it once the "more" batch has shown what the pipeline does well.
-
-| Group | Models | Why it is harder |
+| Proof | Track | What it proves |
 |---|---|---|
-| Head ornaments and masks | feather crests, horn caps, frill clips, two masks | each must be fitted to the Argonian head |
-| Necklaces and rings | tooth, jasper and pearl necklaces; shell and jade rings | the necklace bends with the chest; try the jewellery resource first |
-| Faith and memory | three Sithis shrines, a Hist stele, three tablets, a chime tree, four new totems | larger carved shapes |
-| Mangrove roots and tree ferns | root clusters, three fern trunks | a generated trunk joined to an existing tree's leaves so it still sways; needs distant-view models; only after the GKB pack is opened |
-| Marsh plants | reeds, cattails, sedge, rice, hanging moss | flat cut-out cards built by hand from a Fal image; no 3D generator involved |
-| Native houseboats and wrecks | twin-hull canoe, houseboat, a houseboat wreck | size: walkable decks, repeating materials instead of one texture |
-| Fungus, coral | four each | narrow regions |
-| Working pieces | kiln, clay wall, reed tent, woven screens | hut-sized |
-| One new building, as a trial | a scripted exterior shell in shared materials with generated ornaments, over a held interior (section 6, route 3) | walkable collision, a walking-mesh cut and a distant-view model |
+| 1. Crocodile-tooth club and its maul, in shared wood and bone | B | the weapon swap; the shared-material route; a sibling made from an anchor |
+| 2. Carved grave-stake with a generated texture | B | a static with collision; the unique-texture route beside Skyrim's textures |
+| 3. Reed sleeping mat in the bedroll's file | B | the furniture swap |
+| 4. A tribal pike on Animated Armoury's record | B | your weapon-type ruling; a hand-modelled shaft |
+| 5. A reed, cattail and sedge clump set | C | hand-built cards, sway, and how they look at three distances |
+| 6. A dugout | D | hand modelling in repeating materials; deck collision |
+| 7. A mask as a three-head set | E | the skinned writer; fit on all ten races, both sexes |
+| 8. A wrap reshaped from rags | E | outfit reshaping; fit in six poses on Argonian and human, male and female |
+| 9. A walkable box, then one root-grown hut with a two-room interior and a loft stair | G | collision the game walks on; a room with no source; the stairs action |
+| 10. One ruin shown clean and beside it mossy, wet and hand-dressed | F | the treatment by record and by hand |
 
-### What I would not do at any level
+- **Fal fees for the proofs:** about $40.
 
-- **Generated houses, hut kits and rooms.** King of the Murkmire holds about 200 hut, stockade and house
-  pieces, and a stilt house resource exists; size is the generator's weakest point, and no generator makes a
-  room. The one way to a new building is section 6's route 3, as a single trial.
-- **The root-grown house, for now.** It is a real gap for the 19 Root-Folk places; it waits on that trial.
-- **Full outfits and anything cloth.** See section 8.
-- **Bows, crossbows, blowguns and thrown weapons.** All need animation work.
-- **The ball court and the banyan.** Rare, or not in our lore.
+**Then the tracks, each your choice after its proof:** track B's 49 models and the foreign props; track C
+stages 1 and 2 (the ground layer); track D's dugout, raft, canoe and ferry; track E stages 1 to 3; track F
+stages 3 and 4; track G's first huts for the Root-Folk and the Sedge-Wardens.
 
-## 8. The honest gap: clothing
+- **Fal fees for all of those:** roughly $150 to $300; I would cap it at $400.
+- **Benefit:** the commonest weapons and each tribe's own; the ground the player walks through; native boats
+  at 22 raft stops; people dressed for the marsh; ruins and forts that look like they have stood in it; the
+  two peoples with almost no homes given homes.
+- **Cost and risk:** the workshop is real tool work; three links are unproven until their proofs (collision
+  the game walks on, the skinned writer, sway from a model we write); placement is separate work and scattered
+  things reach undrafted places only at a world rebuild.
 
-Clothing is the largest hole the audit found and the one this pipeline helps least. A loincloth, wrap or robe
-has to bend with the body and tail, which means weight-painting to the skeleton and a second fit for Argonian
-heads and tails. Generated cloth wrapped on a body is the hardest case there is.
+### Do most: kits, trees and scale
 
-What can be done, in order of value for effort:
+The Argonian carpentry kit and its Imperial-colonial and Dunmer skins with their hero buildings; the Warden
+fort mark set and infrastructure; track C stages 3 to 6 (mangroves and trees with distant views, regional
+plantings, the Hist in four states); wrecks, the houseboat, the Khajiit coaster; tribal head parts and
+markings; a bow; overgrowth and broken variants at scale. Fal fees perhaps $300 to $500 more. I would not
+approve this as a block; choose from it once the tracks beneath it are running.
 
-1. Fill the 12 trade kits that have no clothing row from what we hold (part A).
-2. Try the Argonian-made mods the proper search found: the mercenary armour with a tail piece, the raptor
-   feet, the bone-plate armours, the war tails, the straw hats, and Saxhleel Sundries with caution (part A).
-3. Marsh-dye recolours of the vanilla commoner clothes, by code (part B).
-4. Rigid ornaments on top of plain clothes: feather crests, horn caps, masks, necklaces (the "most" list). A
-   villager in a dyed tunic with a tooth necklace and a feather crest reads as Black Marsh far more cheaply
-   than a new outfit would.
+### Not at any level for now
 
-Dress will still be the weakest part of the province's look. If it matters most to you, the answer beyond
-these is a human-made clothing mod or a commission, not this pipeline.
+- **Rooms or whole buildings straight from a generator.** No generator makes a walkable room; the concept
+  route in track G is the use for them.
+- **New animations:** a spear that thrusts, thrown weapons, nets.
+- **The blowgun**, until its model is on the build machine and read.
+- **The ball court and the banyan:** rare, or not in our lore.
 
 ## 9. Risks and what would have to change
 
-- **King of the Murkmire's terms.** Its author asks that add-ons not use AI, and your permission of 24
-  September is what covers us today. Putting AI-made models beside its buildings in 40-odd places is a step
-  beyond what that permission was given for. I would never use its files as donors, as references or as the
-  base of a retexture, and I think it is worth one plain question to the author before the "more" batch. That
-  is your call and your relationship.
-- **Other authors' terms.** Two finds need asking before use (Harvestables, one ship author); one building-kit
-  pack forbids porting. Every new dependency gets its permission read in full, as now.
-- **Look.** A generated texture can read as pasted in beside Skyrim's. The guards are the shared-material
-  route, the measured ranges, and your three look points in section 5.
-- **The unproven link.** If the pilot fails on the build machine, the fallback is the Windows play machine
-  with the standard Blender exporter, which costs machine time.
-- **My search can still be wrong.** It was once already. The big packs are unopened, and Nexus's search matches
-  whole words in descriptions, so a pack that never names a thing will not be found by it. Part A's first step
-  is there for that reason, and the own-model list is cut down before any model is made.
-- **Placement is separate work.** A model in the pool changes nothing until the stock ladder, the dressing
-  rules and the drafted places use it. Drafted places take it by a narrow change; the rest of the province
-  takes it at a world rebuild, which runs only when you ask.
-- **Labelling.** If the mod is ever published on Nexus it carries the AI-generated label. It already would,
+- **King of the Murkmire's terms.** Its author asks that add-ons not use AI; your permission of 24 September
+  covers us today. AI-assisted models and buildings beside its huts go a step beyond what that was given for.
+  I would never use its files as donors, references or the base of a retexture, and I think it is worth one
+  plain question to the author before the proofs. Your call.
+- **Other authors.** The Hist trunks are another author's and marked "ask". Several held Dunmer and Khajiit
+  mods state no terms. Two finds need asking; one pack forbids porting. Every new dependency gets its page
+  read in full, as now.
+- **Three unproven links:** collision the game walks on, the skinned writer on Linux, sway from a model we
+  write. Each has a proof. The fallback for all three is the Windows play machine with the standard Blender
+  exporter, which costs machine time.
+- **Look.** The guards are the shared materials, the measured ranges, and your three look points.
+- **My search can still be wrong.** It was once. The big packs are unopened and the search matches whole words
+  in descriptions. Part A's first step is there for that reason.
+- **Placement and rebuilds.** A model changes nothing until the stock ladder, the dressing rules and the
+  drafted places use it. A world rebuild runs only when you ask.
+- **Labelling.** If the mod is ever published on Nexus it carries the AI-generated label, as it already would
   for the music.
 - **Where the files live.** Like the soundtrack: built, stored outside the repository, one row in the mod
-  list, with every request recorded. The style sheets are committed as data. Nothing binary is committed.
-- **The rule.** Decision 0006 point 5 and the "Never make art" line in CLAUDE.md would be amended to name
-  exactly what is allowed (flat images on existing models; small solid models by template swap or as static
-  props, made under the style sheets), and what stays banned (section 7's last list).
+  list, every request recorded; the sheets committed as data; nothing binary committed.
+- **The rule.** Decision 0006 point 5 and the "Never make art" line in CLAUDE.md would be amended to say what
+  is allowed and how: made by hand in the workshop under the style sheets, generators as helpers.
 
-## 10. The ten best returns, in order
+## 10. The best returns, in order
 
-1. Open the packs the search found. It costs nothing and may shrink everything else.
-2. The swap table for lanterns, doors, tents, shrines and banners, and a bed record for the hammocks. No art.
-3. Emblems for the 18 cultures and signs for the nine story lines. Flat images on existing banners.
-4. Bog-iron and tribal weapons by swap. The commonest things in every hand.
-5. The six signature weapon types, each tribe's own, on existing records.
-6. Grave-stakes. The lore's best repeatable object, in 137 places.
-7. The dugout and the reed raft. Twenty-two raft stops with no native boat.
-8. Clothing rows, the Argonian-made mods and dye recolours. The biggest hole, the cheapest partial fix.
-9. The fish weir kit. Two Act I places are named for weirs.
-10. Sap jar, sap tap and a real egg clutch, with saltrice, cypress knees and mushroom trees placed.
+1. Open the packs the search found. Free, and it may shrink everything else.
+2. Twins by record: moss, wet and dirty versions of every kit. Free, and it reaches every building.
+3. The swap table, the hammocks' bed record, varied interior shells, lore-true sources. No art.
+4. Marks for the 18 cultures, nine story lines and the foreign powers. Flat images.
+5. The reed, cattail and sedge set, then ferns and lilies: the ground the player walks through.
+6. Bog-iron, tribal and signature weapons by swap.
+7. Reshaped outfits with rigid crests, masks and plates: the biggest hole.
+8. Grave-stakes, sap gear, egg clutches, the weir kit.
+9. The dugout and the raft.
+10. Root-grown huts with real interiors, then the carpentry kit and its skins.
 
 ## 11. What I need from you
 
-One choice, on owner call #94: **nothing, least (part A only, or A and B), more, or most**. My recommendation
-is part A now, part B with the small rule change, and the five-model pilot as the gate to "more". And one yes
-or no: whether to ask King of the Murkmire's author before AI-made models go in beside its buildings.
+On owner call #94, one choice: **nothing, least (part A only, or A and B), more, or most**. My recommendation is
+part A now, part B with the small rule change, and "more" as far as the workshop and the ten proofs, with each
+track funded after its proof. And three smaller calls:
+
+1. Whether I draft a message for you to send to King of the Murkmire's author about AI-assisted models
+   standing beside its buildings.
+2. Whether to ask the author of the Hist trunks about a sick and dying variant, or make a Hist of our own.
+3. Whether swapping one plant for another across the province counts as a world rebuild.
