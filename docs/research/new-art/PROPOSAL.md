@@ -7,10 +7,10 @@ far, to relax it. The decision is yours.
 ## 1. The decision in five lines
 
 1. **You are choosing** how far to go beyond what we already hold: nothing new (option 1), or option 1 plus some or
-   all of three steps of generated models (options 2, 3 and 4 in section 3).
+   all of three further sets of generated models (options 2, 3 and 4 in section 3).
 2. **I recommend** options 1, 2 and 3 now, and option 4 (clothing and armour) only after one fitted piece has been
    shown to you, because it is the least proven.
-3. **Cost:** about $40 of the $90 you budgeted, for options 2 to 4 together, paid to Fal. Option 1 costs nothing, or
+3. **Cost:** about $41 of the $90 you budgeted, for options 2 to 4 together, paid to Fal. Option 1 costs nothing, or
    about $2 if you want the flat emblems in it.
 4. **What you would see first:** the drafted places using the held boats, plants and clothing (already under way),
    then the dugout canoe and the small props in the asset explorer, then the first root-grown buildings.
@@ -31,8 +31,7 @@ model's colours toward the game's own, measured from Skyrim's textures.
 **What the province now uses that it did not before** (detail in [have-get-make.md](have-get-make.md), section
 1): five reed and cattail models in every region instead of one; eight lily models, eight giant fungi and saltrice in
 the four regions the lore names; grave-stakes, hackwing nests and landing totems as world dressing; King of the
-Murkmire's native river boats at 22 raft-master stops and its reed-roofed barge at 7 ferry stops (King of the
-Murkmire is the Argonian mod we hold); 17 easy swaps for Nordic pieces in Argonian places; 8 places moved off sources
+Murkmire's native river boats at 22 raft-master stops and its reed-roofed barge at 7 ferry stops; 17 easy swaps for Nordic pieces in Argonian places; 8 places moved off sources
 that contradicted the lore; 32 marsh-made low-tier weapons instead of 11 vanilla ones; clothing for all 23 trade kits;
 a hammock you can sleep in; mossy, silted and algae-grown twins of 20 ruin pieces and 14 rocks; and 989 models from
 newly fetched packs (ships, banners, Dunmer and Imperial houses, trees) made usable.
@@ -41,16 +40,28 @@ newly fetched packs (ships, banners, Dunmer and Imperial houses, trees) made usa
 ranked by what its absence costs the player. Costs are Fal fees at $0.46 a model ([cost-experiment.md](cost-experiment.md)),
 doubled to allow one thrown-away try for each model kept.
 
-| # | Thing | Where needed | What the player loses without it | Cheapest way to get it | Fees | Effort | How sure |
-|---|---|---|---|---|---|---|---|
-| 1 | Root-grown buildings: a family of seven kinds | the 19 Root-Folk places of the interior, Helstrom's 110 people among them | the inland culture's whole look: they live in borrowed reed or mud huts | generate each, finish by hand (the hut test is in the explorer) | about $18 for 15 to 20 models | large | high for the shell; doors proven by hand |
-| 2 | Small craft: dugout, canoe, punt, reed raft | 22 raft-master stops; rafts named in 216 place notes | the marsh's everyday boats; plank boats stand in | generate (the canoe test is done) | about $3 | small | high |
-| 3 | A modular Argonian room kit: floor, wall, corner, ceiling pieces | the rooms of 72 stilt and reed places, about 500 homes | every Argonian home is one of 13 whole shells, so rooms repeat | made by hand on the game's grid, painted with textures we hold | none | large | medium: not yet tried |
-| 4 | Light shell and bone armour | 3 of the 18 tribes | those tribes wear a plain leather harness beside their heavy shell | generated plates on a held light armour, refitted to the body | about $5 | large | low: fitting to the body is unproven here |
-| 5 | More Argonian clothing designs | commoners of the 252 places not yet drafted | commoners wear a few designs | reshape held outfits; generated rigid pieces (masks, horns, plates) | about $5, for the rigid pieces | large | low, as 4 |
-| 6 | The six tribes' signature weapons (whip, claw, rapier, halberd in a Black Marsh make) | six tribes | they carry generic models from the weapons mod we hold | generated head or blade on a held weapon's record (the glaive is finished) | about $6 | medium | high |
-| 7 | Toll bar and milestone | Company and Imperial roads | small: a barrier or post stands in | generate | about $2 | small | high |
-| 8 | Gourd and reed mat | households | small: jars and bedrolls stand in | generate | about $2 | small | high |
+1. **Root-grown buildings**, a family of seven kinds. Needed in the 19 Root-Folk places, Helstrom's 110 people among
+   them; without them the inland culture lives in borrowed reed or mud huts. Generated, finished by hand (the test hut
+   is in the explorer). About $18 for 15 to 20 models; large effort; sure of the shell, doors proven by hand.
+2. **Small craft**: dugout, canoe, punt, reed raft. Needed at 22 raft-master stops, and rafts are named in 216 place
+   notes; plank boats stand in today. Generated (the test canoe is done). About $3; small effort; sure.
+3. **An Argonian room kit**: floor, wall, corner and ceiling pieces. Needed in the rooms of 72 stilt and reed places,
+   about 500 homes; today every Argonian home is one of 13 whole shells, so rooms repeat. Made by hand on the game's
+   grid, painted with textures we hold. No fees; large effort; fairly sure, not yet tried.
+4. **Light shell and bone armour** for 3 of the 18 tribes, who now wear a plain leather harness beside their heavy
+   shell. Generated plates on a light armour we hold, refitted to the body. About $5; large effort; unsure, because
+   fitting to the body is unproven here.
+5. **More Argonian clothing**, for commoners of the 252 places not yet drafted, who wear a few designs. Held outfits
+   reshaped, plus generated rigid pieces (masks, horns, plates). About $5 for the rigid pieces; large effort; unsure,
+   as 4.
+6. **The six tribes' signature weapons** (whip, claw, rapier, halberd in a Black Marsh make), which they now carry as
+   generic models from the weapons mod we hold. A generated head or blade on a held weapon's record (the glaive is
+   finished). About $6; medium effort; sure.
+7. **Toll bar and milestone** on Company and Imperial roads; a barrier or post stands in. Generated. About $2; small;
+   sure.
+8. **Gourd and reed mat** in households; jars and bedrolls stand in. Generated. About $2; small; sure.
+
+"Large" effort means several days of agent work each: my estimate, not yet measured.
 
 New plants are not on the list: we hold plenty, as you said.
 
@@ -71,8 +82,10 @@ they make.
   emblems for the 18 cultures and nine story lines on the banner models we hold (the only new picture-making here,
   about $2).
 - **What you see at the end:** a province that uses everything we own, rooms dressed by design, but no root-grown
-  buildings, no canoes, and Argonian rooms built from the same 13 shells.
+  buildings or canoes, and Argonian rooms built from the same 13 shells.
 - **Cost:** nothing, or about $2 with the emblems. Your time: the usual studio checks of each place.
+- **First proof of the room planner:** one room of each of three kinds (a home, an inn and a shop) at Helstrom,
+  planned and dressed, for you to walk through in the studio before it is used anywhere else.
 - **Risk:** none new.
 
 **The room planner** (part of option 1, no new art). For each room it decides, from the place's record, the owner,
@@ -82,7 +95,7 @@ seats around a table or fire, facing it); what sits on what (place settings on t
 the walls; how it is lit; and which shell and surfaces it uses. Every choice is traced to two things: the numbers
 measured from 1,064 real interiors of every kind ([interiors-by-kind.md](interiors-by-kind.md); for example a house
 table holds five things at the median, and poor, middle and rich houses hold 32, 43 and 135 small things) and the
-place's own record and quest rows. It checks each room against similar finished rooms of the same kind and wealth. Cost: agent time only.
+place's own record and quest rows. It checks each room against similar finished rooms of the same kind and wealth. It costs no fees, only agent work; it is proven first on the three rooms above.
 
 ### Option 2: quick wins (rows 2, 6, 7 and 8)
 
@@ -101,7 +114,8 @@ place's own record and quest rows. It checks each room against similar finished 
   plain grey blocks built into three houses, then painted.
 - **What you see:** Root-Folk settlements in their own buildings, and Argonian homes whose rooms vary in size and
   plan.
-- **Cost:** about $18 in fees for the buildings; the kit has none. Your time: approving each building family and the
+- **Cost:** about $18 in fees for the buildings; the kit has no fees, but it is new art made by hand, so it too
+  needs the rule amended. Both are large: several days of agent work each, my estimate. Your time: approving each building family and the
   kit in the explorer and the studio.
 - **Depends on:** the room planner of option 1 (it lays out the rooms inside them). **Risk:** medium; generating a
   building with a texture fine enough close up needs the step described in section 4.
@@ -118,7 +132,7 @@ place's own record and quest rows. It checks each room against similar finished 
 
 - **The route:** an agent draws a reference picture of the thing (no moving parts: nothing a player expects to swing or
   dangle, such as a loose rope or tassel; a coil or a taut rope is fine); Tripo H3.1 makes the 3D model from it; the
-  agent shapes and cleans it by hand in one warm Blender session per batch (Blender is the 3D editor); the texture is
+  agent shapes and cleans it by hand in one warm Blender session per batch; the texture is
   graded toward the game's look (below); the model is measured and looked at, then written into the game's format.
 - **Proven on three test models** in the [asset explorer](https://claude.ai/artifact/QcwA43dLwFabYVNJi8hSpC): a
   dugout canoe, a root-grown hut whose door the agent marked by hand, and a stone glaive finished as a generated head
@@ -142,12 +156,17 @@ place's own record and quest rows. It checks each room against similar finished 
 
 ## 5. Money
 
-| Route | Per model | Models for $90 | Who does the generating |
-|---|---|---|---|
-| Tripo H3.1 through Fal (recommended) | $0.46 with its reference picture | 195 | agents, by tool |
-| Tripo web studio, Max plan ($90 a month) | $0.144 | 625 (1,250 in a first month at the new-user half price) | by hand in the studio; unspent credits lost at the month's end |
-| Tripo web studio, Pro plan ($20 a month) | $0.27 | 75 a month | by hand |
-| Meshy 7.1 through Fal | $1.20 | 75 | agents; you ranked its results lower |
+| Route | Per model | Models for $90 |
+|---|---|---|
+| Tripo H3.1 through Fal (recommended) | $0.46 with its reference picture | 195 |
+| Tripo web studio, Max plan ($90 a month) | $0.144 | about 625 |
+| Tripo web studio, Pro plan ($20 a month) | $0.27 | 75 a month |
+| Meshy 7.1 through Fal | $1.20 | 75 |
+| Meshy web app, Premium plan ($40 a month) | $0.47 | about 190 over two and a quarter months |
+
+Through Fal the agents generate by tool. Every studio or web-app route is generating by hand. On Tripo's Max plan the
+first month is $45 with the new-user coupon, and credits not spent by the month's end are lost. You ranked Meshy's
+results lower.
 
 Subscription credits in Tripo's studio do not pay for the agents' tools, so the studio routes mean generating by hand:
 either (a) you upload batches the agents prepare and download the results, or (b) an agent works your logged-in studio
@@ -167,38 +186,29 @@ past about 195 or the buildings need its large textures.
 
 ## Appendix A: your questions from 24 November, answered
 
+Answered in the body: the door marked by hand, the cost and the experiment, Tripo's plans and the cheaper generators
+(section 5); the long-weapon shafts, "no moving parts", keeping Tripo's textures, the approval levels, approving off
+the game, one Blender session per batch, studio actions for you (section 4); interiors designed like a person's,
+interiors that are not houses (section 3, option 1); floors, walls and ceilings (option 3); the order with new models
+after the no-model work, and the workshop and proofs (section 3); the reed clump set (dropped: section 2). Done
+already: King of the Murkmire used as planned with no message to its author; the sick Hist is the existing "sick Hist
+bark" block, used at Jal-Veesa; plant swaps made with each region's ground cover kept and BM&V's bamboo not placed;
+the Xanmeer obsidian weapons for everything they cover; and the index of every model we hold (19,385, searchable by
+look as well as name, in the studio's search too).
+
 | You asked | Answer |
 |---|---|
-| The door finder is not great: mark it by hand | Done. The agent marks the door on a drawn view and the tool lays the plate; there is no automatic finder (`tools/newart/building.py`). |
-| $7.07 is too much: the cheapest way, and an experiment | Done: section 5 and [cost-experiment.md](cost-experiment.md). |
-| Tripo's plans, and cheaper models on Fal | Section 5. The cheaper Fal models were tried; you ranked Tripo H3.1 best. |
-| Shafts that seat cleanly in the head | Done: the finished glaive (section 4). The shaft is made by hand; the small end pieces are generated. |
-| "No moving parts", not "no thin things" | Adopted as you worded it (section 4). |
-| King of the Murkmire: no message to its author | Used as planned; asked again only if we ever publish. |
-| The sick Hist | Already covered: the "sick Hist bark" block (a darkened copy of the Hist bark), used in Jal-Veesa. |
-| Plant swaps | Done in the held-plants work, with each region's ground cover kept and BM&V's bamboo not placed (BM&V is Black Marsh and Valenwood, our world mod). |
-| Obsidian | Done: the Xanmeer weapons for everything they cover, the glass recolours only for gaps. |
-| Have we got an index of every model? | Yes, now: all 19,385 models drawn once and searchable by look as well as by name, in the studio's search too. |
-| More root-grown buildings than huts? Another word for the larger ones? | Yes, a family of seven kinds (option 3). The words: hut (one family), house (larger, with a loft), hall (long, several trees), store, minder's house, shelter, walkways. |
-| Shops and inns? | Skyrim makes a shop or an inn from an ordinary house or hall, with a sign and the inside dressed for the trade; we do the same with the root-grown house and hall, the emblems and the room planner. |
-| Blender: one session for many things | Adopted: one warm session per batch, a whole family at a time. |
-| Studio actions for you too | Adopted (section 4). |
-| Interiors that feel designed; non-house interiors; floors, walls and ceilings | The room planner (option 1), on 1,064 measured interiors of every kind; floors, walls and ceilings are the room kit (option 3). |
+| More root-grown buildings than huts? Another word for the larger ones? | Yes, seven kinds. The words: hut (one family), house (larger, with a loft), hall (long, grown from several trees), store, minder's house, shelter, walkways. |
+| Shops and inns? | Skyrim makes a shop or an inn from an ordinary house or hall, with a sign outside and the inside dressed for the trade. We would do the same with the root-grown house and hall. |
+| Why can generators not make cloth or leaves? | Skyrim draws leaves as a few hundred flat cut-out cards that sway. A generated tree is one solid lump with no cards, so it reads as a blob up close and does not sway. Still reachable: a generated trunk and roots under a crown of cards we hold. Clothing must bend with the body, so every point of it is tied to the skeleton; a generated garment has none of that. Stiff worn pieces (masks, horns, plates) follow one bone and need no bending. |
+| The "24-piece kit" | A small box of standard parts (floor, wall, corner, roof, post, stair), all sized to one grid so they snap together like Lego; Skyrim's own houses are built this way. "Grey-boxed" means first building three houses from plain unpainted blocks, to prove the parts fit and can be walked through. |
+| Seating our buildings on what the old one stood on; designing from the source places | Today the place tools can already seat a placed thing on another placed thing, such as a source's platform or deck. Fitting our own buildings to the footprint and door of the source building they replace is planned, not built ([buildings-in-places.md](buildings-in-places.md), section 4). |
+| Why would Bethesda use a moss material that is not shipped? | The file those 25 records name is the Creation Kit's preview model, not a texture. The game draws the moss from each record's own colour values, so nothing is missing. |
 | The interior guidelines, with links | The sites refuse automated reading. The main one is https://wiki.project-tamriel.com/wiki/Interior_Guidelines; the rest are listed in [cost-audit-consistency.md](cost-audit-consistency.md), addendum 1. |
-| Keep Tripo's textures, or shared materials? | Keep Tripo's and grade them (section 4), as you ruled. |
-| Why can generators not make cloth or leaves? | Skyrim draws leaves as a few hundred flat cut-out cards that sway; a generated tree is one solid lump with no cards and no sway, so it reads as a blob up close. Still reachable: a generated trunk and roots under a crown of cards we hold. Clothing must bend with the body and needs every point tied to the skeleton; a generated garment has none of that. Rigid worn pieces (masks, horns, plates) are easy. |
-| Approve levels 0, 1 and 4 for you | Done (section 4). |
-| Approve off the game as far as possible | Done: the explorer and the studio, one spot check per family at most. |
-| The "24-piece kit" | A small box of standard parts (floor, wall, corner, roof, post, stair) sized to one grid so they snap together like Lego, which is how Skyrim's own houses are built. "Grey-boxed" means building three houses from plain unpainted blocks first, to prove the parts fit and can be walked through. |
-| Seating our buildings on what the old one stood on; designing from the source places | Yes: a building can sit on the source's own platform or stilts, and ours are sized to the footprint and door of the source building they replace ([buildings-in-places.md](buildings-in-places.md)). |
-| Why would Bethesda use a moss material that is not shipped? | The file those 25 records name is the Creation Kit's preview model, not a texture; the game draws the moss from each record's own colour values, so nothing is missing. |
-| Move "things genuinely missing" after the plants and weathering work | Done: option 1 is everything without new models; making comes after it. |
-| Drop the reed clump set | Dropped. |
-| The workshop and the proofs | The test models are in the explorer; option 2 is the next proof. |
 
 ## Appendix B: where the detail is
 
-- [have-get-make.md](have-get-make.md): what the province uses, what was fetched, the gaps, what each drafted place still owes, your lightest in-game checks.
+- [have-get-make.md](have-get-make.md): what the province uses, what was fetched, the gaps, what what each drafted place still needs, your lightest in-game checks.
 - [interiors-by-kind.md](interiors-by-kind.md): the 1,064 interiors measured; [interior-dressing.md](interior-dressing.md), [interiors.md](interiors.md), [buildings.md](buildings.md), [buildings-in-places.md](buildings-in-places.md).
 - [cost-experiment.md](cost-experiment.md): every price, the consistency test, the building texture fix.
 - [cost-audit-consistency.md](cost-audit-consistency.md): the audit of your 24 November comment, generator prices, cloth and leaves.
