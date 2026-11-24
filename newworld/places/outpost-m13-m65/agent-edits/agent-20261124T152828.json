@@ -1,0 +1,419 @@
+{
+ "save_id": "agent-20261124T152828",
+ "place_id": "outpost-m13-m65",
+ "name": "g13 and n4: Mee-shei becomes a land person, as the owner placed his day on land: he sleeps in the camp in the bed Okeeh leaves and eats at the cook's fire; Xil-neeus's work spot, which had gone into the pool with the barge, at the landing where the owner put his day, his wander kept off the jetty",
+ "at": "2026-11-24T15:28:28Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "outpost-m13-m65.NJ9PTT910DCTNXD091G49HKR3K",
+    "name": "Mee-shei",
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "exterior",
+    "bed": {
+     "space": "exterior",
+     "ref": "outpost-m13-m65.DWF5TG9T25XRHY057P8DNA78E2",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -100931.94,
+      -527652.5
+     ],
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "outpost-m13-m65.crime",
+      "rank": 0
+     },
+     {
+      "faction": "outpost-m13-m65.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "exterior",
+       "ref": "outpost-m13-m65.DWF5TG9T25XRHY057P8DNA78E2",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -99932.98,
+        -528093.19,
+        236.74
+       ],
+       "radius": 256
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -100931.94,
+        -527652.5,
+        172.56
+       ],
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -99924.17,
+        -528155.32,
+        249.21
+       ],
+       "radius": 256
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -101230,
+        -527760
+       ],
+       "radius": 256
+      }
+     }
+    ],
+    "household": {
+     "id": "outpost-m13-m65.household.exterior",
+     "relation": "lodger"
+    }
+   },
+   "before": {
+    "id": "outpost-m13-m65.NJ9PTT910DCTNXD091G49HKR3K",
+    "name": "Mee-shei",
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "01dock3to4",
+    "bed": {
+     "space": "01dock3to4",
+     "ref": "Black Marsh.esm:1BEBB1",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -101230.0,
+      -527760.0
+     ],
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "outpost-m13-m65.crime",
+      "rank": 0
+     },
+     {
+      "faction": "outpost-m13-m65.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "01dock3to4",
+       "ref": "Black Marsh.esm:1BEBB1",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "01dock3to4",
+       "ref": "Black Marsh.esm:1BEBB1",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -101230.0,
+        -527760.0
+       ],
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "01dock3to4",
+       "ref": "Black Marsh.esm:1BEBB1",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -101230.0,
+        -527760.0
+       ],
+       "radius": 256
+      }
+     }
+    ],
+    "household": {
+     "id": "outpost-m13-m65.household.hold",
+     "relation": "lodger"
+    }
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T15:28:28Z",
+   "answers": "g13"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "outpost-m13-m65.QH4E65DW0HFDCDBR90E56N5AST",
+    "name": "Xil-neeus",
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "exterior",
+    "bed": {
+     "space": "exterior",
+     "ref": "outpost-m13-m65.X48WCKQS8KG0SZM16N5538ZEGZ",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -101309.22,
+      -527892.48
+     ],
+     "radius": 384
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "outpost-m13-m65.crime",
+      "rank": 0
+     },
+     {
+      "faction": "outpost-m13-m65.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "exterior",
+       "ref": "outpost-m13-m65.X48WCKQS8KG0SZM16N5538ZEGZ",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "exterior",
+       "radius": 256,
+       "pos": [
+        -99932.98,
+        -528093.19,
+        236.74
+       ]
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -101309.22,
+        -527892.48,
+        160.35
+       ],
+       "radius": 384
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "exterior",
+       "radius": 256,
+       "pos": [
+        -99924.17,
+        -528155.32,
+        249.21
+       ]
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -100622.54,
+        -527260.66,
+        146.67
+       ],
+       "radius": 256
+      }
+     }
+    ],
+    "household": {
+     "id": "outpost-m13-m65.household.tent-c",
+     "relation": "lodger"
+    }
+   },
+   "before": {
+    "id": "outpost-m13-m65.QH4E65DW0HFDCDBR90E56N5AST",
+    "name": "Xil-neeus",
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "exterior",
+    "bed": {
+     "space": "exterior",
+     "ref": "outpost-m13-m65.X48WCKQS8KG0SZM16N5538ZEGZ",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -101839.4,
+      -526929.1
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "outpost-m13-m65.crime",
+      "rank": 0
+     },
+     {
+      "faction": "outpost-m13-m65.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "exterior",
+       "ref": "outpost-m13-m65.X48WCKQS8KG0SZM16N5538ZEGZ",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "exterior",
+       "ref": "outpost-m13-m65.X48WCKQS8KG0SZM16N5538ZEGZ",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -101839.4,
+        -526929.1
+       ],
+       "radius": 1024
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "exterior",
+       "ref": "outpost-m13-m65.X48WCKQS8KG0SZM16N5538ZEGZ",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -101839.4,
+        -526929.1
+       ],
+       "radius": 1024
+      }
+     }
+    ],
+    "household": {
+     "id": "outpost-m13-m65.household.tent-c",
+     "relation": "lodger"
+    }
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-24T15:28:28Z",
+   "answers": "g13"
+  }
+ ]
+}

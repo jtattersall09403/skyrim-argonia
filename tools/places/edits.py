@@ -692,15 +692,16 @@ def _rebased(files, op, answered: dict):
     if i is None or rows[i].get("removed"):
         return op
     row = rows[i]
+    mine = op.get("note_group") in answered[rid] or op.get("note") in answered[rid]
+    if op["op"] == "ref.move" and mine:   # the answer, made over his session, stands: his op is kept as no change
+        before = {k: copy.deepcopy(row.get(k)) for k in op["before"]}
+        return dict(op, before=before, after=copy.deepcopy(before))
     fits = same(row, op["before"]) if op["op"] == "ref.remove" else all(same(row.get(k), v) for k, v in op["before"].items())
     if fits:
         return op
     if op["op"] == "ref.remove":
         return dict(op, before=copy.deepcopy(row))
-    before = {k: copy.deepcopy(row.get(k)) for k in op["before"]}
-    if op.get("note_group") in answered[rid] or op.get("note") in answered[rid]:
-        return dict(op, before=before, after=copy.deepcopy(before))   # the answer stands: his op is kept, as no change
-    return dict(op, before=before)
+    return dict(op, before={k: copy.deepcopy(row.get(k)) for k in op["before"]})
 
 
 ROW_EDITS = ("person.edit", "quest.edit", "walk.edit", "path.edit")
@@ -715,11 +716,13 @@ def _rebased_row(files, op, answered: dict, note=None):
         return op
     rows = files.get(TABLES[table]) or []
     i = _find(rows, rid)
-    if i is None or same(rows[i], op["before"]):
+    if i is None:
         return op
     cur = copy.deepcopy(rows[i])
     if (note or op.get("note_group") or op.get("note")) in answered[rid]:
         return dict(op, before=cur, **{table: copy.deepcopy(cur)})
+    if same(rows[i], op["before"]):
+        return op
     return dict(op, before=cur)
 
 
@@ -731,11 +734,15 @@ def _rebased_unit(files, op, answered: dict):
     refs = []
     for m in op.get("refs") or []:
         i = _find(rows, m["id"]) if m["id"] in answered else None
-        if i is None or rows[i].get("removed") or all(same(rows[i].get(k), v) for k, v in m["before"].items()):
+        if i is None or rows[i].get("removed"):
+            refs.append(m)
+            continue
+        mine = note in answered[m["id"]]
+        if not mine and all(same(rows[i].get(k), v) for k, v in m["before"].items()):
             refs.append(m)
             continue
         before = {k: copy.deepcopy(rows[i].get(k)) for k in m["before"]}
-        refs.append(dict(m, before=before, after=copy.deepcopy(before) if note in answered[m["id"]] else m["after"]))
+        refs.append(dict(m, before=before, after=copy.deepcopy(before) if mine else m["after"]))
     out = dict(op, refs=refs)
     for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk"), ("paths", "path")):
         if op.get(key):

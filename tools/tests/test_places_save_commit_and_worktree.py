@@ -60,3 +60,14 @@ def test_a_worktree_reads_the_enclosing_trees_catalogue(tmp_path):
     own.parent.mkdir(parents=True)
     own.write_text("")
     assert draft_bundle._catalogue_path(lane) == own
+
+
+def test_a_worktree_reads_source_bundles_from_the_enclosing_tree(tmp_path):
+    """A lane's worktree has no bundles of its own: promises and the draft rules read the main tree's source bundles
+    (a carried room's own refs are evidence there too), never an empty folder."""
+    from tools.places import draft_bundle
+    b = tmp_path / "main" / "out" / "places" / "bundles"
+    b.mkdir(parents=True)
+    lane = tmp_path / "main" / ".claude" / "worktrees" / "lane"
+    lane.mkdir(parents=True)
+    assert draft_bundle.read_bundles(lane) == b

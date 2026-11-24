@@ -224,7 +224,7 @@ def copied_refs(pdir: Path, source_id: str | None, bundles: Path | None = None) 
     """The refs of every room copied from a source cell (`copy_of`), as the build composes it: the source's own refs
     keep their source keys as ids (a carried pay chest, a bed), so a promise can name them. Empty without the bundles."""
     from tools.places import draft_bundle
-    bundles = Path(bundles) if bundles else ROOT / "out" / "places" / "bundles"
+    bundles = Path(bundles) if bundles else draft_bundle.read_bundles()
     out: set[str] = set()
     sp = Path(pdir) / "spaces"
     for d in sorted(p for p in sp.iterdir() if p.is_dir()) if sp.is_dir() else []:

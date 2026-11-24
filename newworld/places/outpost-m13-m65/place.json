@@ -436,7 +436,14 @@
   "agent-20261123T040120",
   "agent-20261123T040326",
   "agent-20261123T072313",
-  "agent-20261123T083140"
+  "agent-20261123T083140",
+  "agent-20261124T152826",
+  "agent-20261124T152826b",
+  "agent-20261124T152827",
+  "agent-20261124T152827b",
+  "agent-20261124T152828",
+  "agent-20261124T152828b",
+  "agent-20261124T154525"
  ],
  "draft": {
   "add": [
@@ -1530,6 +1537,93 @@
     "g2"
    ],
    "reply": "Rigging put back and joined to the ship as one unit, as you asked: select the ship and move it whole; your earlier moves and removal of the rigging are kept as no change."
+  },
+  {
+   "save": "agent-20261124T152826",
+   "stroke": 1,
+   "answers": "g6",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG",
+    "outpost-m13-m65.M8S3XFGQCXMWY4HAFQ15X68DPJ"
+   ]
+  },
+  {
+   "save": "agent-20261124T152826b",
+   "stroke": 1,
+   "answers": "g10",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.36Q2R7JSWMCTMA5YNSMDH92TH3",
+    "outpost-m13-m65.51TE0BP8XX6S4X5G1FTT56DCFF",
+    "outpost-m13-m65.6BMSTT3XV9Y0C3F852XCR1VSWH",
+    "outpost-m13-m65.6F7H1CEAFXJEG9E4XYF2YEJPQ8",
+    "outpost-m13-m65.ARJW0CC9PXEFNEMD9CBT9DM11Q",
+    "outpost-m13-m65.GKE6V3YB9K1ZXG5ZAXM3V45EGZ",
+    "outpost-m13-m65.NJA6RREMP6W43HAYM7DGSH47Z7",
+    "outpost-m13-m65.Q0KE6KDG9J24N4HDYZVGPT8CG3",
+    "outpost-m13-m65.QER3N9APP2GQWZ1CH4GKQCS8H9",
+    "outpost-m13-m65.RY5TFQN2QN6JFDE656C8M7R26X",
+    "outpost-m13-m65.V87NJ88BEGP98H8B9GHN2WX61J",
+    "outpost-m13-m65.ZNWCS6X12YXYQ1SW3R4F04QQ1E",
+    "outpost-m13-m65.path.01",
+    "outpost-m13-m65.path.add.9EFSHMFNB5T35WZ544NAVKJ395"
+   ]
+  },
+  {
+   "save": "agent-20261124T152827",
+   "stroke": 1,
+   "answers": "g11",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.6X2SHYV8JPR1EESYEFZWJCCS18",
+    "outpost-m13-m65.QH4E65DW0HFDCDBR90E56N5AST",
+    "outpost-m13-m65.path.01",
+    "outpost-m13-m65.walk.jetty",
+    "outpost-m13-m65.walk.plank"
+   ]
+  },
+  {
+   "save": "agent-20261124T152827b",
+   "stroke": 1,
+   "answers": "g12",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.NJ9PTT910DCTNXD091G49HKR3K"
+   ]
+  },
+  {
+   "save": "agent-20261124T152828",
+   "stroke": 1,
+   "answers": "g13",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.NJ9PTT910DCTNXD091G49HKR3K",
+    "outpost-m13-m65.QH4E65DW0HFDCDBR90E56N5AST"
+   ]
+  },
+  {
+   "save": "agent-20261124T152828b",
+   "stroke": 1,
+   "answers": "n4",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S"
+   ]
+  },
+  {
+   "save": "agent-20261124T154525",
+   "stroke": 1,
+   "answers": "g9",
+   "note": "",
+   "owner_save": "open session",
+   "rows": []
   }
  ]
 }

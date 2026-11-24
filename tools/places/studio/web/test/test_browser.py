@@ -434,7 +434,8 @@ def test_22_start_choice(pad, browser, server):
     text = p.ev("document.getElementById('start').textContent")
     assert "Unsaved work from" in text and f"{auto['ops']} edits" in text and "Older draft work" in text
     p.page.wait_for_function("document.querySelector('#start .older')", timeout=WAIT)
-    assert "Made on an older draft" in p.ev("document.querySelector('#start .older').textContent")
+    p.page.wait_for_function("document.querySelector('#start .older').textContent.includes('edits still fit')", timeout=WAIT)
+    assert f"all {auto['ops']} edits still fit" in p.ev("document.querySelector('#start .older').textContent")
     p.shot("22-start-choice")
     b = p.page.get_by_role("button", name="Discard the unsaved work")
     b.click()

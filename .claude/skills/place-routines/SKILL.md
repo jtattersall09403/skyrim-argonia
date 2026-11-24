@@ -42,7 +42,14 @@ A place's people are as complete as King of the Murkmire's own places, by type o
 4. Guards keep two 12-hour shifts on the streets and sleep in a barracks or their camp's beds, one to a bed, never in
    the inn. A guard whose camp bed the network does not reach sleeps in a home's free bed as its lodger.
 5. A place with no watch sets `draft.guards` (0); a free bed the record promises is named in `draft.free_beds`.
-6. People follow Skyrim's days (`docs/research/skyrim/town-life.md`); never bend a day to satisfy a check. The
+6. Every person lives on one side of a gangway or boarding plank: a ship's people sleep, eat, work and wander
+   aboard (its hold and decks), land people ashore; no routine stop and no wander radius reaches across the plank
+   (the plank stays a way for the player). A person a story needs aboard at some hour is a ship's person; a quest
+   that names them otherwise is brought into agreement (`docs/design/consistency.md`). Check every stop's space and
+   point against the ship's deck and hold: `look <place> at <person>` per stop.
+7. Meals are taken where a meal can be: at a table, a bench or the camp's fire, never at a bedroll inside a tent
+   made only for sleeping; a camp's people eat at its fire.
+8. People follow Skyrim's days (`docs/research/skyrim/town-life.md`); never bend a day to satisfy a check. The
    `people` stage sets every routine's work stop to the person's `work`; a role's spot is set with `draft.roles`
    `{<role>: {space, pos}}`.
 

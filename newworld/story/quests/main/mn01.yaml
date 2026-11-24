@@ -305,8 +305,8 @@ placements:
   anchor:
     place: outpost-m13-m65
     rule: navmesh
-    need: on the landing a step from the barge's hold door, where the player comes out (his speaks-first spot); from stage
-      90 his routine is the hut and the reed beds
+    need: on the landing at the jetty's land end, where the player comes ashore from the barge (his speaks-first spot);
+      from stage 90 his routine is the hut and the reed beds
   enabled: true
 - ref: thing.mn01.hold-door
   kind: door
@@ -6380,7 +6380,7 @@ topics:
   - 90
   essential: false
   intent: 'Okeeh. Tells: the gang''s cook; she owes no months, she is paid, and she has cooked for Dralin''s gangs four
-    seasons. She sells dried fish and lamp oil from her stall by the hut. Checks: nothing. Does: nothing.'
+    seasons. She sells dried fish and lamp oil in the barge''s hold, where she cooks and sleeps. Checks: nothing. Does: nothing.'
   new: true
 - id: topic.mn01-hara-who
   label: Who are you?

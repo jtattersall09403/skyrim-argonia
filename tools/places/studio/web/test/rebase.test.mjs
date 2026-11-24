@@ -90,3 +90,12 @@ test('his unit moves and person edits replay over answers by the same rule', () 
   assert.equal(m.spaces.exterior.refs.get(b).pos[0], was.b[0] + 3);     // b answered for g8 too: that answer stands
   assert.deepEqual(m.people.get('fx.p1').routine[0].at.pos, [9, 9]);    // g12 answered: the answer stands
 });
+
+test('an answer that keeps a row as the draft had it stands against his op of that note', () => {
+  const { files, c } = drafted();
+  const r = files.spaces.exterior.refs.find((x) => x.id === c), was = [...r.pos];
+  files.place.agent_answers.push({ answers: 'g10', rows: [c] });
+  const m = modelFromFiles(files), log = new EditLog(m);
+  assert.equal(log.load([{ n: 1, op: 'ref.move', space: 'exterior', id: c, note_group: 'g10', before: { pos: was }, after: { pos: [was[0] + 300, was[1], was[2]] } }], [{ id: 'g10', text: 'tents' }]), null);
+  assert.deepEqual(m.spaces.exterior.refs.get(c).pos, was);
+});

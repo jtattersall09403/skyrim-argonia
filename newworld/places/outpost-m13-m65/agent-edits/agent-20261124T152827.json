@@ -1,0 +1,819 @@
+{
+ "save_id": "agent-20261124T152827",
+ "place_id": "outpost-m13-m65",
+ "name": "g11 and n4: the landing's way to where the owner moved the barge and jetty: the camp path to the jetty's land end, along its deck, up the boarding plank onto the barge's forward deck and aft to the hold door, with the jetty's and plank's walking zones on them where they now are; Hara-Jeel's morning on the barge's waist deck (his spot had sunk under the deck)",
+ "at": "2026-11-24T15:28:27Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "path.edit",
+   "path": {
+    "id": "outpost-m13-m65.path.01",
+    "kind": "path",
+    "width": 160,
+    "style": "dirt",
+    "from": "outpost-m13-m65.9EFSHMFNB5T35WZ544NAVKJ395",
+    "to": "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3",
+    "points": [
+     [
+      -99368.0,
+      -529188.0
+     ],
+     [
+      -99376,
+      -528448
+     ],
+     [
+      -99312,
+      -528384
+     ],
+     [
+      -99312,
+      -528256
+     ],
+     [
+      -99248,
+      -528192
+     ],
+     [
+      -99248,
+      -527968
+     ],
+     [
+      -99344,
+      -527872
+     ],
+     [
+      -99504,
+      -527808
+     ],
+     [
+      -99600,
+      -527712
+     ],
+     [
+      -99760,
+      -527712
+     ],
+     [
+      -99856,
+      -527616
+     ],
+     [
+      -100048,
+      -527616
+     ],
+     [
+      -100272,
+      -527392
+     ],
+     [
+      -100432,
+      -527360
+     ],
+     [
+      -100464,
+      -527328
+     ],
+     [
+      -100496,
+      -527360
+     ],
+     [
+      -100624,
+      -527360
+     ],
+     [
+      -100688,
+      -527424
+     ],
+     [
+      -100816,
+      -527424
+     ],
+     [
+      -101100.0,
+      -527430.0
+     ],
+     [
+      -101440.0,
+      -527440.0
+     ],
+     [
+      -101470.0,
+      -527440.0,
+      172.0
+     ],
+     [
+      -101990.0,
+      -527430.0,
+      172.0
+     ],
+     [
+      -102240.0,
+      -527407.0,
+      195.0
+     ],
+     [
+      -102420.0,
+      -527380.0,
+      195.0
+     ],
+     [
+      -102450.0,
+      -527200.0,
+      110.0
+     ],
+     [
+      -102450.0,
+      -527050.0,
+      72.0
+     ],
+     [
+      -102476.0,
+      -526780.0,
+      68.0
+     ],
+     [
+      -102475.55,
+      -526704.0,
+      60.0
+     ]
+    ],
+    "laid": "by hand: from the hut's door, across the world's road and round the north of the tents to the land end of the jetty the owner laid by the barge, along its deck, up the boarding plank onto the barge's forward deck and aft down its waist to the hold door",
+    "blocked_by": {
+     "outpost-m13-m65.LANDINGJETTY": "the jetty's own mooring posts stand at its far end either side of its deck, which the way runs along between them",
+     "outpost-m13-m65.LOOK006PLACE": "the barge's rail at its waist is stepped over from the jetty, which lies level with it as Black Marsh & Valenwood moors this ship at its own docks"
+    }
+   },
+   "before": {
+    "id": "outpost-m13-m65.path.01",
+    "kind": "path",
+    "width": 160.0,
+    "style": "dirt",
+    "from": "outpost-m13-m65.9EFSHMFNB5T35WZ544NAVKJ395",
+    "to": "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3",
+    "points": [
+     [
+      -99368.0,
+      -529188.0
+     ],
+     [
+      -99376.0,
+      -528448.0
+     ],
+     [
+      -99312.0,
+      -528384.0
+     ],
+     [
+      -99312.0,
+      -528256.0
+     ],
+     [
+      -99248.0,
+      -528192.0
+     ],
+     [
+      -99248.0,
+      -527968.0
+     ],
+     [
+      -99344.0,
+      -527872.0
+     ],
+     [
+      -99504.0,
+      -527808.0
+     ],
+     [
+      -99600.0,
+      -527712.0
+     ],
+     [
+      -99760.0,
+      -527712.0
+     ],
+     [
+      -99856.0,
+      -527616.0
+     ],
+     [
+      -100048.0,
+      -527616.0
+     ],
+     [
+      -100272.0,
+      -527392.0
+     ],
+     [
+      -100432.0,
+      -527360.0
+     ],
+     [
+      -100464.0,
+      -527328.0
+     ],
+     [
+      -100496.0,
+      -527360.0
+     ],
+     [
+      -100624.0,
+      -527360.0
+     ],
+     [
+      -100688.0,
+      -527424.0
+     ],
+     [
+      -100816.0,
+      -527424.0
+     ],
+     [
+      -101300.0,
+      -527810.0,
+      155.0
+     ],
+     [
+      -101600.0,
+      -527810.0,
+      151.0
+     ],
+     [
+      -101850.0,
+      -527810.0,
+      153.0
+     ],
+     [
+      -101950.0,
+      -527810.0,
+      150.0
+     ],
+     [
+      -102230.0,
+      -527810.0,
+      100.0
+     ],
+     [
+      -102205.0,
+      -527700.0,
+      98.0
+     ],
+     [
+      -102205.0,
+      -527560.0,
+      98.0
+     ],
+     [
+      -102202.3,
+      -527470.0,
+      98.0
+     ]
+    ],
+    "laid": "by hand over the owner's 2026-11-22 session: from the hut's door, across the world's road and round the north of the tents (the reed he stacked by the bank fills the way along it), down to the jetty he laid level with the barge's rail, over the rail into the waist to the hold door",
+    "blocked_by": {
+     "outpost-m13-m65.LANDINGJETTY": "the jetty's own mooring posts stand at its far end either side of its deck, which the way runs along between them",
+     "outpost-m13-m65.LOOK006PLACE": "the barge's rail at its waist is stepped over from the jetty, which lies level with it as Black Marsh & Valenwood moors this ship at its own docks"
+    }
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T15:28:27Z",
+   "answers": "g11"
+  },
+  {
+   "op": "walk.edit",
+   "walk": {
+    "by": "agent",
+    "id": "outpost-m13-m65.walk.jetty",
+    "kind": "walk",
+    "note": "the landing jetty deck where the owner laid it by the barge, from the bank to the boarding plank",
+    "outline": [
+     [
+      -101450.0,
+      -527560.0,
+      172.0
+     ],
+     [
+      -101990.0,
+      -527560.0,
+      172.0
+     ],
+     [
+      -101990.0,
+      -527330.0,
+      172.0
+     ],
+     [
+      -101450.0,
+      -527330.0,
+      172.0
+     ]
+    ],
+    "space": "exterior"
+   },
+   "before": {
+    "by": "agent",
+    "id": "outpost-m13-m65.walk.jetty",
+    "kind": "walk",
+    "note": "the landing jetty's deck, at the height the owner laid it level with the barge's rail, from the bank to the barge's side",
+    "outline": [
+     [
+      -101230.0,
+      -527890.0,
+      154.0
+     ],
+     [
+      -101850.0,
+      -527890.0,
+      153.0
+     ],
+     [
+      -101850.0,
+      -527730.0,
+      153.0
+     ],
+     [
+      -101230.0,
+      -527730.0,
+      154.0
+     ]
+    ],
+    "space": "exterior"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-24T15:28:27Z",
+   "answers": "g11"
+  },
+  {
+   "op": "walk.edit",
+   "walk": {
+    "by": "agent",
+    "id": "outpost-m13-m65.walk.plank",
+    "kind": "walk",
+    "space": "exterior",
+    "note": "the boarding plank from the jetty end up over the rail onto the barge forward deck",
+    "outline": [
+     [
+      -101990.0,
+      -527455.0,
+      172.0
+     ],
+     [
+      -102250.0,
+      -527455.0,
+      195.0
+     ],
+     [
+      -102250.0,
+      -527359.0,
+      195.0
+     ],
+     [
+      -101990.0,
+      -527359.0,
+      172.0
+     ]
+    ]
+   },
+   "before": {
+    "by": "agent",
+    "id": "outpost-m13-m65.walk.plank",
+    "kind": "walk",
+    "space": "exterior",
+    "note": "the boarding plank's walk from the jetty's end over the rail down into the barge's waist",
+    "outline": [
+     [
+      -101830.0,
+      -527858.0,
+      156.0
+     ],
+     [
+      -102290.0,
+      -527858.0,
+      98.0
+     ],
+     [
+      -102290.0,
+      -527762.0,
+      98.0
+     ],
+     [
+      -101830.0,
+      -527762.0,
+      156.0
+     ]
+    ]
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-24T15:28:27Z",
+   "answers": "g11"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "outpost-m13-m65.6X2SHYV8JPR1EESYEFZWJCCS18",
+    "name": "Hara-Jeel",
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "01dock3to4",
+    "bed": {
+     "space": "01dock3to4",
+     "ref": "Black Marsh.esm:1BEC76",
+     "radius": 128
+    },
+    "work": {
+     "space": "01dock3to4",
+     "pos": [
+      3140,
+      3874,
+      7012
+     ],
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "outpost-m13-m65.crime",
+      "rank": 0
+     },
+     {
+      "faction": "outpost-m13-m65.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "01dock3to4",
+       "ref": "Black Marsh.esm:1BEC76",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "01dock3to4",
+       "ref": "Black Marsh.esm:1BEC76",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -102450,
+        -526950,
+        70
+       ],
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "01dock3to4",
+       "ref": "Black Marsh.esm:1BEC76",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "01dock3to4",
+       "pos": [
+        3140,
+        3874,
+        7012
+       ],
+       "radius": 256
+      }
+     }
+    ],
+    "household": {
+     "id": "outpost-m13-m65.household.hold",
+     "relation": "head"
+    }
+   },
+   "before": {
+    "id": "outpost-m13-m65.6X2SHYV8JPR1EESYEFZWJCCS18",
+    "name": "Hara-Jeel",
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "01dock3to4",
+    "bed": {
+     "space": "01dock3to4",
+     "ref": "Black Marsh.esm:1BEC76",
+     "radius": 128
+    },
+    "work": {
+     "space": "01dock3to4",
+     "pos": [
+      3140,
+      3874,
+      7012
+     ],
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "outpost-m13-m65.crime",
+      "rank": 0
+     },
+     {
+      "faction": "outpost-m13-m65.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "01dock3to4",
+       "ref": "Black Marsh.esm:1BEC76",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "01dock3to4",
+       "ref": "Black Marsh.esm:1BEC76",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "01dock3to4",
+       "pos": [
+        3140,
+        3874,
+        7012
+       ],
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "01dock3to4",
+       "ref": "Black Marsh.esm:1BEC76",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "01dock3to4",
+       "pos": [
+        3140,
+        3874,
+        7012
+       ],
+       "radius": 256
+      }
+     }
+    ],
+    "household": {
+     "id": "outpost-m13-m65.household.hold",
+     "relation": "head"
+    }
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-24T15:28:27Z",
+   "answers": "g11"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "outpost-m13-m65.QH4E65DW0HFDCDBR90E56N5AST",
+    "name": "Xil-neeus",
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "exterior",
+    "bed": {
+     "space": "exterior",
+     "ref": "outpost-m13-m65.X48WCKQS8KG0SZM16N5538ZEGZ",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -101839.4,
+      -526929.1
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "outpost-m13-m65.crime",
+      "rank": 0
+     },
+     {
+      "faction": "outpost-m13-m65.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "exterior",
+       "ref": "outpost-m13-m65.X48WCKQS8KG0SZM16N5538ZEGZ",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "exterior",
+       "ref": "outpost-m13-m65.X48WCKQS8KG0SZM16N5538ZEGZ",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -101839.4,
+        -526929.1
+       ],
+       "radius": 1024
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "exterior",
+       "ref": "outpost-m13-m65.X48WCKQS8KG0SZM16N5538ZEGZ",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -101839.4,
+        -526929.1
+       ],
+       "radius": 1024
+      }
+     }
+    ],
+    "household": {
+     "id": "outpost-m13-m65.household.tent-c",
+     "relation": "lodger"
+    }
+   },
+   "before": {
+    "id": "outpost-m13-m65.QH4E65DW0HFDCDBR90E56N5AST",
+    "name": "Xil-neeus",
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "exterior",
+    "bed": {
+     "space": "exterior",
+     "ref": "outpost-m13-m65.X48WCKQS8KG0SZM16N5538ZEGZ",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -101839.4,
+      -526929.1
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "outpost-m13-m65.crime",
+      "rank": 0
+     },
+     {
+      "faction": "outpost-m13-m65.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "exterior",
+       "ref": "outpost-m13-m65.X48WCKQS8KG0SZM16N5538ZEGZ",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "exterior",
+       "ref": "outpost-m13-m65.X48WCKQS8KG0SZM16N5538ZEGZ",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -101839.4,
+        -526929.1
+       ],
+       "radius": 1024
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "exterior",
+       "ref": "outpost-m13-m65.X48WCKQS8KG0SZM16N5538ZEGZ",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -101839.4,
+        -526929.1
+       ],
+       "radius": 1024
+      }
+     }
+    ],
+    "household": {
+     "id": "outpost-m13-m65.household.tent-c",
+     "relation": "lodger"
+    }
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-24T15:28:27Z",
+   "answers": "g11"
+  }
+ ]
+}

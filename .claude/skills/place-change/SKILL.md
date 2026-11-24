@@ -97,6 +97,17 @@ alone: an agent never saves or finalises for him, and nothing an agent does wait
    (`edits._rebased`, the studio's mirror). A change of his own that a check needs on main (a row he removed or
    moved off a way) is delivered the same way: an answer naming his note makes on the draft what his session makes,
    and his op replays as no change. Nothing is left owed until he finalises.
+   - His session is the autosave (`out/places/autosave/<place_id>.json`), which runs on past his last named save.
+   - An answer's row is the row as his session leaves it plus the fix. A row his ops touched under several notes is
+     answered once per note (`look commit --answers <note>` each; the real change rides the last, the others keep
+     the row as it stands), or his ops of an unanswered note replay over it.
+   - A person's, path's, walk's or quest spot's row is answered with `look <place> op <file.json>` (the studio's own
+     `person.edit` and kin, `before` the row as it is now), then `look commit --answers <note>`.
+   - The studio shows the committed place files: commit them by path before judging what he will see.
+   - Prove it: `python3 -m tools.places replay <place_id>` replays his autosave over the draft as the studio does;
+     it must show no conflict and no row of his moved without an answer, and the rows changed by answers are
+     exactly the ones meant. Look at the replayed scene (a scratch worktree with his autosave applied over the new
+     draft), never at the draft alone.
 3. What the owner changed stays as he left it, his ground paint (`paint.jsonl` rows `by: owner`) too: a stage never
    writes paint, and an agent's repaint is a new stroke over his, never an edit of his rows.
 

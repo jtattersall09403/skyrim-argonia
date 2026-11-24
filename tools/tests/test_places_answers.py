@@ -196,3 +196,42 @@ def test_his_unit_moves_and_spot_edits_replay_over_answers(fx):
     assert abs(got[b_id] - (rb["pos"][0] + 100.0)) < 1e-6     # b answered for another note: his move wins
     person = next(p for p in out["people"] if p["id"] == "fx.p1")
     assert person["routine"][0]["at"]["pos"] == [9, 9]           # g12 answered: the answer stands
+
+
+def test_an_answer_that_keeps_a_row_as_the_draft_had_it_stands(fx):
+    """An answer that keeps a row where the draft had it (his op of that note would move it away) stands: his op of
+    the answered note is kept as no change even though its before still fits the row."""
+    pdir = fx / "places/fx"
+    a_id = rows(pdir / EXT)[0]["id"]
+    files = edits.load_place(pdir)
+    ra = next(x for x in files["spaces"]["exterior"]["refs"] if x["id"] == a_id)
+    files["place"]["agent_answers"] = [{"answers": "g10", "rows": [a_id]}]
+    out = edits.apply_save(files, {"save_id": "autosave", "place_id": "fx", "at": "x",
+                                   "ops": [dict(move(ra, 300.0), n=1, call="fault", note_group="g10")],
+                                   "notes": [{"id": "g10", "text": "tents moved", "at": "x"}]})
+    got = next(r for r in out["spaces"]["exterior"]["refs"] if r["id"] == a_id)
+    assert got["pos"] == ra["pos"]
+
+
+def test_replay_says_what_his_session_opens_to(fx):
+    """`replay` (tools/places/replay.py): his session over the draft as the studio loads it; each op applied, kept as
+    no change by an answer (named with its note) or a conflict, and each row he touched where he left it or changed
+    by an answer."""
+    from tools.places import replay
+    pdir = fx / "places/fx"
+    refs = rows(pdir / EXT)
+    a_id, b_id = refs[0]["id"], refs[1]["id"]
+    files = edits.load_place(pdir)
+    ra = next(x for x in files["spaces"]["exterior"]["refs"] if x["id"] == a_id)
+    rb = next(x for x in files["spaces"]["exterior"]["refs"] if x["id"] == b_id)
+    session = {"save_id": "autosave", "place_id": "fx", "at": "x",
+               "ops": [dict(move(ra, 100.0), n=1, call="fault", note_group="g8"), dict(move(rb, 50.0), n=2, call="fault", note_group="g6")],
+               "notes": [{"id": "g8", "text": "door", "at": "x"}, {"id": "g6", "text": "tent", "at": "x"}]}
+    ans = [{"op": "ref.move", "space": "exterior", "id": a_id, "n": 1, "stroke": 1, "call": "fault", "answers": "g8",
+            "before": {"pos": list(ra["pos"])}, "after": {"pos": [ra["pos"][0] + 107.0, ra["pos"][1], ra["pos"][2]]}}]
+    drafted, _ = edits.apply_agent_save(files, {"save_id": "agent-a", "place_id": "fx", "at": "y", "by": "agent",
+                                                 "final": False, "ops": ans})
+    got = replay.replay(drafted, session)
+    assert not got["conflicts"] and got["no_change"] == {"g8": 1} and got["applied"] == 1
+    assert got["rows"]["where_he_left"] == 1 and got["rows"]["changed_by_answer"] == {"g8": [a_id]}
+    assert not got["rows"]["moved_without_answer"]

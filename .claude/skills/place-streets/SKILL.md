@@ -19,8 +19,11 @@ road"), or the path's `blocked_by` {id: reason} ("a barricade the quest clears",
 side of its deck").
 
 - A thing stands in a way where the built walking mesh runs under it: a fence, rail or post the mesh goes round is
-  the walk's edge, a surface the mesh runs on is walked on, a tree blocks with its trunk and roots only, and hanging
-  things, ground pieces, moss, ferns and vines never block. `look <place> probe --all` lists what stands in a way
+  the walk's edge, a surface the mesh runs on is walked on, a tree blocks with its trunk and roots only, and
+  hanging fixtures, ground pieces, moss, ferns and vines never block. A ship's rigging, shrouds and stays are not
+  hanging fixtures: a line that comes down to the deck or rail between step and head height across a way off the
+  ship, along its deck or over a boarding plank blocks it; move the plank or the way to where no line crosses (the
+  ship's rigging stays as its source sets it). Look along every way off a ship at eye level from both ends. `look <place> probe --all` lists what stands in a way
   under `ways` (before a build, by the way's width alone), each with the point to look at; the build's `streets`
   check (and so `draft check`) fails it.
 - The blockers found when the check came in are owed (`newworld/places/ways_owed.jsonl`): reported, not failing,
@@ -34,6 +37,12 @@ side of its deck").
   ladder). A world tree or rock in the way is cleared (`clear.jsonl`); never repaint or reshape the road to suit.
 - A walk that a stack, a fire or a tent now fills is laid again round it, over clear ground, never through it; a
   walk to a door starts at the door's own arrival.
+- Entrances stay open like ways: a building's door and a tent's open end keep the ground before them clear for a
+  walking width and a pace out (no other building, tent, stack or bedroll there), facing the walk they serve. The
+  tool checks door ways; a tent's mouth is looked at, `look <place> at <tent> --eye` from the side it opens.
+- After any move or turn of a unit, check its ends and members followed it: a way's end, a door's spur, a walking
+  zone or a person's spot left where the unit stood (or carried off with it when it belongs elsewhere) is put back
+  on what it serves; `look <place> probe --all` and the build's `doors` and `streets` checks say which.
 - A way over a ship's rail, a jetty's end or a stair keeps the walk the source gives it (a jetty laid level with a
   ship's rail as the source moors it); where a source's own pieces stand at a way's edge (posts either side of a
   jetty), they are allowed on the path with that reason.

@@ -79,7 +79,7 @@
    "race": "ArgonianRace",
    "culture_id": "stone-grey",
    "household": {
-    "id": "outpost-m13-m65.household.exterior",
+    "id": "outpost-m13-m65.household.hold",
     "role": "lodger"
    },
    "role": "merchant",
@@ -92,7 +92,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "She cooks for the reed gang and sells dried fish and lamp oil from her stall by the cook's fire. Each new gang meets her first, at the spit pot in the barge's hold, before the gang-master takes their names.",
+     "text": "She cooks for the reed gang at the spit pot in the barge's hold, sleeps there and sells dried fish and lamp oil to whoever comes aboard. Each new gang meets her first, at that spit pot, before the gang-master takes their names.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_give:outpost-m13-m65/0",
@@ -269,7 +269,7 @@
    "race": "ArgonianRace",
    "culture_id": "stone-grey",
    "household": {
-    "id": "outpost-m13-m65.household.hold",
+    "id": "outpost-m13-m65.household.exterior",
     "role": "lodger"
    },
    "role": "resident",
@@ -281,7 +281,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "He carries bundled reed from the landing stack down to the work barge and sleeps lightly, because the moored hull creaks at night. The barge leaves downriver full each month and comes back empty.",
+     "text": "He carries bundled reed from the landing stack to the work barge's rail and hands it aboard, and sleeps in the camp, away from the moored hull's creaking. The barge leaves downriver full each month and comes back empty.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_note:outpost-m13-m65/economy",

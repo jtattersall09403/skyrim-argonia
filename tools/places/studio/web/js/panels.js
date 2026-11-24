@@ -760,17 +760,18 @@ export class Panels {
           };
           row.append(rm);
         }
-        const key = s.base?.draft_key;
-        if (key && draftKey && key !== draftKey) {
-          note.textContent = 'Made on an older draft. Edits that still fit the current draft are kept; the first one that no longer fits, and every edit after it, is shown and not applied.';
-          li.classList.add('older');
-        }
         li.querySelector('.what').append(row); ol.append(li);
       }
-      // the list rows say nothing of an older draft until each save is read: read the bases quietly
-      for (const s of list) if (!s.base) api.save(pid, s.save_id).then((f) => {
-        const li = [...ol.children][list.indexOf(s)]; const k = f?.base?.draft_key;
-        if (li && k && draftKey && k !== draftKey && !li.classList.contains('older')) { li.classList.add('older'); li.querySelector('.note').textContent = 'Made on an older draft. Edits that still fit the current draft are kept; the first one that no longer fits, and every edit after it, is shown and not applied.'; }
+      // a save made on an older draft (the agent has changed the place since, often in answer to its notes) is read
+      // quietly and tried over the current draft, so the row says what opening it will do
+      for (const s of list) api.save(pid, s.save_id).then((f) => {
+        const li = [...ol.children][list.indexOf(s)], k = f?.base?.draft_key;
+        if (!li || !k || !draftKey || k === draftKey) return;
+        const r = a.fits(f);
+        li.querySelector('.note').textContent = r.err
+          ? `Made on an older draft: ${r.opened} of ${r.of} edits still fit; the next no longer fits (${r.err.message}), and it and every edit after it are shown and not applied.`
+          : `Made on an older draft: all ${r.of} edits still fit, with the agent's changes since on top.`;
+        li.classList.add('older');
       }).catch(() => {});
     });
   }

@@ -214,7 +214,7 @@ def connected(paths: list[dict], join: float = 32.0) -> bool:
 # --- recovering the source's streets ---------------------------------------------------------------------------
 
 ROAD_TEX = re.compile(r"road|path|street|cobble|trail", re.I)
-WALKWAY = re.compile(r"dock|boardwalk|bridge|walkway|steps|stair|road|plank|pier|jetty", re.I)
+WALKWAY = re.compile(r"dock|boardwalk|bridge|walkway|steps|stair|road|plank|pier|jetty|ships/[^/]*(?:base|hull)", re.I)   # a ship is walked on its deck
 LEVEL_WAY = re.compile(r"dock|boardwalk|walkway|pier|jetty|bridge|plank", re.I)
 FLIGHT = re.compile(r"step|stair", re.I)
 DECK_MIN = 96.0     # plan units: the narrow side of a piece a person walks along (a stockade board stood on edge is none)

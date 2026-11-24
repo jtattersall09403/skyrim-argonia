@@ -23,8 +23,10 @@ Work from the promise list (`promises.jsonl`, made by `place-plan`): each row sh
   spots (a dock across dry mud kept as a low boardwalk; a dock that serves as a market platform). Nothing moves.
 - **Prune**: what only makes sense for the source's kind or the record does not support: boats afloat on dry ground,
   fishing markers over mud, a mine, a smelter where the record has no smith, a lived camp's traps, a quest dungeon's
-  scripted things, a piece standing inside something we add. `look delete <thing>`; a whole structure goes with its
-  doors, rooms and what hangs on it.
+  scripted things, a piece standing inside something we add, and a piece that only makes sense with one the
+  footprint or a prune left out (a gate with no fence or wall either side, a gatepost, a hitching rail with no road,
+  a sign for a pruned shop). `look delete <thing>`; a whole structure goes with its doors, rooms and what hangs on it.
+  After each prune, look at what stood with it for such orphans.
 - **Move**: what belongs on our ground somewhere else in the place: boats, jetty and weirs to our creek; a shell that
   hides the Hist's pool. A unit moves whole (`look move <unit> dx dy dz`), then is seated (`place-site`).
 - **Add**: what the record and stories need that the source lacks: a building and its rooms, a cage, a jar stack, a
@@ -33,6 +35,11 @@ Work from the promise list (`promises.jsonl`, made by `place-plan`): each row sh
   source first, then one other source of the same culture; nothing levelled, no Nordic sign. A thing its source
   makes of several models (a ship's hull and its masts and rigging) is added as the source sets it: every model at
   the source's offsets turned with the first, and moved as one after (`draft check` holds them together).
+
+Loose things keep a relation to what they serve, seen at eye level: a wood pile against a tent's back or by the
+fire or chopping block it feeds, a bedroll inside its tent or laid square beside it, crates and barrels in a group
+against a wall or stall, never scattered across open ground or a way. When a unit moves, its loose things go with it
+by the same shift and turn, and are looked at again after.
 
 Every keep, move and addition stands off the world's road and the place's walks (`place-streets`, Walks first):
 what the source pitched on a line our road now takes moves off it as the unit it is; an addition is sited beside a

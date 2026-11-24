@@ -1,0 +1,71 @@
+{
+ "save_id": "agent-20261124T154525",
+ "place_id": "outpost-m13-m65",
+ "name": "g9: the world's plants cleared where the owner moved the mess tent and its neighbours to (three bushes stood inside the mess tent, two by it)",
+ "at": "2026-11-24T15:45:25Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "veg.clear",
+   "space": "exterior",
+   "items": [
+    {
+     "base": "ArgoniaNewWorld.esm:0023D6",
+     "pos": [
+      -100884.1,
+      -526558.4,
+      -12.7
+     ],
+     "why": "building (where the owner moved the mess tent and its neighbours, g9)",
+     "ref": "ArgoniaNewWorld.esm:2DB23F"
+    },
+    {
+     "base": "ArgoniaNewWorld.esm:002407",
+     "pos": [
+      -100949.9,
+      -526502.8,
+      33.3
+     ],
+     "why": "building (where the owner moved the mess tent and its neighbours, g9)",
+     "ref": "ArgoniaNewWorld.esm:4E83D5"
+    },
+    {
+     "base": "Black Marsh.esm:11DC5A",
+     "pos": [
+      -100796.5,
+      -526724.8,
+      79.2
+     ],
+     "why": "inside a placed footprint (where the owner moved the mess tent and its neighbours, g9)",
+     "ref": "ArgoniaNewWorld.esm:39F49C"
+    },
+    {
+     "base": "Black Marsh.esm:11DC5A",
+     "pos": [
+      -100787.2,
+      -526615.4,
+      53
+     ],
+     "why": "inside a placed footprint (where the owner moved the mess tent and its neighbours, g9)",
+     "ref": "ArgoniaNewWorld.esm:40724A"
+    },
+    {
+     "base": "Black Marsh.esm:11DC5A",
+     "pos": [
+      -100669.5,
+      -526806.7,
+      93.2
+     ],
+     "why": "inside a placed footprint (where the owner moved the mess tent and its neighbours, g9)",
+     "ref": "ArgoniaNewWorld.esm:51EF76"
+    }
+   ],
+   "call": "fault",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T15:45:25Z",
+   "answers": "g9"
+  }
+ ]
+}

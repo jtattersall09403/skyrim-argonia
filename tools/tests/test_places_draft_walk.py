@@ -705,3 +705,9 @@ def test_a_piece_from_the_source_water_stands_on_carried_ground_and_only_dry_lan
     assert water_kept(True, False)        # the source's water, our (carried) ground: kept, its legs sunk
     assert water_kept(True, True) and water_kept(False, False)
     assert not water_kept(False, True)    # the source's dry land in our water: nudged or dropped
+
+
+def test_a_ships_hull_is_walked_on_its_deck_but_not_its_sails():
+    from tools.places.draft import paths
+    assert paths.walked({"model": "architecture/ships/imperialship01base.nif"})
+    assert not paths.walked({"model": "architecture/ships/imperialship01sail.nif"})

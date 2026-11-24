@@ -90,6 +90,10 @@ The units table measures each on our ground (standing level against the ground u
 each door sill, each join) and flags each fault by name; `units <place_id> --joints` lists every stair, ramp, bridge
 and walkway end against what it meets.
 
+- **Every leg on the ground**: a tent's poles and stilts, a stall's or rack's legs and a platform's posts are legs
+  like a house's: after a unit is laid, moved or turned on sloping ground, `look <place> probe <piece>` and read
+  `feet_over_ground`; every value at or below 0 (in the ground) is the bar, one leg above it is a fault, seen or not.
+  `look <place> sink <piece> --until-feet-buried --depth 4 --piece` seats a tent by its highest-standing leg.
 - **Posts short of our ground**: a mud mound under them with the land brush, `look <place> land <x,y> <radius> <dz>
   --why "<why>"` (eased to nothing at the radius, inside the footprint, within the land bound `fit.patch_max`;
   carried ground is bounded by `draft.ground_cap`). Where a mound would need more, bring the unit down instead.

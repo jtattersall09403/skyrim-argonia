@@ -22,6 +22,12 @@ after the stage names nothing the place holds: give the place the thing the word
 A quest person who lives in the place is cast as the place's person in that role: one person, never two
 (`place-people`).
 
+A creature's spot (a quest's mudcrabs, a beast in the reeds) stands where its record says it lives and off the
+ground the place's people use: never on a landing, jetty, walk, work spot or among the tents, and well clear of
+them (out of sight of the landing, tens of metres off), so it reads as the wild edge of the place and starts no fight
+in its middle. Read the spots against the ways and day spots: `look <place> probe --all` lists a creature spot inside
+a way; look at the rest from the place's middle.
+
 ## A thing a story needs, placed by hand
 
 A `draft.add` row: `space` (a room) or none (outside), `need` (the need's seq), `name` where the player must read

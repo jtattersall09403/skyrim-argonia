@@ -1,0 +1,98 @@
+{
+ "save_id": "agent-20261124T152826",
+ "place_id": "outpost-m13-m65",
+ "name": "g6: the command tent and the long tent sunk until every leg meets the ground (a leg of each stood 6 to 7 units over it)",
+ "at": "2026-11-24T15:28:26Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG",
+   "before": {
+    "pos": [
+     -100860.47,
+     -529872.43,
+     330.51
+    ],
+    "rot": [
+     0,
+     0,
+     9.05492
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100860.47,
+     -529872.43,
+     320.01
+    ],
+    "rot": [
+     0,
+     0,
+     9.05492
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "call": "fault",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T15:28:26Z",
+   "answers": "g6"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.M8S3XFGQCXMWY4HAFQ15X68DPJ",
+   "before": {
+    "pos": [
+     -100617.58,
+     -528600.13,
+     242.56
+    ],
+    "rot": [
+     0,
+     0,
+     9.05492
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100617.58,
+     -528600.13,
+     232.946
+    ],
+    "rot": [
+     0,
+     0,
+     9.05492
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "call": "fault",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-24T15:28:26Z",
+   "answers": "g6"
+  }
+ ]
+}

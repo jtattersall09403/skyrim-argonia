@@ -15,11 +15,11 @@
    "signs": [
     {
      "sign": "look",
-     "detail": "Black Marsh & Valenwood's Imperial ship moored along the camp's bank, masts up, its hold door in the waist, a jetty and two planks over its rail to the bank"
+     "detail": "Black Marsh & Valenwood's Imperial ship moored along the camp's bank, masts up, its hold door in its waist, a jetty from the bank and a boarding plank from the jetty's end onto its forward deck"
     }
    ],
    "met": true,
-   "why": "Met. The barge lies moored in the pool below the camp with its furnished hold, the Barge Hold, behind a door in its waist; from the door a player walks aft over the waist, up a plank over the rail, down onto the jetty and ashore at the landing, where Dralin stands.",
+   "why": "Met. The barge lies moored in the pool below the camp with its furnished hold, the Barge Hold, behind a door in its waist; from the door a player walks forward along the deck, over the rail by the boarding plank onto the jetty, and along it ashore at the landing, where Dralin waits.",
    "tier": "AGENT_INVENTED"
   },
   {

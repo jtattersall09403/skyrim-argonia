@@ -41,6 +41,15 @@ def _catalogue_path(root: Path = ROOT) -> Path:
 
 
 CATALOGUE = _catalogue_path()
+
+
+def read_bundles(root: Path = ROOT) -> Path:
+    """The bundles to read source and ground bundles from: this tree's, else the nearest enclosing tree's (a lane's
+    worktree has none of its own). Never a place to write a draft bundle."""
+    for r in (root, *root.parents):
+        if (r / "out" / "places" / "bundles").is_dir():
+            return r / "out" / "places" / "bundles"
+    return root / "out" / "places" / "bundles"
 _catalogue: dict = {}
 
 

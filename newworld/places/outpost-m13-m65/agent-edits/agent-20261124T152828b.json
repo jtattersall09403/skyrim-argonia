@@ -1,0 +1,231 @@
+{
+ "save_id": "agent-20261124T152828b",
+ "place_id": "outpost-m13-m65",
+ "name": "n4: Okeeh the cook sleeps in the barge's hold, in the bed Mee-shei leaves, by the spit pot where she cooks and where each new gang meets her",
+ "at": "2026-11-24T15:28:28Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S",
+    "name": "Okeeh",
+    "base_from": "Black Marsh.esm:160E6A",
+    "role": "merchant",
+    "home": "01dock3to4",
+    "bed": {
+     "space": "01dock3to4",
+     "ref": "Black Marsh.esm:1BEBB1",
+     "radius": 128
+    },
+    "work": {
+     "space": "01dock3to4",
+     "pos": [
+      3167,
+      3640,
+      7020
+     ],
+     "radius": 256
+    },
+    "services": [
+     {
+      "seq": 0,
+      "kind": "trader-general",
+      "detail": "the cook's stall of dried fish and lamp oil"
+     }
+    ],
+    "faction_ranks": [
+     {
+      "faction": "outpost-m13-m65.crime",
+      "rank": 0
+     },
+     {
+      "faction": "outpost-m13-m65.town",
+      "rank": 0
+     },
+     {
+      "faction": "outpost-m13-m65.vendor.01",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "01dock3to4",
+       "ref": "Black Marsh.esm:1BEBB1",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "01dock3to4",
+       "ref": "Black Marsh.esm:1BEBB1",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 12,
+      "kind": "work",
+      "at": {
+       "space": "01dock3to4",
+       "pos": [
+        3167,
+        3640,
+        7020
+       ],
+       "radius": 256
+      }
+     },
+     {
+      "start": 20,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "01dock3to4",
+       "ref": "Black Marsh.esm:1BEBB1",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 21,
+      "hours": 3,
+      "kind": "wander",
+      "at": {
+       "space": "01dock3to4",
+       "pos": [
+        3167,
+        3640,
+        7020
+       ],
+       "radius": 256
+      }
+     }
+    ],
+    "household": {
+     "id": "outpost-m13-m65.household.hold",
+     "relation": "lodger"
+    }
+   },
+   "before": {
+    "id": "outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S",
+    "name": "Okeeh",
+    "base_from": "Black Marsh.esm:160E6A",
+    "role": "merchant",
+    "home": "exterior",
+    "bed": {
+     "space": "exterior",
+     "ref": "outpost-m13-m65.DWF5TG9T25XRHY057P8DNA78E2",
+     "radius": 128
+    },
+    "work": {
+     "space": "01dock3to4",
+     "pos": [
+      3167,
+      3640,
+      7020
+     ],
+     "radius": 256
+    },
+    "services": [
+     {
+      "seq": 0,
+      "kind": "trader-general",
+      "detail": "the cook's stall of dried fish and lamp oil"
+     }
+    ],
+    "faction_ranks": [
+     {
+      "faction": "outpost-m13-m65.crime",
+      "rank": 0
+     },
+     {
+      "faction": "outpost-m13-m65.town",
+      "rank": 0
+     },
+     {
+      "faction": "outpost-m13-m65.vendor.01",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "exterior",
+       "ref": "outpost-m13-m65.DWF5TG9T25XRHY057P8DNA78E2",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "exterior",
+       "ref": "outpost-m13-m65.DWF5TG9T25XRHY057P8DNA78E2",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 12,
+      "kind": "work",
+      "at": {
+       "space": "01dock3to4",
+       "pos": [
+        3167,
+        3640,
+        7020
+       ],
+       "radius": 256
+      }
+     },
+     {
+      "start": 20,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "exterior",
+       "ref": "outpost-m13-m65.DWF5TG9T25XRHY057P8DNA78E2",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 21,
+      "hours": 3,
+      "kind": "wander",
+      "at": {
+       "space": "01dock3to4",
+       "pos": [
+        3167,
+        3640,
+        7020
+       ],
+       "radius": 256
+      }
+     }
+    ],
+    "household": {
+     "id": "outpost-m13-m65.household.exterior",
+     "relation": "lodger"
+    }
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T15:28:28Z",
+   "answers": "n4"
+  }
+ ]
+}

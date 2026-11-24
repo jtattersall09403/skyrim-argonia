@@ -607,12 +607,22 @@ class Studio {
     if (!r.conflict) this.revs[sid] = r.rev;
     return r;
   }
-  async loadSave(save) {
-    if (save.save_id) this.revs[save.save_id] = save.rev || 0;
-    // back to the draft, then the save's ops in order
+  // The draft as the builder and the agent's answers left it, with no save applied: a fresh model.
+  draftModel() {
     const spaces = {}; for (const [sid, s] of Object.entries(this.draft.spaces)) spaces[sid] = s.refs;
     const m = modelFromFiles({ spaces, ...this.draft.files, ...this.stockFiles(), quests: this.quests.data?.spots || [] });
     m.place = { ...(m.place || {}), agent_answers: this.place.agent_answers || [] };   // his ops replay over the agent's answers
+    return m;
+  }
+  // How a save would open over the current draft, without opening it: {opened, of, err}.
+  fits(save) {
+    const log = new EditLog(this.draftModel()), err = log.load(save.ops || [], save.notes || []);
+    return { opened: log.ops.length, of: (save.ops || []).length, err };
+  }
+  async loadSave(save) {
+    if (save.save_id) this.revs[save.save_id] = save.rev || 0;
+    // back to the draft, then the save's ops in order
+    const m = this.draftModel();
     Object.assign(this.model, m); if (this.terrain) this.terrain.override = this.model.land;
     this.log.model = this.model; this.people.invalidateRoutes(); const err = this.log.load(save.ops || [], save.notes || []);
     if (err) { console.error(err); this.toast(`Opened ${this.log.ops.length} of ${save.ops.length} changes. The next one no longer fits the draft: ${err.message}`, 8000); }

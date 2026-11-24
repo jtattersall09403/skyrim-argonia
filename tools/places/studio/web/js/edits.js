@@ -174,9 +174,9 @@ function rebaseRow(m, op, note) {
   const table = op.op.split('.')[0], row = op[table], notes = answersOn(m, row?.id);
   if (!notes.size) return op;
   const cur = m[ROW_TABLES[table]]?.get(row.id);
-  if (!cur || same(cur, op.before)) return op;
+  if (!cur) return op;
   if (notes.has(note ?? (op.note_group || op.note))) return { ...op, before: clone(cur), [table]: clone(cur) };
-  return { ...op, before: clone(cur) };
+  return same(cur, op.before) ? op : { ...op, before: clone(cur) };
 }
 
 // A unit he moved whole, some of whose members an agent answered: each answered member rebased as its own move
@@ -185,9 +185,11 @@ function rebaseUnit(m, op) {
   const note = op.note_group || op.note, refs = m.spaces[op.space || 'exterior']?.refs;
   const out = { ...op, refs: op.refs.map((u) => {
     const notes = answersOn(m, u.id), r = notes.size ? refs?.get(u.id) : null;
-    if (!r || r.removed || Object.entries(u.before).every(([k, v]) => same(r[k] ?? null, v ?? null))) return u;
+    if (!r || r.removed) return u;
+    const mine = notes.has(note);
+    if (!mine && Object.entries(u.before).every(([k, v]) => same(r[k] ?? null, v ?? null))) return u;
     const before = Object.fromEntries(Object.keys(u.before).map((k) => [k, clone(r[k] ?? null)]));
-    return { ...u, before, after: notes.has(note) ? clone(before) : u.after };
+    return { ...u, before, after: mine ? clone(before) : u.after };
   }) };
   for (const [key, table] of [['people', 'person'], ['quests', 'quest'], ['walks', 'walk'], ['paths', 'path']])
     if (op[key]) out[key] = op[key].map((u) => { const g = rebaseRow(m, { op: `${table}.edit`, [table]: u[table], before: u.before }, note); return { ...u, [table]: g[table], before: g.before }; });
@@ -203,9 +205,10 @@ export function rebaseOp(m, op) {
   const r = m.spaces[op.space || 'exterior']?.refs.get(op.id);
   if (!r || r.removed) return op;
   if (op.op === 'ref.remove') return same(r, op.before) ? op : { ...op, before: clone(r) };
-  if (Object.entries(op.before).every(([k, v]) => same(r[k] ?? null, v ?? null))) return op;
   const before = Object.fromEntries(Object.keys(op.before).map((k) => [k, clone(r[k] ?? null)]));
+  // the answer, made over his session, stands: his op of the answered note is kept as no change
   if (notes.has(op.note_group) || notes.has(op.note)) return { ...op, before, after: clone(before) };
+  if (Object.entries(op.before).every(([k, v]) => same(r[k] ?? null, v ?? null))) return op;
   return { ...op, before };
 }
 
