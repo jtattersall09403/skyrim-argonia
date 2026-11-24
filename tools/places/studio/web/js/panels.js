@@ -293,6 +293,7 @@ export class Panels {
     for (const res of s.results) {
       const card = el(`<button class="card" role="listitem" aria-pressed="${this.T.placing?.base?.key === res.key}"><img alt=""><span class="name">${esc(res.name || res.edid)}</span><span class="tag">${esc(plainKind(res.kind))}</span></button>`);
       if (res.nordic) card.append(el('<span class="tag nordic">Nordic</span>'));
+      if (res.matched === 'look' || res.matched === 'both') card.append(el(`<span class="tag">Found by ${res.matched === 'look' ? 'its look' : 'look and name'}</span>`));
       const img = card.querySelector('img'); img.src = res.thumb || thumb(res, (u) => { img.src = u; });
       card.onclick = () => {
         if (!a.bases.has(res.key)) a.bases.set(res.key, res);

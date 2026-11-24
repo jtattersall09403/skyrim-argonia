@@ -5,7 +5,9 @@
 
 `update` re-embeds only the keys whose text changed and drops keys no longer in the catalogue. `query` scores
 cosine similarity plus lexical boosts: an editor id or name equal to the query (spaces and case ignored) always
-ranks first, a prefix next, then every query word found in the base's words."""
+ranks first, a prefix next, then a share of the query's words found in the base's words; to that it adds the look score, the
+CLIP similarity of the query to the model's thumbnail (look.py), on the query's own scale and weighted by LOOK_WEIGHT,
+and says per hit which half matched: name (exact or prefix), text, look or both."""
 from __future__ import annotations
 
 import hashlib
@@ -33,6 +35,12 @@ GLOSS = {"boardwalk": "wooden walkway", "walkway": "boardwalk", "pier": "wooden 
          "plank": "wooden board", "brazier": "fire bowl", "sconce": "wall light", "bedroll": "bed sleeping",
          "xanmeer": "ziggurat ruin", "hist": "sacred tree", "palisade": "wooden wall fence", "cot": "bed",
          "stilt": "raised on posts", "lamp": "light", "clutter": "small item", "hay": "straw"}
+# The look score of a hit is its CLIP cosine placed on the query's own scale: 0 at the median thumbnail, 1 at the
+# 99.9th percentile (CLIP cosines bunch in a narrow band whose level differs by query); it adds LOOK_WEIGHT * z**2.
+LOOK_WEIGHT = 0.2
+LOOK_TEMPLATES = ("a 3d render of {}.", "a photo of {}.", "{}", "a 3d model of {}, a video game prop.")
+WORD_BOOST = 0.15   # times the share of the query's words (plurals folded) found in the base's words
+TEXT_FLOOR = 0.6    # a typical bge cosine of a query to an unrelated row
 ROW_FIELDS = ("key", "edid", "name", "model", "type", "kind", "nordic", "plugin")
 
 
@@ -70,6 +78,11 @@ def base_text(b: dict) -> str:
     return ". ".join(p for p in parts if p)
 
 
+def stem(w: str) -> str:
+    """Plurals folded, so "cattails" is "cattail"."""
+    return w[:-1] if len(w) > 3 and w.endswith("s") and not w.endswith("ss") else w
+
+
 def squash(s: str | None) -> str:
     return re.sub(r"[^a-z0-9]", "", (s or "").lower())
 
@@ -93,6 +106,9 @@ class Index:
         self._source_keys: dict[str, tuple[float, set]] = {}
         self._mtime = None
         self._state: tuple = ([], self.vec, [], [], [])
+        self.clip = None
+        self._look: tuple = (None, None, None)   # (mtime, row -> look vector index or -1, vectors)
+        self._status: tuple = (None, {})
         self.load()
 
     @classmethod
@@ -118,8 +134,8 @@ class Index:
                 return
         edid = [squash(r.get("edid")) for r in rows]
         name = [squash(r.get("name")) for r in rows]
-        wordset = [set(words(r.get("edid"))) | set(words(r.get("name"))) |
-                   set(words((r.get("model") or "").replace("/", " "))) for r in rows]
+        wordset = [{stem(w) for w in words(r.get("edid")) + words(r.get("name")) +
+                    words((r.get("model") or "").replace("/", " "))} for r in rows]
         self._state = (rows, vec, edid, name, wordset)
         self.rows, self.vec, self.edid, self.name, self.wordset = self._state
         self._mtime = mtime
@@ -136,6 +152,35 @@ class Index:
             from tools.places.search.embed import Embedder
             self.embedder = Embedder()
         return self.embedder(texts)
+
+    def look_state(self):
+        """Each row's index into the look vectors (-1 when its model has none), reloaded when the vectors change."""
+        from tools.places.search import look
+        vp = look.look_dir() / "vectors.npy"
+        m = vp.stat().st_mtime if vp.exists() else None
+        rows = self._state[0]
+        if self._look[0] != m or self._look[1] is None or len(self._look[1]) != len(rows):
+            keys, v = look.load_vectors()
+            at = {k: i for i, k in enumerate(keys)}
+            ix = np.fromiter((at.get(look.model_key(r["model"]), -1) if r.get("model") else -1 for r in rows),
+                             np.int64, len(rows))
+            self._look = (m, ix, v.astype(np.float32))
+        return self._look[1], self._look[2]
+
+    def look_status(self) -> dict:
+        from tools.places.search import look
+        sp = look.look_dir() / "status.jsonl"
+        m = sp.stat().st_mtime if sp.exists() else None
+        if self._status[0] != m:
+            self._status = (m, look.status())
+        return self._status[1]
+
+    def embed_look(self, q: str) -> np.ndarray:
+        if self.clip is None:
+            from tools.places.search.clip import Clip
+            self.clip = Clip()
+        e = self.clip.text([t.format(q) for t in LOOK_TEMPLATES]).mean(0)
+        return e / np.linalg.norm(e)
 
     def update(self, catalogue: Path) -> dict:
         """Bring the index level with the catalogue, embedding only new or changed keys; atomic on disk."""
@@ -191,24 +236,55 @@ class Index:
         if kind:
             kinds = set(kind.split(","))
             mask &= np.fromiter((r.get("kind") in kinds for r in rows), bool, n)
+        name = np.zeros(n, bool)
+        text = np.zeros(n, np.float32)
+        lookv = np.zeros(n, np.float32)
+        lookz = np.zeros(n, np.float32)
         if not q:
             score = np.zeros(n, np.float32)
         else:
-            score = vec @ self.embed([q])[0]
-            sq, qw = squash(q), set(words(q))
+            text = vec @ self.embed([q])[0]
+            score = text.copy()
+            sq, qw = squash(q), {stem(w) for w in words(q)}
             for i in np.flatnonzero(mask):
                 e, nm = edids[i], names[i]
                 if sq and (sq == e or sq == nm):
-                    score[i] += 2.0
+                    score[i] += 10.0
+                    name[i] = True
                 elif sq and (e.startswith(sq) or nm.startswith(sq)):
-                    score[i] += 1.0
-                elif qw and qw <= wordsets[i]:
-                    score[i] += 0.15
+                    score[i] += 5.0
+                    name[i] = True
+                elif qw:
+                    score[i] += WORD_BOOST * len(qw & wordsets[i]) / len(qw)
+            li, lv = self.look_state()
+            if len(lv):
+                has = li >= 0
+                lookv[has] = lv[li[has]] @ self.embed_look(q)
+                p50, p999 = np.percentile(lookv[has], [50, 99.9])
+                lookz[has] = np.maximum((lookv[has] - p50) / max(p999 - p50, 1e-6), 0)
+                score += LOOK_WEIGHT * lookz ** 2
         score = np.where(mask, score, -np.inf)
         k = min(limit, int(mask.sum()))
         if k <= 0:
             return []
         top = np.argpartition(-score, k - 1)[:k]
         top = top[np.argsort(-score[top])]
-        return [{k2: v for k2, v in rows[i].items() if k2 != "h"} | {"score": round(float(score[i]), 4)}
-                for i in top]
+        from tools.places.search import look
+        st = self.look_status() if q else {}
+        out = []
+        for i in top:
+            t_part = float(text[i]) - TEXT_FLOOR
+            l_part = LOOK_WEIGHT * float(lookz[i]) ** 2
+            matched = ("name" if name[i] else "both" if t_part > 0.1 and l_part > 0.1 else
+                       "look" if l_part > t_part else "text")
+            h = {k2: v for k2, v in rows[i].items() if k2 != "h"} | {
+                "score": round(float(score[i]), 4), "text_score": round(float(text[i]), 4),
+                "look_score": round(float(lookv[i]), 4), "look_z": round(float(lookz[i]), 3), "matched": matched}
+            if rows[i].get("model"):
+                k = look.model_key(rows[i]["model"])
+                p = look.thumb_path(k)
+                r = st.get(k)
+                h["look"] = str(p) if p.exists() else None
+                h["look_why"] = None if r is None else r.get("why")
+            out.append(h)
+        return out

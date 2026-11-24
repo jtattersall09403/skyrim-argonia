@@ -22,6 +22,7 @@ the skill that sources mods (universal-modder) rather than a new file.
 8. "Not held" may be written only with: the synonym list, the three catalogue searches (edid, name, model), the disk-file search, the world/place search, and a look at the nearest candidates, all listed beside it.
 9. A render that shows a magenta box or black is an unresolved model or texture: the verdict is UNSEEN for that base, never "not held".
 10. Store the verdict, base keys and picture path beside the catalogue row (a "looked-at index", section 9) so the next search starts from labels.
+Steps 2 and 4 start from the looked-at index: `python -m tools.places search query "<plain words>" --look` finds held models by how they look as well as by their names, and `search sheet "<plain words>"` shows the top 48 in one image (docs/design/place-studio.md, Search).
 
 ## 1. Boats and water craft (reported first)
 

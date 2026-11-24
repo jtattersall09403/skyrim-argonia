@@ -1055,13 +1055,28 @@ own commits, so the server and the chain never fail each other. Notes are change
 `edits/` folder, so the server and an agent's `notes done` never lose each other's change. Request bodies are
 capped by kind: a save 64 MB, a note 512 KB, a finalise 4 KB; the page's log line keeps its first 4,000 bytes.
 
-**Search** (`tools/places/search`): `python -m tools.places search build` embeds each catalogue base
-(`out/places/catalogue/bases.jsonl`) with bge-small-en-v1.5 (MIT; int8 ONNX on CPU, 34 MB in
-`~/.argonia/models`) into `out/places/search/`, re-embedding only keys whose text changed. The text is the base's
-name, editor id and model path split into words, its record type, and a short gloss of modders' words
-(boardwalk: wooden walkway). A query scores cosine similarity plus exact (editor id or name equal to the query)
-and prefix boosts, so a typed name always comes first. `scope=source` keeps the bases of
-`bundles/src.<source_id>/bases.jsonl`; a base's `kind` is its catalogue `kind`, else one derived from its type.
+**Search** (`tools/places/search`) scores two halves together, so a thing is found by its names or by its look.
+- *Text.* `python -m tools.places search build` embeds each catalogue base (`out/places/catalogue/bases.jsonl`)
+  with bge-small-en-v1.5 (MIT; int8 ONNX on CPU, 34 MB in `~/.argonia/models`) into `out/places/search/`,
+  re-embedding only keys whose text changed. The text is the base's name, editor id and model path split into
+  words, its record type, and a short gloss of modders' words (boardwalk: wooden walkway).
+- *Look.* `python -m tools.places search look` (under `tooling/job_guard.sh`; 4 processes, about 0.1 s a model)
+  draws every distinct model of the catalogue, mods first, with the software renderer (`assets/render.py`, the
+  level-1 GLB) at 256 pixels from two views (three-quarter from the south-west, and the front) into
+  `out/places/search/look/thumbs/`, one status line per model (`status.jsonl`), so an interrupted run resumes
+  where it stopped. A model it could not look at keeps its row and a reason: not found, stand-in box, conversion
+  failed, empty, black, unresolved texture (drawn untextured and still looked at), error. "Could not look" is
+  never "not held". It then embeds each thumbnail (both views averaged) with CLIP ViT-B/32 (MIT; float32 ONNX on
+  CPU, 580 MB in `~/.argonia/models`) into `look/vectors.npy`, only new keys. `search look-report` gives the counts.
+- *Query.* `search query <text>` (and the studio's `/api/search`) scores the bge cosine plus the CLIP cosine of
+  "a 3d render of <text>" to the base's thumbnail above its typical level (`LOOK_WEIGHT`, `LOOK_FLOOR` in
+  `index.py`). An editor id or name equal to the query (spaces and case ignored) always comes first, a prefix
+  next. Each hit says which half matched (`matched`: name, text, look or both; the studio tags look hits "Found by
+  its look"); `--look` prints each hit's thumbnail path, or why it could not look. `scope=source` keeps the bases
+  of `bundles/src.<source_id>/bases.jsonl`; a base's `kind` is its catalogue `kind`, else one derived from its type.
+- *Look at the hits.* `search sheet <text> [--n 48]` (or `--keys K ...`) writes one contact sheet of the top hits'
+  thumbnails, each captioned with rank, editor id, key and the half that matched, and a red "could not look"
+  where there is no picture, to `out/places/search/look/sheets/`; an agent reads it as one image.
 
 **Awake.** Each heartbeat touches `~/.argonia/state/studio-heartbeat` and starts the job_guard job
 `studio-awake` if it is not alive; the job ends five minutes after the last heartbeat (and every four hours, the

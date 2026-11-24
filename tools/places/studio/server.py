@@ -307,6 +307,7 @@ async def search(req: web.Request) -> web.Response:
     hits = await asyncio.get_running_loop().run_in_executor(None, run)
     for h in hits:
         h["thumb"] = f"/api/asset/thumb?model={quote(h['model'])}" if h.get("model") else None
+        h.pop("look", None)   # a path on the build machine; the page draws `thumb`
     return jok({"q": q.get("q", ""), "scope": scope, "results": hits})
 
 
