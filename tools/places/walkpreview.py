@@ -8,7 +8,10 @@ is the build's mesh for the edits in hand (docs/design/place-studio.md, Walking 
 Run by the studio under tooling/job_guard.sh as the job `walkmesh.<place_id>`, under the machine-wide heavy lock (one
 place build at a time). Writes <out>/walkpreview/<place_id>/run.json {state: running|done|failed, step, steps,
 started, at, save, error?, notes, problems} as it goes, and nav.json (navexport's shape, `from: "preview"`) at the
-end; the place files' copy and the build's scratch are deleted when it ends."""
+end; the place files' copy and the build's scratch are deleted when it ends. The navmesh's per-cell caches are kept
+in <out>/walkpreview/<place_id>/plan/navmesh/<place_id> (a few MB: Recast's cells, the stitch and the refs'
+collision rows, each keyed on its own inputs), so a rebuild after a small edit regenerates only the cells the
+edit reached and reuses every other cell's kept answer, which is byte for byte what a full build makes of it."""
 from __future__ import annotations
 
 import argparse
@@ -77,7 +80,7 @@ def preview(place_id: str, save_id: str, places: Path, out: Path) -> dict:
         B.PROBLEMS.clear()
         B.build_tool()
         with heavy_lock():
-            plan = B.plan_place(place_id, root / place_id, work / "out", no_navmesh=False)
+            plan = B.plan_place(place_id, root / place_id, d / "plan", no_navmesh=False)   # its navmesh folder is kept
         problems = list(B.PROBLEMS)
         _state(d, step="export", words=STEP_WORDS["export"])
         walk_notes = [n for n in plan.get("notes", []) if n.startswith("walking zone")]
@@ -90,6 +93,7 @@ def preview(place_id: str, save_id: str, places: Path, out: Path) -> dict:
         raise
     finally:
         shutil.rmtree(work, ignore_errors=True)
+        shutil.rmtree(d / "plan" / "navmesh" / place_id / "in", ignore_errors=True)   # the rasters, written whole each run; the caches stay
 
 
 def start(place_id: str, save_id: str, repo: Path, out: Path, places: Path) -> str:
