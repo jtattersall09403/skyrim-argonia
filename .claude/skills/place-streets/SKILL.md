@@ -52,7 +52,9 @@ side of its deck").
 With `place.json` `wholesale.navmesh: "source"` (`place-site`), the build writes the source's own walking mesh
 inside the footprint at the place's one transform and generates only round it and where the place was changed by
 hand (`docs/design/place-studio.md`, Build, Navmesh). The walks carried with `draft wholesale --walks` and the
-source's patrols run on it, so nothing is laid for them. A hand change does this to it:
+source's patrols run on it, so nothing is laid for them. Every stage of the mesh (Recast's cells, the stitch, the
+carried cut, each cell's finish) is kept by the inputs it reads, so a rebuild re-makes only the cells a change reaches,
+byte for byte what a full build makes. A hand change does this to it:
 
 - **The owner's walking zones** (`walk.jsonl`: No walking here, Walk here, Join these) are authoritative, like hand
   placement: the build applies them on every rebuild; never route a street, patrol or arrival through a block zone,

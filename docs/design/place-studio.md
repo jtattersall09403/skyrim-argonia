@@ -1017,8 +1017,12 @@ its steps (copying the place, applying your changes, building the walking mesh, 
 when it is done the view (and people's routes) load the new mesh. While another place build holds the heavy lock
 it says so and starts nothing. The rebuild is the place's plan with its navmesh (`python -m tools.places
 walkpreview <id>`: the place files copied, the save applied to the copy, `build.plan_place`, the mesh exported from
-the plan to `out/places/walkpreview/<id>/nav.json`; no plugin is written, nothing committed): about six minutes for
-Jal-Veesa. The checks' pins stay those of the last full build.
+the plan to `out/places/walkpreview/<id>/nav.json`; no plugin is written, nothing committed). Each stage of the mesh
+keeps its answer per cell by the inputs it reads, so a rebuild re-makes only the cells an edit reached: Recast's
+cells, the stitch and the refs' collision rows in `out/places/walkpreview/<id>/plan/navmesh/<id>` (kept between
+rebuilds, its rasters deleted), the carried cut and each cell's finish in `out/places/cache/carry`. The output is
+byte for byte a full build's; a one-piece move at Jal-Veesa takes well under a minute, a first rebuild just
+over one. The checks' pins stay those of the last full build.
 
 **Walking tools** (Walking in the left rail; the mesh shows while they are in use). The owner says what the mesh
 should do, never moves its triangles, so the edit holds over every rebuild: No walking here (an outline drawn with
