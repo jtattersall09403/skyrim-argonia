@@ -56,3 +56,26 @@ def test_a_check_with_no_stamp_says_so(tmp_path, monkeypatch):
     (root / "out/places/shards/fen/check.json").write_text("{}")
     ok, line = handover.built_check_current(root, root / "out", "fen")
     assert not ok and "before content stamps" in line
+
+
+def test_each_tree_is_judged_by_the_check_of_its_own_content(tmp_path, monkeypatch):
+    """Two trees share one out/: a build from a tree with other place files never makes this tree's check stale, a
+    build from identical files counts, and a tree whose files match no kept check is stale."""
+    root, pdir = setup(tmp_path, monkeypatch)
+    out, shard = root / "out", root / "out/places/shards/fen"
+    handover.keep_by_content(shard, json.loads((shard / "check.json").read_text()))             # tree A's build and check
+    other = tmp_path / "other"                                                            # tree B: other refs
+    (other / "newworld/places/fen/spaces/exterior").mkdir(parents=True)
+    for f in ("place.json", "promises.jsonl"):
+        (other / "newworld/places/fen" / f).write_text((pdir / f).read_text())
+    (other / "newworld/places/fen/spaces/exterior/refs.jsonl").write_text('{"id":"fen.a","pos":[8,0,0]}\n')
+    (shard / "key.txt").write_text(B.place_key(other / "newworld/places/fen", "w"))   # B's build writes its plan
+    b = {"stamp": C.check_stamp(other / "newworld/places/fen", shard)}
+    (shard / "check.json").write_text(json.dumps(b))
+    handover.keep_by_content(shard, b)                                                           # tree B built last
+    ok, line = handover.built_check_current(root, out, "fen")
+    assert ok and "another tree built the place since" in line, line
+    assert handover.built_check_current(other, out, "fen")[0]
+    (pdir / "spaces/exterior/refs.jsonl").write_text('{"id":"fen.a","pos":[9,0,0]}\n')   # A changes again: no check
+    ok, line = handover.built_check_current(root, out, "fen")
+    assert not ok and "refs.jsonl: changed" in line

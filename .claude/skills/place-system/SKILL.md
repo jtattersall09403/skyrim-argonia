@@ -149,12 +149,25 @@ with builds and checks run beside his editing:
 - **Record your own calls** as "decided by the lead, for the owner to confirm" in `docs/owner-rulings.md`; when
   unattended, decide and carry on: never ask or wait.
 
-## Lanes beside each other
+## Where place work is done and how it lands
 
-Each checkout (the main tree or a lane's worktree) has its own look daemon, session and port and builds its own copy
-of the C# place builder. The heavy steps (5 to 7 GB each) share one machine-wide lock
-(`tools/places/heavy_lock.py`); nothing heavy runs beside a world rebuild. Touch nothing in the place while a build
-or `draft check` is running.
+- **Every place agent works in its own worktree**, never in the main tree: the main tree is the tree the studio
+  serves, and it only ever holds what has landed plus the owner's own saves and session. Each worktree has its own
+  look daemon, session and port and builds its own copy of the C# place builder; it reads and writes the shared
+  `out/` through a link (`out` absent or a link to the main tree's `out/`, never a real directory).
+- **Commit the place files by path on the lane's branch**, in small steps, and leave the worktree clean.
+- **Land with one command**, `tooling/place_land.sh <worktree>` (it starts the job `place-land.<worktree>`; wait with
+  `tooling/job_guard.sh wait`). In one job it rebases the branch on `origin/main`, builds and checks every drafted
+  place whose built check does not stand for the worktree's files, runs the consistency stage and lands the lane
+  (`tooling/lane_land.sh`); a refused landing rebases and goes round again. A built check is judged by content
+  against the tree that asks: one built from identical files by another tree counts, and a build from a tree with
+  other files never makes yours stale.
+- **The studio shows the latest by itself.** Every landing, every commit pushed from the main tree, the studio's
+  start, every minute after and every opened place level the main tree with `origin/main`
+  (`tooling/level_main.sh`), and the studio restarts itself for landed studio code once the owner has nothing in
+  flight. Nobody fast-forwards, restores or restarts anything by hand.
+- The heavy steps (5 to 7 GB each) share one machine-wide lock (`tools/places/heavy_lock.py`); nothing heavy runs
+  beside a world rebuild. Touch nothing in the place while a build or `draft check` is running.
 
 ## How the skills learn
 

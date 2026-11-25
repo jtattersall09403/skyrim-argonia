@@ -13,7 +13,7 @@ Step 11 of the place path ([place-system](../place-system/SKILL.md)). The inner 
 `draft check`, the build and `check` take minutes each and queue on the machine-wide lock
 (`tools/places/heavy_lock.py`):
 
-1. Commit the place files by path.
+1. Commit the place files by path, in the lane's own worktree.
 2. Run it under `tooling/job_guard.sh run <name> -- <cmd>` in the background, then `tooling/job_guard.sh wait
    <name>`.
 3. Touch nothing of the place until it ends.
@@ -68,7 +68,9 @@ Step 11 of the place path ([place-system](../place-system/SKILL.md)). The inner 
     stock reach <place_id>` to flag no row (material reach, region, place class, trade kit; `place-stock`, section 4).
     `handover` also needs the place's time log to have its phase markers (`place-system`, The time log), no blocker
     owed in a road or walk without its reason (`place-streets`), and no note the owner submitted still open past its
-    answer time (`place-change`).
+    answer time (`place-change`). A check stands for the files it was built from, by content: one another tree
+    built from identical files counts, and `tooling/place_land.sh <worktree>` rebuilds and rechecks any place whose
+    check does not stand for the worktree before it lands.
     The place goes to `place-people`.
 
 ## Accepted findings

@@ -31,8 +31,17 @@ and by which reference. Nobody has to ask for it; it runs:
 |---|---|---|
 | Every session start | the SessionStart hook in `.claude/settings.json` | all of it, quietly; the bucket once a day |
 | A deliberate stop | `tooling/agent_stop.sh`, before the marker | all of it |
-| A lane lands | `tooling/lane_land.sh <worktree>` | that lane's worktree and branch |
+| A lane lands | `tooling/lane_land.sh <worktree>` (a place lane: `tooling/place_land.sh`) | that lane's worktree and branch |
 | Free disk under 15 GB | `tooling/job_guard.sh run`, before the job starts | worktrees and disk, never the bucket |
+
+**The main tree is kept level by itself.** The main tree is the one the studio serves; `tooling/level_main.sh`
+brings it level with `origin/main`, clearing only provably stale leftovers (copies of committed work) and never the
+owner's `edits/` folders, his autosave or real unlanded work, which it names and exits non-zero on. It runs at every
+landing, after every push from the main tree, at the end of a job that ran from the main tree when a level waited
+for it, and from the studio (start, every minute, before serving a place); session start prints its one line. It is
+the only sanctioned way to level the main tree: `git restore`, `checkout <path>`, `stash` and `reset --hard` stay
+refused (`tooling/shell_guard.py` names it). How the studio uses it: docs/design/place-studio.md, "The studio serves
+the latest".
 
 **Lane worktrees.** A lane worktree goes, with its branch, when nothing works in it (its session's lock is dead, no
 process stands in it, no job was started from it), nothing in it changed for 3 hours, and all its content is on

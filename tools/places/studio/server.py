@@ -21,7 +21,7 @@ import warnings
 from aiohttp import web
 
 from tools.places import navexport, needs, notes, quest_spots
-from tools.places.studio import awake, links, offline, walk_api
+from tools.places.studio import awake, links, offline, served, walk_api
 from tools.places.studio.saves import AUTOSAVE, PLACE_ID, SAVE_ID, Conflict, Saves, atomic_write
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -39,6 +39,7 @@ class Config:
         self.places = Path(os.environ.get("PLACES_DIR", ROOT / "newworld" / "places"))
         self.web = Path(os.environ.get("STUDIO_WEB", WEB))
         self.commit = os.environ.get("STUDIO_COMMIT", "1") == "1"
+        self.level = self.commit and os.environ.get("STUDIO_LEVEL", "1") == "1"   # keep the served tree level (served.py)
         self.bucket = os.environ.get("STUDIO_BUCKET_SYNC", "1") == "1"
         self.awake = os.environ.get("STUDIO_AWAKE", "1") == "1"
         self.jobs = Path(os.environ.get("JOBS_DIR", Path.home() / ".argonia" / "jobs"))
@@ -164,6 +165,8 @@ async def fresh_draft(app: web.Application, pid: str) -> str | None:
 
 async def places(req: web.Request) -> web.Response:
     cfg: Config = req.app["cfg"]
+    await served.ensure(req.app)   # the latest landed version of every place, before the start sheet reads them
+    behind = served.places_behind(req.app)
     titles = place_titles()
     out = []
     from tools.places import variant
@@ -188,7 +191,8 @@ async def places(req: web.Request) -> web.Response:
                     "fit": pl.get("fit"),
                     "agent_answers": pl.get("agent_answers") or [],   # replayed over and shown beside his session
                     "bytes": bundle_bytes(cfg, f"draft.{pid}") + bundle_bytes(cfg, f"src.{pl.get('source_id')}"),
-                    **({"draft_error": draft_error} if draft_error else {})})
+                    **({"draft_error": draft_error} if draft_error else {}),
+                    **({"served_behind": served.behind_message(title)} if pid in behind else {})})
     return jok(out)
 
 
@@ -198,6 +202,7 @@ async def bundle_file(req: web.Request) -> web.StreamResponse:
     if not RUN_ID.match(bid):
         return jerr(400, "bad bundle id")
     if bid.startswith("draft.") and req.match_info["path"] == "bundle.json":
+        await served.ensure(req.app)   # a place opened: level the tree first, then serve
         await fresh_draft(req.app, bid[len("draft."):])
     from tools.places import variant
     p = inside(cfg.out / "bundles" / variant.bundle(bid), req.match_info["path"])   # a variant: its place's ground
@@ -838,6 +843,10 @@ def access(req: web.Request, status: int) -> None:
 
 @web.middleware
 async def errors(req: web.Request, handler):
+    sv = req.app["served"]   # what is in flight and when the last write came: a restart waits for both (served.py)
+    sv["inflight"] += 1
+    if req.method in ("PUT", "POST") and req.path != "/api/heartbeat" and req.path != "/api/clientlog":
+        sv["last_write"] = time.time()
     try:
         r = await handler(req)
         access(req, r.status)
@@ -847,6 +856,8 @@ async def errors(req: web.Request, handler):
         if req.path.startswith("/api/"):
             return jerr(e.status, e.reason)
         raise
+    finally:
+        sv["inflight"] -= 1
 
 
 def warm_search(out: Path) -> None:
@@ -862,6 +873,8 @@ async def on_start(app: web.Application) -> None:
     app["tasks"] = [asyncio.create_task(commit_worker(app))]
     if app["cfg"].bucket:
         app["tasks"].append(asyncio.create_task(bucket_worker(app)))
+    if app["cfg"].level:   # level at the start, then every minute; restart when landed code changed and all is quiet
+        app["tasks"].append(asyncio.create_task(served.watch(app)))
 
 
 async def on_stop(app: web.Application) -> None:
@@ -878,6 +891,7 @@ def make_app(cfg: Config | None = None) -> web.Application:
     app["locks"], app["pending"], app["bucket_q"] = {}, {}, {}
     app["commit_q"] = asyncio.Queue()
     app["sha"] = git_sha()
+    served.setup(app)
     r = app.router
     r.add_get("/api/places", places)
     r.add_get("/api/bundle/{bundle_id}/{path:.+}", bundle_file)

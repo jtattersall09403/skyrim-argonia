@@ -43,27 +43,71 @@ def _committed_at(root: Path, d: Path) -> float:
     return time.time() if dirty or not ct else ct
 
 
-def built_check_current(root: Path, out: Path, pid: str) -> tuple[bool, str]:
-    """(current, a line saying so): the place's built check (out/places/shards/<pid>/check.json) stands for the place
-    as it is: by content, every file the build and the checks read unchanged, and the code and records the plan stands
-    on (check.stamp_stale); file times never count, and files no build or check reads (the time log, `edits/`) never
-    make it stale. The line names what changed."""
+KEPT_CHECKS = 12
+
+
+def keep_by_content(shard: Path, report: dict) -> None:
+    """A current check is kept under checks/<key of the content it was built from>.json (written once, when the
+    check reads itself current at its end, and whenever a tree finds it current): each tree is then judged by the
+    check of its own content, so a build from another tree with other place files never makes this tree's check
+    stale, and one from identical files counts. The newest KEPT_CHECKS are kept."""
+    import hashlib
+    import json
+    key = hashlib.sha256(json.dumps(report.get("stamp"), sort_keys=True).encode()).hexdigest()[:20]
+    d = shard / "checks"
+    p = d / f"{key}.json"
+    try:
+        if not p.exists():
+            d.mkdir(parents=True, exist_ok=True)
+            tmp = p.with_name(f".{p.name}.tmp")
+            tmp.write_text(json.dumps(report, indent=1, sort_keys=True) + "\n")
+            tmp.replace(p)
+        for old in sorted(d.glob("*.json"), key=lambda f: f.stat().st_mtime, reverse=True)[KEPT_CHECKS:]:
+            old.unlink(missing_ok=True)
+    except OSError:
+        pass   # a read-only out/: the check itself still stands
+
+
+def current_check(root: Path, out: Path, pid: str) -> tuple[dict | None, bool, str]:
+    """(the built check that stands for the place as this tree has it, current, a line saying so): by content, every
+    file the build and the checks read unchanged, and the code and records the plan stands on (check.stamp_stale);
+    file times never count, and files no build or check reads (the time log, `edits/`) never make it stale. The
+    shard's check.json is the newest build's; a check kept by content (checks/<key>.json) of another tree's build
+    with the same place files stands as well, so a build from a tree with other files never makes this one stale.
+    The line names what changed."""
     import json
     from tools.places import check as C
     shard = out / "places/shards" / pid
     chk = shard / "check.json"
     if not chk.exists():
-        return False, f"built check NOT CURRENT: {pid} has no built check; build and check it after the last edit"
-    stamp = json.loads(chk.read_text()).get("stamp")
+        return None, False, f"built check NOT CURRENT: {pid} has no built check; build and check it after the last edit"
+    report = json.loads(chk.read_text())
+    stamp = report.get("stamp")
     if stamp is None:   # a check made before content stamps: no rebuild for that alone; its next check stamps it
         ok = chk.stat().st_mtime >= _committed_at(root, root / "newworld/places" / pid)
-        return ok, (f"built check {'current' if ok else 'NOT CURRENT'}: made before content stamps, so judged by the "
-                    f"place files' last commit until its next check stamps it by content")
-    why = C.stamp_stale(stamp, root / "newworld/places" / pid, shard)
+        return report, ok, (f"built check {'current' if ok else 'NOT CURRENT'}: made before content stamps, so judged "
+                            f"by the place files' last commit until its next check stamps it by content")
+    pdir = root / "newworld/places" / pid
+    why = C.stamp_stale(stamp, pdir, shard)
     if not why:
-        return True, "built check current: every file the build and the checks read is as it was checked (by content)"
-    return False, (f"built check NOT CURRENT: {'; '.join(why[:8])}{f' (and {len(why) - 8} more)' if len(why) > 8 else ''}: "
-                   f"build and check again, or the consistency stage refuses the landing")
+        keep_by_content(shard, report)
+        return report, True, "built check current: every file the build and the checks read is as it was checked (by content)"
+    for kept in sorted((shard / "checks").glob("*.json"), key=lambda f: f.stat().st_mtime, reverse=True):
+        try:
+            k = json.loads(kept.read_text())
+        except (OSError, ValueError):
+            continue
+        if k.get("stamp") and not C.stamp_stale(k["stamp"], pdir, shard):
+            return k, True, ("built check current: a check built from these same files (by content) stands, though "
+                             "another tree built the place since")
+    return report, False, (f"built check NOT CURRENT: {'; '.join(why[:8])}{f' (and {len(why) - 8} more)' if len(why) > 8 else ''}: "
+                           f"build and check again, or the consistency stage refuses the landing")
+
+
+def built_check_current(root: Path, out: Path, pid: str) -> tuple[bool, str]:
+    """(current, a line saying so): current_check without the check itself."""
+    _, ok, line = current_check(root, out, pid)
+    return ok, line
 
 
 def main(argv: list[str]) -> int:

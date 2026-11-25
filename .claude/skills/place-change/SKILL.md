@@ -110,13 +110,17 @@ alone: an agent never saves or finalises for him, and nothing an agent does wait
    (`edits._rebased`, the studio's mirror). A change of his own that a check needs on main (a row he removed or
    moved off a way) is delivered the same way: an answer naming his note makes on the draft what his session makes,
    and his op replays as no change. Nothing is left owed until he finalises.
-   - His session is the autosave (`out/places/autosave/<place_id>.json`), which runs on past his last named save.
+   - Work in your own worktree, never in the main tree the studio serves. His session is the autosave
+     (`out/places/autosave/<place_id>.json` under the shared `out/`, read through the worktree's `out` link), which
+     runs on past his last named save; his named saves and notes are committed in the place's `edits/` folder, so a
+     worktree rebased on `origin/main` has them. Land the answer with `tooling/place_land.sh <worktree>`; the studio
+     takes it by itself and his open tab replays his session over it on reload.
    - An answer's row is the row as his session leaves it plus the fix. A row his ops touched under several notes is
      answered once per note (`look commit --answers <note>` each; the real change rides the last, the others keep
      the row as it stands), or his ops of an unanswered note replay over it.
    - A person's, path's, walk's or quest spot's row is answered with `look <place> op <file.json>` (the studio's own
      `person.edit` and kin, `before` the row as it is now), then `look commit --answers <note>`.
-   - The studio shows the committed place files: commit them by path before judging what he will see.
+   - The studio shows the landed place files: what is on `origin/main` is what he sees once it lands.
    - Prove it: `python3 -m tools.places replay <place_id>` replays his autosave over the draft as the studio does;
      it must show no conflict and no row of his moved without an answer, and the rows changed by answers are
      exactly the ones meant. Look at the replayed scene (a scratch worktree with his autosave applied over the new

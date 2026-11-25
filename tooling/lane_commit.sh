@@ -67,6 +67,13 @@ if [ -z "${LANE_SKIP_CS_BUILD:-}" ] && git diff --cached --name-only -- "${paths
   fi
   git worktree remove --force "$cs/wt"; rm -rf "$cs"; git worktree prune
 fi
+# After a push the main tree (the studio serves it) is levelled with origin/main (tooling/level_main.sh); from any
+# other tree this does nothing. It never fails the commit.
+level_after() {
+  [ "$(git rev-parse --path-format=absolute --git-dir)" = "$(git rev-parse --path-format=absolute --git-common-dir)" ] || return 0
+  local lm; lm="$(git rev-parse --show-toplevel)/tooling/level_main.sh"
+  if [ -x "$lm" ]; then "$lm" --auto --quiet || true; fi
+}
 # The scoped gate on the staged paths (tooling/gate.py: only the checks they can reach); LANE_GATE overrides it.
 staged=$(git diff --cached --name-only -- "${paths[@]}" | tr '\n' ' ')
 ${LANE_GATE:-make -s check GATE_PATHS="$staged"} || die "refused: the gate is red (staged, not committed)"
@@ -76,7 +83,7 @@ echo "committed $new"
 
 if git push -q origin HEAD:main 2>/dev/null; then
   echo "pushed; main is at $(git rev-parse --short HEAD) ($new)"
-  exit 0
+  level_after; exit 0
 fi
 
 echo "push refused; landing via a scratch worktree (working tree untouched)"
@@ -116,3 +123,4 @@ else
   echo "do NOT run: git pull / git stash / git reset --hard / git checkout -- <paths>"
 fi
 echo "main on origin is at $landed"
+level_after

@@ -54,7 +54,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 from tools.places import variant
-from tools.places.handover import built_check_current, out_root  # noqa: F401  the draft rule's home
+from tools.places.handover import built_check_current, current_check, out_root  # noqa: F401  the draft rule's home
 
 REPO = Path(__file__).resolve().parents[2]
 DBREL = Path("newworld/story/data/db")
@@ -174,7 +174,7 @@ def load_drafts(root: Path, out: Path) -> dict:
         pj = root / "newworld/places" / pid / "place.json"
         people = pj.parent / "people.jsonl"
         spaces = pj.parent / "spaces"
-        chk = out / "places/shards" / pid / "check.json"
+        chk, chk_ok, chk_why = current_check(root, out, pid)   # the check that stands for this tree's files
         d[pid] = {"place": json.loads(pj.read_text()), "rel": str(pj.relative_to(root)),
                   "people": sum(1 for x in people.read_text().splitlines() if x.strip()) if people.exists() else 0,
                   # each room by its id and by the name its door shows (space.json `name`, given by the names stage)
@@ -184,8 +184,7 @@ def load_drafts(root: Path, out: Path) -> dict:
                   "spots": ({json.loads(x)["id"] for x in (pj.parent / "quests.jsonl").read_text().splitlines()
                              if x.strip()} if (pj.parent / "quests.jsonl").exists() else set())
                            | cast_spots(root, pid),
-                  "check": json.loads(chk.read_text()) if chk.exists() else None,
-                  **dict(zip(("check_newer", "check_why"), built_check_current(root, out, pid)))}
+                  "check": chk, "check_newer": chk_ok, "check_why": chk_why}
     return d
 
 

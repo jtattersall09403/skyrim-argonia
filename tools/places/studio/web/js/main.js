@@ -84,7 +84,7 @@ class Studio {
     if (!this.places?.length) { this.loading('No place has a draft yet. Run the draft step for a place first.'); return; }
     const sel = $('#place-pick'); sel.innerHTML = '';
     // a variant draft is listed under its place, labelled as a draft of it
-    for (const p of this.places) sel.add(new Option((p.variant_of ? '\u2003\u21b3 ' : '') + (p.title || p.place_id), p.place_id));
+    for (const p of this.places) sel.add(new Option((p.variant_of ? '\u2003\u21b3 ' : '') + (p.title || p.place_id) + (p.served_behind ? ' (not the latest version yet)' : ''), p.place_id));
     // the place asked for in the address, else the one this browser last had open, else the lightest
     const has = (id) => id && this.places.some((p) => p.place_id === id);
     const asked = new URLSearchParams(location.search).get('place'), last = AGENT ? null : store.get('studio.place');
@@ -146,6 +146,8 @@ class Studio {
     if (moved && checkKey) throw Object.assign(new Error('the draft changed while loading'), { draftMoved: true });
     this.ground = ground; this.draft = draft || emptyDraft(id);
     if (!draft) this.toast('This place has no draft yet: you see our ground with nothing placed on it.', 6000);
+    // the served tree could not take the latest landed version of this place: said plainly (tools/places/studio/served.py)
+    else if (this.place.served_behind) this.toast(this.place.served_behind, 20000);
     this.bases = new Map([...ground.bases, ...this.draft.bases]); this.npcs = new Map([...ground.npcs, ...this.draft.npcs]);
     if (!this.lightPairs) getJSON('/light_pairs', { optional: true }).then((t) => { this.lightPairs = t || {}; }).catch(() => { this.lightPairs = {}; });
     this.terrain = ground.spaces.exterior?.terrain;

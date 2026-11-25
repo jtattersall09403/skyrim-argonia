@@ -14,6 +14,7 @@
 #                   (--bucket: now; --disk-only: never). mods/ and every other prefix are never touched.
 #       --dry-run prints exactly what would go and why, and what is kept and by which reference.
 #   tooling/disk.sh landed <worktree>   is everything in this worktree on origin/main? lists what is not
+# `tidy` first says in one line whether the served main tree is level (tooling/level_main.sh --line).
 # Runs unasked at session start (.claude/settings.json), at a deliberate stop (agent_stop.sh), when a lane lands
 # (lane_land.sh) and before a job when free disk is under the floor (job_guard.sh run). The rules: tooling/tidy.py.
 set -euo pipefail
@@ -32,6 +33,9 @@ report)
   echo "main tree out/: $(gb "$main/out")   lane worktrees: $(gb "$main/.claude/worktrees")"
   echo "mod archives (~/.argonia/mods): $(gb "$HOME/.argonia/mods")   job spool (~/.argonia/jobs): $(gb "$HOME/.argonia/jobs")"
   "$PY" "$here/tidy.py" tidy --dry-run --disk-only ;;
-tidy|landed) exec "$PY" "$here/tidy.py" "$@" ;;
+tidy)  # one line first: whether the tree the studio serves is level with origin/main (tooling/level_main.sh)
+  "$PY" "$here/level_main.py" --line 2>/dev/null || true
+  exec "$PY" "$here/tidy.py" "$@" ;;
+landed) exec "$PY" "$here/tidy.py" "$@" ;;
 *) sed -n 2,17p "$0"; exit 2 ;;
 esac

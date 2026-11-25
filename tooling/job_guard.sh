@@ -151,6 +151,9 @@ case "$cmd" in
     for v in $(compgen -e); do [[ $v == ARGONIA_* || $v == PATH || $v == PYTHONUNBUFFERED ]] && printf '%s=%s\0' "$v" "${!v}"; done > "$JOBS/$name.env"
     if [ $gpu = 1 ]; then echo "$ARGONIA_PLAY" > "$JOBS/$name.gpu"; echo queued > "$JOBS/$name.state"; else echo running > "$JOBS/$name.state"; fi
     [ -n "${ARGONIA_LANE:-}" ] && echo "$ARGONIA_LANE" > "$JOBS/$name.lane"
+    # A level of the main tree put off while a job ran from it (tooling/level_main.sh, <spool>/level-pending) runs when
+    # the job ends, once no other job runs from that tree.
+    levelled='[ -s "'"$JOBS"'/level-pending" ] && { lm="$(head -1 "'"$JOBS"'/level-pending")/tooling/level_main.sh"; [ -x "$lm" ] && JOBS_DIR="'"$JOBS"'" "$lm" --pending --quiet; } || true'
     if [ $gpu = 1 ]; then
       echo "$ARGONIA_PLAY" > "$JOBS/$name.machine"  # stop ends the machine too (below)
       wait_s=${GPU_WAIT:-7200}; lane=${ARGONIA_LANE:-}; me=$(readlink -f "$0"); holder=$(cat "$lock.holder" 2>/dev/null || echo "?")
@@ -159,9 +162,9 @@ case "$cmd" in
         if [ -n "'"$lane"'" ]; then bash "'"$me"'" _slotwait "'"$lock"'" "'"$lane"'" '"$wait_s"' || { echo 1 > "'"$JOBS/$name.rc"'"; echo "slot wait gave up"; exit 1; }; fi
         bash "'"$me"'" _turn "'"$ARGONIA_PLAY"'" '"$seq"' '"$wait_s"' || { echo 1 > "'"$JOBS/$name.rc"'"; echo done > "'"$JOBS/$name.state"'"; echo "turn wait gave up"; exit 1; }
         flock -w '"$wait_s"' "'"$lock"'" bash -c '"'"'echo '"$name"' > "'"$lock"'.holder"; touch "'"$JOBS/$name.started"'"; echo running > "'"$JOBS/$name.state"'"
-          echo "got the lock"; bash "'"$me"'" _keepalive "'"$ARGONIA_PLAY"'" & ka=$!; "$@"; rc=$?; kill $ka 2>/dev/null; echo $rc > "'"$JOBS/$name.rc"'"; [ $rc -ge 128 ] || echo done > "'"$JOBS/$name.state"'"'"'"' _ "$@" || { rc=$?; [ -f "'"$JOBS/$name.rc"'" ] || echo "$rc" > "'"$JOBS/$name.rc"'"; [ $rc -ge 128 ] || echo done > "'"$JOBS/$name.state"'"; echo "lock wait gave up (rc $rc)"; }' "$@"
+          echo "got the lock"; bash "'"$me"'" _keepalive "'"$ARGONIA_PLAY"'" & ka=$!; "$@"; rc=$?; kill $ka 2>/dev/null; echo $rc > "'"$JOBS/$name.rc"'"; [ $rc -ge 128 ] || echo done > "'"$JOBS/$name.state"'"'"'"' _ "$@" || { rc=$?; [ -f "'"$JOBS/$name.rc"'" ] || echo "$rc" > "'"$JOBS/$name.rc"'"; [ $rc -ge 128 ] || echo done > "'"$JOBS/$name.state"'"; echo "lock wait gave up (rc $rc)"; }; '"$levelled" "$@"
     else
-      launch '"$@"; rc=$?; echo $rc > "'"$JOBS/$name.rc"'"; [ $rc -ge 128 ] || echo done > "'"$JOBS/$name.state"'"' "$@"
+      launch '"$@"; rc=$?; echo $rc > "'"$JOBS/$name.rc"'"; [ $rc -ge 128 ] || echo done > "'"$JOBS/$name.state"'"; '"$levelled" "$@"
     fi
     cat /proc/sys/kernel/random/boot_id > "$JOBS/$name.boot"; echo $jpid > "$JOBS/$name.pid"; echo "started $name (pid $jpid), log $JOBS/$name.log" ;;
   wait)

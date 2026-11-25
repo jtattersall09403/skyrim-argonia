@@ -29,7 +29,7 @@ def repo(tmp_path):
     g(tmp_path, "clone", "-q", str(origin), str(main))
     g(main, "checkout", "-q", "-B", "main")
     (main / "tooling").mkdir()
-    for f in ("lane_land.sh", "tidy.py"):
+    for f in ("lane_land.sh", "tidy.py", "level_main.sh", "level_main.py"):
         shutil.copy(TOOLING / f, main / "tooling" / f)
     (main / "a.txt").write_text("a\n")
     (main / "b.txt").write_text("b\n")
@@ -120,7 +120,7 @@ def test_a_hold_job_does_not_block_the_fast_forward_and_a_working_job_does(repo,
     (wt / "a.txt").write_text("a1\n")
     g(wt, "commit", "-qam", "k1")
     r = run(wt)
-    assert r.returncode == 0 and "main tree is at" in r.stdout, r.stdout + r.stderr
+    assert r.returncode == 0 and "main tree is level with origin/main at" in r.stdout, r.stdout + r.stderr
     assert (repo / "a.txt").read_text() == "a1\n"
 
     job("nw-rebuild", ["tools/newworld/rebuild.sh", "run"])
@@ -130,3 +130,4 @@ def test_a_hold_job_does_not_block_the_fast_forward_and_a_working_job_does(repo,
     r = run(wt)
     assert r.returncode == 0 and "job nw-rebuild runs from it" in r.stdout, r.stdout + r.stderr
     assert (repo / "a.txt").read_text() == "a1\n"
+    assert (jobs / "level-pending").read_text().strip() == str(repo)   # job_guard levels it when the job ends

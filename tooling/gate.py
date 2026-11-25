@@ -578,6 +578,11 @@ def run(plan: Plan, all_tests: list[str]) -> int:
     rc = _make("guard") or _make("lint")
     if rc:
         return rc
+    # the served tree holds no stale leftovers a level would clear (tooling/level_main.py --check; seconds)
+    rc = subprocess.run([os.environ.get("GATE_PY", sys.executable), str(REPO / "tooling" / "level_main.py"),
+                         "--check", "--tree", str(REPO)]).returncode
+    if rc:
+        return rc
     tests = all_tests if plan.full else sorted(plan.tests)
     if tests:
         rc = _pytest(list(TEST_DIRS) if plan.full else tests)

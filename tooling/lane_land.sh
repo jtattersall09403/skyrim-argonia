@@ -7,8 +7,8 @@
 #   3. the gate in the lane's worktree (`make check GATE_BASE=origin/main`, scoped to what the
 #      branch changed; LANE_GATE overrides the command); red refuses
 #   4. push to origin/main (main moved meanwhile: back to 2, up to three times)
-#   5. fast-forward the main tree, keeping its uncommitted edits; skipped, and said, while a job runs from it (a job that only
-#      waits, its command a sleep, does not count)
+#   5. level the main tree (tooling/level_main.sh --auto): stale leftovers cleared, real work and the owner's edits kept,
+#      fast-forwarded; while a job runs from it (a job that only waits does not count), job_guard levels it at that job's end
 #   6. remove the worktree and delete its branch, once everything in it is on main (tooling/tidy.py's content rule)
 # The only way a lane lands; its gate is the scoped one, never a full run (`make check-all WHY=deploy|phase-close` is for a
 # deploy and a phase's close only; owner, 2026-11-21).
@@ -54,17 +54,8 @@ for _ in 1 2 3; do
 done
 [ -n "$landed" ] || die "push still refused after three tries; $branch is rebased and kept"
 
-git -C "$main" fetch -q origin
-if [ "$(git -C "$main" symbolic-ref -q --short HEAD)" != main ]; then
-  echo "main tree left as is: it is not on main"
-elif job=$("$PY" -c 'import sys; sys.path.insert(0, sys.argv[1]); import tidy
-m = tidy.Path(sys.argv[2])
-print(next((n for n, c in tidy.job_cwds(waits=False) if tidy._inside(c, m) and not tidy._inside(c, m / ".claude" / "worktrees")), ""))' "$here" "$main") && [ -n "$job" ]; then
-  echo "main tree left as is: job $job runs from it; fast-forward it when the job ends (git merge --ff-only origin/main)"
-elif git -C "$main" merge -q --ff-only origin/main 2>/dev/null; then
-  echo "main tree is at $(git -C "$main" rev-parse --short HEAD)"
-else
-  echo "main tree NOT moved: an uncommitted file there collides with what landed; it is behind origin/main"
-fi
+# The main tree (the studio serves it) follows: tooling/level_main.sh clears its provably stale leftovers and
+# fast-forwards it; while a job runs from it, job_guard levels it when that job ends. It never fails the landing.
+"$here/level_main.sh" --tree "$main" --auto || true
 
 "$PY" "$here/tidy.py" remove "$wt"

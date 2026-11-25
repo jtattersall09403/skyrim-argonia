@@ -1206,6 +1206,33 @@ are kept in `out/places/notes-runs/`.
 `--unsent` adds the owner's unsent ones, `--changes` the notes on changes in saves not yet finalised, `--all`
 everything. `notes done` refuses an unsent note.
 
+**The studio serves the latest.** The service runs in the main tree and reads every place file from it fresh on
+open (the draft bundle is rebuilt whenever its key moves; nothing of a place is cached past that). The main tree
+holds only what has landed on `origin/main` plus the owner's own work: his named saves and notes (each place's
+`edits/`, committed by path as he makes them) and his session (the autosave, `out/places/autosave/`, ignored by
+git). No agent works in it: place agents work in their own worktrees and land with `tooling/place_land.sh`.
+`tooling/level_main.sh` keeps it level with `origin/main`:
+- it fetches, clears only provably stale leftovers (a file whose content equals the committed version at HEAD, at
+  `origin/main` or any earlier committed version of that path, put back to HEAD; an untracked file or a deletion
+  identical to what lands, removed) and fast-forwards. Every place's `edits/`, `.claude/settings*.json`, ignored
+  files and anything outside the repository are never touched. Real unlanded work is never overwritten: it is named
+  with when it was last written and by which job (or a session in the main tree), and the tool exits non-zero.
+  `--report` says what a level would do and changes nothing; `--check` fails when stale leftovers stand (the gate
+  runs it for every commit, an owner's save excepted); `--line` is one line, printed at every session start.
+- it runs by itself: at the end of `tooling/lane_land.sh` (and of `place_land.sh`, which ends in it), after
+  `tooling/lane_commit.sh` pushes from the main tree (the studio's own save commits included), at the end of any
+  job that ran from the main tree when a level was put off for it (`job_guard.sh` runs the waiting level once no
+  job runs from that tree), at the studio's start, every minute after, and before the start sheet or a place's
+  draft is served (at most once in 30 s; `tools/places/studio/served.py`).
+- when a level cannot be done (real work collides with what landed), the start sheet marks each place that is
+  behind "(not the latest version yet)" and, when it is opened, says in plain words that finished changes have
+  landed, unfinished files are in the way, his saves and unsaved work are safe and an agent has been told; the tool
+  appends a line to `~/.argonia/state/agent-wake-pending` and posts one owner-inbox issue (updated, never repeated,
+  while the same files block; closed once the tree is level).
+- when landed code the service runs changed (any module it loaded from the repository), the service restarts itself
+  under systemd once no request is in flight, nothing waits to be committed, nothing was written in the last minute,
+  no finalise runs and no draft is being rebuilt; the page re-sends any write that failed, so no stroke is dropped.
+
 **Hosting.** `https://studio.<domain>` (the Moonlight gate's zone): the named tunnel `argonia-build` to
 `localhost:8765`, behind Cloudflare Access for the owner's email only; the VM opens no port.
 `infra/build-vm/studio-install.sh` installs the pinned cloudflared and the user units `argonia-studio` and

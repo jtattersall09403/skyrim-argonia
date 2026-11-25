@@ -26,7 +26,9 @@ the skill for each step.
   itself while the pass is open.
 - Heavy steps once, at the end: `tooling/job_guard.sh run <name> -- <cmd>` in the background, then
   `tooling/job_guard.sh wait <name>`; never `sleep` or poll.
-- Commit only your paths, by pathspec, on your branch, in small steps; leave the worktree clean.
+- Work only in your own worktree, never in the main tree (the studio serves it). Commit only your paths, by pathspec,
+  on your branch, in small steps; leave the worktree clean. Land with `tooling/place_land.sh <worktree>`: it builds
+  and checks what is stale, lands, and the studio shows it by itself.
 - Return when the place meets the hand-over bar of `place-system`, or when you are truly blocked: what is done,
   every check's verdict, what you saw in the survey, the image paths the lead must read, what remains.
 
