@@ -331,6 +331,13 @@ def test_03_select_and_manipulate(pad):
     assert "How it sits" in pad.ev("document.getElementById('panel-body').textContent")
     pad.pen_tap(x, y)  # the same spot again: the next thing there (or the same when alone)
     assert len(pad.ev("[...studio.selection]")) == 1
+    # a pen tap that wobbles a few pixels is still a tap, never an empty lasso
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
+    pad.pen_drag([(x, y), (x + 3, y + 2), (x - 2, y + 4), (x + 1, y - 2)], steps=2)
+    assert len(pad.ev("[...studio.selection]")) == 1, "a wobbly pen tap selects"
+    # a ray that only passes through a piece's bounds, beside its mesh, picks nothing of it: every hit lies on a triangle
+    assert pad.ev("""(() => { const v = studio.ours.view, rc = new THREE.Raycaster(); rc.setFromCamera(new THREE.Vector2(0, 0), v.camera);
+               return studio.ours.place.pick(rc.ray).every((h, i, all) => i === 0 || all[i - 1].dist <= h.dist + 4); })()"""), "nearest first"
     # gizmo: move east by dragging the move handle
     pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.selectionChanged(); }", b["id"])
     h = pad.ev("(() => { const r = document.querySelector('.gizmo [data-h=move]').getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; })()")
@@ -345,6 +352,8 @@ def test_03_select_and_manipulate(pad):
     assert last["op"] == "ref.move"
     turn = (last["after"]["rot"][2] - last["before"]["rot"][2]) / (3.141592653589793 / 12)
     assert abs(turn - round(turn)) < 0.01
+    # the turn is the angle swept round the ring the handle sits on (about 38 degrees here), not round the selection
+    assert round(abs(turn)) % 24 in (2, 3, 21, 22), turn
     # lift
     h = pad.ev("(() => { const r = document.querySelector('.gizmo [data-h=lift]').getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; })()")
     pad.pen_drag([h, (h[0], h[1] - 40)])
@@ -364,6 +373,21 @@ def test_03_select_and_manipulate(pad):
     pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
     pad.pen_drag([(cx - 150, cy - 150), (cx + 150, cy - 150), (cx + 150, cy + 150), (cx - 150, cy + 150), (cx - 150, cy - 150)], steps=6)
     assert len(pad.ev("[...studio.selection]")) >= 2, "a lasso selects several"
+    # a unit selected whole: a piece unticked in the panel's list stays where it stands when the rest moves
+    uid = pad.ev("(() => { const u = [...studio.tools.units().units.values()].find((x) => x.members.length >= 2); studio.tools.selectUnit(u); return u.id; })()")
+    assert pad.ev("document.querySelectorAll('.unit-card .members input[type=checkbox]').length") >= 2
+    pad.page.locator(".unit-card .members input[type=checkbox]").first.click()
+    left = pad.ev("[...studio.tools.leave]")
+    assert len(left) == 1 and left[0] not in pad.ev("[...studio.selection]") and pad.ev("!!studio.tools.selUnit()"), left
+    pad.page.locator(".unit-card .members li").first.hover()
+    assert pad.ev("!!studio.tools.pointed"), "a row touched shows its piece in the view"
+    before = pad.ev("(id) => [...studio.model.spaces.exterior.refs.get(id).pos]", left[0])
+    pad.page.get_by_role("button", name="North", exact=True).click()
+    op = pad.ev("studio.log.applied().at(-1)")
+    assert op["op"] == "unit.move" and op["unit"] == uid and left[0] not in [r["id"] for r in op["refs"]], op
+    assert pad.ev("(id) => [...studio.model.spaces.exterior.refs.get(id).pos]", left[0]) == before
+    assert any(r["after"]["pos"][1] > r["before"]["pos"][1] for r in op["refs"]), "the rest moved north"
+    assert pad.ev("[...studio.tools.leave]") == left, "the piece is still left out for the next move"
     pad.shot("03-selection-gizmo")
 
 

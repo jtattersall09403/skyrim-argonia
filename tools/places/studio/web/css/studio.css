@@ -370,7 +370,12 @@ ol.needs .row { margin: 8px 0 0; flex-wrap: wrap; }
 .unit-label { position: absolute; transform: translate(-50%, -100%); z-index: 3; pointer-events: none; padding: 4px 10px; border-radius: 6px;
   background: var(--accent); color: var(--accent-ink); font-weight: 600; white-space: nowrap; }
 .unit-card .members { list-style: none; padding: 0; margin: 0; }
-.unit-card .members li { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 2px 0; }
+.unit-card .members li { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 4px 0; border-radius: 6px; }
+.unit-card .members li:hover, .unit-card .members li:focus-within { background: color-mix(in srgb, #ff9628 14%, transparent); }
+.unit-card .members .moves { display: flex; align-items: center; gap: 8px; min-height: 44px; flex: 1; min-width: 0; cursor: pointer; }
+.unit-card .members .moves input { width: 22px; height: 22px; flex: none; accent-color: var(--accent); }
+.unit-card .members .moves .thumb { width: 40px; height: 40px; flex: none; border-radius: 4px; object-fit: cover; background: var(--panel); }
+.unit-card .members .moves span { overflow-wrap: anywhere; }
 .row.member p { flex-basis: 100%; margin: 4px 0; }
 
 /* a person's spot shown from the People panel */

@@ -20,6 +20,13 @@ const KIND_WORD = { building: 'Building', static: 'Fixed piece', clutter: 'Small
   rock: 'Rock', furniture: 'Furniture', door: 'Door', container: 'Chest or container', light: 'Light', activator: 'Thing to use', marker: 'Marker',
   actor: 'Person', water: 'Water', other: 'Other' };
 export const plainKind = (k) => KIND_WORD[k] || 'Thing';
+// A piece's name in words: its game name, else its editor id spelt out ("TSArgHouseWall02" -> "Arg house wall 02").
+export const pieceName = (b, r) => {
+  if (b?.name) return b.name;
+  const id = String(b?.edid || r?.base || 'Unnamed').replace(/^(TS|BMV|PT|TR|ES|ARG_)(?=[A-Z])/, '');
+  const words = id.replace(/_/g, ' ').replace(/([a-z])([A-Z0-9])/g, '$1 $2').replace(/([0-9])([A-Za-z])/g, '$1 $2').replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2').trim().split(/\s+/);
+  return words.map((x, i) => (i && /^[A-Z][a-z]+$/.test(x) ? x.toLowerCase() : x)).join(' ');
+};
 const SEAT_WORD = { ground: 'Sits on the ground', above: 'Stands above the ground', water: 'Sits in the water', on: 'Sits on another thing',
   stilts: 'Stands on posts over land or water', clear: 'Raised clear of the ground', free: 'Placed by hand at a fixed height' };
 export const PATH_KIND = { path: 'Path', street: 'Street', walkway: 'Walkway' };
@@ -151,18 +158,25 @@ export class Panels {
     parts.push(r, r2, r3);
     this.show(refs.length ? 'Selected' : 'Select', parts);
   }
-  // A unit selected whole: what it is, its pieces (each can be taken out), and how to reach one piece.
+  // A unit selected whole: what it is, its pieces (each named and pictured, shown in the view when touched, left
+  // where it stands for this move with its tick off, or taken out of the unit), and how to reach one piece.
   unitCard(u) {
-    const a = this.app, T = this.T, w = el('<div class="unit-card"></div>'), refs = a.placeRefsById();
-    w.append(el(`<p><strong>${esc(u.name)}</strong>: one structure of ${u.members.length} pieces. Moving, turning or raising it takes every piece with it, `
+    const a = this.app, T = this.T, w = el('<div class="unit-card"></div>'), refs = a.placeRefsById(), left = T.leave || new Set();
+    w.append(el(`<p><strong>${esc(u.name)}</strong>: one structure of ${u.members.length} pieces. Moving, turning or raising it takes every ticked piece with it, `
       + 'with its doors\' arrivals, the beds and spots of the people who live or work in it, the quest things on it, its lights, and the ends of the streets that lead to its doors, which bend to follow.</p>'));
-    w.append(el('<p class="tag">Tap a piece again to select only that piece. Tap away from it to come back to the whole.</p>'));
+    w.append(el('<p class="tag">Touch a piece in the list to see it in orange in the view. Untick it to leave it where it stands when you move the rest (it stays part of the unit). Tap a piece in the view again to select only that piece.</p>'));
     w.append(this.whereEl(u.members.map((id) => refs.get(id)).filter(Boolean), 'ours'));
     const list = el('<ul class="members"></ul>');
-    for (const id of u.members) {
-      const r = refs.get(id); if (!r) continue;
-      const b = a.bases.get(r.base) || {}, li = el(`<li><span>${esc(b.name || b.edid || r.base)} <small>${esc(plainKind(r.kind))}</small></span></li>`);
-      const out = el('<button class="quiet">Take out of this unit</button>'); out.onclick = () => T.setUnit(r, '');
+    const rows = u.members.map((id) => refs.get(id)).filter(Boolean).map((r) => ({ r, b: a.bases.get(r.base) || {} }))
+      .sort((p, q) => plainKind(p.r.kind).localeCompare(plainKind(q.r.kind)) || pieceName(p.b, p.r).localeCompare(pieceName(q.b, q.r)));
+    for (const { r, b } of rows) {
+      const li = el(`<li><label class="moves"><input type="checkbox" aria-label="Moves with the unit"><img class="thumb" alt="" width="40" height="40"><span>${esc(pieceName(b, r))} <small>${esc(plainKind(r.kind))}</small></span></label></li>`);
+      li.querySelector('img').src = thumb({ ...b, key: b.key || r.base, kind: r.kind });
+      const box = li.querySelector('input'); box.checked = !left.has(r.id);
+      box.onchange = () => { T.leavePiece(r.id, !box.checked); box.checked = !T.leave?.has(r.id); };
+      for (const ev of ['pointerenter', 'focusin', 'pointerdown']) li.addEventListener(ev, () => T.pointAt(r.id));
+      for (const ev of ['pointerleave', 'focusout']) li.addEventListener(ev, () => T.pointAt(null));
+      const out = el('<button class="quiet">Take out of the unit</button>'); out.onclick = () => { T.pointAt(null); T.setUnit(r, ''); };
       li.append(out); list.append(li);
     }
     w.append(el('<h3>Pieces in it</h3>'), list);

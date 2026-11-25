@@ -153,7 +153,9 @@ export class Tools {
   }
   lassoEnd(e, side) {
     const l = this.lasso; this.lasso = null; if (!l) return; l.el.remove();
-    if (l.pts.length < 4) { this.tapPick(e, side, side === this.app.ours ? this.app.selection : null); return; }
+    // a pen tap wobbles a few pixels: a stroke that never leaves the spot it began at is a tap, not a lasso
+    const [lx, ly] = l.pts[0], reach = Math.max(...l.pts.map(([x, y]) => Math.hypot(x - lx, y - ly)));
+    if (l.pts.length < 4 || reach < 12) { this.tapPick(e, side, side === this.app.ours ? this.app.selection : null); return; }
     let poly = l.pts;
     if (this.opts.selMode === 'box') { const [x0, y0] = l.pts[0], [x1, y1] = l.pts[l.pts.length - 1]; poly = [[x0, y0], [x1, y0], [x1, y1], [x0, y1]]; }
     const refs = side === this.app.ours ? [...(this.app.model.spaces[side.space]?.refs.values() || [])].filter((r) => this.app.helperShown(r)).map((r) => this.app.seated(r)) : this.app.refsOf(side);
@@ -164,10 +166,16 @@ export class Tools {
       this.selectionChanged();
     } else { this.app.srcSel = hit; this.srcChanged(); }
   }
+  // What the ray meets before the ground (or a room's floor): a thing hidden under the ground at the tap is not picked.
+  seen(e, hits) {
+    const g = e.ground?.(), v = e.view; if (!g || !v?.origin) return hits;
+    const o = e.ray.origin, d = Math.hypot(g[0] - v.origin[0] - o.x, g[1] - v.origin[1] - o.y, g[2] - v.origin[2] - o.z);
+    return hits.filter((h) => h.dist <= d + 16);
+  }
   // Tap: what is under the pen, best first; tapping the same spot again steps to the next thing there.
   tapPick(e, side, selSet) {
     const layers = side === this.app.ours ? [side.place] : [side.layer];
-    const hits = layers.flatMap((l) => l.pick(e.ray));
+    const hits = this.seen(e, layers.flatMap((l) => l.pick(e.ray)));
     const same = this.lastTap && this.lastTap.side === side && Math.hypot(this.lastTap.x - e.x, this.lastTap.y - e.y) < 14 && performance.now() - this.lastTap.t < 4000;
     let idx = 0;
     if (same && hits.length > 1) idx = (this.lastTap.idx + 1) % hits.length;
@@ -185,7 +193,7 @@ export class Tools {
       // takes it into the place, where it moves and sinks like any piece)
       this.worldTree = null;
       if (!h && !this.opts.adds) {
-        const w = this.app.ours.world?.pick(e.ray, { kinds: VEG }).find((x) => !x.ghost && !this.app.isCleared(x.ref));
+        const w = this.seen(e, this.app.ours.world?.pick(e.ray, { kinds: VEG }) || []).find((x) => !x.ghost && !this.app.isCleared(x.ref));
         if (w) { selSet.clear(); this.unit = null; this.inside = null; this.worldTree = w.ref; this.cycleNote = ''; this.selectionChanged(); return; }
       }
       if (!this.opts.adds) selSet.clear();
@@ -224,16 +232,26 @@ export class Tools {
   // ---------- units: a tap selects one whole, a second goes inside to one piece (units.js) ----------
   units() { return this.app.unitIndex(); }
   unitOfRef(id) { const ix = this.units(), u = ix.of.get(id); return u ? ix.units.get(u) : null; }
-  // the unit selected whole, or null
+  // the unit selected whole, or null: every piece of it selected but those left where they stand for this move
+  // (this.leave, ticked in the panel's list of its pieces)
   selUnit() {
     if (!this.unit || !this.app.model) return null;
-    const u = this.units().units.get(this.unit), s = this.app.selection;
-    return u && s.size === u.members.length && u.members.every((id) => s.has(id)) ? u : null;
+    const u = this.units().units.get(this.unit), s = this.app.selection, left = this.leave || new Set();
+    return u && s.size && s.size === u.members.filter((id) => !left.has(id)).length && u.members.every((id) => s.has(id) !== left.has(id)) ? u : null;
   }
-  selectUnit(u) { this.app.selection = new Set(u.members); this.unit = u.id; this.inside = null; this.selectionChanged(); }
+  selectUnit(u) { this.leave = new Set(); this.app.selection = new Set(u.members); this.unit = u.id; this.inside = null; this.selectionChanged(); }
+  // One piece of the unit selected whole left where it stands when the rest moves, or taken along again. It stays in
+  // the unit; the choice holds until another selection.
+  leavePiece(id, left) {
+    const u = this.selUnit(); if (!u || !u.members.includes(id)) return;
+    if (left && this.app.selection.size <= 1) return;   // something must still move
+    this.leave ||= new Set();
+    if (left) { this.leave.add(id); this.app.selection.delete(id); } else { this.leave.delete(id); this.app.selection.add(id); }
+    this.selectionChanged();
+  }
   selectionChanged() {
     const a = this.app; if (!a.model) return;
-    if (this.unit && !this.selUnit()) this.unit = null;
+    if (this.unit && !this.selUnit()) { this.unit = null; this.leave = new Set(); }
     if (this.inside) { const iu = this.units().units.get(this.inside); if (!iu || !a.selection.size || ![...a.selection].every((id) => iu.members.includes(id))) this.inside = null; }
     this.drawSelection(); a.panels.selectionInfo([...a.selection].map((id) => a.placeRefsById().get(id)).filter(Boolean), this.cycleNote);
   }
@@ -265,6 +283,14 @@ export class Tools {
     }
     v.redraw();
   }
+  // One piece shown in orange through whatever stands in front of it (a row of a unit's list pointed at), or none.
+  pointAt(id) {
+    const a = this.app, v = a.ours.view;
+    if (this.pointed) { this.pointed.removeFromParent(); this.pointed = null; }
+    const r = id && a.placeRefsById().get(id);
+    if (r && a.ours.place) { this.pointed = a.ours.place.outlineOf([a.seated(r)], '#ff9628'); v.overlay.add(this.pointed); }
+    v.redraw();
+  }
   // world boxes {x0,y0,x1,y1,z0,z1} as outlines (a unit is drawn as one)
   drawBoxes(side, boxes, line) {
     const E = [[0, 1], [0, 2], [1, 3], [2, 3], [4, 5], [4, 6], [5, 7], [6, 7], [0, 4], [1, 5], [2, 6], [3, 7]], pos = [], o = side.view.origin;
@@ -284,7 +310,8 @@ export class Tools {
     if (!el) { el = document.createElement('div'); el.className = 'unit-label'; v.el.append(el); }
     const b = u.box, s = v.toScreen([(b.x0 + b.x1) / 2, (b.y0 + b.y1) / 2, b.z1 + 40]);
     el.hidden = s.behind; el.style.left = `${s.x}px`; el.style.top = `${s.y}px`;
-    el.textContent = this.selUnit() ? `${u.name} (${u.members.length} pieces)` : `${u.name}: one piece`;
+    const n = this.leave?.size || 0;
+    el.textContent = this.selUnit() ? `${u.name} (${u.members.length} pieces${n ? `, ${n} left where ${n === 1 ? 'it stands' : 'they stand'}` : ''})` : `${u.name}: one piece`;
   }
   buildGizmo() {
     const g = document.querySelector('#view-ours .gizmo');
@@ -357,6 +384,7 @@ export class Tools {
     const g = this.gizmo, refs = this.selRefs(), v = this.app.ours.view;
     const show = refs.length && ['select', 'search'].includes(this.current) && !this.placing;
     g.hidden = !show; if (!show) return;
+    if (this.drag?.kind === 'rotate') return;   // the ring stays still under the hand while it turns
     const c = this.centre(refs), s = v.toScreen(c);
     if (s.behind) { g.hidden = true; return; }
     const R = 100, unit = this.selUnit();
@@ -419,8 +447,17 @@ export class Tools {
     const cam = v.camera.position, far = Math.hypot(cam.x + o[0] - d.c[0], cam.y + o[1] - d.c[1], cam.z + o[2] - d.c[2]);
     d.perPx = far * 2 * Math.tan((v.camera.fov * Math.PI) / 360) / (v.h || 800); d.yaw = v.rig.yaw;
     d.others = this.opts.snapFaces ? this.neighbourBoxes(refs, d.c) : [];
-    const sc = v.toScreen(this.drag.c), rect = v.canvas.getBoundingClientRect();
-    this.drag.sx = sc.x + rect.left; this.drag.sy = sc.y + rect.top; this.drag.a0 = Math.atan2(e.clientY - this.drag.sy, e.clientX - this.drag.sx);
+    // a turn is measured round the middle of the ring the rotate handle sits on (the gizmo's middle, beside the
+    // selection), where the hand circles, and counted on past half a turn
+    const gz = this.gizmo.getBoundingClientRect();
+    d.sx = gz.left; d.sy = gz.top; d.aLast = Math.atan2(e.clientY - d.sy, e.clientX - d.sx); d.ang = 0;
+  }
+  // How far the hand has turned round the ring since the drag began, in radians (clockwise on the screen positive).
+  turned(e) {
+    const d = this.drag, a = Math.atan2(e.clientY - d.sy, e.clientX - d.sx);
+    let da = a - d.aLast; if (da > Math.PI) da -= 2 * Math.PI; else if (da < -Math.PI) da += 2 * Math.PI;
+    if (Math.hypot(e.clientX - d.sx, e.clientY - d.sy) > 8) { d.ang += da; d.aLast = a; }   // too near the middle the angle means nothing
+    return this.opts.snapRot ? Math.round(d.ang / (Math.PI / 12)) * (Math.PI / 12) : d.ang;
   }
   gizmoMove(e) {
     const d = this.drag; if (!d) return;
@@ -431,7 +468,7 @@ export class Tools {
       let turn = 0, sh = [0, 0], dz = 0;
       if (slide) sh = slide;
       else if (d.kind === 'lift') dz = rnd(-(e.clientY - d.y0) * v.rig.dist * 0.0012);
-      else if (d.kind === 'rotate') { turn = Math.atan2(e.clientY - d.sy, e.clientX - d.sx) - d.a0; if (this.opts.snapRot) turn = Math.round(turn / (Math.PI / 12)) * (Math.PI / 12); }
+      else if (d.kind === 'rotate') turn = this.turned(e);
       d.xf = this.poseUnit(d, turn, sh, dz); d.turn = turn;
       this.carry(d.fol);
       this.soon('drag', () => a.refreshSide(a.ours, { world: false, grass: false }));
@@ -444,8 +481,7 @@ export class Tools {
       const dz = rnd(-(e.clientY - d.y0) * v.rig.dist * 0.0012);
       for (const r of d.refs) this.raise(r, dz);
     } else if (d.kind === 'rotate') {
-      let ang = Math.atan2(e.clientY - d.sy, e.clientX - d.sx) - d.a0;
-      if (this.opts.snapRot) ang = Math.round(ang / (Math.PI / 12)) * (Math.PI / 12);
+      const ang = this.turned(e);
       // screen clockwise is a clockwise turn seen from above, which is the game's positive Z angle
       const c = Math.cos(-ang), s = Math.sin(-ang);
       for (const r of d.refs) {
@@ -598,7 +634,7 @@ export class Tools {
   }
   // A unit moved by the panel's buttons: the same op as a drag.
   moveUnit(u, turn, sh, dz) {
-    const refs = u.members.map((id) => this.app.placeRefsById().get(id)).filter(Boolean);
+    const refs = u.members.filter((id) => !this.leave?.has(id)).map((id) => this.app.placeRefsById().get(id)).filter(Boolean);
     const d = { unit: u, refs, before: new Map(refs.map((r) => [r.id, clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat })])),
       c: this.unitCentre(u), fol: this.followers(refs), turn };
     d.xf = this.poseUnit(d, turn, sh, dz);
@@ -607,7 +643,8 @@ export class Tools {
   // The unit op pushed, and the unit (as it now stands, with what its new spot gives it) kept selected whole.
   pushUnit(d) {
     this.app.push([this.unitOp(d)]);
-    const u = this.units().units.get(d.unit.id); if (u) this.selectUnit(u);
+    const u = this.units().units.get(d.unit.id), left = this.leave;
+    if (u) { this.selectUnit(u); if (left?.size) { this.leave = new Set([...left].filter((id) => u.members.includes(id))); for (const id of this.leave) this.app.selection.delete(id); this.selectionChanged(); } }
   }
   // Put a thing into a unit, take it out of every unit (""), or give it back to the rule (null): its own `unit`.
   setUnit(r, unit) {

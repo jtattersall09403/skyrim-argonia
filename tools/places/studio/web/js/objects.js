@@ -24,6 +24,9 @@ const RANGE = {
 const PICK_RANK = { actor: 0, door: 1, furniture: 2, container: 2, clutter: 3, light: 3, activator: 3, marker: 3,
   building: 4, static: 5, rock: 6, tree: 7, plant: 8, groundcover: 9, water: 10, other: 6 };
 export const pickRank = (k) => PICK_RANK[k] ?? 6;
+// picking by a model's triangles: one ray and one stand-in mesh reused, both faces counted (a wall seen from inside)
+let pickRay = null, pickMesh = null;
+const pickSide = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide });
 
 // Textures inside a model are fetched here, not by the loader: a texture the server lacks (a missing normal map,
 // or one the mod itself never shipped) falls back quietly instead of failing in the console. Normal maps are
@@ -262,7 +265,15 @@ const primBoxMat = new THREE.ShaderMaterial({
       gl_FragColor = vec4(vC, mix(uFill, uLine, 1.0 - smoothstep(0.75, 1.75, mid)));
     }`,
 });
-let outlineMat = null; const edgesOf = new WeakMap();   // the selection's line drawing: one material, each model's edges once
+const OUTLINE_VS = `uniform float width;
+  void main() {
+    vec4 mv = modelViewMatrix * vec4(position, 1.0);
+    vec3 n = normalize(normalMatrix * normal);
+    mv.xyz += n * (-mv.z) * width;
+    gl_Position = projectionMatrix * mv;
+  }`;
+const OUTLINE_FS = `uniform vec3 colour; void main() { gl_FragColor = vec4(colour, 0.7); }`;
+let outlineMat = null; const outlineMats = {}; const edgesOf = new WeakMap();   // the selection's line drawing: one material, each model's edges once
 const primSphereMat = new THREE.MeshBasicMaterial({ color: '#ffffff', wireframe: true, transparent: true, opacity: 0.3, depthWrite: false });
 // One base's instances.
 class Group {
@@ -513,9 +524,13 @@ export class ObjectLayer {
     }
     this._dirty = false; this.drawn = n; return n;
   }
-  // Everything the ray passes through, best pick first: kind rank, then distance.
+  // Everything the ray meets, nearest first: a piece whose model has arrived by its real triangles (the first one the
+  // ray meets), one still drawn as its box by the box, a bulb by its sphere and a primitive by its box. A ray that
+  // only passes through a piece's bounds, beside or under its mesh, does not pick it.
   pick(ray, { kinds, includeGhosts = false } = {}) {
     const hits = [], inv = new THREE.Matrix4(), lr = new THREE.Ray(), box = new THREE.Box3(), p = new THREE.Vector3();
+    const rc = pickRay || (pickRay = new THREE.Raycaster()), tmp = pickMesh || (pickMesh = new THREE.Mesh());
+    rc.ray.copy(ray); rc.near = 0; rc.far = Infinity;
     for (const g of this.groups.values()) {
       if (g.unseen || g.fx || ((g.bulb || g.prim) && !this.showLights)) continue;
       if (g.ghost && !includeGhosts) continue;
@@ -533,13 +548,23 @@ export class ObjectLayer {
           const h = halfExtents(g.refs[i]); box.min.set(-h[0], -h[1], -h[2]); box.max.set(h[0], h[1], h[2]);
         } else if (ray.distanceSqToPoint(tmpV) > (g.radius * (g.refs[i].scale ?? 1) * 2 + 40) ** 2) continue;
         inv.copy(m).invert(); lr.copy(ray).applyMatrix4(inv);
-        if (lr.intersectBox(box, p)) {
-          p.applyMatrix4(m);
-          hits.push({ ref: g.refs[i], kind: g.kind, ghost: g.ghost, dist: p.distanceTo(ray.origin), point: p.clone() });
+        if (!lr.intersectBox(box, p)) continue;
+        if (!g.prim && g.fullParts) {   // the model is here: its own triangles decide
+          tmp.matrixWorld.copy(m); let best = null;
+          for (const part of g.fullParts) {
+            tmp.geometry = part.geometry; tmp.material = pickSide;
+            const h = rc.intersectObject(tmp, false)[0];
+            if (h && (!best || h.distance < best.distance)) best = h;
+          }
+          if (best) hits.push({ ref: g.refs[i], kind: g.kind, ghost: g.ghost, dist: best.distance, point: best.point.clone() });
+          continue;
         }
+        p.applyMatrix4(m);
+        hits.push({ ref: g.refs[i], kind: g.kind, ghost: g.ghost, dist: p.distanceTo(ray.origin), point: p.clone() });
       }
     }
-    hits.sort((a, b) => pickRank(a.kind) - pickRank(b.kind) || a.dist - b.dist);
+    // nearest first; two things met at the same spot (a cup on a table) go by kind, the smaller thing first
+    hits.sort((a, b) => (Math.abs(a.dist - b.dist) > 4 ? a.dist - b.dist : pickRank(a.kind) - pickRank(b.kind) || a.dist - b.dist));
     return hits;
   }
   // World-space box corners of a ref, for selection outlines and lasso tests.
@@ -547,19 +572,17 @@ export class ObjectLayer {
   // again, its back faces pushed out along their normals by a few pixels' width (the same on screen near or far), so
   // only the rim that stands past the thing's own front shows. A unit of many pieces shows each piece's rim. A ref
   // whose model has not arrived yet, or that has none, is drawn by nothing here.
-  outlineOf(refs) {
+  // `colour` draws it in another colour, thicker and through what stands in front (one piece pointed at in a list).
+  outlineOf(refs, colour = null) {
     const out = new THREE.Group(); out.renderOrder = 9;
-    const mat = outlineMat || (outlineMat = new THREE.ShaderMaterial({
+    const mat = colour ? (outlineMats[colour] ||= new THREE.ShaderMaterial({
+      side: THREE.BackSide, transparent: true, depthWrite: false, depthTest: false,
+      uniforms: { colour: { value: new THREE.Color(colour) }, width: { value: 0.008 } },
+      vertexShader: OUTLINE_VS, fragmentShader: OUTLINE_FS,
+    })) : outlineMat || (outlineMat = new THREE.ShaderMaterial({
       side: THREE.BackSide, transparent: true, depthWrite: false,
       uniforms: { colour: { value: new THREE.Color('#1fb5a8') }, width: { value: 0.0035 } },
-      vertexShader: `uniform float width;
-        void main() {
-          vec4 mv = modelViewMatrix * vec4(position, 1.0);
-          vec3 n = normalize(normalMatrix * normal);
-          mv.xyz += n * (-mv.z) * width;
-          gl_Position = projectionMatrix * mv;
-        }`,
-      fragmentShader: `uniform vec3 colour; void main() { gl_FragColor = vec4(colour, 0.7); }`,
+      vertexShader: OUTLINE_VS, fragmentShader: OUTLINE_FS,
     }));
     const want = new Map(refs.map((r) => [r.id, r]));
     for (const g of this.groups.values()) {

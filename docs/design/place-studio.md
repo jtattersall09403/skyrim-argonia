@@ -862,7 +862,12 @@ A tap with Select picks the whole unit of the thing tapped: a faint outline roun
 ("Ship imperial (8 pieces)"). A second tap on a piece of the selected unit goes inside to that piece alone (its
 panel says "Part of ..." with Select the whole unit and Take out of this unit); a tap on empty ground while inside
 comes back out to the whole. Pieces (a switch under How selecting works) makes every tap pick one piece, as does
-Tap adds to selection. The Selected panel of a unit names it and its pieces, each with Take out of this unit; a piece
+Tap adds to selection. The Selected panel of a unit names it and lists its pieces by kind, each with its picture, its
+name in words (the game name, else the editor id spelt out) and its kind; touching a row (the pen hovering, a finger,
+focus) shows that piece in orange in the view through whatever stands in front of it (`tools.js pointAt`). Each row's
+tick says it moves with the unit: unticked, it is left where it stands when the rest moves, turns or rises, and stays a
+member (the choice holds until another selection; the unit's label counts the pieces left). Each row also has Take out
+of the unit, which takes it out for good; a piece
 in no unit offers Add to this unit for the nearest unit within 600 units, and one whose unit was set by hand Let the
 unit rule decide. Membership by hand is a `ref.move` of the ref's `unit` (null gives it back to the rule).
 
@@ -880,6 +885,12 @@ says so. The rule is one (units.js `spotsMoved` makes the op; edits.js `unitCarr
 replay it), so an older save whose move carried more replays without it. A
 bed, a station or anything else a routine names by its ref needs no change: it moves as a member. A unit is never
 resized whole; its pieces are, one by one.
+
+**Picking.** A tap picks what the pen's ray meets first: a piece whose model has arrived by its real triangles (a ray
+through its bounds beside or under its mesh does not pick it), one still drawn as its box by the box, a bulb by its
+sphere; nothing the ground hides at that spot. Two things met at the same spot (a cup on a table) go by kind, the smaller
+first; tapping the same spot again steps to the next. A pen stroke that never leaves 12 px of where it began is a tap,
+not a lasso.
 
 **What is selected** is drawn as a faint outline round its outer edge only (`objects.js outlineOf`: each piece's
 mesh again, its back faces pushed out along their normals by a few pixels' width at any distance, so only the rim
@@ -900,7 +911,9 @@ moving, big enough for a finger, and each named over the gizmo while the pen hov
 - E–W and N–S, two handles pointing the way east and north lie on the screen, move along that axis only, with the
   axis drawn through the selection as a dashed line;
 - Height, a separate large handle above, raises or lowers it (a seated thing's seat `dz`);
-- the turn handle on the ring turns it about the up axis (a tilted piece keeps its tilt), in 15 degree steps unless Turn in 15° steps is off;
+- the turn handle on the ring turns it about the up axis (a tilted piece keeps its tilt), in 15 degree steps unless
+  Turn in 15° steps is off; the turn is the angle the pen sweeps round the middle of that ring, counted on past half a
+  turn, and the ring stays still under the pen while it turns;
 - the corner handle resizes it (never a unit whole).
 The panel's Move a little nudges by a step of 1, 10 or 50 units (North, South, West, East, Up, Down), turns by 15
 degrees, tilts and rolls by 5 degrees (Tilt forward, Tilt back: about the piece's own across axis, its front end down
