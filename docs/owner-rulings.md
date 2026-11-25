@@ -105,6 +105,9 @@ added here the day they are made, with the date and the issue.
   light source carries its light, not only torches; two fingers drag the scene, pinch moves towards what is looked
   at, a swipe orbits the selected thing into the centre; a Deselect button; a faint edge outline; trees can be
   selected, noted and moved, and tree notes feed that tree type's generation rule; a drawn route is walked.
+- The studio always shows the latest version of each place, with the corrections and edits the owner asked for or made
+  himself, ready for him to start or keep working on; a guard or a tool that stands in the way of that is ours to
+  sort out, not his to be asked about (2026-11-25, #100).
 - Method changes are applied and recorded without asking; a goal change is an owner call (2026-10-28).
 - The owner judges look; agents check for Nordic tells, never feel (2026-10-30, #43).
 - Agents stop only when the work is complete, a blocker needs the owner, or at a handover the owner asked for.
