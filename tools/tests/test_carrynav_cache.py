@@ -60,3 +60,33 @@ def test_a_moved_zone_redoes_its_cell(tmp_path, monkeypatch):
     region = cn.Region(region.outer, [[(1100.0, 1000.0), (1500.0, 1000.0), (1500.0, 1400.0), (1100.0, 1400.0)]])
     c = cn.build_cells(carried, gen, region)
     assert canon(b) == canon(c) and canon(b) != canon(a)
+
+
+def test_a_change_inside_a_cell_leaves_its_neighbours_finish_kept(tmp_path, monkeypatch):
+    """A cell's finish reads only its neighbours' vertices on its border: a change in a cell's middle redoes that cell
+    alone, and what is kept is what a build without the cache makes."""
+    monkeypatch.setattr(cn, "CELL_CACHE", tmp_path / "cc")
+    monkeypatch.setattr(cn, "JOBS", 1)
+    C = cn.CELL
+
+    def gen(dz):
+        rows = {}
+        for cx in (0, 1):
+            for cy in (0, 1):
+                x0, y0 = cx * C, cy * C
+                pts = [(x0, y0), (x0 + C, y0), (x0 + C, y0 + C), (x0, y0 + C)]
+                mid = (x0 + C / 2, y0 + C / 2, dz if (cx, cy) == (0, 0) else 0.0)
+                rows[(cx, cy)] = [([[*pts[i], 0.0], [*pts[(i + 1) % 4], 0.0], list(mid)], 0) for i in range(4)]
+        return rows
+    region = cn.Region(cn.disk((-50000.0, -50000.0), 10.0), [])
+    cn.build_cells([], gen(0.0), region)
+    made = []
+    real = cn._kept
+
+    def spy(kind, key, make):
+        return real(kind, key, lambda: (made.append((kind, key[0])), make())[1])
+    monkeypatch.setattr(cn, "_kept", spy)
+    got = cn.build_cells([], gen(40.0), region)
+    assert ("finish", (0, 0)) in made and not [m for m in made if m[0] == "finish" and m[1] != (0, 0)]
+    monkeypatch.setattr(cn, "_kept", lambda kind, key, make: make())
+    assert canon(got) == canon(cn.build_cells([], gen(40.0), region))

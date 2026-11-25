@@ -1035,17 +1035,20 @@ def _cells_side_by_side(fn, cells: list, job: dict) -> list:
 
 
 def _finish_one(c):
-    """One cell finished; kept by everything it reads: its mesh, and the four neighbours' borders and kinds."""
+    """One cell finished; kept by everything it reads: its mesh, the vertices of the cells beside it that lie on its
+    border, and which of the four neighbours are rebuilt here or kept (with their border points on its lines)."""
     J = _JOB
-    m, neighbours, border, meshes = J["meshes"][c], J["neighbours"], J["border"], J["meshes"]
-    nb = [(c[0] - 1, c[1]), (c[0] + 1, c[1]), (c[0], c[1] - 1), (c[0], c[1] + 1)]
-    key = (c, m.V, m.T, m.F, m.tag, [(border.get(o), o in neighbours, o in meshes, neighbours.get(o)) for o in nb])
-    return _kept("finish", key, lambda: _finish_made(c))
+    m = J["meshes"][c]
+    extra, sides = _finish_inputs(c)
+    key = (c, m.V, m.T, m.F, m.tag, extra, sorted(sides.items()))
+    return _kept("finish", key, lambda: _finish_made(c, extra, sides))
 
 
-def _finish_made(c):
+def _finish_inputs(c):
+    """What a cell's finish reads of the cells round it: the neighbours' vertices on its border (`extra`), and for a
+    kept neighbour beside it that is not rebuilt here, that neighbour's points on the shared line (`sides`)."""
     J = _JOB
-    m, neighbours, border, meshes = J["meshes"][c], J["neighbours"], J["border"], J["meshes"]
+    neighbours, border, meshes = J["neighbours"], J["border"], J["meshes"]
     x0, y0 = c[0] * CELL, c[1] * CELL
     extra = []
     for o in ((c[0] - 1, c[1]), (c[0] + 1, c[1]), (c[0], c[1] - 1), (c[0], c[1] + 1)):
@@ -1053,6 +1056,16 @@ def _finish_made(c):
             if (abs(v[0] - x0) < 0.5 or abs(v[0] - x0 - CELL) < 0.5) and y0 - 0.5 <= v[1] <= y0 + CELL + 0.5 or \
                (abs(v[1] - y0) < 0.5 or abs(v[1] - y0 - CELL) < 0.5) and x0 - 0.5 <= v[0] <= x0 + CELL + 0.5:
                 extra.append(v)
+    sides = {}
+    for o, ax, line in (((c[0] - 1, c[1]), 0, x0), ((c[0] + 1, c[1]), 0, x0 + CELL),
+                        ((c[0], c[1] - 1), 1, y0), ((c[0], c[1] + 1), 1, y0 + CELL)):
+        if o in neighbours and o not in meshes:  # a neighbour rebuilt here matches by its new border
+            sides[(ax, line)] = [p for p in neighbours[o] if abs(p[ax] - line) < 0.5]
+    return extra, sides
+
+
+def _finish_made(c, extra, sides):
+    m = _JOB["meshes"][c]
     splits = fix_t_junctions(m, extra)
     collapsed = collapse_short(m, cell=c)
     for _ in range(8):                        # a flat triangle goes; its long edge's neighbour is split instead
@@ -1060,11 +1073,6 @@ def _finish_made(c):
         splits += fix_t_junctions(m, extra)
         if not flats:
             break
-    sides = {}
-    for o, ax, line in (((c[0] - 1, c[1]), 0, x0), ((c[0] + 1, c[1]), 0, x0 + CELL),
-                        ((c[0], c[1] - 1), 1, y0), ((c[0], c[1] + 1), 1, y0 + CELL)):
-        if o in neighbours and o not in meshes:  # a neighbour rebuilt here matches by its new border
-            sides[(ax, line)] = [p for p in neighbours[o] if abs(p[ax] - line) < 0.5]
     unsplit = unsplit_border(m, c, sides)
     folds = drop_folds(m, c)
     return finish_cell(m), (splits, collapsed, unsplit, folds)
