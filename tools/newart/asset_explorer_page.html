@@ -209,7 +209,7 @@ function initViewer() {
       const vA = port ? [0, h / 2, w, h / 2] : [0, 0, w / 2, h], vB = port ? [0, 0, w, h / 2] : [w / 2, 0, w / 2, h];
       renderer.setViewport(...vA); renderer.setScissor(...vA); renderer.render(R.A.sc, cam); renderer.setViewport(...vB); renderer.setScissor(...vB); renderer.render(R.B.sc, cam); renderer.setScissorTest(false); }
     else { renderer.setViewport(0, 0, w, h); renderer.render(R.A.sc, cam); } }; tick();
-  const cv = renderer.domElement; cv.addEventListener("pointerdown", e => { R.down = [e.clientX, e.clientY, e.pointerType]; });
+  const cv = renderer.domElement; cv.addEventListener("pointerdown", e => { R.down = [e.clientX, e.clientY, e.pointerType]; recentre(); });
   cv.addEventListener("pointerup", e => { if (!S.pinning || !R.A.root || !R.down || Math.hypot(e.clientX - R.down[0], e.clientY - R.down[1]) > 8) return;
     const r0 = cv.getBoundingClientRect(), port = r0.height > r0.width; const r = !S.compare ? r0 : port ? { left: r0.left, top: r0.top, width: r0.width, height: r0.height / 2 } : { left: r0.left, top: r0.top, width: r0.width / 2, height: r0.height };
     if (e.clientX > r.left + r.width || e.clientY > r.top + r.height) return;
@@ -220,6 +220,13 @@ function initViewer() {
       camera: { position: R.cam.position.toArray().map(v => +v.toFixed(3)), target: R.ctl.target.toArray().map(v => +v.toFixed(3)) } }); });
   addEventListener("keydown", e => { if (e.key === "Escape") setPinning(false); });
 }
+// A turn goes about whatever is in the middle of the screen as it begins: the first surface the middle ray meets (the
+// model's real triangles or the person), else the ground. The point moves along the line of sight, so the camera
+// does not jump: close up it turns about the surface in front of it, from far off about the model or the ground.
+function recentre() { const rc = new THREE.Raycaster(); rc.setFromCamera(new THREE.Vector2(0, 0), R.cam);
+  const hit = rc.intersectObjects([R.A.root, R.A.man.visible && R.A.man].filter(Boolean), true).find(h => h.object.visible && !h.object.userData.plate);
+  const p = hit ? hit.point : rc.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), new THREE.Vector3());
+  if (p && p.distanceTo(R.cam.position) > 0.05) R.ctl.target.copy(p); }
 function renderTools() {
   const t = (txt, on, fn, show = true) => show ? el("button", { "aria-pressed": String(on), onclick: () => { fn(); renderTools(); } , text: txt }) : null;
   const hasPlate = [S.model, S.compare].some(id => /door/.test(id || ""));

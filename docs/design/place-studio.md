@@ -921,9 +921,10 @@ fingers' middle, which stays put on the screen; two fingers twisted turn the vie
 from where the fingers touched down (`twoBegin`), so a lost or reordered move cannot drift it, and a finger left on
 the glass after it never jumps the view. A finger that lands on a selection's handle is still one of the view's
 fingers: a second finger makes the pair the view's gesture and lets the handle's drag go (this was what made pinch and
-pan work only sometimes: the handle took the finger and the view saw one). With something selected, a swipe turns the
-view about it (a unit's middle when a unit is selected whole) and eases it to the middle of the screen as the swipe
-goes on; with nothing selected the view turns about where it looks. The wheel zooms, the mouse's other button turns,
+pan work only sometimes: the handle took the finger and the view saw one). A swipe turns the view about whatever is
+in the middle of the screen as it begins, selected or not (`view.js orbitBegin`): the first surface the middle ray
+meets, a piece's real triangles or else the ground, so close to a wall it turns about the wall and from far off about
+the ground or roof there; the camera does not jump, the turn point slides along the line of sight. The wheel zooms, the mouse's other button turns,
 Shift or the wheel button slides. Frame in the view's bar brings the selection into view whole.
 `test_browser.py test_42` drives real two-finger touches, with and without a selection, and holds each gesture to
 the same camera change every time.

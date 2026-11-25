@@ -284,6 +284,14 @@ def test_01_two_views(pad):
     pad.page.click("#view-ours .fs")
     assert pad.ev("document.querySelector('#view-ours').classList.contains('full')")
     pad.page.click("#view-ours .fs")
+    # a turn begins about the surface in the middle of the screen: the camera does not jump, the turn point lands on it
+    cam0 = pad.ev("studio.ours.view.camera.position.toArray()")
+    pad.ev("studio.ours.view.orbitBegin(), 0")
+    cam1, dist, hit = pad.ev("""(() => { const v = studio.ours.view, rc = new THREE.Raycaster();
+               rc.setFromCamera(new THREE.Vector2(0, 0), v.camera);
+               return [v.camera.position.toArray(), v.rig.dist, v.surfaceAt(rc.ray)]; })()""")
+    assert max(abs(p - q) for p, q in zip(cam0, cam1)) < 1, (cam0, cam1)
+    assert hit is not None and abs(dist - max(20, hit)) < 2, (dist, hit)
     # finger orbit, pinch zoom
     yaw0, d0 = pad.ev("[studio.ours.view.rig.yaw, studio.ours.view.rig.dist]")
     r = pad.ev("(() => { const b = document.querySelector('#view-ours .canvas-holder').getBoundingClientRect(); return [b.x + b.width / 2, b.y + b.height / 2]; })()")
@@ -492,7 +500,10 @@ def test_27_thumb_sticks(pad):
     assert pad.ev("!document.querySelector('.sticks').hidden"), "shown on a touch device"
     rid = pad.ev("[...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'building').id")
     pad.ev("(id) => { studio.tools.use('select'); studio.selection = new Set([id]); studio.tools.selectionChanged(); }", rid)
-    boxes = pad.ev("""(() => { const b = (s) => { const r = document.querySelector(s).getBoundingClientRect(); return [r.left, r.top, r.right, r.bottom]; };
+    # the building framed in the middle of the view, so its handles (which lie over the sticks) are clear of them
+    pad.ev("""(id) => { const p = studio.model.spaces.exterior.refs.get(id).pos, v = studio.ours.view;
+              v.frame([p[0] - 900, p[1] - 900, p[0] + 900, p[1] + 900, p[2]]); }""", rid)
+    boxes =pad.ev("""(() => { const b = (s) => { const r = document.querySelector(s).getBoundingClientRect(); return [r.left, r.top, r.right, r.bottom]; };
               return { l: b('.stick.left'), r: b('.stick.right'), views: b('#views'), bar: b('#view-ours .view-bar'), compass: b('#view-ours .compass') }; })()""")
     for k in ("l", "r"):
         s = boxes[k]

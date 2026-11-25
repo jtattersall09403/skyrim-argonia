@@ -5,6 +5,7 @@ import { drainReady } from './objects.js';
 
 THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
 const TAP_MS = 350, TAP_PX = 10;
+const MIN_DIST = 20;   // the nearest the camera comes to what it turns and zooms about (game units)
 
 // One renderer and one canvas for every view: a tablet keeps each texture and mesh once, and one set of shaders.
 // The canvas lies behind the views and each view draws into its own rectangle of it. The drawing buffer is kept
@@ -203,7 +204,7 @@ export class View {
       return;
     }
     if (p.role === 'pan') this.pan(dx, dy);
-    else if (p.role !== 'tool' && p.moved && !p.afterTwo) this.orbit(dx, dy);
+    else if (p.role !== 'tool' && p.moved && !p.afterTwo) { if (!p.orbiting) { p.orbiting = true; this.orbitBegin(); } this.orbit(dx, dy); }
   }
   up(e, cancelled) {
     const p = this.pointers.get(e.pointerId); if (!p) return;
@@ -220,27 +221,52 @@ export class View {
   // how steeply the view looks down (Shift and the wheel): 0.08 (along the ground) to 1.52 (from straight above); the
   // thumb sticks (sticks.js) look up past level
   tilt(p) { this.rig.pitch = Math.max(0.08, Math.min(1.52, p)); this.changed(); }
-  // Turning the view turns it about what is selected (app.pivotFor: a unit's middle, the selection's), which stays
-  // where it is on the screen; with nothing selected, about where the view looks.
+  // Turning the view turns it about whatever is in the middle of the screen as the turn begins: the first surface
+  // the middle ray meets (a piece's real triangles, else the ground). The camera does not move at the start: the
+  // rig's target slides along the line of sight onto that surface, so near a wall it turns about the wall, from far
+  // off about the ground or roof there. Looking at the sky, it turns about where it already looked.
+  orbitBegin() {
+    const rc = new THREE.Raycaster(); rc.setFromCamera(new THREE.Vector2(0, 0), this.camera);
+    const d = this.surfaceAt(rc.ray); if (d == null) return;
+    const s = Math.max(MIN_DIST, d), r = this.rig;
+    r.target.copy(rc.ray.origin).addScaledVector(rc.ray.direction, s); r.dist = s; this.updateCamera();
+  }
   orbit(dx, dy) {
-    const r = this.rig, yaw0 = r.yaw, pitch0 = r.pitch;
+    const r = this.rig;
     r.yaw -= dx * 0.006; r.pitch = Math.max(Math.min(0.08, r.pitch), Math.min(1.52, r.pitch + dy * 0.005));
-    const P = this.pivot();
-    if (P) {
-      const cam = (yaw, pitch) => [Math.cos(pitch) * Math.cos(yaw), Math.cos(pitch) * Math.sin(yaw), Math.sin(pitch)];
-      // the camera turns rigidly about P: the target's offset from P turns by the yaw about the up axis, then by the
-      // pitch about the view's own sideways axis (no roll, so P stays where it is on the screen)
-      const v = new THREE.Vector3(r.target.x - P[0], r.target.y - P[1], r.target.z - P[2]);
-      v.applyAxisAngle(new THREE.Vector3(0, 0, 1), r.yaw - yaw0);
-      const side = new THREE.Vector3(-Math.sin(r.yaw), Math.cos(r.yaw), 0), dir = new THREE.Vector3(...cam(r.yaw, pitch0)).applyAxisAngle(side, -(r.pitch - pitch0));
-      const sign = dir.distanceTo(new THREE.Vector3(...cam(r.yaw, r.pitch))) < 1e-6 ? -1 : 1;
-      v.applyAxisAngle(side, sign * (r.pitch - pitch0));
-      r.target.set(P[0] + v.x, P[1] + v.y, P[2] + v.z);
-      // and the pivot eases to the middle of the screen as the swipe goes on: a fifth of the way each step
-      const turned = Math.abs(r.yaw - yaw0) + Math.abs(r.pitch - pitch0), k = Math.min(1, turned * 4) * 0.2;
-      r.target.set(r.target.x + (P[0] - r.target.x) * k, r.target.y + (P[1] - r.target.y) * k, r.target.z + (P[2] - r.target.z) * k);
-    }
     this.changed();
+  }
+  // How far along the ray the first surface lies, in view units, or null: the nearest triangle of any piece shown
+  // (each model's own mesh, after a box test per placed copy), or the land (an interior's floor).
+  surfaceAt(ray) {
+    let best = null;
+    const rc = this._src || (this._src = new THREE.Raycaster()); rc.ray.copy(ray); rc.near = 0; rc.far = Infinity;
+    const tmp = this._srcMesh || (this._srcMesh = new THREE.Mesh()), inv = new THREE.Matrix4(), lr = new THREE.Ray(), box = new THREE.Box3(), p = new THREE.Vector3();
+    for (const layer of this.objects || []) {
+      if (layer.isGrass || !layer.groups || !layer.root?.visible) continue;
+      for (const grp of layer.groups.values()) {
+        if (!grp.fullParts || grp.ghost || grp.fx || grp.bulb || grp.prim || grp.unseen) continue;
+        box.min.set(...grp.bmin); box.max.set(grp.bmin[0] + grp.bsize[0], grp.bmin[1] + grp.bsize[1], grp.bmin[2] + grp.bsize[2]);
+        for (let i = 0; i < grp.refs.length; i++) {
+          const m = grp.matrices[i]; p.setFromMatrixPosition(m);
+          const rr = grp.radius * (grp.refs[i].scale ?? 1) + 1;
+          if (ray.distanceSqToPoint(p) > rr * rr) continue;
+          inv.copy(m).invert(); lr.copy(ray).applyMatrix4(inv); if (!lr.intersectsBox(box)) continue;
+          tmp.matrixWorld.copy(m);
+          for (const part of grp.fullParts) {
+            tmp.geometry = part.geometry; tmp.material = part.material;
+            const h = rc.intersectObject(tmp, false)[0];
+            if (h && (best == null || h.distance < best)) best = h.distance;
+          }
+        }
+      }
+    }
+    const g = this.groundAt(ray);
+    if (g && this.origin) {
+      const d = Math.hypot(g[0] - this.origin[0] - ray.origin.x, g[1] - this.origin[1] - ray.origin.y, g[2] - this.origin[2] - ray.origin.z);
+      if (best == null || d < best) best = d;
+    }
+    return best;
   }
   // The point turned and zoomed about, in view coordinates, or null.
   pivot() { const g = this.app.pivotFor?.(this); return g && this.origin ? [g[0] - this.origin[0], g[1] - this.origin[1], g[2] - this.origin[2]] : null; }
@@ -266,14 +292,14 @@ export class View {
   }
   // Dolly towards (f < 1) or away from a point in game units (else the point looked at), which stays put on the screen.
   zoomAt(f, at, quiet) {
-    const d0 = this.rig.dist; this.rig.dist = Math.max(150, Math.min(80000, d0 * f));
+    const d0 = this.rig.dist; this.rig.dist = Math.max(MIN_DIST, Math.min(80000, d0 * f));
     const k = this.rig.dist / d0, t = this.rig.target;
     if (at && this.origin && k !== 1) { const P = [at[0] - this.origin[0], at[1] - this.origin[1], at[2] - this.origin[2]]; t.set(P[0] + (t.x - P[0]) * k, P[1] + (t.y - P[1]) * k, P[2] + (t.z - P[2]) * k); }
     quiet ? this.updateCamera() : this.changed();
   }
   // Zooming goes towards what is selected (it stays where it is on the screen), else towards where the view looks.
   zoom(f, quiet) {
-    const d0 = this.rig.dist; this.rig.dist = Math.max(150, Math.min(80000, d0 * f));
+    const d0 = this.rig.dist; this.rig.dist = Math.max(MIN_DIST, Math.min(80000, d0 * f));
     const P = this.pivot(), k = this.rig.dist / d0, t = this.rig.target;
     if (P && k !== 1) t.set(P[0] + (t.x - P[0]) * k, P[1] + (t.y - P[1]) * k, P[2] + (t.z - P[2]) * k);
     quiet ? this.updateCamera() : this.changed();
