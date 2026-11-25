@@ -172,6 +172,26 @@ def test_a_stop_at_a_point_under_a_deck_stands_on_the_network():
     assert r[2]["at"] == {"space": "exterior", "ref": "bed"}
 
 
+def test_a_stop_on_a_raised_platform_keeps_its_height_when_moved_onto_the_network():
+    """A stop the owner put on a raised platform ([x, y, z]), just off the network's edge in plan, is moved onto the
+    network at the platform's height, never dropped to the ground under it."""
+    class W:
+        zref = staticmethod(lambda x, y: 0.0)
+
+        def on(self, p, tol=None):
+            return False
+
+        def snap(self, p, reach):
+            return (float(p[0]) + 30.0, float(p[1]))
+
+        def stood(self, q):   # the network's level nearest the height asked for: the platform at 300, else the ground
+            xy = [round(float(q[0]), 1), round(float(q[1]), 1)]
+            return xy + [300.0] if len(q) == 3 and q[2] > 150 else xy
+    folk = [{"id": "o", "routine": [{"kind": "wander", "at": {"space": "exterior", "pos": [10, 20, 302]}}]}]
+    assert walk.stand_stops("p", folk, W(), log=lambda *_: None) == 1
+    assert folk[0]["routine"][0]["at"]["pos"] == [40.0, 20.0, 300.0]
+
+
 def test_a_door_and_its_own_frame_stand_in_each_other_by_design():
     door = {"id": "p.D", "kind": "door", "space": "exterior", "pos": [0.0, 0.0, 0.0], "rot": [0, 0, 0],
             "bounds": [-80, -20, 0, 80, 20, 250]}

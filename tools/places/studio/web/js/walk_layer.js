@@ -81,6 +81,8 @@ export class WalkLayer {
   refresh() {
     const a = this.app, v = a.ours?.view; if (!v || !a.model) return;
     const S = a.ours.space, o = a.ours.origin || [0, 0, 0];
+    // the zones are drawn afresh each time: the last drawing's lines and fills are let go of on the graphics card
+    for (const z of this.zones.children) { z.geometry?.dispose(); z.material?.dispose(); }
     this.group.clear(); this.zones.clear();
     if (this.group.parent !== v.overlay) v.overlay.add(this.group);
     if (this.zones.parent !== v.overlay) v.overlay.add(this.zones);

@@ -43,7 +43,9 @@ export function report(stage, extra = {}) {
 }
 addEventListener('error', (e) => report('error', { message: String(e.message || e.error || e).slice(0, 500), at: `${(e.filename || '').split('/').pop()}:${e.lineno || 0}` }));
 addEventListener('unhandledrejection', (e) => report('rejection', { message: String(e.reason?.stack || e.reason).slice(0, 700) }));
-onRendererEvent((stage, extra) => report(stage, extra));   // the graphics context taken away and given back
+// the graphics context taken away and given back: logged, said over the views in plain words, and the detail lowered
+// so the graphics card's memory holds next time; the session and its unsaved work are never touched
+onRendererEvent((stage, extra) => { report(stage, extra); window.studio?.contextEvent(stage); });
 const $ = (s) => document.querySelector(s);
 // The agent view (/?place=<id>&agent=1): the same scene, no interface, no dialog, no loop, nothing saved; drawn only
 // when tools/places/look.py asks (agent.js).
@@ -242,6 +244,30 @@ class Studio {
     el.hidden = false;
   }
   hideBlank() { const el = $('#blank-note'); if (el) el.hidden = true; }
+  // The browser took the views' graphics context away (the graphics card ran short of memory): the views stop drawing
+  // and say so; when it is given back they draw again with less detail, the place and its work as they were. If it
+  // does not come back the note offers a reload, after the work not yet saved has been saved.
+  contextEvent(stage) {
+    let el = $('#lost-note');
+    if (stage === 'context-lost') {
+      if (!el) {
+        el = document.createElement('div'); el.id = 'lost-note'; el.className = 'blank-note'; el.setAttribute('role', 'alert');
+        el.innerHTML = '<p></p><button type="button" class="primary" hidden>Reload the studio</button>'; $('#views').append(el);
+      }
+      el.querySelector('p').textContent = 'The browser has taken the 3D views away for a moment (the graphics card ran short of memory). They come back by themselves in a few seconds; your work is kept.';
+      const b = el.querySelector('button'); b.hidden = true;
+      b.onclick = async () => { b.disabled = true; try { await this.autosave(); } catch { /* the reload keeps the autosave there is */ } location.reload(); };
+      el.hidden = false; clearTimeout(this.lostT);
+      this.lostT = setTimeout(() => {
+        el.querySelector('p').textContent = 'The 3D views have not come back. Your work is saved: reload the studio to carry on. If the views are still missing after the reload, close the browser fully and open it again.';
+        b.hidden = false; b.disabled = false;
+      }, 8000);
+      if (this.governor?.mode === 'auto') this.governor.set(Math.min(this.governor.level, 2));
+    } else if (stage === 'context-restored') {
+      clearTimeout(this.lostT); if (el) el.hidden = true;
+      for (const v of [this.ours.view, this.src.view]) v.redraw();
+    }
+  }
   async openSource(sid) {
     this.loading(`Loading the source place ${sid}`);
     const bid = `src.${sid}`;
@@ -855,8 +881,19 @@ export function friendly(base, kind) {
   const n = base?.name || base?.edid || base?.key || 'something';
   return n.length > 40 ? n.slice(0, 38) + '…' : n || plainKind(kind);
 }
-const studio = new Studio();
-window.studio = studio; window.THREE = THREE;
-if (AGENT) import('./agent.js').then((m) => m.install(studio));
-const boot = () => studio.start().catch((e) => { console.error(e); studio.loadFailed(e.message, boot); });
-boot();
+// A browser that will not give the page a graphics context (3D switched off, or blocked for the site after the
+// graphics card ran out of memory) is told so in plain words, with what to do, instead of a raw error.
+function noGraphics(e) {
+  window.__studioBooted = true; report('no-webgl', { message: String(e?.message || e).slice(0, 300) });
+  const l = $('#loading'); l.hidden = false; l.querySelector('.spinner')?.setAttribute('hidden', '');
+  $('#loading-text').textContent = 'The browser will not let the studio draw in 3D just now. This happens after the graphics card has run out of memory: the browser then blocks 3D for this site for a while. Close any other studio tabs and press Try again; if it still fails, close the browser fully, open it again and come back. Nothing has been lost: your work is saved on the build machine.';
+  const b = document.createElement('button'); b.className = 'retry primary'; b.textContent = 'Try again'; b.onclick = () => location.reload(); l.append(b);
+}
+let studio = null;
+try { studio = new Studio(); } catch (e) { if (!e?.noWebGL) throw e; noGraphics(e); }
+if (studio) {
+  window.studio = studio; window.THREE = THREE;
+  if (AGENT) import('./agent.js').then((m) => m.install(studio));
+  const boot = () => studio.start().catch((e) => { console.error(e); studio.loadFailed(e.message, boot); });
+  boot();
+}

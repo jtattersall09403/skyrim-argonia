@@ -12,6 +12,7 @@ import { NavMesh } from './navroute.js';
 
 const COLOURS = ['#2f7fd1', '#c2410c', '#15803d', '#7e22ce', '#b45309', '#0e7490', '#be185d', '#4d7c0f'];
 const NS = 'http://www.w3.org/2000/svg';
+const STEP_Z = 96;   // the walking mesh's level taken for a spot under the pen: within a step of the surface it is on
 const clone = (o) => JSON.parse(JSON.stringify(o));
 const rnd = (v) => Math.round(v * 100) / 100;
 export const STOP_KINDS = { sleep: 'Sleeping', eat: 'Eating', work: 'Working', wander: 'Walking about', sandbox: 'Idling about', patrol: 'On patrol' };
@@ -181,7 +182,10 @@ export class People {
       if (m.parent !== v.overlay) v.overlay.add(m);
       m.visible = !!w;
       if (w) {
-        const z = S === 'exterior' && a.terrain ? (a.terrain.heightAt(w.pos[0], w.pos[1]) ?? w.pos[2]) : w.pos[2];
+        // outside, a person stands on the ground, or at their spot's own height where it is over the ground (a deck,
+        // a platform, a stair)
+        const h = S === 'exterior' && a.terrain ? a.terrain.heightAt(w.pos[0], w.pos[1]) : null;
+        const z = h == null ? w.pos[2] : w.pos[2] == null ? h : Math.max(h, w.pos[2]);
         m.position.set(w.pos[0] - a.ours.origin[0], w.pos[1] - a.ours.origin[1], z - a.ours.origin[2]);
         m.material.transparent = w.inside; m.material.opacity = w.inside ? 0.4 : 1;
         m.scale.setScalar(this.sel === p.id ? 1.35 : 1); m.userData.at = [w.pos[0], w.pos[1], z]; m.userData.inside = w.inside;
@@ -332,8 +336,20 @@ export class People {
     if (this.sel !== id) this.select(id);
     return true;
   }
+  // Where a person stands under the pen: the first surface the ray meets (a piece's real triangles: a deck, a
+  // platform, a roof; else the ground), then the built walking mesh's level there nearest that height when it is in
+  // reach, so a spot on a raised platform keeps the platform's height. [x, y, z] in game units, or null.
+  // (a level more than STEP_Z off what the pen is on, the ground under a platform the mesh lacks, is not taken)
+  standAt(e) {
+    const v = e.view, a = this.app; if (!v?.origin) return e.ground?.() || null;
+    const d = v.surfaceAt(e.ray), r = e.ray;
+    const p = d != null ? [r.origin.x + r.direction.x * d + v.origin[0], r.origin.y + r.direction.y * d + v.origin[1], r.origin.z + r.direction.z * d + v.origin[2]] : e.ground?.();
+    if (!p) return null;
+    const s = this.navOf(a.ours.space)?.snap(p);
+    return s && Math.abs(s.z - p[2]) <= STEP_Z ? [s.x, s.y, s.z] : p;
+  }
   dragMove(e) {
-    const d = this.drag, g = d && e.ground(); if (!g) return;
+    const d = this.drag, g = d && this.standAt(e); if (!g) return;
     d.at = g; const m = this.markers.get(d.id), o = this.app.ours.origin;
     m.position.set(g[0] - o[0], g[1] - o[1], g[2] - o[2]); this.app.ours.view.redraw();
   }
@@ -347,7 +363,7 @@ export class People {
   }
   arm(kind, extra = {}) { this.armed = { kind, ...extra }; this.app.panels.open('people'); }
   placeArmed(e) {
-    const a = this.app, g = e.ground(); if (!g) return;
+    const a = this.app, g = this.standAt(e); if (!g) return;
     const S = a.ours.space, at = { space: S, pos: [rnd(g[0]), rnd(g[1]), rnd(g[2])], radius: 256 }, arm = this.armed;
     if (arm.kind === 'new') {
       const base = arm.from ? arm.from.base : arm.base, npc = a.npcs.get(base) || a.srcBundle.npcs.get(base);

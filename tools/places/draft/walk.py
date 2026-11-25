@@ -969,7 +969,8 @@ def stand_stops(place_id: str, folk: list[dict], W: Walkable, log=print) -> int:
     """Every stop of the day outdoors at a point (an eat, a wander, a work beside a thing) stands where the build will
     seat it on the town's main network: a plan point is seated on the ground, so one under a deck the network walks
     (a landing's boards over a scrap of mud the mesh never joins) is given the deck's height (`Walkable.stood`), and a
-    point off the network is moved to its nearest point on it. Returns the stops changed."""
+    point off the network is moved to its nearest point on it, at its own height when it has one (a spot on a raised
+    platform stays on the platform). Returns the stops changed."""
     n = 0
     for p in folk:
         for key in ("work", None):
@@ -988,7 +989,9 @@ def stand_stops(place_id: str, folk: list[dict], W: Walkable, log=print) -> int:
                     log(f"join {place_id}: {p['id']}: the {st.get('kind', k)} stop at {[round(v) for v in pos]} is off the "
                         f"walkable network, with no point of it within {4 * SNAP:.0f} units")
                     continue
-                new = W.stood(q)
+                # a stop given a height (on a platform, a deck, a stair) is moved at that height: onto the network's
+                # level there, never dropped to the ground under it
+                new = W.stood((*q, float(pos[2])) if len(pos) == 3 else q)
                 if new == [round(float(v), 1) for v in pos]:
                     continue
                 if key is None and p.get("work") == at:

@@ -94,6 +94,11 @@ export class Panels {
   }
   selectPanel(refs = this.T.selRefs(), note = '') {
     const a = this.app, T = this.T, parts = [];
+    // Deselect heads the pane, the width of it, live only while something is selected (Esc does the same)
+    const dz = el('<button class="primary deselect" title="Deselect (Esc)">Deselect</button>');
+    dz.disabled = !refs.length && !T.worldTree;
+    dz.onclick = () => { a.selection.clear(); T.unit = null; T.inside = null; T.worldTree = null; T.selectionChanged(); };
+    parts.push(dz);
     if (!refs.length && T.worldTree) {
       const t = T.worldTree, b = a.bases.get(t.base) || {}, sink = T.sinkOf(t);
       parts.push(el(`<p><strong>A ${esc(t.kind || 'tree')} of the world: ${esc(b.name || b.edid || t.base)}</strong>. Its pivot sits ${sink == null ? 'at an unknown depth' : `${sink} m`} under the ground.</p>`));
@@ -101,8 +106,7 @@ export class Panels {
       const acts = el('<div class="row"></div>');
       const mv = el('<button class="primary">Move this tree</button>'); mv.onclick = () => T.takeTree(t);
       const nb = el('<button class="quiet">Leave a note about this tree</button>'); nb.onclick = () => { this.name = 'notes'; T.markRail('notes'); this.notesPanel(true); };
-      const dz = el('<button class="quiet">Deselect</button>'); dz.onclick = () => { T.worldTree = null; T.selectionChanged(); };
-      acts.append(mv, nb, dz); parts.push(acts);
+      acts.append(mv, nb); parts.push(acts);
       this.show('Selected', parts); return;
     }
     if (!refs.length) {
@@ -137,7 +141,7 @@ export class Panels {
       };
       parts.push(ang);
       const acts = el('<div class="row"></div>');
-      acts.append(btn('Deselect', () => { a.selection.clear(); T.unit = null; T.inside = null; T.selectionChanged(); }), btn('Sit on the ground', () => T.snapToGround()), btn('Duplicate', () => T.duplicate()));
+      acts.append(btn('Sit on the ground', () => T.snapToGround()), btn('Duplicate', () => T.duplicate()));
       if (refs.length === 1 && wallMount(T.baseOf(refs[0]))) acts.append(btn('Hang on a wall', () => T.hangOnWall()));
       const rm = el('<button class="danger">Remove from our place</button>'); rm.onclick = () => T.remove(); acts.append(rm);
       parts.push(acts);

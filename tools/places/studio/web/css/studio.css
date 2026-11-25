@@ -29,6 +29,8 @@ button.primary { background: var(--accent); color: var(--accent-ink); padding: 0
 button.quiet { background: var(--panel-2); padding: 0 14px; }
 button.danger { background: var(--fault); color: #fff; padding: 0 14px; }
 button[disabled] { opacity: .4; pointer-events: none; }
+button.deselect { display: block; width: 100%; min-height: 52px; margin: 0 0 14px; font-size: 1.05em; }
+button.deselect[disabled] { background: var(--panel-2); color: inherit; font-weight: 400; }
 .icon-btn { display: inline-flex; align-items: center; gap: 6px; padding: 0 10px; }
 .icon-btn.small { min-height: 44px; min-width: 44px; }
 .icon-btn[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }

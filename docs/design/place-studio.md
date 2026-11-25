@@ -895,8 +895,11 @@ not a lasso.
 **What is selected** is drawn as a faint outline round its outer edge only (`objects.js outlineOf`: each piece's
 mesh again, its back faces pushed out along their normals by a few pixels' width at any distance, so only the rim
 standing past the thing's own front shows; for a unit, each of its pieces), never lines over its surfaces, a box or a
-tint, so the thing is seen as it reads while it is selected and moved. Deselect in the Selected panel, or a tap on
-empty ground, lets it go. The handles stand beside it on the screen, a clear gap
+tint, so the thing is seen as it reads while it is selected and moved. Deselect, the full-width button at the top of
+the Select panel (live only while something is selected), Esc, or a tap on empty ground lets it go. Only a deliberate
+tap or click selects: one pointer, down and up on the same spot within 700 ms, with no second pointer and no scroll or
+pinch of the trackpad in the 350 ms before or during it (judged by the events' own times); a gesture that moved the
+view, and the finger left on the glass after a two-finger gesture, never selects (`view.js up`). The handles stand beside it on the screen, a clear gap
 off its footprint's right edge (the left when there is no room), at rest and while it moves, never over it.
 
 **Moving** (`move_map.js` the mapping, `tools.js` the handles). Beside a selection stand its handles, each one way of
@@ -937,10 +940,28 @@ fingers: a second finger makes the pair the view's gesture and lets the handle's
 pan work only sometimes: the handle took the finger and the view saw one). A swipe turns the view about whatever is
 in the middle of the screen as it begins, selected or not (`view.js orbitBegin`): the first surface the middle ray
 meets, a piece's real triangles or else the ground, so close to a wall it turns about the wall and from far off about
-the ground or roof there; the camera does not jump, the turn point slides along the line of sight; with open sky in the middle it lies there 1500 units (about 21 m) off. A small white dot marks the middle of each view, the point a turn goes about; Centre dot in the view's bar turns it off and on (kept in the browser), and the asset explorer has the same dot and toggle. The wheel zooms, the mouse's other button turns,
-Shift or the wheel button slides. Frame in the view's bar brings the selection into view whole.
-`test_browser.py test_42` drives real two-finger touches, with and without a selection, and holds each gesture to
-the same camera change every time.
+the ground or roof there; the camera does not jump, the turn point slides along the line of sight; with open sky in the middle it lies there 1500 units (about 21 m) off. A small white dot marks the middle of each view, the point a turn goes about; Centre dot in the view's bar turns it off and on (kept in the browser), and the asset explorer has the same dot and toggle.
+On a laptop's trackpad (`view.js wheel`) two fingers slid move the scene in the screen plane along the camera's right
+and up only, never towards or away from what is looked at at any tilt, eye level included; the scene moves the way a
+page scrolls under the same gesture, sideways as surely as up and down, at the depth of the first surface under the
+pointer as the slide begins, so what is under the fingers stays under them; the page never takes the scroll (no
+back-swipe). A pinch (the wheel with Ctrl) zooms; Shift with the wheel tilts; a wheel counted in lines (a mouse's, in
+some browsers) zooms, and with a mouse Ctrl and the wheel zoom. The mouse's other button turns, the wheel button or
+Shift and the main button slides. Frame in the view's bar brings the selection into view whole. The asset explorer's
+trackpad does the same (its own wheel handler over its orbit controls). `test_browser.py test_01` drives real
+two-finger touches, with and without a selection, and holds each gesture to the same camera change every time;
+its `slide_is_a_pure_pan` slides at eye level and three-quarter and holds every slide to no motion along the line of sight.
+
+**The graphics card's memory** (`view.js`, `terrain_mesh.js`). Both views draw on one renderer and one canvas. The land
+near the camera is drawn from at most 36 baked pictures a view, kept in a pool and drawn again for the next cell that
+comes near, and every cell switches between two index lists made once, so moving about for hours allocates nothing
+new on the card (a cell leaves the baked set only some way past where it joins it, so a cell at the edge never flips
+back and forth). If the browser still takes the graphics context away, the views stop drawing and say so in plain
+words; when it is given back they draw again at a lower detail level, the place and its unsaved work as they were,
+with no reload; if it does not come back within 8 seconds the note offers a reload after saving. A browser that will
+not give the page a context at all (it blocks 3D for a site whose context it had to take) gets a plain page saying
+what happened and what to do, never a raw error. `test_01` (`memory_holds_and_a_lost_context_comes_back`) holds buffers, geometries, textures and land pictures flat
+over repeated camera moves and selections, and takes the context away and back.
 
 **The world's trees and plants** (`tools.js takeTree`). A tap on a tree or plant the world placed, where nothing of
 the place is, chooses it: the Selected panel names it and the depth its pivot sits under the ground. Leave a note
@@ -967,7 +988,11 @@ bed), work and eat, where they stand by day and at night (their other stops), th
 plain words what dragging them now changes. Dragging a person (the pen, or a finger that lands on them) moves the
 spot they are at at the hour shown: a stop that names a thing (a bed, a station) moves that thing, as an ordinary
 move with what follows it, and every routine naming it follows; a stop at a spot of their own moves for them alone
-(`person.edit`); on patrol, the whole patrol shifts.
+(`person.edit`); on patrol, the whole patrol shifts. Where a person is dropped (a drag, or Put on map) is the first
+surface under the pen by the scene's real triangles (a deck, a raised platform, a stair, else the ground), taken to
+the built walking mesh's level there nearest that height when one lies within a step of it (`people.js standAt`), so
+a spot on a platform keeps the platform's height ([x, y, z]); the person is drawn at that height, and the draft's
+`stand_stops` keeps a stop's own height when it moves it onto the network.
 
 A routine names a bed, a station or a spot by its ref, or a position; the build makes each stop a package aimed at
 that ref, or at a heading marker placed at the position (`tools/places/people.py`), and the game finds its way

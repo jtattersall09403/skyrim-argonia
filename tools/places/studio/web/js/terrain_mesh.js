@@ -9,6 +9,7 @@ import { cellPaint } from './paint_rule.js';
 import { worldWaterPatch } from './water.js';
 
 const TEX_PX = 512, Q = TEX_PX / 2, TILES = 3, NEAR_CELLS = 2.6, MAX_BAKED = 36;
+const FAR_CELLS = NEAR_CELLS + 0.8;   // a baked cell goes light only this far off: a cell at the edge never flickers between the two
 
 // Land textures: the WebP table from the asset step, else the texture converter on the record's diffuse path.
 export class LandTex {
@@ -54,9 +55,16 @@ export class TerrainMesh {
     this.t = terrain; this.origin = origin; this.group = new THREE.Group(); this.paths = paths; this.paint = paint; this.pathStyles = pathStyles;
     this.lt = landTex; this.cells = new Map(); this.water = new THREE.Group(); this.group.add(this.water);
     this.showChanged = true; this.baked = new Set(); this.queue = []; this.onChange = () => {};
-    const g = terrain.grid; this.fine = []; this.coarse = [];
-    for (let r = 0; r < g - 1; r++) for (let c = 0; c < g - 1; c++) { const i = r * g + c; this.fine.push(i, i + 1, i + g, i + 1, i + g + 1, i + g); }
-    for (let r = 0; r < g - 1; r += 2) for (let c = 0; c < g - 1; c += 2) { const i = r * g + c; this.coarse.push(i, i + 2, i + 2 * g, i + 2, i + 2 * g + 2, i + 2 * g); }
+    const g = terrain.grid, fine = [], coarse = [];
+    for (let r = 0; r < g - 1; r++) for (let c = 0; c < g - 1; c++) { const i = r * g + c; fine.push(i, i + 1, i + g, i + 1, i + g + 1, i + g); }
+    for (let r = 0; r < g - 1; r += 2) for (let c = 0; c < g - 1; c += 2) { const i = r * g + c; coarse.push(i, i + 2, i + 2 * g, i + 2, i + 2 * g + 2, i + 2 * g); }
+    // the two index lists every cell switches between, each made once and shared, so the graphics card holds each once
+    // (an index set from a plain array is a new buffer on the card every time)
+    const Idx = g * g > 65535 ? THREE.Uint32BufferAttribute : THREE.Uint16BufferAttribute;
+    this.fine = new Idx(fine, 1); this.coarse = new Idx(coarse, 1);
+    // a baked cell's picture (canvas, texture, material) goes back to this pool when the cell goes light and is drawn
+    // again for the next cell that comes near: never more pictures than MAX_BAKED, however the camera moves
+    this.pool = [];
     this.farMat = new THREE.MeshLambertMaterial({ vertexColors: true });
   }
   // Cells nearest focus first, a few milliseconds a frame; resolves once the first `first` cells are drawn and
@@ -175,12 +183,12 @@ export class TerrainMesh {
     const near = [];
     for (const e of this.cells.values()) {
       const d = Math.hypot(e.centre[0] - target.x, e.centre[1] - target.y) / this.t.size;
-      const want = d < NEAR_CELLS ? 'near' : 'far';
-      if (want === 'near') near.push([d, e]);
+      if (d < NEAR_CELLS || (d < FAR_CELLS && (e.lod === 'near' || e.pending))) near.push([d, e]);
       else if (e.lod === 'near') this.unbake(e);
+      else if (e.pending) { this.unqueue(e); }
     }
     near.sort((a, b) => a[0] - b[0]);
-    for (const [, e] of near.slice(MAX_BAKED)) if (e.lod === 'near') this.unbake(e);
+    for (const [, e] of near.slice(MAX_BAKED)) { if (e.lod === 'near') this.unbake(e); else if (e.pending) { this.unqueue(e); } }
     for (const [, e] of near.slice(0, MAX_BAKED)) if (e.lod !== 'near' && !e.pending) { e.pending = true; this.queue.push(e); }
     this.pump();
   }
@@ -192,18 +200,24 @@ export class TerrainMesh {
       for (const p of this.paths()) for (const k of this.pathStyles[p.style]?.texs || []) keys.add(k);
       for (const r of this.paint()) if (r.texture) keys.add(r.texture);
       await Promise.all([...keys].filter(Boolean).map((k) => this.lt?.load(k, this.t.ltex)));
-      if (!e.canvas) { e.canvas = document.createElement('canvas'); e.canvas.width = e.canvas.height = TEX_PX; e.tex = new THREE.CanvasTexture(e.canvas); e.tex.colorSpace = THREE.SRGBColorSpace; e.tex.anisotropy = 4; }
-      e.mat = e.mat || new THREE.MeshLambertMaterial({ map: e.tex, vertexColors: true });
       if (this.disposed) break;
+      if (!e.pending) continue;   // gone light again while its textures loaded
+      if (!e.canvas) {
+        const pic = this.pool.pop();
+        if (pic) Object.assign(e, pic);
+        else { e.canvas = document.createElement('canvas'); e.canvas.width = e.canvas.height = TEX_PX; e.tex = new THREE.CanvasTexture(e.canvas); e.tex.colorSpace = THREE.SRGBColorSpace; e.tex.anisotropy = 4; e.mat = new THREE.MeshLambertMaterial({ map: e.tex, vertexColors: true }); }
+      }
       this.bake(e); e.mesh.material = e.mat; e.geo.setIndex(this.fine); e.lod = 'near'; e.pending = false; this.baked.add(e);
       this.tintCell(e); this.onChange();
       await new Promise((r) => setTimeout(r, 0));
     }
     this.pumping = false;
   }
+  unqueue(e) { e.pending = false; const i = this.queue.indexOf(e); if (i >= 0) this.queue.splice(i, 1); }
   unbake(e) {
     e.mesh.material = this.farMat; e.geo.setIndex(this.coarse); e.lod = 'far';
-    e.tex?.dispose(); e.mat?.dispose(); e.canvas = null; e.tex = null; e.mat = null; this.baked.delete(e); this.tintCell(e);
+    if (e.canvas) this.pool.push({ canvas: e.canvas, tex: e.tex, mat: e.mat });
+    e.canvas = null; e.tex = null; e.mat = null; this.baked.delete(e); this.tintCell(e);
   }
   // Leaving the place: every cell's geometry, baked texture and material, and the water, let go of on the GPU; the
   // build and the baking stop.
@@ -213,6 +227,8 @@ export class TerrainMesh {
       e.geo.dispose(); e.tex?.dispose(); e.mat?.dispose(); e.canvas = null;
       if (e.water?.userData.kind === 'shore') e.water.geometry.dispose();
     }
+    for (const pic of this.pool) { pic.tex.dispose(); pic.mat.dispose(); pic.canvas = null; }
+    this.pool.length = 0;
     this.cells.clear(); this.baked.clear(); this.farMat.dispose(); this._quad?.dispose();
     for (const m of this._waterMats?.values() || []) m.dispose();
   }

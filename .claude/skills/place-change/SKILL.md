@@ -24,7 +24,9 @@ changes (the lead continues it); a change is as narrow as it can be correct.
   (`docs/design/place-studio.md`, Units). A piece the unit rule leaves out or takes in wrongly is put right with the
   piece's `unit` (Add to this unit, Take out of this unit), never by moving the pieces one by one.
 - A person's spot is moved by dragging the person in the studio (or the stop's Put on map): a stop naming a bed or a
-  station moves that thing and every routine naming it follows; a routine is never edited to chase a moved bed.
+  station moves that thing and every routine naming it follows; a routine is never edited to chase a moved bed. A
+  person dropped on a raised platform, deck or stair stands at its height on the walking mesh there, not on the
+  ground under it.
 - A world tree that stands wrong (too high, sunk too deep, in the way) is moved by Move this tree, which makes it the
   place's row (the world's one cleared there); its note names its type and measured sink, and `notes` lists tree
   notes by tree type against the placement rule's sink. A depth the owner corrects on several trees of one type is a

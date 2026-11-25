@@ -34,7 +34,7 @@ B = FILES[0]
 REACH = {
     f"{B}::test_16_first_run_and_design": ["js/icons.js"],
     f"{B}::test_01_two_views": PAGE,
-    f"{B}::test_03_select_and_manipulate": ["js/units.js", "js/move_map.js"],
+    f"{B}::test_03_select_and_manipulate": ["js/units.js", "js/move_map.js", "js/people.js", "js/navroute.js"],
     f"{B}::test_13_15_saves_finalise_heartbeat": SAVES,
     f"{B}::test_22_start_choice": SAVES,
     f"{B}::test_27_thumb_sticks": ["js/sticks.js"],

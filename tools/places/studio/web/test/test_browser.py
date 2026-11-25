@@ -313,6 +313,8 @@ def test_01_two_views(pad):
     # the fingerprint and its warning
     assert "World build" in pad.ev("document.getElementById('fingerprint').textContent")
     pad.shot("02-two-views-landscape")
+    slide_is_a_pure_pan(pad)
+    memory_holds_and_a_lost_context_comes_back(pad)
 
 
 # ---------- 3: select, cycle, lasso, gizmo, nudge, duplicate, remove, info ----------
@@ -389,6 +391,9 @@ def test_03_select_and_manipulate(pad):
     assert any(r["after"]["pos"][1] > r["before"]["pos"][1] for r in op["refs"]), "the rest moved north"
     assert pad.ev("[...studio.tools.leave]") == left, "the piece is still left out for the next move"
     pad.shot("03-selection-gizmo")
+    no_selection_while_panning_or_zooming(pad)
+    deselect_heads_the_select_pane(pad)
+    a_person_stands_on_a_raised_platform(pad)
 
 
 def unsaved_work(pad, server):
@@ -683,6 +688,196 @@ def test_36_handles_beside_and_controller(browser, server, viewport):
     assert pad.ev("studio.ours.view.rig.yaw") == y2, "and stops when the stick is back at centre"
     assert not pad.errors, pad.errors
     pad.page.context.close()
+
+
+# ---------- the owner's studio faults of #102, each checked inside the smoke test that drives its part ----------
+# a trackpad's two-finger slide drags the scene in the screen plane, a pinch zooms (test_01)
+def _wheel(pad, x, y, dx, dy, ctrl=False):
+    pad.cdp.send("Input.dispatchMouseEvent", {"type": "mouseWheel", "x": x, "y": y, "deltaX": dx, "deltaY": dy, "modifiers": 2 if ctrl else 0,
+                                               "pointerType": "mouse"})
+
+
+PANCAM = """(() => { const v = studio.ours.view, c = v.camera, f = new THREE.Vector3(); c.getWorldDirection(f);
+  const r = new THREE.Vector3().setFromMatrixColumn(c.matrixWorld, 0), u = new THREE.Vector3().setFromMatrixColumn(c.matrixWorld, 1);
+  return { p: c.position.toArray(), f: f.toArray(), r: r.toArray(), u: u.toArray(), d: v.rig.dist }; })()"""
+
+
+def slide_is_a_pure_pan(pad):
+    v = pad.ev("(() => { const r = studio.ours.view.canvas.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; })()")
+    dot = lambda a, b: sum(p * q for p, q in zip(a, b))  # noqa: E731
+    for pitch in (0.08, 0.6):   # eye level and oblique
+        pad.ev("(p) => { const r = studio.ours.view.rig; r.dist = 3000; r.pitch = p; r.yaw = 1; studio.ours.view.changed(); }", pitch)
+        pad.page.wait_for_timeout(300)
+        c0 = pad.ev(PANCAM)
+        for _ in range(5):
+            _wheel(pad, *v, 0, 30)
+        pad.page.wait_for_timeout(60)
+        c1 = pad.ev(PANCAM)
+        mv = [b - a for a, b in zip(c0["p"], c1["p"])]
+        size = sum(m * m for m in mv) ** 0.5
+        assert size > 5, (pitch, "a slide moves the view", mv)
+        assert abs(dot(mv, c0["f"])) < 1e-3 * size + 0.05, (pitch, "never towards or away from what is looked at", dot(mv, c0["f"]), size)
+        assert abs(c1["d"] - c0["d"]) < 1e-6, (pitch, "a slide never zooms")
+        assert dot(mv, c0["u"]) < 0, (pitch, "sliding down moves the scene up the screen, as a page scrolls")
+        # left and right: every slide moves the view, each its own gesture
+        for k in range(8):
+            pad.page.wait_for_timeout(260)
+            a = pad.ev(PANCAM)
+            for _ in range(3):
+                _wheel(pad, *v, 25 if k % 2 else -25, 0)
+            pad.page.wait_for_timeout(40)
+            b = pad.ev(PANCAM)
+            side = dot([q - p for p, q in zip(a["p"], b["p"])], a["r"])
+            fwd = dot([q - p for p, q in zip(a["p"], b["p"])], a["f"])
+            assert (side > 0.5 if k % 2 else side < -0.5), (pitch, k, "a sideways slide moves the view every time", side)
+            assert abs(fwd) < 1e-3 * abs(side) + 0.05, (pitch, k, fwd)
+    # a pinch (the wheel with Ctrl) zooms
+    pad.page.wait_for_timeout(260)
+    d0 = pad.ev(PANCAM)["d"]
+    for _ in range(5):
+        _wheel(pad, *v, 0, -20, ctrl=True)
+    assert pad.ev(PANCAM)["d"] < d0, "a pinch outwards comes closer"
+    # a mouse wheel's notches zoom (whole lines, or whole 120 steps the trackpad never sends)
+    assert pad.ev("""async () => { const { wheelIsMouse } = await import('/js/view.js'), W = (o) => new WheelEvent('wheel', o);
+                     return [W({ deltaY: 3, deltaMode: 1 }), W({ deltaY: 2.5 }), W({ deltaX: 4, deltaY: 1 })].map(wheelIsMouse); }""") == [True, False, False]
+    assert not pad.errors, pad.errors
+
+
+# a selection only from a deliberate tap, never from panning or zooming (test_03)
+def no_selection_while_panning_or_zooming(pad):
+    pad.ev("studio.tools.opts.pieces = true; studio.setTime(3)")   # everyone indoors: a click meets the building, never a person
+    b = pad.ev("(() => { const rs = [...studio.model.spaces.exterior.refs.values()]; return rs.find((r) => r.kind === 'building'); })()")
+    seated = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", b["id"])
+    look_at(pad, "ours", seated)
+    at = [seated[0], seated[1], seated[2] + 150]
+    # each input carries the moment it happened (as a real trackpad's do), so the page's own slowness under software GL
+    # never stretches or shrinks the time between a scroll and a click
+    def click(x, y, t):
+        for kind, dt, extra in (("mouseMoved", 0, {"button": "none", "buttons": 0}), ("mousePressed", 0.01, {"button": "left", "buttons": 1, "clickCount": 1}),
+                                ("mouseReleased", 0.06, {"button": "left", "buttons": 0, "clickCount": 1})):
+            pad.cdp.send("Input.dispatchMouseEvent", {"type": kind, "x": x, "y": y, "timestamp": t + dt, **extra})
+        pad.page.wait_for_timeout(80)
+    # a deliberate click selects (the control)
+    pad.page.wait_for_timeout(400)
+    x, y = pad.screen("ours", at)
+    click(x, y, time.time())
+    assert len(pad.ev("[...studio.selection]")) == 1, "a deliberate click selects"
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
+    # a click that ends a trackpad slide or pinch is part of it: nothing is selected
+    for ctrl in (False, True):
+        look_at(pad, "ours", seated)
+        pad.page.wait_for_timeout(400)
+        x, y = pad.screen("ours", at)
+        t = time.time()
+        # the smallest slide or pinch (the building stays under the pointer), the click a tenth of a second after it
+        pad.cdp.send("Input.dispatchMouseEvent", {"type": "mouseWheel", "x": x, "y": y, "deltaX": 0, "deltaY": 1, "modifiers": 2 if ctrl else 0, "timestamp": t})
+        click(x, y, t + 0.1)
+        assert not pad.ev("[...studio.selection]"), (ctrl, "a click as a slide or pinch ends selects nothing")
+    # a finger left on the glass after a two-finger gesture, lifted where it lies, selects nothing
+    look_at(pad, "ours", seated)
+    pad.page.wait_for_timeout(400)
+    x, y = pad.screen("ours", at)
+    pad.touch("touchStart", [(x - 160, y), (x, y)])
+    pad.touch("touchMove", [(x - 156, y), (x, y)])
+    pad.touch("touchEnd", [(x, y)])     # the first finger lifts
+    pad.page.wait_for_timeout(30)
+    pad.touch("touchEnd", [])           # the second lifts where it lies
+    pad.page.wait_for_timeout(80)
+    assert not pad.ev("[...studio.selection]"), "the end of a two-finger gesture selects nothing"
+    assert not pad.errors, pad.errors
+
+
+# Deselect heads the Select pane, prominent, live only with a selection (test_03)
+def deselect_heads_the_select_pane(pad):
+    pad.ev("studio.panels.open('select')")
+    first = "(() => { const b = document.querySelector('#panel-body').firstElementChild; return { cls: b.className, text: b.textContent, off: b.disabled, w: b.getBoundingClientRect().width, pw: document.querySelector('#panel-body').clientWidth }; })()"
+    f = pad.ev(first)
+    assert f["text"] == "Deselect" and "deselect" in f["cls"] and f["off"], f
+    assert f["w"] >= 0.9 * f["pw"] - 40, ("the width of the pane", f)
+    bid = pad.ev("(() => [...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'building').id)()")
+    pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.selectionChanged(); }", bid)
+    f = pad.ev(first)
+    assert f["text"] == "Deselect" and not f["off"], f
+    pad.page.locator("#panel-body button.deselect").click()
+    assert not pad.ev("[...studio.selection]")
+    assert pad.ev(first)["off"], "nothing selected: Deselect waits"
+    pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.selectionChanged(); }", bid)
+    pad.page.keyboard.press("Escape")
+    assert not pad.ev("[...studio.selection]"), "Esc still deselects"
+
+
+# a person's spot on a raised platform keeps the platform's height (test_03)
+def a_person_stands_on_a_raised_platform(pad):
+    pad.ev("studio.setTime(10)")
+    pid = "fixplace.p1"
+    # a building near the person's spot, but not the one they stand at
+    b = pad.ev("""(id) => { const w = studio.model.people.get(id).work.pos, d = (r) => Math.hypot(r.pos[0] - w[0], r.pos[1] - w[1]);
+      return [...studio.model.spaces.exterior.refs.values()].filter((r) => r.kind === 'building' && d(r) > 400).sort((a, b) => d(a) - d(b))[0]; }""", pid)
+    seated = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", b["id"])
+    # the panel the drag leaves open is open first, so the views keep their size from here on
+    pad.ev("(id) => { studio.tools.use('select'); studio.panels.open('people'); studio.people.select(id); studio.people.refresh(); }", pid)
+    start = pad.ev("(id) => studio.people.markers.get(id).userData.at", pid)
+    look_at(pad, "ours", [(seated[0] + start[0]) / 2, (seated[1] + start[1]) / 2, seated[2]], dist=5000, pitch=1.3)
+    # the first surface under a point over the building, by its real triangles: its roof
+    x, y = pad.screen("ours", [seated[0], seated[1], seated[2] + 150])
+    hit = pad.ev("""([x, y]) => { const v = studio.ours.view, r = v.canvas.getBoundingClientRect(), rc = new THREE.Raycaster();
+      rc.setFromCamera(new THREE.Vector2(((x - r.left) / r.width) * 2 - 1, -((y - r.top) / r.height) * 2 + 1), v.camera);
+      const d = v.surfaceAt(rc.ray), p = rc.ray.origin.clone().addScaledVector(rc.ray.direction, d);
+      return [p.x + v.origin[0], p.y + v.origin[1], p.z + v.origin[2], studio.terrain.heightAt(p.x + v.origin[0], p.y + v.origin[1])]; }""", [x, y])
+    assert hit[2] - hit[3] > 100, ("the platform stands well over the ground", hit)
+    # the built walking mesh there: a platform at the roof's height over a stretch of ground at the ground's
+    pad.ev("""(h) => { window.__nav = studio.people._navData; const s = 300, v = [];
+      for (const z of [h[3], h[2]]) v.push(h[0] - s, h[1] - s, z, h[0] + s, h[1] - s, z, h[0] + s, h[1] + s, z, h[0] - s, h[1] + s, z);
+      studio.people.setNav({ exterior: { verts: v, tris: [0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7], nb: [-1, -1, 1, 0, -1, -1, -1, -1, 3, 2, -1, -1], kind: [0, 0, 0, 0] } }); }""", hit)
+    sx, sy = pad.screen("ours", [start[0], start[1], start[2] + 90])
+    n0 = len(pad.ops())
+    pad.pen_drag([(sx, sy), (x, y)], steps=8)
+    ops = pad.ops()
+    assert len(ops) == n0 + 1 and ops[-1]["op"] == "person.edit", (ops[-2:], start, (sx, sy), (x, y), hit, pad.ev("studio.tools.current"))
+    person = pad.ev("(id) => studio.model.people.get(id)", pid)
+    pos = next(s["at"]["pos"] for s in person["routine"] if s["kind"] == "work")
+    assert abs(pos[2] - hit[2]) < 2, ("the spot keeps the platform's height", pos, hit)
+    z = pad.ev("(id) => { studio.people.refresh(); const m = studio.people.markers.get(id); return m.position.z + studio.ours.origin[2]; }", pid)
+    assert abs(z - hit[2]) < 2, ("the person is drawn on the platform", z, hit)
+    pad.ev("(() => { studio.log.undo(); studio.people.setNav(window.__nav); studio.panels.close(); })()")
+    assert not pad.errors, pad.errors
+
+
+# memory holds across the owner's minutes of work; a lost graphics context comes back (test_01)
+def memory_holds_and_a_lost_context_comes_back(pad):
+    # every buffer the graphics card is given, counted at the context (one renderer, one canvas, for both views)
+    assert pad.ev("document.querySelectorAll('canvas.stage-canvas').length") == 1
+    pad.ev("""(() => { const gl = studio.ours.view.renderer.getContext(); if (gl.__counted) return; gl.__counted = true; window.__bufs = 0;
+      const c = gl.createBuffer.bind(gl), d = gl.deleteBuffer.bind(gl);
+      gl.createBuffer = () => { window.__bufs++; return c(); }; gl.deleteBuffer = (b) => { if (b) window.__bufs--; return d(b); }; })()""")
+    cycle = """async () => { const v = studio.ours.view, tm = studio.ours.terrainMesh, seen = window.__pics || (window.__pics = new Set());
+      const b = [...studio.model.spaces.exterior.refs.values()].filter((r) => r.kind === 'building');
+      for (let k = 0; k < 40; k++) {
+        v.rig.yaw += 0.3; v.rig.target.x += (k % 2 ? 1 : -1) * 9000; v.changed(); tm.update(v.rig.target);
+        studio.selection = new Set([b[k % b.length].id]); studio.tools.selectionChanged();
+        await new Promise((r) => requestAnimationFrame(r)); for (const e of tm.cells.values()) if (e.canvas) seen.add(e.canvas);
+      }
+      studio.selection.clear(); studio.tools.selectionChanged(); await new Promise((r) => setTimeout(r, 300));
+      const m = v.renderer.info.memory; return { bufs: window.__bufs, geo: m.geometries, tex: m.textures, pics: seen.size }; }"""
+    runs = [pad.ev(cycle) for _ in range(4)]
+    assert runs[1] == runs[2] == runs[3], ("buffers, geometries, textures and land pictures stay flat", runs)
+    # the context taken away (as a graphics card short of memory does) and given back: the views draw again, the
+    # session and its work as they were, without a reload
+    pad.ev("window.__same_page = 1; window.__level = studio.governor.level")
+    n0 = len(pad.ops())
+    pad.ev("window.__lose = studio.ours.view.renderer.getContext().getExtension('WEBGL_lose_context'); window.__lose.loseContext()")
+    pad.page.wait_for_function("!document.getElementById('lost-note')?.hidden", timeout=WAIT)
+    assert "your work is kept" in pad.ev("document.getElementById('lost-note').textContent")
+    pad.ev("window.__lose.restoreContext()")
+    pad.page.wait_for_function("document.getElementById('lost-note').hidden", timeout=WAIT)
+    t = pad.ev("performance.now()")
+    pad.ev("studio.ours.view.changed()")
+    pad.page.wait_for_function(f"(studio.ours.view.drew?.at || 0) > {t} && studio.ours.view.drew.calls > 0", timeout=WAIT)
+    assert pad.ev("window.__same_page") == 1 and len(pad.ops()) == n0, "no reload; the work is as it was"
+    assert not pad.ev("studio.ours.view.renderer.getContext().isContextLost()")
+    assert pad.ev("studio.governor.level") <= 2, "the detail is lowered so the card's memory holds next time"
+    pad.ev("studio.governor.set(window.__level)")   # the tests after this one run at the detail they had
+    assert not pad.errors, pad.errors
 
 
 # ---------- one gesture model on touch, with or without a selection (test_01) ----------

@@ -5,6 +5,8 @@ import { drainReady } from './objects.js';
 
 THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
 const TAP_MS = 350, TAP_PX = 10;
+const WHEEL_QUIET = 350;  // a tap this soon after a scroll or pinch of the trackpad is part of that gesture, never a selection
+const BURST_MS = 200;     // wheel events closer than this are one gesture (one pan depth, one kind of device)
 const MIN_DIST = 20;   // the nearest the camera comes to what it turns and zooms about (game units)
 const SKY_DIST = 1500; // looking at open sky, a turn goes about the middle of the screen this far off (about 21 m)
 
@@ -14,7 +16,9 @@ const SKY_DIST = 1500; // looking at open sky, a turn goes about the middle of t
 const shared = { renderer: null, canvas: null, views: [] };
 function sharedRenderer(host) {
   if (shared.renderer) return shared.renderer;
-  const r = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance', preserveDrawingBuffer: true });
+  let r;
+  try { r = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance', preserveDrawingBuffer: true }); }
+  catch (e) { throw Object.assign(new Error(`no 3D graphics: ${e.message}`), { noWebGL: true }); }
   r.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5)); r.outputColorSpace = THREE.SRGBColorSpace;
   r.setScissorTest(true); r.autoClear = true;
   const c = r.domElement; c.className = 'stage-canvas'; c.setAttribute('aria-hidden', 'true'); host.prepend(c);
@@ -24,6 +28,9 @@ function sharedRenderer(host) {
   };
   new ResizeObserver(fit).observe(host); shared.fit = fit;
   // a tablet may take the graphics context away (memory pressure, a long sleep): draw everything again when it returns
+  // the browser may take the graphics context away (the graphics card's memory runs short, a long sleep): nothing is
+  // drawn until it gives it back (preventDefault asks for that), then every view draws again; the session and its
+  // unsaved work stay as they are throughout
   c.addEventListener('webglcontextlost', (e) => { e.preventDefault(); shared.lost = true; shared.onEvent?.('context-lost', {}); });
   c.addEventListener('webglcontextrestored', () => { shared.lost = false; shared.onEvent?.('context-restored', {}); for (const v of shared.views) { for (const o of v.objects || []) o.dirty?.(); v.redraw(); } });
   shared.renderer = r; shared.canvas = c; fit();
@@ -42,6 +49,10 @@ export function drawState() {
       return { name: v.name, hidden: !!v.hidden?.(), drew: !!v.drew?.calls, last: v.drew || null, rect: [Math.round(b.width), Math.round(b.height)], objects: (v.objects || []).length,
         over: top ? `${top.tagName.toLowerCase()}${top.id ? '#' + top.id : ''}${typeof top.className === 'string' && top.className ? '.' + top.className.split(' ')[0] : ''}` : null }; }) };
 }
+
+// A wheel event that can only be a mouse's wheel: counted in lines or pages. A trackpad always counts in pixels (as
+// Chromium's mouse wheel does too: there Ctrl and the wheel zoom, and the wheel alone slides like the trackpad).
+export function wheelIsMouse(e) { return e.deltaMode !== 0; }
 
 export class View {
   constructor(el, { name, app }) {
@@ -141,9 +152,31 @@ export class View {
     c.addEventListener('pointermove', (e) => this.move(e));
     c.addEventListener('pointerup', (e) => this.up(e));
     c.addEventListener('pointercancel', (e) => this.up(e, true));
-    // the wheel (two fingers on a trackpad) zooms; with Shift held it tilts
-    c.addEventListener('wheel', (e) => { e.preventDefault(); if (e.shiftKey) this.tilt(this.rig.pitch + (e.deltaY || e.deltaX) * 0.003); else this.zoom(Math.exp(e.deltaY * 0.0012)); }, { passive: false });
+    // two fingers on a trackpad slide the view, a pinch (or Ctrl and the wheel) zooms, Shift and the wheel tilts;
+    // the page never takes the scroll (no back-swipe on a sideways slide)
+    c.addEventListener('wheel', (e) => { e.preventDefault(); this.wheel(e); }, { passive: false });
     c.addEventListener('contextmenu', (e) => e.preventDefault());
+  }
+  // One wheel event. A trackpad's two-finger slide drags the scene in the screen plane as a page scrolls under the
+  // same gesture (sideways as surely as up and down); a pinch comes as the wheel with Ctrl and zooms; a wheel counted
+  // in lines (a mouse's, in some browsers) zooms. The depth a slide moves at is settled at its first event.
+  wheel(e) {
+    const now = e.timeStamp || performance.now(), fresh = now - (this.lastWheel || 0) > BURST_MS; this.lastWheel = now;
+    const unit = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? (this.h || 800) : 1, dx = e.deltaX * unit, dy = e.deltaY * unit;
+    if (e.ctrlKey) { this.zoom(Math.exp(dy * 0.01)); return; }
+    if (e.shiftKey) { this.tilt(this.rig.pitch + (dy || dx) * 0.003); return; }
+    if (wheelIsMouse(e)) { this.zoom(Math.exp(dy * 0.0012)); return; }
+    if (fresh || this.wheelDepth == null) this.wheelDepth = this.depthAt(e.clientX, e.clientY);
+    this.pan(-dx, -dy, false, this.wheelDepth);
+  }
+  // How far in front of the camera (along its line of sight) the first surface under a point of the page lies, else
+  // the distance to the point turned about: a slide moves what is under the fingers with them.
+  depthAt(px, py) {
+    const r = this.canvas.getBoundingClientRect(), rc = new THREE.Raycaster();
+    rc.setFromCamera(new THREE.Vector2(((px - r.left) / r.width) * 2 - 1, -((py - r.top) / r.height) * 2 + 1), this.camera);
+    const d = this.surfaceAt(rc.ray); if (d == null) return this.rig.dist;
+    const fwd = new THREE.Vector3(); this.camera.getWorldDirection(fwd);
+    return Math.max(MIN_DIST, d * rc.ray.direction.dot(fwd));
   }
   info(e) {
     const r = this.canvas.getBoundingClientRect();
@@ -168,8 +201,11 @@ export class View {
     this.el.parentElement?.querySelectorAll('.view').forEach((v) => v.classList.toggle('focus', v === this.el));
     this.app.focusView?.(this);
     const role = this.role(e);
-    const p = { id: e.pointerId, role, x: e.clientX, y: e.clientY, x0: e.clientX, y0: e.clientY, t0: performance.now(), moved: false, toolActive: false, handle };
+    const now = e.timeStamp || performance.now();   // when it happened, however long the page took to hear of it
+    const p = { id: e.pointerId, role, x: e.clientX, y: e.clientY, x0: e.clientX, y0: e.clientY, t0: now, moved: false, toolActive: false, handle };
     this.pointers.set(e.pointerId, p);
+    // two pointers at once make a gesture of the view: neither is ever a tap
+    if (this.pointers.size >= 2) for (const q of this.pointers.values()) q.multi = true;
     const navs = [...this.pointers.values()].filter((q) => q.role !== 'tool');
     if (navs.length >= 2) { // a second finger: cancel any tool gesture it began
       for (const q of navs) if (q.toolActive) { this.app.tool?.cancel?.(this.info(e)); q.toolActive = false; }
@@ -214,8 +250,12 @@ export class View {
     for (const q of this.pointers.values()) { q.x0 = q.x; q.y0 = q.y; q.moved = false; q.afterTwo = true; }
     if (p.handle) return;
     const tool = this.app.toolFor(this);
-    if (p.toolActive) { cancelled ? tool?.cancel?.(this.info(e)) : tool?.up?.(this.info(e)); return; }
-    const isTap = !cancelled && !p.moved && performance.now() - p.t0 < TAP_MS * 2 && this.pointers.size === 0;
+    // a deliberate tap: one pointer, down and up on the same spot soon after, with no second pointer, scroll or pinch
+    // before or during it (a press during or just after a scroll or pinch of the trackpad belongs to that gesture,
+    // judged by when each happened, whichever the page heard of first); a gesture that moved the view never selects
+    const quiet = !p.multi && !p.afterTwo && p.t0 - (this.lastWheel ?? -1e9) > WHEEL_QUIET;
+    const isTap = !cancelled && quiet && !p.moved && (e.timeStamp || performance.now()) - p.t0 < TAP_MS * 2 && this.pointers.size === 0;
+    if (p.toolActive) { cancelled || !quiet || (!p.moved && !isTap) ? tool?.cancel?.(this.info(e)) : tool?.up?.(this.info(e)); return; }
     // with a pen about, a finger tap only selects (a resting palm never edits)
     if (isTap && (p.role === 'tool' || p.role === 'touch' || (p.role === 'nav' && tool?.fingerTap))) tool?.tap?.(this.info(e));
   }
@@ -273,8 +313,9 @@ export class View {
   pivot() { const g = this.app.pivotFor?.(this); return g && this.origin ? [g[0] - this.origin[0], g[1] - this.origin[1], g[2] - this.origin[2]] : null; }
   // The scene follows the fingers in the screen plane: dragging right slides it right, dragging down slides it down
   // (the view moves up), never towards or away from the camera.
-  pan(dx, dy, quiet) {
-    const k = (2 * this.rig.dist * Math.tan((this.camera.fov * Math.PI) / 360)) / (this.h || 800);
+  // depth: how far ahead what is dragged lies (else the point turned about), so it stays under the fingers.
+  pan(dx, dy, quiet, depth = null) {
+    const k = (2 * (depth ?? this.rig.dist) * Math.tan((this.camera.fov * Math.PI) / 360)) / (this.h || 800);
     const right = new THREE.Vector3().setFromMatrixColumn(this.camera.matrixWorld, 0), up = new THREE.Vector3().setFromMatrixColumn(this.camera.matrixWorld, 1);
     this.rig.target.addScaledVector(right, -dx * k).addScaledVector(up, dy * k);
     if (!quiet) this.changed(); else this.updateCamera();

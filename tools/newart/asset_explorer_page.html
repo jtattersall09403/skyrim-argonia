@@ -213,8 +213,24 @@ function initViewer() {
       const vA = port ? [0, h / 2, w, h / 2] : [0, 0, w / 2, h], vB = port ? [0, 0, w, h / 2] : [w / 2, 0, w / 2, h];
       renderer.setViewport(...vA); renderer.setScissor(...vA); renderer.render(R.A.sc, cam); renderer.setViewport(...vB); renderer.setScissor(...vB); renderer.render(R.B.sc, cam); renderer.setScissorTest(false); }
     else { renderer.setViewport(0, 0, w, h); renderer.render(R.A.sc, cam); } }; tick();
-  const cv = renderer.domElement; cv.addEventListener("pointerdown", e => { R.down = [e.clientX, e.clientY, e.pointerType]; recentre(); });
-  cv.addEventListener("pointerup", e => { if (!S.pinning || !R.A.root || !R.down || Math.hypot(e.clientX - R.down[0], e.clientY - R.down[1]) > 8) return;
+  // two fingers on a trackpad slide the model in the screen plane (never towards or away), a pinch (the wheel with
+  // Ctrl) or a wheel counted in lines zooms; the page never takes the scroll
+  ctl.enableZoom = false;
+  renderer.domElement.addEventListener("wheel", e => { e.preventDefault(); R.lastWheel = e.timeStamp;
+    const u = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? 400 : 1, dx = e.deltaX * u, dy = e.deltaY * u, off = cam.position.clone().sub(ctl.target);
+    if (e.ctrlKey || e.deltaMode !== 0) { off.multiplyScalar(Math.exp(dy * (e.ctrlKey ? 0.01 : 0.0012))); if (off.length() > 0.05) cam.position.copy(ctl.target).add(off); return; }
+    const k = 2 * off.length() * Math.tan(cam.fov * Math.PI / 360) / (renderer.domElement.clientHeight || 600);
+    const mv = new THREE.Vector3().setFromMatrixColumn(cam.matrixWorld, 0).multiplyScalar(dx * k).add(new THREE.Vector3().setFromMatrixColumn(cam.matrixWorld, 1).multiplyScalar(-dy * k));
+    cam.position.add(mv); ctl.target.add(mv); }, { passive: false });
+  // the browser may take the graphics context away (its memory short): it is asked for back, and drawing carries on
+  renderer.domElement.addEventListener("webglcontextlost", e => e.preventDefault());
+  // a pin goes only where a deliberate tap lands: one pointer, still, soon up, no scroll or pinch just before or during
+  const cv = renderer.domElement, live = new Set();
+  cv.addEventListener("pointerdown", e => { live.add(e.pointerId); R.down = live.size > 1 ? null : [e.clientX, e.clientY, e.pointerType, e.timeStamp]; recentre(); });
+  cv.addEventListener("pointercancel", e => { live.delete(e.pointerId); R.down = null; });
+  cv.addEventListener("pointerup", e => { const solo = live.size === 1; live.delete(e.pointerId);
+    if (!solo || !S.pinning || !R.A.root || !R.down || Math.hypot(e.clientX - R.down[0], e.clientY - R.down[1]) > 8) return;
+    if (e.timeStamp - R.down[3] > 700 || R.down[3] - (R.lastWheel ?? -1e9) < 350) return;
     const r0 = cv.getBoundingClientRect(), port = r0.height > r0.width; const r = !S.compare ? r0 : port ? { left: r0.left, top: r0.top, width: r0.width, height: r0.height / 2 } : { left: r0.left, top: r0.top, width: r0.width / 2, height: r0.height };
     if (e.clientX > r.left + r.width || e.clientY > r.top + r.height) return;
     const p = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1), rc = new THREE.Raycaster(); rc.setFromCamera(p, R.cam);
