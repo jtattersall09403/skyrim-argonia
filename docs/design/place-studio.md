@@ -937,7 +937,7 @@ fingers: a second finger makes the pair the view's gesture and lets the handle's
 pan work only sometimes: the handle took the finger and the view saw one). A swipe turns the view about whatever is
 in the middle of the screen as it begins, selected or not (`view.js orbitBegin`): the first surface the middle ray
 meets, a piece's real triangles or else the ground, so close to a wall it turns about the wall and from far off about
-the ground or roof there; the camera does not jump, the turn point slides along the line of sight; with open sky in the middle it lies there 1500 units (about 21 m) off. The wheel zooms, the mouse's other button turns,
+the ground or roof there; the camera does not jump, the turn point slides along the line of sight; with open sky in the middle it lies there 1500 units (about 21 m) off. A small white dot marks the middle of each view, the point a turn goes about; Centre dot in the view's bar turns it off and on (kept in the browser), and the asset explorer has the same dot and toggle. The wheel zooms, the mouse's other button turns,
 Shift or the wheel button slides. Frame in the view's bar brings the selection into view whole.
 `test_browser.py test_42` drives real two-finger touches, with and without a selection, and holds each gesture to
 the same camera change every time.

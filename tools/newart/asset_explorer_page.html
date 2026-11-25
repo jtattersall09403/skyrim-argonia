@@ -26,6 +26,8 @@ h1{font-size:1.1rem;color:var(--mute);letter-spacing:.02em}h2{font-size:1.3rem}h
 #viewer.portrait.cmp #hudA{bottom:calc(50% + 8px)}#viewer.portrait #hudB{right:auto;left:8px;text-align:left}
 #split{position:absolute;background:#000b}
 #pinhint{position:absolute;left:50%;top:8px;transform:translateX(-50%);background:#000c;color:#fff;padding:5px 12px;border-radius:4px;font-size:.85rem;white-space:nowrap}
+.cdot{position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px #000a;pointer-events:none}
+#viewer.cmp:not(.portrait) #cdotA{left:25%}#viewer.cmp:not(.portrait) #cdotB{left:75%}#viewer.cmp.portrait #cdotA{top:25%}#viewer.cmp.portrait #cdotB{top:75%}
 .vtools{position:absolute;right:8px;top:8px;display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:70%}
 .vtools button{font:inherit;font-size:.8rem;color:#eef2ee;background:#000a;border:1px solid #ffffff33;border-radius:999px;padding:4px 10px;cursor:pointer;min-height:32px}
 .vtools button[aria-pressed="true"]{background:#eef2ee;color:#1c2420}
@@ -67,6 +69,7 @@ textarea{width:100%;min-height:80px;font:inherit;color:inherit;background:var(--
   <div id="viewer">
     <div class="vtools" id="vtools"></div>
     <div class="tagbox" id="hudA"></div><div class="tagbox" id="hudB" hidden></div><div id="split" hidden></div>
+    <div class="cdot" id="cdotA" aria-hidden="true"></div><div class="cdot" id="cdotB" aria-hidden="true" hidden></div>
     <div id="pinhint" hidden>Tap the spot you mean</div>
   </div>
   <div class="row" id="stepsrow" style="flex-wrap:nowrap"></div>
@@ -87,8 +90,9 @@ textarea{width:100%;min-height:80px;font:inherit;color:inherit;background:var(--
 try { window.createImageBitmap = undefined; } catch (e) {}
 const $ = (s, r = document) => r.querySelector(s);
 const el = (t, a = {}, ...kids) => { const e = document.createElement(t); for (const k in a) { if (a[k] == null) continue; if (k === "text") e.textContent = a[k]; else if (k.startsWith("on")) e.addEventListener(k.slice(2), a[k]); else e.setAttribute(k, a[k]); } for (const c of kids) if (c != null) e.append(c); return e; };
-const S = { cat: null, asset: null, model: null, compare: null, mode: "tex", person: true, plate: true, pinning: false, notes: [], batches: [], db: null, uid: "me", pending: null };
+const S = { cat: null, asset: null, model: null, compare: null, mode: "tex", person: true, plate: true, pinning: false, dot: true, notes: [], batches: [], db: null, uid: "me", pending: null };
 const LS = "argonia-asset-explorer-drafts";
+try { S.dot = localStorage.getItem(LS + "-dot") !== "off"; } catch (e) {}
 const money = p => p == null ? "" : p === 0 ? "no fee" : "$" + p.toFixed(3).replace(/0$/, "");
 const ver = id => (S.asset.versions.find(v => v.id === id) || { id, label: id, line: "" });
 const label = id => ver(id).label;
@@ -98,7 +102,7 @@ async function boot() {
   try { S.cat = await (await fetch("data/catalog.json")).json(); } catch (e) { $("#version").textContent = "The catalogue could not be loaded. Reload the page."; return; }
   try { S.notes = JSON.parse(localStorage.getItem(LS) || "[]"); } catch (e) { S.notes = []; }
   $("#things").replaceChildren(...S.cat.assets.map(a => el("button", { class: "thing", "data-id": a.id, onclick: () => { location.hash = a.id; } }, el("strong", { text: a.short || a.name }), el("small", { text: a.kind }))));
-  initViewer(); route(); addEventListener("hashchange", route); connect();
+  initViewer(); showDots(); route(); addEventListener("hashchange", route); connect();
 }
 function route() { const id = (location.hash || "").slice(1); pick(S.cat.assets.some(a => a.id === id) ? id : S.cat.assets[0].id); }
 async function connect() {
@@ -235,6 +239,7 @@ function renderTools() {
   const hasPlate = [S.model, S.compare].some(id => /door/.test(id || ""));
   const modes = { tex: "Surfaced", clay: "Clay", wire: "Triangles" }, next = { tex: "clay", clay: "wire", wire: "tex" };
   $("#vtools").replaceChildren(...[t("Person 1.8 m", S.person, () => { S.person = !S.person; for (const k of ["A", "B"]) { R[k].man.visible = R[k].grid.visible = S.person; } }),
+    t("Centre dot", S.dot, () => { S.dot = !S.dot; try { localStorage.setItem(LS + "-dot", S.dot ? "on" : "off"); } catch (e) {} showDots(); }),
     t("Door plate", S.plate, () => { S.plate = !S.plate; applyMode(); }, hasPlate),
     el("button", { onclick: () => { S.mode = next[S.mode]; applyMode(); renderTools(); }, text: modes[S.mode] }),
     t("Reset view", false, () => frame())].filter(Boolean));
@@ -256,7 +261,9 @@ function loadInto(side, id, reframe) {
     applyMode(); if (side === "A") drawPins(); if (reframe || side === "B") frame();
   }, undefined, () => { hud.textContent = label(id) + " could not be loaded. Reload the page."; });
 }
-function setCompare(id) { S.compare = id || null; $("#viewer").classList.toggle("cmp", !!S.compare); $("#split").hidden = $("#hudB").hidden = !S.compare; const P = R.B; if (P.root) { P.sc.remove(P.root); P.root = null; } R.size(); renderTools();
+// A small dot in the middle of each view: the point a turn goes about (one per side when comparing).
+function showDots() { $("#cdotA").hidden = !S.dot; $("#cdotB").hidden = !S.dot || !S.compare; }
+function setCompare(id) { S.compare = id || null; $("#viewer").classList.toggle("cmp", !!S.compare); $("#split").hidden = $("#hudB").hidden = !S.compare; showDots(); const P = R.B; if (P.root) { P.sc.remove(P.root); P.root = null; } R.size(); renderTools();
   const sel = $("#cmpsel"); if (sel) sel.value = S.compare || ""; if (S.compare) loadInto("B", S.compare, true); else frame(); }
 function applyMode() { for (const k of ["A", "B"]) { const root = R[k].root; if (!root) continue; root.traverse(o => { if (!o.isMesh) return; if (o.userData.plate) { o.visible = S.plate; return; }
   o.material = S.mode === "tex" ? o.userData.mat : S.mode === "clay" ? new THREE.MeshStandardMaterial({ color: 0x9c978c, roughness: 0.95, side: THREE.DoubleSide }) : new THREE.MeshBasicMaterial({ color: 0xe9ede8, wireframe: true }); }); } }

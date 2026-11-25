@@ -664,6 +664,10 @@ class Studio {
     $('#swap').onclick = () => { const v = $('#views'); v.dataset.swapped = v.dataset.swapped === 'true' ? 'false' : 'true'; };
     $('#frame-sel').onclick = () => this.frameSelection();
     $('#markers-btn').onclick = () => this.setMarkers(!this.markersOn()); $('#markers-btn').setAttribute('aria-pressed', String(this.markersOn()));
+    // A small dot in the middle of each view: the point a turn goes about. On by default; the choice is kept.
+    const centreDot = (on) => { store.set('studio.centredot.v1', on ? 'on' : 'off'); $('#views').classList.toggle('no-centre-dot', !on); $('#centre-dot-btn').setAttribute('aria-pressed', String(on)); };
+    $('#centre-dot-btn').onclick = () => centreDot($('#views').classList.contains('no-centre-dot'));
+    centreDot(store.get('studio.centredot.v1') !== 'off');
     document.querySelectorAll('.view .fs').forEach((b) => { b.onclick = () => { const v = b.closest('.view'); v.classList.toggle('full'); b.setAttribute('aria-pressed', v.classList.contains('full')); }; });
     $('#time').oninput = (e) => this.setTime(Number(e.target.value));
     // each view's day and night switch; with the People tool on it moves the time of day, which both views follow

@@ -66,12 +66,14 @@ __say('page', { w: innerWidth, h: innerHeight, dpr: window.devicePixelRatio });
         <button id="frame-sel" class="bar-btn" aria-label="Frame what is selected" title="Frame the selection"><svg viewBox="0 0 24 24"><path d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4"/><circle cx="12" cy="12" r="3"/></svg><span>Frame</span></button>
         <button id="markers-btn" class="bar-btn" aria-pressed="true" aria-label="Markers: show the helpers the game never shows in play" title="Markers"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="4"/></svg><span>Markers</span></button>
         <button id="walkmesh-btn" class="bar-btn" aria-pressed="false" aria-label="Walking mesh: show where people can walk" title="Walking mesh"><svg viewBox="0 0 24 24"><path d="M3 17 9 7l6 10 6-10"/><path d="M3 17h18M6 12h12"/></svg><span>Walking mesh</span></button>
+        <button id="centre-dot-btn" class="bar-btn" aria-pressed="true" aria-label="Centre dot: the point a turn goes about" title="Centre dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5" fill="currentColor"/><circle cx="12" cy="12" r="8"/></svg><span>Centre dot</span></button>
         <label id="state-wrap" class="pick state-pick" hidden><span class="pick-label">Quest state</span><select id="state-pick" aria-label="Quest state: the place as the player sees it in each state a quest puts it in"></select></label>
         <span class="bar-gap"></span>
         <button id="show-src" class="bar-btn" hidden aria-label="Show the source place"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg><span>Source</span></button>
       </div>
       <div class="gizmo" hidden></div>
       <svg class="sketch" aria-hidden="true"></svg>
+      <div class="centre-dot" aria-hidden="true"></div>
     </div>
     <div class="view-link">
       <button id="link" class="icon-btn small" aria-pressed="false" aria-label="Move both views together"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><span>Link views</span></button>
@@ -87,6 +89,7 @@ __say('page', { w: innerWidth, h: innerHeight, dpr: window.devicePixelRatio });
         <button id="hide-src" class="bar-btn" aria-label="Hide the source place"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span>Hide</span></button>
       </div>
       <svg class="sketch" aria-hidden="true"></svg>
+      <div class="centre-dot" aria-hidden="true"></div>
     </div>
   </section>
   <aside id="panel" aria-live="polite" hidden>
