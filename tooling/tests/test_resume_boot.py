@@ -56,3 +56,12 @@ def test_a_wake_reopens_no_lanes():
     src = RESUME.read_text()
     assert 'lanes=off; [ "$mode" = resume ] && lanes=on' in src
     assert 'if [ "$lanes" = on ]; then' in src
+
+
+def test_the_session_outlives_the_unit_that_opens_it():
+    # a tmux server started inside a oneshot unit is killed when the unit ends (2026-11-25: the watchdog and the
+    # owner wake opened a session every two minutes that died at once); and no listing is cut short by head, which
+    # under a unit (SIGPIPE ignored) fails the pipeline and, at boot, the unit with the session in it
+    src = RESUME.read_text()
+    assert '"${scope[@]}" tmux new-session' in src and "systemd-run --user --scope" in src
+    assert "| head -1)" not in src.replace("| tail -2 | head -1", "")

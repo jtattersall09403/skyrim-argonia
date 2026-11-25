@@ -111,14 +111,18 @@ lanes=off; [ "$mode" = resume ] && lanes=on
 if [ $DRY = 1 ]; then echo "start: $start"; echo "mode: $mode"; echo "lanes: $lanes"; exit 0; fi
 printf '%s %s %s\n' "$(date -u +%FT%TZ)" "$mode" "$start" >> "$STATE/boots.log"
 logger -t argonia-resume "boot mode: $mode ($start start)"
-tmux new-session -d -s argonia -c "$REPO" "bash -lc '$cmd; exec bash'"
+# The tmux server is started in a scope of its own: started inside this unit it dies with it, at once when a timer's
+# oneshot (the watchdog, the owner wake) ends, and at boot whenever a later line of this script fails.
+scope=(); [ -n "${INVOCATION_ID:-}" ] && scope=(systemd-run --user --scope --quiet --collect)
+"${scope[@]}" tmux new-session -d -s argonia -c "$REPO" "bash -lc '$cmd; exec bash'"
 
 # Parallel lanes (owner, 2026-10-29): --continue resumes only the newest session. On a resume, every other session
 # that wrote its transcript within 30 minutes of the newest was working too; each gets its own window.
 if [ "$lanes" = on ]; then
   prompt=infra/build-vm/prompts/resume.md
   dir="$HOME/.claude/projects/$(echo "$REPO" | tr '/' '-')"
-  newest=$(ls -t "$dir"/*.jsonl 2>/dev/null | head -1)
+  # sorted whole, never cut short by head: a unit ignores SIGPIPE, so a listing cut short fails the script
+  newest=$(find "$dir" -maxdepth 1 -name '*.jsonl' -printf '%T@ %p\n' 2>/dev/null | sort -n | tail -1 | cut -d' ' -f2-)
   [ -n "$newest" ] && find "$dir" -maxdepth 1 -name '*.jsonl' ! -path "$newest" -newermt "$(date -u -d "$(stat -c %y "$newest") - 30 min" +%FT%TZ)" |
     while read -r f; do
       id=$(basename "$f" .jsonl)
