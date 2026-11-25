@@ -1097,35 +1097,41 @@
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:035EEE",
    "material": "kothringi-relic",
-   "why": "Kothringi Scimitar: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Kothringi Scimitar: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:035EEF",
    "material": "kothringi-relic",
-   "why": "Kothringi War Axe: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Kothringi War Axe: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:035EF1",
    "material": "kothringi-relic",
    "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
-   "disenchant": true
+   "disenchant": true,
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:035EF2",
    "material": "kothringi-relic",
    "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
-   "disenchant": true
+   "disenchant": true,
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:035EF3",
    "material": "kothringi-relic",
    "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
-   "disenchant": true
+   "disenchant": true,
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:035EF9",
    "material": "kothringi-relic",
-   "why": "Kothringi Arrow: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Kothringi Arrow: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:038DC9",
@@ -1161,35 +1167,41 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:06E0AB",
    "material": "kothringi-relic",
    "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
-   "disenchant": true
+   "disenchant": true,
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:06E0AC",
    "material": "kothringi-relic",
    "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
-   "disenchant": true
+   "disenchant": true,
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:06E0AD",
    "material": "kothringi-relic",
    "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
-   "disenchant": true
+   "disenchant": true,
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:073E7D",
    "material": "leather",
-   "why": "Naga Leathers: Naga leathers"
+   "why": "Naga Leathers: Naga leathers",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:076D56",
    "material": "kothringi-relic",
    "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
-   "disenchant": true
+   "disenchant": true,
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:076D60",
    "material": "kothringi-relic",
-   "why": "Kothringi Skull Club: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Kothringi Skull Club: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:109C01",
@@ -1244,71 +1256,84 @@
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:118F5B",
    "material": "kothringi-relic",
-   "why": "Kothringi Bone Hammer: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Kothringi Bone Hammer: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:118F5C",
    "material": "kothringi-relic",
-   "why": "Kothringi Great Scimitar: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Kothringi Great Scimitar: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:118F5D",
    "material": "kothringi-relic",
-   "why": "Kothringi Cleaver: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Kothringi Cleaver: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:118F65",
    "material": "kothringi-relic",
-   "why": "Kothringi Battle Staff: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Kothringi Battle Staff: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:11E06E",
    "material": "kothringi-relic",
    "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
-   "disenchant": true
+   "disenchant": true,
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:11E070",
    "material": "kothringi-relic",
    "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
-   "disenchant": true
+   "disenchant": true,
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:11E072",
    "material": "kothringi-relic",
    "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
-   "disenchant": true
+   "disenchant": true,
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:11E074",
    "material": "kothringi-relic",
    "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
-   "disenchant": true
+   "disenchant": true,
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:150AF6",
    "material": "kothringi-relic",
-   "why": "Kothringi Heavy Shield: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Kothringi Heavy Shield: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:150AF8",
    "material": "kothringi-relic",
-   "why": "Kothringi Wheel Shield: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Kothringi Wheel Shield: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:150AFA",
    "material": "kothringi-relic",
-   "why": "Kothringi Bone Shield: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Kothringi Bone Shield: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:155C03",
    "material": "kothringi-relic",
-   "why": "Kothringi Shortspear: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Kothringi Shortspear: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:155C05",
    "material": "kothringi-relic",
-   "why": "Kothringi Spear: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Kothringi Spear: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:15FE23",
@@ -1338,107 +1363,128 @@
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:164F37",
    "material": "scale",
-   "why": "Naga Elite Armor: the Naga elite's and priests' scale"
+   "why": "Naga Elite Armor: the Naga elite's and priests' scale",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:164F38",
    "material": "scale",
-   "why": "Naga Elite Sandals: the Naga elite's and priests' scale"
+   "why": "Naga Elite Sandals: the Naga elite's and priests' scale",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:164F39",
    "material": "scale",
-   "why": "Naga Elite Bracers: the Naga elite's and priests' scale"
+   "why": "Naga Elite Bracers: the Naga elite's and priests' scale",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:164F3A",
    "material": "scale",
-   "why": "Naga Elite Eagle Helmet: the Naga elite's and priests' scale"
+   "why": "Naga Elite Eagle Helmet: the Naga elite's and priests' scale",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:164F3F",
    "material": "scale",
-   "why": "Naga Elite Jaguar Helmet: the Naga elite's and priests' scale"
+   "why": "Naga Elite Jaguar Helmet: the Naga elite's and priests' scale",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:16F168",
    "material": "flint",
-   "why": "Naga Yaomitl: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+   "why": "Naga Yaomitl: a Naga weapon of wood edged with flint (HTBM's Naga line)",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:16F169",
    "material": "flint",
-   "why": "Naga Huey Macahuitl: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+   "why": "Naga Huey Macahuitl: a Naga weapon of wood edged with flint (HTBM's Naga line)",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
    "material": "flint",
-   "why": "Naga Tecpatl: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+   "why": "Naga Tecpatl: a Naga weapon of wood edged with flint (HTBM's Naga line)",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16B",
    "material": "flint",
-   "why": "Naga Huey Macana: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+   "why": "Naga Huey Macana: a Naga weapon of wood edged with flint (HTBM's Naga line)",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16C",
    "material": "flint",
-   "why": "Naga Huitzauqui: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+   "why": "Naga Huitzauqui: a Naga weapon of wood edged with flint (HTBM's Naga line)",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16D",
    "material": "flint",
-   "why": "Naga Macana: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+   "why": "Naga Macana: a Naga weapon of wood edged with flint (HTBM's Naga line)",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16E",
    "material": "flint",
-   "why": "Naga Macahuitl: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+   "why": "Naga Macahuitl: a Naga weapon of wood edged with flint (HTBM's Naga line)",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16F",
    "material": "flint",
-   "why": "Naga Cuauololli: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+   "why": "Naga Cuauololli: a Naga weapon of wood edged with flint (HTBM's Naga line)",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:16F170",
    "material": "wood",
-   "why": "Naga Tlahhuitolli: a Naga wooden bow"
+   "why": "Naga Tlahhuitolli: a Naga wooden bow",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:16F171",
    "material": "flint",
-   "why": "Naga Tecpatl: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+   "why": "Naga Tecpatl: a Naga weapon of wood edged with flint (HTBM's Naga line)",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:17427A",
    "material": "flint",
-   "why": "Naga Tepoztopilli: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+   "why": "Naga Tepoztopilli: a Naga weapon of wood edged with flint (HTBM's Naga line)",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:17427C",
    "material": "flint",
-   "why": "Naga Huey Tepoztopilli: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+   "why": "Naga Huey Tepoztopilli: a Naga weapon of wood edged with flint (HTBM's Naga line)",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:17427E",
    "material": "flint",
-   "why": "Naga Itztopilli: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+   "why": "Naga Itztopilli: a Naga weapon of wood edged with flint (HTBM's Naga line)",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:1928B9",
    "material": "scale",
-   "why": "Naga Elite Shield: the Naga elite's and priests' scale"
+   "why": "Naga Elite Shield: the Naga elite's and priests' scale",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:1928BA",
    "material": "hide",
-   "why": "Naga Chimalli: a hide chimalli"
+   "why": "Naga Chimalli: a hide chimalli",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:1928BD",
    "material": "scale",
-   "why": "Naga Elite Tall Shield: the Naga elite's and priests' scale"
+   "why": "Naga Elite Tall Shield: the Naga elite's and priests' scale",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:1979CE",
@@ -1496,12 +1542,14 @@
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:1979DC",
    "material": "flint",
-   "why": "Xanmeer Tepoztopilli: a flint-headed spear (its numbers are the Naga spear's, not volcanic glass)"
+   "why": "Xanmeer Tepoztopilli: a flint-headed spear (its numbers are the Naga spear's, not volcanic glass)",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:1979DE",
    "material": "flint",
-   "why": "Xanmeer Huey Tepoztopilli: a flint-headed spear (its numbers are the Naga spear's, not volcanic glass)"
+   "why": "Xanmeer Huey Tepoztopilli: a flint-headed spear (its numbers are the Naga spear's, not volcanic glass)",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:197A08",
@@ -1597,37 +1645,44 @@
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6C9",
    "material": "kothringi-relic",
-   "why": "Zuuk's Axe: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Zuuk's Axe: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6CB",
    "material": "kothringi-relic",
-   "why": "Zuuk's Sword: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Zuuk's Sword: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6CC",
    "material": "kothringi-relic",
-   "why": "Zuuk's Boots: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Zuuk's Boots: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6CD",
    "material": "kothringi-relic",
-   "why": "Zuuk's Armor: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Zuuk's Armor: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6CE",
    "material": "kothringi-relic",
-   "why": "Zuuk's Gauntlets: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Zuuk's Gauntlets: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6CF",
    "material": "kothringi-relic",
-   "why": "Zuuk's Helmet: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Zuuk's Helmet: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6D0",
    "material": "kothringi-relic",
-   "why": "Zuuk's Shield: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Zuuk's Shield: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:4A642A",
@@ -1643,12 +1698,14 @@
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:53EB2A",
    "material": "scale",
-   "why": "Naga Priest Armor: the Naga elite's and priests' scale"
+   "why": "Naga Priest Armor: the Naga elite's and priests' scale",
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:5A996D",
    "material": "kothringi-relic",
-   "why": "Kothringi Burial Mask: a Kothringi relic (their towns died in 2E 560)"
+   "why": "Kothringi Burial Mask: a Kothringi relic (their towns died in 2E 560)",
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:5C2FD9",
@@ -2095,7 +2152,8 @@
   {
    "item": "King of the Murkmire.esp:005911",
    "material": "shell",
-   "why": "Naga Spiked Shield: a spiked shell shield"
+   "why": "Naga Spiked Shield: a spiked shell shield",
+   "people": "naga"
   },
   {
    "item": "King of the Murkmire.esp:00ADB0",
@@ -2220,17 +2278,20 @@
   {
    "item": "King of the Murkmire.esp:086686",
    "material": "scale",
-   "why": "Scale Cuirass: Naga scale"
+   "why": "Scale Cuirass: Naga scale",
+   "people": "naga"
   },
   {
    "item": "King of the Murkmire.esp:086687",
    "material": "scale",
-   "why": "Scale Boots: Naga scale"
+   "why": "Scale Boots: Naga scale",
+   "people": "naga"
   },
   {
    "item": "King of the Murkmire.esp:086688",
    "material": "scale",
-   "why": "Scale Bracers: Naga scale"
+   "why": "Scale Bracers: Naga scale",
+   "people": "naga"
   },
   {
    "item": "King of the Murkmire.esp:098EC0",
@@ -2492,22 +2553,26 @@
   {
    "item": "NagaKurArmor.esp:000804",
    "material": "leather",
-   "why": "Naga-Kur leather and bone"
+   "why": "Naga-Kur leather and bone",
+   "people": "naga"
   },
   {
    "item": "NagaKurArmor.esp:000805",
    "material": "leather",
-   "why": "Naga-Kur leather and bone"
+   "why": "Naga-Kur leather and bone",
+   "people": "naga"
   },
   {
    "item": "NagaKurArmor.esp:000806",
    "material": "leather",
-   "why": "Naga-Kur leather and bone"
+   "why": "Naga-Kur leather and bone",
+   "people": "naga"
   },
   {
    "item": "NagaKurArmor.esp:000807",
    "material": "leather",
-   "why": "Naga-Kur leather and bone"
+   "why": "Naga-Kur leather and bone",
+   "people": "naga"
   },
   {
    "item": "NetchLeather.esp:00080F",
@@ -4000,7 +4065,8 @@
    "why": "Lizard-Skin Wraps: the Kothringi's wraps (HTBM Curse of Cipactli): clothing",
    "races": [
     "ArgonianRace"
-   ]
+   ],
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:183595",
@@ -4008,7 +4074,8 @@
    "why": "Naga Snakeskins: the Naga's snakeskin dress (HTBM Curse of Cipactli): clothing",
    "races": [
     "ArgonianRace"
-   ]
+   ],
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:15AD12",
@@ -4016,7 +4083,8 @@
    "why": "Naga Rags: the poorest Naga dress (HTBM Curse of Cipactli): clothing",
    "races": [
     "ArgonianRace"
-   ]
+   ],
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6E",
@@ -4216,7 +4284,8 @@
    "why": "Naga Elite Silks: the elite's embroidered sash (HTBM Curse of Cipactli): clothing",
    "races": [
     "ArgonianRace"
-   ]
+   ],
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:16A052",
@@ -4224,7 +4293,8 @@
    "why": "Naga Priest Skirt: the priests' green skirt (HTBM Curse of Cipactli): clothing",
    "races": [
     "ArgonianRace"
-   ]
+   ],
+   "people": "naga"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:20EE1E",
@@ -4232,7 +4302,8 @@
    "why": "Sacrificial Robes: the Kothringi priests' embroidered sash (HTBM Curse of Cipactli): clothing",
    "races": [
     "ArgonianRace"
-   ]
+   ],
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:1468C3",
@@ -4240,7 +4311,8 @@
    "why": "Kothringi Robes: the Kothringi hakama (HTBM Curse of Cipactli): clothing",
    "races": [
     "ArgonianRace"
-   ]
+   ],
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:1468CE",
@@ -4248,7 +4320,8 @@
    "why": "Kothringi Robes: the Kothringi hakama (HTBM Curse of Cipactli): clothing",
    "races": [
     "ArgonianRace"
-   ]
+   ],
+   "people": "kothringi"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:1468CF",
@@ -4256,7 +4329,8 @@
    "why": "Kothringi Robes: the Kothringi hakama (HTBM Curse of Cipactli): clothing",
    "races": [
     "ArgonianRace"
-   ]
+   ],
+   "people": "kothringi"
   },
   {
    "item": "TelvanniRobes.esp:0036F2",
@@ -4264,7 +4338,8 @@
    "why": "a Telvanni robe: a Dunmer household's dress: clothing",
    "races": [
     "DarkElfRace"
-   ]
+   ],
+   "office": "mage"
   },
   {
    "item": "TelvanniRobes.esp:0036D6",
@@ -4272,7 +4347,8 @@
    "why": "a Telvanni robe: a Dunmer household's dress: clothing",
    "races": [
     "DarkElfRace"
-   ]
+   ],
+   "office": "mage"
   },
   {
    "item": "TelvanniRobes.esp:0036D5",
@@ -4280,7 +4356,8 @@
    "why": "a Telvanni robe: a Dunmer household's dress: clothing",
    "races": [
     "DarkElfRace"
-   ]
+   ],
+   "office": "mage"
   },
   {
    "item": "TelvanniRobes.esp:0036D4",
@@ -4288,7 +4365,8 @@
    "why": "a Telvanni robe: a Dunmer household's dress: clothing",
    "races": [
     "DarkElfRace"
-   ]
+   ],
+   "office": "mage"
   },
   {
    "item": "TelvanniRobes.esp:0036D3",
@@ -4296,7 +4374,8 @@
    "why": "a Telvanni robe: a Dunmer household's dress: clothing",
    "races": [
     "DarkElfRace"
-   ]
+   ],
+   "office": "mage"
   },
   {
    "item": "TelvanniRobes.esp:0036D2",
@@ -4304,7 +4383,8 @@
    "why": "a Telvanni robe: a Dunmer household's dress: clothing",
    "races": [
     "DarkElfRace"
-   ]
+   ],
+   "office": "mage"
   },
   {
    "item": "Skyrim.esm:01BE1A",
@@ -5176,5 +5256,45 @@
    "name": "Black and Violet Necklace",
    "why": "a necklace: tribal and traders' jewellery"
   }
- ]
+ ],
+ "dress": {
+  "about": "Whose dress a garment is (tools/places/stock/dress.py, read by `stock derive`): a garment tagged `people` is worn only by a person of that people (their people source's `people`) or of one of its `cultures`; one tagged `office` only by the office's roles or trades; an untagged garment is neutral. Every garment whose why names a people or office carries its tag (tested).",
+  "peoples": {
+   "naga": {
+    "label": "Naga",
+    "lore": "story/lore/tribes.md:5-12,96: the tribeless Naga of the inner swamps are the province's brigands and highwaymen, not the Argonians of its towns; only the people of a place whose record (place_note people) says its people are Naga wear Naga dress: the tribeless Naga camps listed in wearers.places, and any person a people source marks `people: naga`",
+    "wearers": {
+     "cultures": [],
+     "places": [
+      "tribal-camp-m12-m74",
+      "tribal-camp-m2-m68",
+      "tribal-camp-m2-m71",
+      "tribal-camp-m7-m80",
+      "tribal-camp-m9-m70"
+     ]
+    }
+   },
+   "kothringi": {
+    "label": "Kothringi",
+    "lore": "story/lore/stormhold.md:12 and story/lore/topics/loading-facts.md:83 (the Knahaten Flu, 2E 560-601) and the oxblood culture row (Argonians resettled the Kothringi towns after 2E 560): the Kothringi are gone, so no living person wears their dress unless a record says so; the Chime-Keepers' kit (kits.json tribe-oxblood: Kothringi plate 'kept and worn') is that record",
+    "wearers": {
+     "cultures": [
+      "oxblood"
+     ]
+    }
+   }
+  },
+  "offices": {
+   "mage": {
+    "label": "Mage robes",
+    "lore": "story/lore/topics/magic-practice.md section 1: no robed-mage guilds in the interior in our era, magic is folk practice; the robes of a Telvanni mage belong to one who practises magic (person role spell-trader, or a trade naming magic)",
+    "wearers": {
+     "roles": [
+      "spell-trader"
+     ],
+     "match": "\\b(mage|wizard|sorcer\\w*|warlock|witch|enchanter|mystic\\w*|spell\\w*|conjur\\w*)\\b"
+    }
+   }
+  }
+ }
 }

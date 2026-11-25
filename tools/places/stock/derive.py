@@ -25,7 +25,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from tools.argonia_world import db
-from tools.places.stock import reach, split
+from tools.places.stock import dress, reach, split
 from tools.places.stock.classify import classify
 from tools.places.stock.place import Place
 
@@ -114,18 +114,22 @@ class Picker:
                                                i["key"].rsplit(":", 1)[0] in VANILLA_PLUGINS, i["value"], i["key"]))
         return None
 
-    def clothing(self, materials: list[str], race: str, band_rank: int, top_rank: int = 5) -> dict | None:
+    def clothing(self, materials: list[str], person, band_rank: int, top_rank: int = 5) -> dict | None:
         """A person's one worn outfit: a body piece of clothing filed under the first of `materials` that has one the
         wearer's race fits (item_material `races`: the pieces made for the race first, then those every race wears,
-        Skyrim's own), cheapest for the poorest band and dearer up the bands."""
+        Skyrim's own) and that is the wearer's to wear (dress.may_wear: a people's or an office's garment only for
+        its own; a person's own people's garments before neutral ones), cheapest for the poorest band and dearer up
+        the bands."""
+        race = person.race_id
         gear = split.item_materials()["gear"]
         for m in materials:
             body = [i for i in self.items if i["sig"] == "ARMO" and "ArmorClothing" in i["keywords"]
                     and (i.get("slots") or 0) & 0x4 and not i["ench"] and split.material_of(i)[0] == m
                     and i["key"] in gear and gear[i["key"]].get("races")]
             for races in ([race], ["*"]):
-                pool = sorted((i for i in body if set(gear[i["key"]]["races"]) & set(races)),
-                              key=lambda i: (i["value"], i["key"]))
+                pool = sorted((i for i in body if set(gear[i["key"]]["races"]) & set(races)
+                               and dress.may_wear(gear[i["key"]], person)), key=lambda i: (i["value"], i["key"]))
+                pool = [i for i in pool if gear[i["key"]].get("people") in dress.peoples_of(person)] or pool
                 if pool:
                     return pool[min(len(pool) - 1, (max(band_rank, 1) - 1) * len(pool) // top_rank)]
         return None
@@ -375,7 +379,7 @@ def derive(p: Place) -> dict:
         if not guard:   # one worn outfit from the kit's clothing row (the race overlay's own before the trade's)
             row = next((x for k in sorted(kits, key=lambda k: not (k.races or k.cultures))
                         for x in w.rows("trade_kit_item", kit_id=k.id) if x.use == "wear" and x.slot == "clothing"), None)
-            cloth = pick.clothing(row.materials.split(), r.race_id, b["rank"]) if row and row.materials else None
+            cloth = pick.clothing(row.materials.split(), r, b["rank"]) if row and row.materials else None
             if cloth:
                 step, prov = provenance(cloth, "clothing")
                 items.append({"item": cloth["key"], "count": 1, "worn": True,

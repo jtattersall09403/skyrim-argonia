@@ -113,6 +113,9 @@ Write `newworld/sources/stock/places/<place>.json` from the draft and the facts.
 - The baseline is the archetype of role × band × culture: the band's carried gold and clothes, a tool or weapon
   of the trade, and jewellery from W3 up.
 - Each person's gear follows their trade kit and their region (section 4).
+- Clothing follows the wearer's people and office (`item_material.json` `dress`, each rule with its lore source): Naga dress
+  only for the people of a place whose record says they are Naga (a tribeless camp), Kothringi dress only where a record says so (the Chime-Keepers),
+  mage robes only for mages; every other garment is neutral. A new garment whose dress names a people or office is tagged.
 - Guards carry the guard's issue, a table of ours (scale.json `guard_issue.table`, which the derive applies and
   `stock reach` checks): the first row that fits the place's kind, culture, holder and ceiling. An Argonian city, town,
   fort, keep or prison of ceiling T3 or more issues BM&V's Argonian scale armour; any other settled Argonian place of
