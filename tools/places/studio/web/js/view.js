@@ -6,6 +6,7 @@ import { drainReady } from './objects.js';
 THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
 const TAP_MS = 350, TAP_PX = 10;
 const MIN_DIST = 20;   // the nearest the camera comes to what it turns and zooms about (game units)
+const SKY_DIST = 1500; // looking at open sky, a turn goes about the middle of the screen this far off (about 21 m)
 
 // One renderer and one canvas for every view: a tablet keeps each texture and mesh once, and one set of shaders.
 // The canvas lies behind the views and each view draws into its own rectangle of it. The drawing buffer is kept
@@ -224,10 +225,10 @@ export class View {
   // Turning the view turns it about whatever is in the middle of the screen as the turn begins: the first surface
   // the middle ray meets (a piece's real triangles, else the ground). The camera does not move at the start: the
   // rig's target slides along the line of sight onto that surface, so near a wall it turns about the wall, from far
-  // off about the ground or roof there. Looking at the sky, it turns about where it already looked.
+  // off about the ground or roof there. Looking at open sky, it turns about the middle of the screen SKY_DIST away.
   orbitBegin() {
     const rc = new THREE.Raycaster(); rc.setFromCamera(new THREE.Vector2(0, 0), this.camera);
-    const d = this.surfaceAt(rc.ray); if (d == null) return;
+    const d = this.surfaceAt(rc.ray) ?? SKY_DIST;
     const s = Math.max(MIN_DIST, d), r = this.rig;
     r.target.copy(rc.ray.origin).addScaledVector(rc.ray.direction, s); r.dist = s; this.updateCamera();
   }

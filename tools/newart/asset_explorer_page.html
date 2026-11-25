@@ -222,11 +222,14 @@ function initViewer() {
 }
 // A turn goes about whatever is in the middle of the screen as it begins: the first surface the middle ray meets (the
 // model's real triangles or the person), else the ground. The point moves along the line of sight, so the camera
-// does not jump: close up it turns about the surface in front of it, from far off about the model or the ground.
+// does not jump: close up it turns about the surface in front of it, from far off about the model or the ground, and
+// at open sky about a point straight ahead.
 function recentre() { const rc = new THREE.Raycaster(); rc.setFromCamera(new THREE.Vector2(0, 0), R.cam);
   const hit = rc.intersectObjects([R.A.root, R.A.man.visible && R.A.man].filter(Boolean), true).find(h => h.object.visible && !h.object.userData.plate);
-  const p = hit ? hit.point : rc.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), new THREE.Vector3());
-  if (p && p.distanceTo(R.cam.position) > 0.05) R.ctl.target.copy(p); }
+  // open sky: straight ahead, as far off as the model is long (at least 2 m)
+  const sky = () => rc.ray.at(Math.max(2, R.A.size ? R.A.size.length() : 2), new THREE.Vector3());
+  const p = hit ? hit.point : rc.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), new THREE.Vector3()) || sky();
+  if (p.distanceTo(R.cam.position) > 0.05) R.ctl.target.copy(p); }
 function renderTools() {
   const t = (txt, on, fn, show = true) => show ? el("button", { "aria-pressed": String(on), onclick: () => { fn(); renderTools(); } , text: txt }) : null;
   const hasPlate = [S.model, S.compare].some(id => /door/.test(id || ""));
