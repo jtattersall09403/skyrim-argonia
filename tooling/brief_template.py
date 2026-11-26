@@ -84,7 +84,7 @@ def render(a):
          "Test level": a.test_level, "Route": a.route, "Prior art": a.prior_art}
     ph = {"Lane": "<lane id>", "Paths": "<paths the lane owns>", "Acceptance": "<command or number>",
           "Report path": "<report path>", "Test level": "<L1-L6>", "Route": "<1-7 and why higher routes were not enough>",
-          "Prior art": "<what was searched and reused>"}
+          "Prior art": "<what tooling/plan_find.py found the plan already says, what else was searched, what is reused>"}
     return "\n".join(f"{f}: {v[f] or ph[f]}" for f in FIELDS) + "\n"
 
 

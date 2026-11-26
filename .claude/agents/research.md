@@ -15,6 +15,9 @@ field notes and skills first, then owned games, mod source, OpenMW's source and 
 - Gather every finding the question needs in one pass and report the whole set, never the first few. End with
   `Covered: <folders walked> · Skipped: <not walked and why>`.
 - Suggestions beyond the brief go in a final `Recommendations` section, each with its evidence.
+- First find what the plan already says: `tooling/plan_find.py <the topic's words and synonyms>` (`--map` lists where
+  each kind of answer lives: rulings, decisions, the story database, the story lines, lore, design), and read the
+  fullest files it names. Say "as planned" or "as built" of anything you call absent.
 - When the repo already documents the topic, open with which live docs cover it, which of their claims you
   confirm, contradict or supersede, and the one doc the writer should edit. Never propose a new file where an
   existing one can be edited.

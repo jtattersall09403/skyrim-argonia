@@ -14,6 +14,7 @@
 | `disk.sh`, `tidy.py` | What fills the build VM's disk, and the one tidy of disk, lane worktrees and bucket; runs by itself (docs/machine-moves.md) |
 | `owner_inbox.py` | The only way to post to, ack and close owner issues |
 | `session_tokens.py` | Tokens and list-price dollars per model from the transcripts (`--brief`, `--last N`) |
+| `plan_find.py` | What the plan already says about a topic: one search over the rulings, decisions, plan, story database, story lines, lore, design and research, grouped by layer (`--map` lists where each kind of answer lives) |
 | `brief_template.py` | Writes and checks a short brief for a delegated agent (`--write`, `--check`) |
 | `check_links.py` | Every relative markdown link under docs/, story/ and CLAUDE.md resolves |
 | `gate.py`, `gate_map.toml` | The scoped gate behind `make check`: only the stages and tests a change reaches, a map edit included (the docstring is the recipe); `make check-all WHY=deploy|phase-close` runs everything, for those two occasions only |
