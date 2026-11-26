@@ -1,7 +1,7 @@
 # Phase 4a: talk to everyone in BM&V
 
 Status: [PROGRESS.md](../PROGRESS.md). The plan: [PLAN.md](../PLAN.md). Edit this file as the phase goes; it is the phase's whole brief.
-The design: [talk.md](../design/talk.md). The recipe: the skill `.claude/skills/talk-write`. Owner rulings
+The design: [talk.md](talk.md). The recipe: the skill `.claude/skills/talk-write`. Owner rulings
 2026-11-07 and 2026-11-08 ([owner-rulings](../owner-rulings.md)).
 
 **What it is.** Every person BM&V places who can be talked to gets a name, a light backstory, a personality and

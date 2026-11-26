@@ -188,4 +188,4 @@ either: each kind's bodies and area inside the picture within 2% of the accepted
 (`newworld/sources/water_accepted.json`, on the same waterline and source water picture; `--accept` after a look
 when the classification is meant to change), and
 every owner edit on a body within 10% of its recorded area with the owner's kind. Measurements and the frame audit
-of every consumer of the grid: [research](../research/nw-02-walk5-water-frame.md).
+of every consumer of the grid: [research](../research/world/nw-02-walk5-water-frame.md).

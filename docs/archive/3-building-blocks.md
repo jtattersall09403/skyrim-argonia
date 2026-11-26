@@ -319,7 +319,7 @@ re-tested.
 ## Block W-talk: a BM&V person's own topics (added 2026-11-07)
 
 A new kind of change (owner, 2026-11-07): BM&V's people open no dialogue, because Skyrim opens the menu only on a
-topic gated to that speaker and BM&V ships none ([talk.md](../design/talk.md), measured). Built in
+topic gated to that speaker and BM&V ships none ([talk.md](talk.md), measured). Built in
 `tools/ArgoniaPlugin/Talk.cs` from the story data's talk tables: quest `ARG_Talk` (Start Game Enabled), one
 top-level topic per topic kind, one INFO per person gated GetIsReference to their placed ref; Flaa Heet (no voice
 type) gets our silent voice type `ARG_TalkSilentVoice` by a base override. Lines are subtitles (Fuz Ro D'oh).
