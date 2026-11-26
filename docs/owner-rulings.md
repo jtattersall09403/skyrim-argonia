@@ -1123,3 +1123,10 @@ added here the day they are made, with the date and the issue.
   "Underground Express" that travels the tunnels the Hist roots form, swallows riders and lets them off at air
   pockets (MN04). The rootworm is open to anyone who pays, like Morrowind's silt striders. A throwaway place claim
   ("off the market") is checked against the drafted place and its source before it is written.
+
+- **2026-11-26, magic (decided by the lead, for the owner to confirm; owner call #105).** The proposal
+  [docs/research/magic/PROPOSAL.md](research/magic/PROPOSAL.md) answers #104 and awaits his choice of option; nothing
+  is built before it. Lore calls made in it: a player of any race can be given Hist gifts once a tribe trusts them;
+  fire and frost stay as foreign magic; atronachs, raising the dead and soul trap stay, sold only by foreigners and
+  held by Argonians as abominations; spell names are plain English, Argonian words kept for people, offices and
+  places; the five schools stay Skyrim's.
