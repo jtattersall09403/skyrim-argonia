@@ -1,6 +1,6 @@
 # Story
 
-Our storyline, quests, factions and people, kept to be adapted onto Black Marsh & Valenwood's (BM&V's) world.
+Our storyline, quests, factions and people, written for our own world of Black Marsh (`newworld/`).
 The old generated world is gone; what is here is the story and the design behind it.
 
 ## Folders
@@ -20,7 +20,7 @@ The old generated world is gone; what is here is the story and the design behind
 
 `data/db` holds 603 quest rows, 1190 NPCs, 2098 dialogue lines, 23 factions, 831 places, 507 items and 52
 creatures, with their stages, facts, topics, stances, culture sheets, conditions and actions. It is mined when
-a quest or person is adapted onto a BM&V place: the old places are design intent, not a map.
+a quest or person is adapted onto a place of the new world: the old places are design intent, not a map.
 
 Read and write it only through `tools/argonia_world/db.py`, which loads every table into SQLite with the
 schema's types and foreign keys:

@@ -5,6 +5,11 @@ in the owner's terms. Everything else the owner said before the pivot is in git 
 (`docs/owner-brief.md`, `docs/inherited-rulings.md` before this commit) and no longer binds. New rulings are
 added here the day they are made, with the date and the issue.
 
+Since 2026-11-26 the project is the new world and the Black Marsh & Valenwood (BM&V) version is retired
+([0042](decisions/0042-the-new-world-is-the-project.md); the ruling is the last entry). A ruling below that speaks
+of BM&V as the world is read with that one: what it says of the stack, quests, writing and working still binds;
+what it says of BM&V's world and people does not.
+
 ## The goal (2026-11-05)
 
 - Vanilla Skyrim + Black Marsh & Valenwood + the collection xyf1u3 for soulslike combat, out of the box +
