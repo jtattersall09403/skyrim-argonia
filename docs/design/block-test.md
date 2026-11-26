@@ -5,8 +5,7 @@ Two small quests that between them use every kind of step a quest form can hold,
 the Second", `ARG_BlockTestTwo`). They prove the builder, the reader and the generic scripts (`ARG_QuestStages`,
 `ARG_Effects`, `ARG_LineEffects`, `ARG_AliasEffects`) on one quest the agents control, including the operations no
 real quest uses yet. They are never in the shipped plugin: the first starts at the first moment of every new game,
-so a plugin holding it puts a test quest in every player's journal. The owner's walk is real quests only
-([owner-walk-checks](../owner-walk-checks.md) section 12, with its table of which step proves which operation).
+so a plugin holding it puts a test quest in every player's journal. The owner's walk is real quests only.
 
 ## Building it in
 

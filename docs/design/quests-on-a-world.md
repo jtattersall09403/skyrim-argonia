@@ -157,7 +157,7 @@ plays the game.
 
 - **Owner checks:** the fewest checks that prove what was built (a new kind of result, one quest of each line, a
   death that shows the message), each in plain words with the place, what to do and what passing looks like, in
-  [owner-walk-checks](../owner-walk-checks.md); ticked checks stay as the record.
+  the phase's walk file in [phases](../phases/README.md); ticked checks stay as the record.
 - **A fix the owner passes teaches the recipe:** its class of mistake is written into the skill that produced it, as
   a plain instruction, and applied to every other quest before the next walk.
 - **Looks are the owner's call:** a model's or a placement's look goes to the owner, never decided by a reviewer.

@@ -71,7 +71,7 @@ Commit `plugin/Argonia`, the records and the runs together, by path.
 
 ## 6. The owner's walk check
 
-Add the check to [owner-walk-checks](../../../docs/owner-walk-checks.md) and post it with `python3
+Add the check to the phase's walk file in [phases](../../../docs/phases/README.md) and post it with `python3
 tooling/owner_inbox.py --post check`. In plain English, assuming no context: whether a new game is needed, where to
 go (the place by the name the game shows), whom to talk to and what to do, what passing looks like (the line, the
 journal entry, the marker on the compass and the map, every quoted word copied from the read-back forms), and how to
