@@ -117,7 +117,7 @@ into the `cs-height-fog` row; then `stack.py stage`) -> `esm` (`NewWorldAtmosphe
   warmth at least +0.05 and far fog warmth at least -0.10.
 - `python -m tools.newworld.identity check` and `table`: the identity sheets whole and the neighbour contrast table.
 - `python -m tools.newworld.atmosphere swatch`: per region set, the fair weather's sky, horizon, fog near and far, ambient
-  and sun at dawn, noon, dusk and night, beside Skyrim's base weathers (BM&V's) and Tropical Skyrim's.
+  and sun at dawn, noon, dusk and night, beside Skyrim's base weathers and Tropical Skyrim's.
 - `ArgoniaPlugin atmos sample <dir> <Data> <out.esm>` writes only the atmosphere's records through the writer's own
   `Build`, for a proof without the world.
 - `tools/newworld/verify.py`: the same atmosphere rows on the built world, and the mist rows (at least 1.4 x
@@ -128,7 +128,7 @@ into the `cs-height-fog` row; then `stack.py stage`) -> `esm` (`NewWorldAtmosphe
 
 Over the placed mist, Community Shaders' Exponential Height Fog draws a low, warm fog layer per weather, with light
 shafts in it. Code: `tools/newworld/atmosphere_cs.py`. Everything below is laid in the NewWorld profile only; the
-Argonia profile (Black Marsh & Valenwood) keeps the community-shaders row's files.
+other profile keeps the community-shaders row's files.
 
 1. **The add-on.** The `cs-height-fog` row (`mods/dependencies.json`, `profile: newworld`) is the feature's release
    asset built with the Community Shaders the stack lays (v1.9.1; its DLL requires the feature at 1-3-2, which this

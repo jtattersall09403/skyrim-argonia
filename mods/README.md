@@ -9,7 +9,7 @@ cache `s3://argonia-private-050977237313/mods/`.
 `dependencies.json` holds one row per mod: id, name, group, source (Nexus mod/file, GitHub release, or `vault`
 for a manual download held only in the private cache), version, why, the licence and permission fields, and the
 archive's sha256. Groups: `core` (script extender, fixes, frameworks, USSEP, the TDM/TrueHUD lock-on), `combat`,
-`traversal` (FreeClimb), `magic` (Magic Expanded), `world` (Black Marsh & Valenwood, the default world),
+`traversal` (FreeClimb), `magic` (Magic Expanded), `world` (Black Marsh & Valenwood, source places and pieces for ours),
 `dev` (houseCARL, laid only with `--dev`). Row order is load order; `plugins` lists the result.
 A `check` field is an open question to answer before the row is trusted. `sourcing-register.json` records every
 mod and tool we depend on.
@@ -35,11 +35,11 @@ default features; its Exponential Height Fog add-on is not laid. Each DLL is che
 
 ## Shutting vanilla down
 
-The vanilla-shutdown list in `docs/decisions/0012` is the spec for PLAN Phase 1's "shut the vanilla systems down"
-step; that phase writes `mods/allowed-quests.json`, the quests that may still run (the mods' controller and MCM
-quests, BM&V's, ours), and proves the rest stopped.
+The vanilla-shutdown list in `docs/decisions/0012` is the spec for the stack's "shut the vanilla systems down"
+step, which writes `mods/allowed-quests.json`, the quests that may still run (the mods' controller and MCM
+quests, ours), and proves the rest stopped.
 
-## Staging notes (Phase 1, 2026-11-05)
+## Staging notes (2026-11-05)
 
 - Row order is load order and masters must precede dependants: SkyUI sits before MCM Helper (stage refuses the other order).
 - AMMCO: the Distar/Default edit is staged (walk-pace speeds); see the row's `install_note`. SmoothCam: FOMOD default lays the .esp only. Sweep Attacks: nested Data folder, one standalone ESP.

@@ -8,7 +8,7 @@ description: Write topic dialogue in Morrowind's voice, built as Skyrim topics, 
 In the quest path ([quest-system](../quest-system/SKILL.md)) this comes after quest-write's briefs and the designed quest's paper playtest, and before text-review and the paper playtest of the written quest.
 
 The goal: lines that read as if they were Morrowind's, about our people
-and places in Black Marsh & Valenwood's (BM&V's) world; the lines become records made by the generic builder on top of BM&V. Bans are in `bans.yaml`, voice evidence in
+and places in the new world; the lines become records made by the generic builder. Bans are in `bans.yaml`, voice evidence in
 `voices.md`, deliberate echoes in `echoes.yaml`.
 
 ## 1. The brief

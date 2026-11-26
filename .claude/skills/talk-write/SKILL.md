@@ -5,7 +5,7 @@ description: Give every BM&V person in one settlement a name, a light backstory,
 
 # Talk for one settlement
 
-Design: `docs/design/talk.md` (the tables, the topic catalogue). `talk_check` enforces each rule. `S` is the settlement id (`bmv.lilmoth`).
+Design: `docs/archive/talk.md` (the tables, the topic catalogue). `talk_check` enforces each rule. `S` is the settlement id (`bmv.lilmoth`).
 
 **Who is covered.** Everyone the player can walk up to in the settlement: the census's people, and every person a
 quest places there. A quest's person gets their lines from the quest record (quest-write, Topics); this loop checks

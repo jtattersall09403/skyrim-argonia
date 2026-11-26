@@ -116,7 +116,7 @@ Read the band's `about` in the scale and choose the one that describes the perso
 3. An image (water, reed, root, stone, shadow, sky, boat, blade, eye, hand) appears in one name of the place at
    most.
 4. No canon name, no name the lore files carry, no name on the never-reuse list, no name another place, the
-   story's roster or a quest record gives (but the one a quest record gives the person the row casts), no name of a talker of BM&V (Black Marsh & Valenwood, the world mod the story plays in),
+   story's roster or a quest record gives (but the one a quest record gives the person the row casts), no name of a talker of BM&V (Black Marsh & Valenwood, the source mod),
    and nothing Nordic (decision 0006).
 
 ## 5. Write each backstory
