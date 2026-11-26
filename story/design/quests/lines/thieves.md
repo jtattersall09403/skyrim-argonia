@@ -163,8 +163,8 @@ marks it.
 **5. Eel-Slime** (Brackwater Waystation, a ruined customs shed east of Lilmoth; Lilmoth, the rebuilt stilt city).
 Smugglers guard their cache in the sea-cave under the shed, entered by a hatch in the shed floor, and they keep
 ripper eels in its deep pool to render slime (checked: Brackwater's source is Old Laboratory from King of the Murkmire, a small Imperial ruin on the water with one interior that serves as the sea-cave, while the shed above it, the hatch in its floor and the deep pool in the cave are added, with Skyrim's slaughterfish placed in the pool). The journal says the player may
-fight the smugglers or go quietly. The player fights them, sneaks past them to the pool (Sneak, with Muffle from the
-outpost's spell-seller), or buys a jar from their cache-master (Speech and 150 gold). With the slime on, the player
+fight the smugglers or go quietly. The player fights them, sneaks past them to the pool (Sneak, with Muffle from
+Lilmoth's dock mage), or buys a jar from their cache-master (Speech and 150 gold). With the slime on, the player
 opens the hatch on Pusbottom's walkways and swims the cistern below it, where the hall's own ripper eels leave them
 alone (checked: Lilmoth's source is King of the Murkmire's Lilmoth, whose sewers have a hideout room that serves as the hall under Pusbottom, entered through a hatch door that we set on the walkways, and whose first sewer room, the Surface Cisterns, serves as the cistern behind it). Without the slime
 the eels attack. At the far end is the hall, and its people, who attack a stranger, let a member pass. Its watchers

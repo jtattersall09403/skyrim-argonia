@@ -1,244 +1,287 @@
 # A more Argonian magic: the decision
 
-Written on 26 November 2026 to answer your request in issue #104. It is an options paper: the problem, why it matters,
-where we stand, four options from "do nothing" to "do most", and a recommendation. The decision is yours.
+Rewritten whole on 26 November 2026, to answer your request in issue #104. The first version of this page measured
+only the game as it is built today and ignored what our own plan already promises. You caught one case (the spell
+sellers). Checking the rest found 24 places where it contradicted, repeated or overlooked the plan. This version
+starts from the plan. Section 9 lists what was wrong before.
 
-The evidence is in three research notes beside this page: [stack-inventory.md](stack-inventory.md) (every spell the
-game has today and what can be reused), [lore-of-marsh-magic.md](lore-of-marsh-magic.md) (what the lore says, and what
-each of our 18 cultures would have developed) and [how-magic-mods-are-built.md](how-magic-mods-are-built.md) (how
-spell mods are made and what each technique costs).
+The evidence is in four notes beside this page:
+[what-the-plan-already-says.md](what-the-plan-already-says.md) (every spell, seller, blessing and power our quests
+and place records already hold, with file and line), [stack-inventory.md](stack-inventory.md) (every spell the game
+has and what can be reused), [lore-of-marsh-magic.md](lore-of-marsh-magic.md) (the lore, culture by culture) and
+[how-magic-mods-are-built.md](how-magic-mods-are-built.md) (how spell mods are made and what each technique costs).
 
 ## 1. The decision in five lines
 
-1. **You are choosing** how far to go in making magic feel like Black Marsh and not like Skyrim: nothing, words and
-   sellers only, a small native layer on top, or a full marsh spell list.
-2. **I recommend "Sap and Song"** (the "do more" option): the renaming and the sellers of the minimum option, plus
-   about ten Hist gifts that sit in the button Skyrim used for shouts, plus about twenty native spells made only from
-   records the game already holds.
-3. **Cost:** no fees in any option. No new visual effects in any option. The cost is agent time, which I can only
-   rank: small, medium, large (section 6).
-4. **The schools stay Skyrim's five** in every option, as you proposed. The lore supports that. What changes is which
-   spells are native, which are foreign, who teaches them and what they are called.
-5. **What you would see first:** three things to try in game before the rest is built: one renamed spell bought from a
-   marsh seller, one Hist gift, and one recoloured effect.
+1. **The plan already holds most of a native magic**, in pieces: Argonian and foreign spell sellers, a blessing from
+   15 Hist trees, an Argonian order that teaches a spell in most of its quests, and the shout button set aside for
+   "Hist communion powers". What is missing is that the pieces are not yet one thing a player would notice.
+2. **You are choosing** how far to go beyond building the plan as written: no further, tie the pieces together with
+   words and looks, grow the Hist's blessing into the communion powers, or go on to a full native list and spellmaking.
+3. **I recommend "Communion"** (the "do more" option), begun with a pilot at one tree, Helstrom's.
+4. **Cost:** no fees, no new visual effects and no new scripts in the first three options. The cost is agent time,
+   which I can only rank (section 7). The fourth option includes the plugin of our own that spellmaking needs.
+5. **One ruling is needed whatever you choose:** five schools or six (section 5).
 
-**Words used below.** A record: one entry in the game's data (a spell, an effect, a book). Record-only: a change made
-by editing records, with no script and no new art file. A tome: the book that teaches a spell. Magic Expanded: the mod
-in our list that adds 139 Morrowind-style spells. A power: a spell-like ability used with the shout button, usually
-once a day (the Argonian "Histskin" is one). Hist: the great thinking trees of Black Marsh. Sap: what a Hist bleeds.
-A tree-minder: the Argonian who tends a village's Hist. The quest form: our one way of writing quests as data, which
-can already teach the player a spell or power under a name of ours. King of the Murkmire, HTBM and the Mihail
-creature mods: mods we hold for the new world's creatures, which also contain finished spells.
+**Words used below.** A record: one entry in the game's data (a spell, an effect, a book). A tome: the book that
+teaches a spell. Magic Expanded: the mod in our list that adds 139 Morrowind-style spells. A power: a spell-like
+ability used with the shout button, usually once a day. Hist: the great thinking trees of Black Marsh. Sap: what a
+Hist bleeds. A tree-minder: the Argonian who tends a village's Hist. A blessing: a helpful effect that lasts eight
+hours, as Skyrim's shrines give. The Sisei-Xul: our Argonian order of healers, makers and grave-singers. The quest
+form: our one way of writing quests as data; it can teach the player a spell or power under a name of ours.
 
 ## 2. The problem
 
-Magic in our game is Skyrim's magic with Morrowind's added. The player has 258 spells that a tome teaches: 91 from
-Skyrim, 27 from its add-ons and 139 from Magic Expanded, plus Levitate. None of them is from Black Marsh. They are
-named and described for Nords, Imperials and Dunmer, sold (in Skyrim) by court wizards and a college, and they look
-the same in a mangrove as on a glacier. Skyrim gave its own province a magic of its own, the shouts. We removed the
-shouts (decision 0012) and put nothing in their place.
+The spells themselves are Skyrim's and Morrowind's: 258 that a tome teaches (91 from Skyrim, 27 from its add-ons, 139
+from Magic Expanded, plus Levitate). None was made for Black Marsh, and they look the same in a mangrove as on a
+glacier. Skyrim gave its own province a magic of its own, the shouts. We removed them, and decision 0012 set the
+button aside for "Hist communion powers", which nobody has designed since.
 
-Three things are also simply broken today, whatever you decide:
-
-- **Nobody in our world sells a spell.** All ten kinds of trader in Black Marsh & Valenwood stock smith's or
-  apothecary's goods, and our own one trader sells books but no tomes. The player has the two starting spells and a
-  test kit that is due to be removed.
-- **The Argonian power, Histskin, probably does nothing.** It speeds up natural healing, and our soulslike rule turns
-  natural healing off. This is read from the records, not yet tried in game.
-- **Mark and Recall do not know our world.** Their list of places where they may be used has to be extended to it.
+Our plan has grown native magic piece by piece, each for its own reason. Nothing yet says that the pieces are one
+tradition, how a player comes to feel it, or what a mage's whole game looks like from the first tome to the last.
 
 ## 3. Why it matters
 
-- **It is the cheapest large gain in feel still open to us.** Places, people, quests and music are being made
-  Argonian at real cost. Magic is on screen every minute a mage plays, and most of the change is words and records.
-- **The lore is unusually clear, and it is not Skyrim's.** Across five games Argonians are good at the same things:
-  Illusion, Mysticism (souls, memory, detection), Alchemy, healing and water. Never Destruction or Conjuration. Hist
-  magic is said to work "by different rules": it is given by the tree and carried in the body, not studied from books.
-  Argonians have no words for Daedra. Fire is the province's scar (the whole marsh burned in the First Era).
-  Robed college mages do not exist within 400 miles of Lilmoth.
-- **Our stories already assume it.** The Sisei-Xul line (the healers, makers and grave-singers) calls itself "the
-  province's one native order of magic" and teaches a spell in most quests. The main quest turns on Hist sap and
-  visions. House Cardruhn is a house of foreign necromancers. A world where magic has a native side and a foreign
-  side gives those stories their ground.
-- **It has to earn its place in play.** Every spell below is there because it does a job in our game: getting through
-  a soulslike fight, reaching something under water, surviving the marsh's diseases and poisons, or passing a
-  person without killing them.
+- **Most of the work is already promised.** Making it read as one native magic is cheap compared with places, people
+  or art, and magic is on screen every minute a mage plays.
+- **The lore is clear and it is not Skyrim's.** Across five games Argonians are good at the same things: Illusion,
+  Mysticism (souls, memory, detection, moving things), Alchemy, healing and water. Destruction and Conjuration are
+  never theirs by nature. Hist magic is said to work "by different rules": given by the tree and carried in the body,
+  not studied. No Mages Guild survives in the province.
+- **Our stories lean on it.** The main quest turns on sap, visions and a tree's blessing, and its three endings change
+  what the trees will give the player. The Sisei-Xul call themselves the province's one native order of magic.
+- **It has to earn its place in play.** Health does not come back by itself in our game, the marsh poisons and sickens,
+  much of what is worth finding is under water, and fights are hard. Each native piece below does one of those jobs.
 
-## 4. The shape all the options share
+## 4. What the plan already holds
 
-**Five schools, two traditions.** The schools and their skill trees stay exactly as Skyrim has them. Within each
-school a spell is either *given* (native: from the Hist, the tribe, the water) or *learned* (foreign: bought as a tome
-from an Imperial, Dunmer or pirate hand). The same spell list serves both; the difference is name, look, seller and
-place.
+Counted from the place records and the nine story lines (detail and line numbers in
+[what-the-plan-already-says.md](what-the-plan-already-says.md)).
 
-| School | The marsh's own (given) | Foreign (learned) | What it does for the player |
-|---|---|---|---|
-| Alteration | water (breathing, swimming, walking on it), clay and stone skin, shedding and slowing | Mark and Recall, telekinesis, time spells, the fire and frost shields | reaching wrecks, drowned ruins and the drowned Hist; armour for a caster |
-| Illusion | stillness, hush, false lights, dream-sight (the Agaceph are the province's illusionists) | Fury, Frenzy, Command | the quiet way past a guard or a beast; theft; scouting |
-| Restoration | sap healing, curing disease and poison, laying the dead (the grave-singers) | Divine healing, wards, Sun Fire | staying alive with no natural healing; the marsh's sicknesses; undead in ruins |
-| Destruction | poison, spores, acid, lightning (the wamasu, the marsh's lightning lizard) | fire and frost | damage that fits the place; fire is sold only by foreigners and is feared |
-| Conjuration | calling what the marsh already holds: a swarm, a wisp, a root guardian | atronachs, Daedra, raising the dead, soul trap | an ally in a hard fight; necromancy stays a foreign crime, which is what House Cardruhn's line needs |
+| Piece | What is planned |
+|---|---|
+| Spell sellers | 13 places. Argonian: the tree-minder's healer at Helstrom (Restoration, Alteration), the tree-minder's pupil at Tsonac (the Stone-Sleepers' stone spells, to Expert), an Agaceph illusionist at Hirecan (to Expert), small Illusion sellers at Icalca, Xibcan and Yina, hedge-mages at Archon and Yulca. Foreign: a Dibellan priestess at Gideon, a Breton dock mage at Lilmoth, an Imperial-descended mage at Soulrest, Dunmer mages at Stormhold and Thorn. Three booksellers also carry tomes |
+| What is not sold | Destruction, by nobody. Conjuration only at Lilmoth and Yulca. Nothing above Expert. Mark and Recall nowhere |
+| Trainers | 17 for magic: Alchemy 7, Illusion 4, Restoration 3, Alteration 3. None for Destruction or Conjuration |
+| Hist blessings | 15 trees, each with its own eight-hour blessing given to someone its people trust: water breathing at six, resist poison or disease at four, and one each of stronger health, stamina, alchemy, heavy armour and resist fire. An Argonian, who already breathes water, gets resist poison at Jal-Veesa. Five foreign shrines stand beside them (Dibella, the Nine, Saint Roris) |
+| The endings | Use the Eye: stronger blessings from every Hist. Take it or give it away: no Hist blesses the player again |
+| Powers | Three, all at the end: the Eye's Gaze (once a day, every foe in sight held still), a storm or a ward from Cuts-the-Old-Knot, and an ally called to the player's side |
+| Spells taught by quests | About 40 across the lines. The Sisei-Xul teach Stoneflesh, Detect Dead, Waterbreathing, Circle of Protection, Poison Spray ("as old marsh fighters used it"), Paralyze and Sun Fire. The Shadowscales teach Muffle, Night-Eye and Invisibility. The Lampbearers teach Calm, Throw Noise and Clairvoyance. An Eelskin teaches Telekinesis. House Cardruhn's teachers, one of them an Argonian, teach the raising and commanding of the dead |
+| Sap | A cup of it shows the player a true vision in the main quest. It is sold by sap-gatherers and herb-sellers in five places as an alchemist's good. It is also dangerous, smuggled, and what the Unbound steal |
+| Spellmaking | You asked for Morrowind's spellmaking back, "unlocked in an Argonian lore friendly way" (13 November). It waits in Phase 5 as a service at a Hist, needing a plugin of ours |
+| How the lore page puts it | "The mage in Argonia is a neighbour with a knack, a Nisswo, a sap-speaker or a tree-minder, never a robed academic"; spells are "bought, found, traded and taught informally" |
 
-**Balance.** No spell is made stronger than Skyrim's own spell at the same level; a native spell is a Skyrim or Magic
-Expanded spell's numbers under another name and colour, so the five levels (Novice to Master) keep Skyrim's costs.
-Each school gets one native line with a spell at each level, so a player can stay native from start to end. Sellers
-carry a short sheet of 12 to 20 spells (Morrowind's median is 15), never the whole catalogue, which also hides Magic
+**What that leaves missing:**
+
+- The shout button is empty until the last hour of the game.
+- A blessing is a shrine's eight-hour effect and nothing more; nothing lasting comes from a tree.
+- Eight of the 18 cultures have no magic of any kind in the plan (the Chime-Keepers, the Island of Blackrose, the
+  Three Waters Tribe, the Naka-Desh, the Hutan-Tzel, the Mine-Burners, the Warden Marches, and the Spray-Folk beyond
+  their potions).
+- No native summoning: every Conjuration spell in the plan is an atronach or the dead.
+- Every spell keeps Skyrim's name and look, and no seller has an actual list of spells yet, only a school and a level.
+
+## 5. The shape all the options share, and one ruling
+
+**Two traditions inside Skyrim's schools.** A spell is either *given* (it comes from a tree, a tribe or an order, by
+trust) or *bought* (a tome, from whoever sells it). This is already how the plan works; the options make it visible.
+
+| School | Native in the plan and the lore | Its job for the player |
+|---|---|---|
+| Alteration | water (breathing, swimming, walking on it), the Stone-Sleepers' stone skin, moving things at a distance | wrecks, drowned ruins and the drowned Hist; armour for a caster |
+| Illusion | the Agaceph's stillness, hush and night sight, false sounds, finding the way | the quiet way past a guard or a beast |
+| Restoration | sap healing, curing poison and disease, laying the dead (the grave-singers) | staying alive with no natural healing; the marsh's sicknesses; the dead in ruins |
+| Destruction | poison, as old marsh fighters used it. Fire, frost and lightning come only by quest and scroll | damage that fits the place; no seller of fire is planned and I would add none |
+| Conjuration | nothing native yet. Raising the dead is known to Argonians and breaks no Argonian law; what is hated is a soul kept from its Hist, which to them is slavery again | an ally in a hard fight |
+
+**The ruling: five schools or six.** You wrote in #104 that the schools should probably stay Skyrim's. But our lore
+page keeps six ("Mysticism survives in Argonia as a folk school"), and your list of quest skills of 6 November names
+Mysticism. The game has five skill trees; a sixth would need the perk menu rebuilt. I recommend five, with
+"Mysticism" kept as the Argonians' own word for one family of spells (souls, detection, moving things, finding the
+way) that sits in Alteration, Illusion and Conjuration, and the lore page and the skill list corrected to say so.
+
+**Balance.** A native spell is an existing spell's numbers under another name and colour, so the five levels keep
+Skyrim's costs. Sellers carry a short sheet of 12 to 20 spells (Morrowind's median is 15), which also hides Magic
 Expanded's padding (nine Command spells, seventeen Weakness spells) without deleting anything. Nothing is levelled
-against the player.
+against the player. The planned sellers stop at Adept or Expert; the strongest spells stay rewards of the orders.
 
-**Deliverability.** Nothing below goes past the scripting of the spells we already hold. Of Magic Expanded's 145
-spells, 84 use only Skyrim's stock effect types and no script; every new spell proposed is of that kind. Colour
-changes are made in the effect's record where the colour is stored there (108 of the game's effect looks are like
-that); the others, whose colour is in a picture file, are left alone. Spells and powers reach the player by seller,
-by tome in the world, or by the quest form's existing "teach a spell" step.
+**Deliverability.** Of Magic Expanded's 145 spells, 84 use only Skyrim's stock effect types and no script; anything
+new is of that kind. Colours are changed only where the colour is stored in the effect's record (108 of the game's
+effect looks are like that); this has not yet been done once in this project, so the pilot tries it. The quest form's
+"teach a spell" step is proven.
 
-**Lore calls I have made, for you to overrule if you wish.** The player of any race can be given Hist gifts once a
-tribe trusts them (the lore lets outsiders speak with a Hist at Hissmir). Fire and frost stay in the game as foreign
-magic. Atronachs, raising the dead and soul trap stay too, sold only by foreigners and treated by Argonians as
-abominations. Spell names are plain English, as Skyrim and the online game name Argonian abilities ("Histskin");
-Argonian words are kept for people, offices and places.
+**Smaller calls I have made, for you to overrule.** Mark and Recall are not sold: the plan places them nowhere, and
+they would bypass the boats, coaches and the rootworm. Levitate stays as you ruled. Names of new things are plain
+English ("Histskin" is the model), with Argonian words kept for people, offices and places. Spells that the quests
+already name plainly (Stoneflesh, Turn Undead, Tinur's Hoptoad and the like) keep their names.
 
-## 5. The options
+## 6. The options
 
-### Option 0. "As shipped" (do nothing)
+### Option 0. "The Plan as Written" (do nothing more)
 
-**The point:** spend nothing; accept that magic is the one part of the game that is still plain Skyrim.
+**The point:** build what section 4 lists and stop. That is already more native than Skyrim.
 
-**In game:** a mage's play is Skyrim's and Morrowind's spells under their own names. But as things stand there is no
-one to buy them from, so even this option needs the three repairs of section 2 (sellers of some kind, Histskin, Mark
-and Recall). Small effort; sure.
+**In game:** you buy healing from Helstrom's tree-minder and Illusion from an Agaceph, a tree blesses you for eight
+hours, the Sisei-Xul teach you as you rise. The spells are Skyrim's by name and look, and the shout button does
+nothing until the ending.
 
-**Why you might choose it:** magic is not what the game is sold on, and the soulslike fighting carries most players.
+**What it still needs:** each seller's actual list; the repairs of section 8. Small beyond what is already owed.
 
-### Option 1. "Marsh Names, Marsh Hands" (do minimum)
+### Option 1. "One Voice" (do minimum)
 
-**The point:** change no mechanics at all. Change the words and the hands the magic passes through, so the world
-itself tells the player where magic comes from. This is how Morrowind made magic feel local: by who sold what, where.
+**The point:** change no mechanics. Make the planned pieces read as one tradition.
 
-**What is built:**
+**What is built, on top of option 0:**
 
-- **Sellers with a character.** A tree-minder or sap-gatherer sells healing, cures and poison. An Agaceph raft-trader
-  sells Illusion. Harbour pilots at Archon sell the water spells. The grave-singers sell the laying of the dead. Fire,
-  frost, atronachs and Mark and Recall are sold only by the foreign mages our records already place (the hedge-mages
-  at Alten Corimont and Archon, the Dunmer mage at Stormhold, Soulrest, Gideon). About 15 to 20 sellers across the 24
-  regions, each with a sheet of 12 to 20 spells.
-- **New names and descriptions for about 50 spells** that are native in spirit but foreign in name. Stoneflesh becomes
-  Clay-Skin, Calm becomes a hush of the Chime-Keepers, Turn Undead becomes a grave-song, and Magic Expanded's
-  poison, wind, swimming and jumping spells get marsh names. Spells that stay foreign keep their names.
-- **The three repairs**, and the test kit of spells removed with the opening as already planned.
+- **Sellers' sheets written to the split.** Native sellers carry the native families (water, stone, hush, sap healing,
+  cures, poison); the foreign mages carry the rest. The few sellers the stories assume but the records lack are added
+  (section 8).
+- **Marsh names and descriptions for about 20 Magic Expanded spells** whose names are plainly from elsewhere and which
+  no quest names. Tome descriptions written in a marsh voice for the native families.
+- **The blessings made a family:** one look for a Hist's blessing (the amber-green of the Argonian Histskin effect,
+  which the game already has), one line of words when it is given, so the 15 trees feel like one thing.
+- **The lore page rewritten** to the plan and to your ruling on schools, so quests and dialogue speak of magic the
+  same way everywhere.
 
-**In game:** the first spell you buy is from an Argonian who tells you it was her mother's. Fire comes from a nervous
-Imperial in Gideon. The spells behave exactly as before.
+**In game:** the same spells, but the world tells you where magic comes from and a tree's blessing looks and sounds
+like nothing a shrine gives.
 
-**Cost and confidence:** small. Records and writing only. Renaming was proven in game before the change of plan (11
-spells); it is redone the current way, in our plugin. Sure.
+**Cost and confidence:** small. Records and writing. Sure, except the one recolour.
 
-**What it does not do:** nothing new to cast, nothing that looks different, nothing in place of the shouts.
+### Option 2. "Communion" (do more) - recommended
 
-### Option 2. "Sap and Song" (do more) - recommended
-
-**The point:** give the marsh a magic of its own in the place Skyrim kept its shouts, and a short list of spells no
-other province has, using only what the game already holds.
+**The point:** fill the shout button with what decision 0012 set it aside for, by growing the blessing the plan
+already has. No second system: one tree, two depths.
 
 **What is built, on top of option 1:**
 
-- **About ten Hist gifts.** These are powers, used with the shout button, usually once a day, given by a tribe's
-  tree-minder when the player has earned that tribe's trust (a quest stage, through the quest form's existing step:
-  no new script). One or two per culture that has a strong magic of its own, so travelling and helping people is how a
-  player grows a native magic, as finding word walls was in Skyrim. A first list, each from a stock effect:
+- **Communion at the trees.** A tree's people give a trusted stranger its eight-hour blessing, as planned. Someone
+  who has done that tree's people a real service is taken to the scar and comes away with a lasting power of that
+  tree, on the shout button, once a day. One power for each tree that has a character of its own: eight to ten of
+  the 15. The endings treat communion as they already treat blessings: using the Eye strengthens them; taking it or
+  giving it away costs the player every one. That makes the ending's price felt in play, which the plan asks for.
+- **A first list**, each from a stock effect and each kept below the Eye's Gaze, which stays the strongest:
 
-  | Gift | Given by | What it does | Its job in play |
+  | Tree | Its blessing in the plan | Communion power (working names) | Its job in play |
   |---|---|---|---|
-  | Spore Cloud | the Root-Folk of Helstrom | everyone close is held still for a few seconds | breathing room when surrounded |
-  | Sap-Mend | any tree-minder | a strong heal over a minute (Histskin, made to work with our no-healing rule) | the emergency heal |
-  | Drowned Root | the Island of Blackrose | breathe water and see the living through it | wrecks, drowned ruins, the drowned Hist |
-  | Stillstare | the Agaceph | one person who has not yet attacked stands frozen | past a guard without a fight |
-  | Chime-Hush | the Chime-Keepers | your steps are silent and nearby beasts calm | the quiet road through a den |
-  | Wamasu's Answer | the Stone-Sleepers of Tsonac | lightning wraps you and bites whoever strikes you | punishing close attackers |
-  | Root-Call | the Root-Folk, late | a root guardian fights beside you for a minute | an ally for a boss |
-  | Grave-Song | the Sisei-Xul grave-singers | the walking dead near you flee or fall | Ayleid ruins and bog blights |
-  | Clay-Skin of the Mound | the Clay-Mound People | heavy armour for a minute | a caster who must stand and fight |
-  | Sea-Memory | the Spray-Folk of Seafalls | shows the way to what you seek | finding the next step in open marsh |
+  | Helstrom | resist disease | a breath of spores: those close are held still for a few seconds | breathing room when surrounded |
+  | Truowa | stronger health | sap-mend: health returns for a minute | the emergency heal, in a game with no natural healing |
+  | Tsonac | heavy armour | the sleeper's stone: stone skin for a minute, with no spell cast | a caster who must stand and fight |
+  | Blackrose (the drowned Hist) | water breathing | lake-sight: the living seen through water and walls | diving for wrecks and ruins; scouting |
+  | Korydon (the chime-hung tree) | resist disease | chime-hush: silent steps, and beasts nearby grow calm | the quiet road through a den |
+  | Jal-Veesa | water breathing | the weir's ward: poison and disease cannot take hold for a minute | the sick ground of the Ayleid ruins |
+  | Archon | water breathing, cure disease | current-rider: swim very fast and stand on water | chases, crossings, boardings |
+  | Lilmoth (the feared third Hist) | water breathing, cure disease | the third root's rage: strike harder and be struck harder | the risky choice; sap "makes a fighter stronger" |
+  | Stormhold | resist poison | storm's answer: lightning bites whoever strikes you | punishing close attackers |
 
-- **About twenty native spells**, one line per school at every level, made as copies of Skyrim and Magic Expanded
-  spells with marsh names and, where the record allows it, marsh colours (sap amber, spore green, peat brown). For
-  example a spore burst that weakens to poison, a root-bind that slows, a lightning line named for the wamasu, a
-  swarm in place of the first atronach (Skyrim's own spriggan swarm), a false lantern that draws a guard away.
-- **Sellers and quests teach these first**, so a new player meets the native list before the foreign one.
+- **Each power has its deed.** Your rule is that a thing a quest teaches is used in that quest. So each communion is a
+  stage of a quest that already exists at that town where one does, or one small quest where none does, written
+  through the quest skills. This is the real cost of the option.
+- **A dozen native spells for the gaps the plan itself shows:** a first native summoning (a swarm, from Skyrim's own
+  spriggan effects), a poison and spore line through the five levels to sit beside Poison Spray, and one seller or
+  teacher for each of the cultures that has no magic at all.
 
-**In game:** you help the reed-cutters of a village and their tree-minder lets you lick the scar. You come away with
-a gift no book holds. By the middle of the game a mage has five or six gifts on the shout button and a spell list
-that reads as Black Marsh. A warrior who never opens the magic menu still collects gifts.
+**In game:** you do Helstrom's people a service and their minder takes you to the scar. From the first act a player of
+any build is collecting powers that only this province has, and choosing the Eye's fate at the end means choosing
+whether to keep them.
 
-**Cost and confidence:** medium. About ten power records, about twenty spell copies with tomes, a handful of
-recoloured effects, the sellers' sheets, and one line in each giving quest. All record-only; the teaching step is
-proven. Two things are unproven here and are what the pilot is for: a record-only recolour (never done in this
-project), and how once-a-day powers sit in soulslike fighting (it may want a shorter wait, which a record can set).
+**For an Argonian player:** every power above does something an Argonian does not already have. Histskin itself must
+be mended first (section 8).
 
-**Why this one:** the gifts are the single change that most separates us from Skyrim for the least work, they cost
-about the same as ten spells, and they give every faction and culture a reward to hand out that is not gold or gear.
+**Cost and confidence:** medium to large. The powers and spells are records and are small. The eight to ten deeds are
+quest writing, which is the larger part. Unproven: the recolour, and how once-a-day powers sit in soulslike fights
+(a record can shorten the wait). The pilot settles both at one tree.
+
+**Why this one:** it is the thing the plan already reserved and never filled, it joins the blessings, the trees, the
+main quest's endings and the shout button into one idea, and it gives every town with a tree something to hand out
+that is not gold or gear.
 
 ### Option 3. "The Deep Marsh" (do most)
 
-**The point:** make native magic the main magic of the game: a full list, used by the people and creatures you fight
-as well as by you.
+**The point:** make native magic the main magic of the game, and give the player the making of spells.
 
 **What is built, on top of option 2:**
 
-- **The finished spell sets inside the creature mods we hold**, brought in whole: a water school of 20 spells
-  (waterball, torrent, geyser, rain cloak and more), the wamasu's chain lightning and lightning cloak, a spore cloak,
-  acid sap and poison bomb, and summons of a fleshfly swarm, a miregaunt and a spectral wamasu. About 40 more spells,
-  set into the five schools and levels, with tomes and sellers.
-- **Enemies and locals cast marsh magic**, handed out by the distribution mod we already run: a tribe's hunters use
-  poison and hush, its minders heal with sap, foreign mages throw fire. This is what makes the difference felt by a
-  player who never casts.
-- **A signature for all 18 cultures** (the lore note has three to six ideas for each).
-- **Sap as fuel:** Hist sap, which exists as an item in those mods (great strength, but slowed and drugged), sold by
-  sap-gatherers and made part of a caster's kit.
-- **Spells that answer the place:** stronger in rain, in water or at night. The game has the conditions, but reports
-  on two of them conflict, so each is tried first.
+- **Spellmaking at the Hist**, as you asked: a service a tree-minder or a Nisswo offers once the story has earned it,
+  in which the player shapes effects they already know into a spell of their own. It needs a small plugin of our own
+  (the game cannot make a spell record while running) and is already written up for Phase 5.
+- **People and creatures who cast it.** A tribe's hunters use poison and hush, its minders heal, foreign mages throw
+  fire. The plan already has illusion-casting guards at Xibcan; this makes it general. It is what a player who never
+  casts would notice.
+- **A full native list of about 40 spells**, built on the water, lightning, spore and acid effects inside the
+  creature mods we hold. Those mods are used for their models only and their plugins never load, so each spell is
+  made as a record of ours that points at their effect files: more work than copying, and not yet tried.
+- **Spells that answer the place:** stronger in rain or in water. The game has the conditions; reports on two of them
+  conflict, so each is tried first.
 
-**In game:** a fight with marsh hunters is poison, spores and silence; a fight with Dunmer slavers is fire. Water is
-a weapon. The foreign spell list is the exception.
+**What I have left out:** sap as a caster's fuel. It was in the first version; it cuts against the main quest, where
+sap is sacred, dangerous and stolen.
 
-**Cost and confidence:** large, and the least sure. Our plugin would depend on four more mods for their spell
-records (not yet checked in the built game), about 60 spells must be balanced against soulslike fighting, and enemy
-casters change how hard fights are, which means your in-game checks. I would not approve it as a block: I would pick
-from it after option 2, starting with enemies casting what option 2 already made.
+**Cost and confidence:** large, and the least sure. I would not approve it as a block. I would take spellmaking as
+its own later item, as already planned, and pick the rest from the list after option 2.
 
-## 6. Comparison
+## 7. Comparison
 
-| | 0. As shipped | 1. Marsh Names, Marsh Hands | 2. Sap and Song | 3. The Deep Marsh |
+| | 0. The Plan as Written | 1. One Voice | 2. Communion | 3. The Deep Marsh |
 |---|---|---|---|---|
-| New to cast | nothing | nothing | 10 gifts, 20 spells | 10 gifts, about 60 spells |
-| Looks different | no | no | a few recolours | recolours and the creature mods' own effects |
-| In place of shouts | nothing | nothing | Hist gifts | Hist gifts |
-| Enemies use it | no | no | no | yes |
-| Scripts | none | none | none | none |
+| New to cast | nothing beyond the plan | nothing | 8 to 10 powers, about 12 spells | those, about 40 more spells, spells of the player's own making |
+| Looks different | no | the blessings | the blessings, the powers, a few spells | much of the native list |
+| The shout button | empty until the ending | empty until the ending | filled from the first act | filled |
+| Cultures with no magic | eight | eight | none | none |
+| Enemies use it | Xibcan's guards | the same | the same | yes |
+| New scripts | none | none | none | a plugin of ours, for spellmaking |
 | Fees | none | none | none | none |
-| Agent effort | small | small | medium | large |
-| Your checks in game | Histskin | one seller | the three-item pilot, then a walk | several, for balance |
-| Main risk | magic stays Skyrim's | modest gain | once-a-day powers may need tuning | balance, four more mods to depend on |
+| Agent effort | owed already | small | medium to large (the deeds are quests) | large |
+| Your checks in game | Histskin | one seller, one blessing | the Helstrom pilot, then a walk | several, for balance |
 
-Agent effort is a ranking, not a figure: I cannot estimate it reliably. The pilot in option 2 is where it gets
-measured, as with the new-art pilot.
+Agent effort is a ranking, not a figure: I cannot estimate it reliably. The pilot is where it gets measured.
 
-## 7. Recommendation and next step
+## 8. Recommendation, next step and repairs
 
-Choose **option 2, "Sap and Song"**, begun with a pilot of three things for you to try in game: a renamed spell
-bought from a marsh seller, the Spore Cloud gift, and one recoloured effect. If the pilot pleases you the rest of
-option 2 follows, and option 3 stays a list to pick from later.
+Choose **option 2, "Communion"**, begun with a pilot at Helstrom, which is already drafted: its tree-minder's seller
+sheet, its blessing with the new look, and its communion power with the deed that earns it. If the pilot pleases you
+the other trees follow one at a time, each a small piece of finished work. If you choose option 1, nothing is lost:
+option 2 is built on it.
 
-If you choose option 1, nothing is lost: option 2 is built on it.
+**Repairs owed whatever you choose** (found while checking, each a place where two of our own records disagree):
 
-Whatever you choose, the three repairs of section 2 are done, and the lore's stance on magic
-(`story/lore/topics/magic-practice.md`) is rewritten to match your choice, so quests and dialogue speak of magic the
-same way everywhere.
+- **Histskin probably does nothing.** It speeds natural healing, and our soulslike rule turns natural healing off.
+  Read from the records, not yet tried in game.
+- **The necromancers' entry test** told the player to buy the tome of Conjure Familiar from Thorn's apothecary, who
+  sells ingredients. Settled with this page: the line now names the two sellers the records give Conjuration to, the
+  Breton dock mage at Lilmoth and the hedge-mage at Alten Corimont.
+- **The Eelskins' fifth quest** sent the player to "the outpost's spell-seller" for Muffle at Brackwater Waystation,
+  a smugglers' ruin with no seller. Settled with this page: the line now names Lilmoth's dock mage, who sells Illusion.
+- **The final fight's helps** (a spell that burns the guardian, scrolls of a storm and of a paralysing spell, potions
+  against its venom) are not yet mapped to any existing spell.
+- **The endings' blessings** ("stronger blessings", "no blessing again") need a second strength and a switch on every
+  blessing record.
 
-## 8. What I could not check
+The second and third are settled; the others are settled with the work they belong to.
 
-- Whether Histskin is really dead under our no-healing rule (read from records; one look in game settles it).
-- The permissions pages of other authors' spell mods: Nexus refused automated reading. No option above copies from
-  them; they were read as examples only.
-- Whether the creature mods' spell records can be used from our plugin in the built game (option 3 only).
-- Nothing here was tried in game.
+## 9. What was wrong in the first version
+
+- "Nobody sells a spell": true only of the game as built today. Thirteen sellers are planned.
+- "We put nothing in the shouts' place": decision 0012 reserved it for Hist communion powers.
+- The ten "Hist gifts" were designed as a new thing beside the 15 planned blessings, ignored that the endings change
+  blessings, gave an Argonian water breathing, put stone skin with the wrong people, and included a power that shows
+  the way to a goal, against your rule that markers show only an area.
+- Necromancy, soul trap and moving things at a distance were called foreign. In our stories an Argonian teaches the
+  first two, another teaches the third, and raising the dead breaks no Argonian law.
+- "Fire is feared and sold by foreigners": no plan line says feared, and nobody sells Destruction at all.
+- Renaming Stoneflesh and Turn Undead: the quests already name both plainly.
+- "Mark and Recall do not know our world": not checked, and the plan does not use them.
+- The creature mods' spells were to be "brought in whole": their plugins never load.
+- Spellmaking, which you asked for, was left out.
+- "The schools stay five, and the lore supports that": our own lore page and your skill list say six.
+- Two proposed names are on our list of names never to reuse (they are King of the Murkmire's own).
+
+## 10. What is still not checked
+
+- Nothing here was tried in game, Histskin included.
+- A record-only recolour has never been made in this project.
+- Other authors' permission pages could not be read automatically. No option copies from their mods.
+- Which quest at each tree's town would carry its communion deed: that is worked out tree by tree, starting with the
+  pilot.
+- The plan's Act II main quests (5 to 12) and three older world-design pages were searched by keyword for magic, not
+  read whole.

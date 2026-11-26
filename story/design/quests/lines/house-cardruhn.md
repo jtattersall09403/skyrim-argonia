@@ -100,8 +100,8 @@ Thorn's market square. Thorn has a boat stop on the Archon, Seafalls and Tsonac 
 **Being let in.** Ervyn is a polite trader to everyone. A player with Conjuration 20 or more is asked to show what
 they can do: they cast any conjuration in front of him. He says "very good, I may have work for someone like you",
 and sends them to Coldbrine Mine, where a digger of the house works out of sight (quest 1). The test is easy by
-design: any character reaches Conjuration 20 by casting Conjure Familiar for a short while, and Thorn's apothecary
-sells its tome.
+design: any character reaches Conjuration 20 by casting Conjure Familiar for a short while, and its tome is sold by the
+Breton dock mage at Lilmoth and the hedge-mage at Alten Corimont.
 
 **The house's history and its name.** Once the player has joined, Neeja answers the topic *House Cardruhn*: "They
 were the Dres's tomb-keepers on this coast. When the Dres went home to Morrowind, this family stayed with the tombs
