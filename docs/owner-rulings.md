@@ -1125,8 +1125,10 @@ added here the day they are made, with the date and the issue.
   ("off the market") is checked against the drafted place and its source before it is written.
 
 - **2026-11-26, magic (decided by the lead, for the owner to confirm; owner call #105).** The proposal
-  [docs/research/magic/PROPOSAL.md](research/magic/PROPOSAL.md) answers #104 and awaits his choice of option; nothing
-  is built before it. Lore calls made in it: a player of any race can be given Hist gifts once a tribe trusts them;
-  fire and frost stay as foreign magic; atronachs, raising the dead and soul trap stay, sold only by foreigners and
-  held by Argonians as abominations; spell names are plain English, Argonian words kept for people, offices and
-  places; the five schools stay Skyrim's.
+  [docs/research/magic/PROPOSAL.md](research/magic/PROPOSAL.md) answers #104 and awaits his choice of option and his
+  ruling on five schools or six; nothing is built before it. It was rewritten whole the same day from what the plan
+  already holds, after he found the first version had ignored the planned spell sellers. Calls made in it: Mark and
+  Recall are not sold; Levitate stays as ruled; no seller of fire is added; new names are plain English and spells
+  the quests already name keep their names; a player of any race may be given a tree's communion as they may its
+  blessing. Withdrawn: "necromancy and soul trap are foreign only" (an Argonian teaches them in House Cardruhn's line).
+  Lesson for proposals: start from the plan's own records and story lines, then the built game.
