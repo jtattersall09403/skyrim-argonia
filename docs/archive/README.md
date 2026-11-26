@@ -16,4 +16,4 @@ edited. Nothing here binds; read them only for how something was proved.
 | [5-scale.md](5-scale.md) | Phase 5: scaling the story over BM&V's world. Replaced by the new world's phases nw-07 to nw-12. |
 
 Before BM&V, the first week (2026-10-27 to 2026-11-05) built a total conversion with its own generated world and
-systems; it was thrown away at the pivot (decision 0038) and is in git history only.
+systems; it was thrown away at the pivot of 2026-11-05 and is in git history only.
