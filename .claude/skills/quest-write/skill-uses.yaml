@@ -1,5 +1,4 @@
-# The skill-use catalogue: what a quest asks the player to DO, by Skyrim's eighteen skills and Mysticism (Magic
-# Expanded), each use one the quest form can deliver (docs/design/quest-form.md; principles/general.md, "What a quest
+# The skill-use catalogue: what a quest asks the player to DO, by Skyrim's eighteen skills, each use one the quest form can deliver (docs/design/quest-form.md; principles/general.md, "What a quest
 # may use"). A quest's actions are drawn from here, so they use and build the player's real skills. Variety comes
 # from crossing a use with a target and a setting.
 #
@@ -63,7 +62,6 @@ skills:
   alteration:  {family: magic, system: magic, uses: [water-breathe, detect-life, telekinesis]}
   conjuration: {family: magic, system: combat, uses: [summon-help, banish, soul-trap]}
   illusion:    {family: magic, system: magic, uses: [calm, frenzy, become-invisible]}
-  mysticism:   {family: magic, system: magic, uses: [detect-life, telekinesis, read-an-enchantment]}
   # craft
   alchemy:     {family: craft, system: checks, uses: [test-a-sample, identify-a-poison, gather-ingredients]}
   enchanting:  {family: craft, system: checks, uses: [read-an-enchantment]}

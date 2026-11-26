@@ -23,7 +23,7 @@ main:
 daedric:
   from: "lines.json quest.line.daedric (the WONDER seam)"
   families: {magic: 2.5, speech: 1, combat: 0.8, craft: 1, endure: 0.3}
-  skills: {conjuration: 2, mysticism: 2, enchanting: 1.5, illusion: 1.5}
+  skills: {conjuration: 2, alteration: 2, enchanting: 1.5, illusion: 1.5}
   targets: [daedra, undead-and-spirits]
   settings: [ruin, height, underwater]
 
@@ -55,7 +55,7 @@ lampbearers:
   from: "story/design/quests/lines/lamps.md (the Lampbearers' cases, rivals of the Eelskins and the Shadowscales); nw-05c (speech, sneak, lockpicking, illusion); principles/investigation.md"
   faction: faction.lampbearers
   families: {speech: 3, stealth: 2, craft: 1.5, magic: 1.2, combat: 0.7, endure: 0.2}
-  skills: {speech: 3, sneak: 2, pickpocket: 1.5, lockpicking: 1.5, alchemy: 1.5, mysticism: 1.5}
+  skills: {speech: 3, sneak: 2, pickpocket: 1.5, lockpicking: 1.5, alchemy: 1.5, illusion: 1.5}
   targets: [people]
   settings: [household, crowd, ruin]
 
