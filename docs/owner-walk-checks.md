@@ -1,5 +1,10 @@
 # Owner walk checks owed
 
+> 2026-11-26: the Black Marsh & Valenwood version is retired ([0042](decisions/0042-the-new-world-is-the-project.md)).
+> Sections 1, 5 and 8 (the stack) are still owed and are walked in the new world; sections 2, 3, 6, 7 and 9 to 12
+> were checks of BM&V's world and its quests and are no longer owed. The new world's walks are in the phase files
+> ([PROGRESS](PROGRESS.md)).
+
 The one list of in-game checks the owner owes. The owner ticks a box when a check has been done and the owner is satisfied with the result, owner will write in claude code session if any issues. Agents: read this before posting a walk,
 add a check here when you build something only the owner can see in game. Add the smallest number of checks that proves what needs to be proven. Do not move ticked checks, we keep them here as a record. A check that passed is never re-asked.
 

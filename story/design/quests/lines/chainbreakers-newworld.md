@@ -1,7 +1,7 @@
 # The Chainbreakers: the plot
 
 This page is the Chainbreakers' plot, written on 2026-11-16 to the owner's words in
-[the factions overhaul](../../../../docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md) and revised on
+[the factions overhaul](../../../../docs/phases/nw-05c-factions-overhaul.md) and revised on
 2026-11-17 to his story explorer notes and his names reply. Every quest is set in a place whose source holds what the
 quest needs. Where a quest relies on something major of a place, an item or a creature, the text says in brackets
 which source place gives it and how we know: what that source's buildings, interiors and placed pieces are, or

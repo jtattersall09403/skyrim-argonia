@@ -1,7 +1,7 @@
 # Bramman's Brethren: the plot
 
 This page is the plot of the pirates' line, written on 2026-11-16 from the owner's words in [the factions
-overhaul](../../../../docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md) and revised on 2026-11-17 to his
+overhaul](../../../../docs/phases/nw-05c-factions-overhaul.md) and revised on 2026-11-17 to his
 story explorer notes. Its rival is the Topal Bay Company of Gideon ([merchants](merchants.md)). The two plots are one
 war seen from both sides: section 6 fixes the shared events once. Every quest is set in a place whose source place
 has what it needs, and each sentence that leans on a part of a place, a named thing or a creature says in brackets

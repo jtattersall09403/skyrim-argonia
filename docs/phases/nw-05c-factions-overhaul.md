@@ -2,7 +2,7 @@
 
 Opened on 2026-11-16 from the owner's story explorer batch of that day (77 notes: 21 answered before as drafts, 56
 new). His two long notes are below, word for word; what was agreed and done follows them. The main plot's own notes
-are answered in [main-plot](../../../story/design/quests/lines/main-plot.md) and in the explorer.
+are answered in [main-plot](../../story/design/quests/lines/main-plot.md) and in the explorer.
 
 ## The owner's words: the explorer, the atlas and the factions
 
@@ -257,14 +257,14 @@ Written by the lead on 2026-11-16. The owner's words above are the brief; this s
 
 ### The order of work
 
-1. **Rulings recorded** in [owner-bar](../../../story/design/owner-bar.md) and
-   [owner-rulings](../../owner-rulings.md); his earlier faction rulings from both repositories gathered in
-   [owner-rulings-on-factions](../../research/writing/owner-rulings-on-factions.md).
-2. **The skills take the main quest's lessons first.** [story-line](../../../.claude/skills/story-line/SKILL.md)
+1. **Rulings recorded** in [owner-bar](../../story/design/owner-bar.md) and
+   [owner-rulings](../owner-rulings.md); his earlier faction rulings from both repositories gathered in
+   [owner-rulings-on-factions](../research/writing/owner-rulings-on-factions.md).
+2. **The skills take the main quest's lessons first.** [story-line](../../.claude/skills/story-line/SKILL.md)
    starts every line with a plot page in the main plot's form and says how a plot is built (the source place first,
    danger climbing with the line, each quest leading to the next, real choices of ways, branches walked to their
    end). `python3 -m tools.newworld.plot_check` prints a line's danger ladder and fails a step out of order.
-3. **The main plot answers his notes** ([main-plot](../../../story/design/quests/lines/main-plot.md)).
+3. **The main plot answers his notes** ([main-plot](../../story/design/quests/lines/main-plot.md)).
 4. **The eight faction plots are written fresh**, by Opus 5.5 at medium effort, with no reader or player rounds,
    one lane for each set of rivals so that their stories meet:
 
@@ -278,10 +278,10 @@ Written by the lead on 2026-11-16. The owner's words above are the brief; this s
    The cities are where a lane starts looking, checked against the lore; a faction may sit elsewhere with a reason.
 5. **The old stories go.** Every old line file is deleted when the new plots land (git keeps them): the fourteen old
    line stories and the old main quest line. Each old faction name, with what replaced it or that it was cut, is in
-   [retired-names](../../../story/design/retired-names.json). The consistency ledger and the province plan are cut down to what the new plots hold.
+   [retired-names](../../story/design/retired-names.json). The consistency ledger and the province plan are cut down to what the new plots hold.
    Done on 2026-11-16.
 6. **The explorer** shows a faction as its plot page, with what the faction is at the top, one paragraph a quest,
-   and the page "Spells by use" ([spell-groups](../../../story/design/quests/spell-groups.md)).
+   and the page "Spells by use" ([spell-groups](../../story/design/quests/spell-groups.md)).
 7. **The atlas and the place records**: each place's source place in prose, how it is adapted and what it needs;
    every record's prose checked against the ceiling and against what its source place holds.
 
@@ -303,8 +303,8 @@ one province. The pages are `main-plot.md`, `lamps.md` (the Lampbearers), `thiev
 Bramman's Watch on Aphon Isle), `merchants.md` (the Topal Bay Company) and `chainbreakers-newworld.md`, with
 `owing-house.md` (House Ulvarys) as background. The rulers are the Xeech-Leel and the main quest's order the
 Toh-Reel-Ka (rename map). The rules between the pages are in the
-[consistency ledger](../../../story/design/quests/lines/consistency.md); every faction can be played at any point of
-the main quest. Gear for each faction's ranks is in [reward-gear](../../../story/design/quests/reward-gear.md). The
+[consistency ledger](../../story/design/quests/lines/consistency.md); every faction can be played at any point of
+the main quest. Gear for each faction's ranks is in [reward-gear](../../story/design/quests/reward-gear.md). The
 reconciliation call's recommendations (#75) stand as working defaults until the owner answers.
 
 Owed, in order:
@@ -319,7 +319,7 @@ Owed, in order:
    Owed for the main quest: its records imported once the new world's places are in the story database; the
    Unbound's highest rank named; the side quests of plot §6 written; dialogue (dialogue-write) and the build.
 2. The eleven blocks beyond the ceiling are approved (#73, 2026-11-16) and listed in
-   [blocks](../../design/blocks.md), "Blocks owed". Each is built and proven once before a quest uses it.
+   [blocks](../design/blocks.md), "Blocks owed". Each is built and proven once before a quest uses it.
 3. The travel menu (`newworld/sources/travel/menu.json`, an input of the world file's writer) still labels Bramman's
    Watch, Ashgate Landing and Alten Corimont by their old names. `travel_menu generate` renames them at the next world
    rebuild, which then rewrites the world file.

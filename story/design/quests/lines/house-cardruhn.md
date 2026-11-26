@@ -1,7 +1,7 @@
 # House Cardruhn: the plot
 
 This page is the plot of the Dunmer necromancers of Thorn. It was written on 2026-11-16 to the owner's notes in
-[the factions overhaul](../../../../docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md), under the name the
+[the factions overhaul](../../../../docs/phases/nw-05c-factions-overhaul.md), under the name the
 Rothalen house, and revised on 2026-11-17 to the name the owner chose (#74) and to his story explorer notes on the
 other lines. Its rival's plot is [the Sisei-Xul](sisei-xul.md): the two pages tell one war from its two sides. Every
 quest is set in a place whose record and source place give what it needs. Each thing a quest asks of a place says in

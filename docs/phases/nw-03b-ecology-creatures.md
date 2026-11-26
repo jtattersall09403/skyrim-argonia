@@ -35,7 +35,7 @@ DO NOT change the terrain or trees or scatter or groundcover. Do not do anything
 # Delivered (round 2: the ecology stage)
 
 - Every creature kind bound to real records or dropped with its reason (`newworld/sources/ecology/bindings.json`: 68 of 96 kinds, 167 records); each lore-backed hostile group bound to varied non-Nord looks and band gear tiers (38 of 39; the Velothi undead have no actor); damage by band through our per-band unarmed-damage abilities and kit weapons, its check in the ecology stage's check.
-- The rebuild stage `ecology` (`tools/newworld/ecology/place.py`), its check and its readback rows; band actors at fixed levels written as ACHR by the world writer; green on the small world (91 actors). The recipe: [ecology](../../design/ecology.md).
+- The rebuild stage `ecology` (`tools/newworld/ecology/place.py`), its check and its readback rows; band actors at fixed levels written as ACHR by the world writer; green on the small world (91 actors). The recipe: [ecology](../design/ecology.md).
 - Harvestables measured per region against Skyrim and the region tables (ecology.md, Harvestables); none added.
 
 Owed: the full rebuild and deploy, binding the regions' lore harvestables to FLOR and INGR records where a region lacks them (the sea first), and the owner's walk (nw-03b-walk.md).
@@ -95,7 +95,7 @@ Later, with a LOD build: one landmark silhouette per region, and how open or clo
 - Fixes found by the integration: copied actors keep a fixed level (decision 0035); one record serving two sizes gets
   an actor a size; the ecology overlap check judges neighbours; the water and mist read-backs read a region's water
   variant as its kind; near-sighted regions' fair-weather fog leaves the sky; the level-up in Skyrim's two parts
-  ([level-up audio](../../research/skyrim/level-up-audio.md)); every ArgoniaPlugin build takes one lock.
+  ([level-up audio](../research/skyrim/level-up-audio.md)); every ArgoniaPlugin build takes one lock.
 - Close-out: the low mist's sea guard read a region's sea variant (`sea@<region>`) as land, so about 130 mist refs sat
   at the sea's edge and the read-back's graded-by-class row counted sea cells (0.68, red); both now take the kind
   before the `@`. The id registry holds each graded water record by its name's digest (1.75 MB to 756 KB, all 18,549

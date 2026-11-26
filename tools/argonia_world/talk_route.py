@@ -1,4 +1,4 @@
-"""Directions as routes (docs/phases/4a-talk-to-everyone.md, recipe v2 rule 1): from a speaker's placed ref to a
+"""Directions as routes (docs/archive/4a-talk-to-everyone.md, recipe v2 rule 1): from a speaker's placed ref to a
 target (a ref or a map marker), a walkable or swimmable route over BM&V's loaded world, told as Morrowind-style legs
 with real landmarks at the turns, each waypoint with its form key.
 

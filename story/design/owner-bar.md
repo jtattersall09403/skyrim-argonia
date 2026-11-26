@@ -88,7 +88,7 @@ reads this first; a new ruling is added here the day it is made, as well as to o
 ## The factions
 
 His words on each faction (skills, how it is joined, its rival, its choice and its ending) are in
-[the factions overhaul](../../docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md) and are read whole before
+[the factions overhaul](../../docs/phases/nw-05c-factions-overhaul.md) and are read whole before
 a faction is written. Every earlier ruling of his on factions, from this repository and the first one, is gathered
 with its source in [owner-rulings-on-factions](../../docs/research/writing/owner-rulings-on-factions.md).
 
@@ -223,7 +223,7 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
 - Endings' visions are the staged ending scene ("They will be a pain to make", so it is for the end of the main
   quest only), made later; messages are the fallback and carry what the scene cannot show (OR 2026-11-16, story explorer notes).
 - The factions the owner wants, their skills, how each is joined, their rivalries and their endings are in
-  [the factions overhaul](../../docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md), in his words
+  [the factions overhaul](../../docs/phases/nw-05c-factions-overhaul.md), in his words
   (OR 2026-11-16, story explorer notes). Each faction is heard of through rumours, which start a small quest to find it; a late point in a rival's
   line shuts its door.
 - Every major thing a quest asks of a place (a cellar, a locked inner part, water inside, a second way in, a great

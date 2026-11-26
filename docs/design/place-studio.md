@@ -4,7 +4,7 @@ How a place of the new world is built: its source place carried whole onto our g
 agent (decision [0041](../decisions/0041-a-place-is-its-source-carried-whole-and-adapted-by-hand.md), skill
 `place-system`), edited by the owner in the studio, and built into the place layer. A place is a row, never a
 special case.
-The phase is [nw-03](../phases/new-worldspace-plan/nw-03-build-helstrom.md); the rulings are in
+The phase is [nw-03](../phases/nw-03-build-helstrom.md); the rulings are in
 [owner-rulings](../owner-rulings.md) (2026-11-09).
 
 ## The pipeline

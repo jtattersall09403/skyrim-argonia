@@ -196,7 +196,7 @@ def build(w: db.World) -> None:
     w.insert_many("region_flora", rows)
 
 
-REPORT = ROOT / "docs" / "phases" / "new-worldspace-plan" / "research" / "nw-02-region-flora.md"
+REPORT = ROOT / "docs" / "phases" / "research" / "nw-02-region-flora.md"
 
 
 def report(w: db.World) -> str:

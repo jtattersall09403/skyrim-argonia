@@ -1,7 +1,7 @@
 # The Eelskins: the plot
 
 This page is the plot of the Eelskins, the thieves' guild of the south, written on 2026-11-16 to the owner's notes in
-[the factions overhaul](../../../../docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md) and revised on
+[the factions overhaul](../../../../docs/phases/nw-05c-factions-overhaul.md) and revised on
 2026-11-17 to his story explorer notes. The Eelskins have two rivals, the Lampbearers ([lamps](lamps.md)) and the
 Shadowscales ([shadowscales](shadowscales.md)). Each of the three lines tells its own late story; the rivals appear
 in it with the same leaders and the same seats. Every quest is set in a place whose source holds what the quest

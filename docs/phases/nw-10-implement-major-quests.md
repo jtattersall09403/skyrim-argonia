@@ -10,5 +10,5 @@ Implement the rest of the quests for the main quest and the faction quests, in t
   ending's music, the trees shown changing), the block approved in #71. What the scene cannot show (the cellar
   opened, the Toh-Reel-Ka's rage) stays as the messages after it. Until the scenes are made, messages carry the whole
   vision
-  ([main-plot](../../../story/design/quests/lines/main-plot.md), section 8).
+  ([main-plot](../../story/design/quests/lines/main-plot.md), section 8).
 - **The final guardian's music**: one boss track from a composer whose licence allows it, set on the hydra's fight.

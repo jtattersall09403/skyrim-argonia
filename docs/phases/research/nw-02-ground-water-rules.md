@@ -6,7 +6,7 @@ Measured 2026-11-08 on this machine from the Data folder plugins (Skyrim, Update
 
 ## 0. Which live docs cover this, and what this confirms or changes
 
-Covered already: `docs/phases/new-worldspace-plan/research/nw-02-salvage.md` (texture edges, water edge sequence, roads, WATR templates), `.../nw-02-flora-rules.md` (flora co-occurrence, water distance, seabed), `docs/research/skyrim/skyrim-does-it-this-way.md` (§7 weather, §8 mist), `.../terrain-measurements.md` (heights).
+Covered already: `docs/phases/research/nw-02-salvage.md` (texture edges, water edge sequence, roads, WATR templates), `.../nw-02-flora-rules.md` (flora co-occurrence, water distance, seabed), `docs/research/skyrim/skyrim-does-it-this-way.md` (§7 weather, §8 mist), `.../terrain-measurements.md` (heights).
 
 - CONFIRMED: Road surface meshes plus a trough, no crown (salvage "Roads"): the road meshes (section 2) sit at +0.0 to +0.2 m over the ground. `LRiverbedEdge01` hugs the water edge (White River: 0.42 weight 0-2 m inside the water line, 0.38 at 0-2 m on land, 0.24 at 2-5 m, 0.09 at 5-10 m; salvage says "+128 u" = 1.8 m, the band is about 5 m). Flat land textures from the water line: BM&V is uniform (section 4), which is the "swathes" failure the salvage doc names.
 - CONTRADICTED: salvage "RoadChunk stones on the road (lateral p50 2.8 m, ~15 per 100 m)". `RoadChunk{S,M,L}0n` are road-surface patch meshes (same `Road01` texture and a ground-texture skirt; 1.2 m to 5.3 m across by NIF extent, section 2), not stones. The stones beside roads are `RockPile*` and `Rock{S,M,L}*` refs (section 2.4).
@@ -15,7 +15,7 @@ Covered already: `docs/phases/new-worldspace-plan/research/nw-02-salvage.md` (te
 - SUPERSEDED: salvage item 9 says read WATR templates from "Tropical Skyrim DefaultWater 81,174,165 / 28,104,140". In the staged load order TS is absent, and the winner is Update.esm: `DefaultWater` shallow (38,39,24) deep (5,14,18), opacity 50, refraction 40, flowmap scale 1 (section 3.1). Using TS's turquoise water is a decision, not a template read.
 - NEW (not in any doc): flowmaps are per-cell `textures\water\<plugin>\flow.<x>.<y>.dds` selected by the `EnableFlowmap` WATR flag (section 3.3); BM&V paints no texture progression at the water's edge at all (section 4.6); BM&V's swamp plant cover is placed reed statics, not GRAS (section 1.4).
 
-The one doc to edit: `docs/phases/new-worldspace-plan/nw-02-textures-plants-scatter-water.md` (the phase file is the work; add the rule set of section 7 under its Water, Roads and Atmosphere headings). No new file.
+The one doc to edit: `docs/phases/nw-02-textures-plants-scatter-water.md` (the phase file is the work; add the rule set of section 7 under its Water, Roads and Atmosphere headings). No new file.
 
 ## Rule set in brief (each rule is derived in the section named)
 

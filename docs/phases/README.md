@@ -1,5 +1,16 @@
 # Project Tamriel Worldspace
 
+> **Added by the lead, 2026-11-26.** The owner has retired the BM&V version and made this worldspace the project
+> ([decision 0042](../decisions/0042-the-new-world-is-the-project.md)); the plan is [PLAN.md](../PLAN.md) and the
+> status of each phase below is in [PROGRESS.md](../PROGRESS.md). The owner's words follow as he wrote them on
+> 2026-11-08, when this work began beside the BM&V work; the BM&V phase plans are in [archive/](../archive/README.md).
+> Phases: [nw-01](nw-01-map-extraction.md), [nw-02](nw-02-textures-plants-scatter-water.md),
+> [nw-03](nw-03-build-helstrom.md), [nw-03b](nw-03b-ecology-creatures.md), [nw-04](nw-04-mine-similar-places.md),
+> [nw-05c](nw-05c-factions-overhaul.md), [nw-06](nw-06-build-slice-places.md), [nw-07](nw-07-build-opening-act.md),
+> [nw-08](nw-08-build-slice-2-places.md), [nw-09](nw-09-build-quest-places.md),
+> [nw-10](nw-10-implement-major-quests.md), [nw-11](nw-11-build-everywhere-else.md),
+> [nw-12](nw-12-implement-remaining-quests.md). Working papers: [research/](research/).
+
 Goal: Create a new worldspace in parallel with our main work in this repo (which focuses on building out quests, factions, NPCs and dialogue in the BM&V worldspace).
 
 The current project will prove that we can we can adapt our story and quest plan to an existing worldspace and build it into that world, on top of a preferred mod stack. The limit with that world is that it is only a certain amount of world space as created by the Black Marsh and Valenwood mod and doesn't cover the whole of Black Marsh.

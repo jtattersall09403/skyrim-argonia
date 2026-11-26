@@ -1,97 +1,109 @@
-# The plan: Elder Souls: Argonia, on Black Marsh & Valenwood
+# The plan: Elder Souls: Argonia
 
-Written 2026-11-05 at the owner's pivot ([decision 0038](decisions/0038-the-pivot-bmv-is-the-world.md)). The
-first week built a total conversion with its own generated world, systems, UI and test harness; that experiment
-failed and was thrown away. This plan starts again. Read it whole at the start of every session, then
-[PROGRESS.md](PROGRESS.md).
+Read this whole at the start of every session, then [PROGRESS.md](PROGRESS.md) and the current phase's file in
+[phases/](phases/README.md).
 
 ## 1. What we are building
 
-A free Skyrim SE mod set, playable by the owner over the stream, made of:
+A free Skyrim SE mod, playable by the owner over the stream and released in time as one mod with its
+dependencies, made of:
 
 1. **Vanilla Skyrim SE** at the pinned runtime (1.7.104, SKSE 2.3.1; [0002](decisions/0002-one-pinned-skyrim-runtime.md)).
-2. **Black Marsh & Valenwood (BM&V)** as the **default world**: a new game starts in Black Marsh through an
-   start quest of our own that skips Helgen and goes straight into our opening (Enderal-style), and the vanilla systems that would still fire are shut down (the main quest, dragon
-   attacks, the civil war, the Thieves Guild and other couriers, Skyrim's radiant quests;
-   [0012](decisions/0012-vanilla-skyrim-is-quarantined.md)).
-3. **Soulslike combat** from the Nexus collection
-   [xyf1u3 "Soulsborne Combat"](https://www.nexusmods.com/games/skyrimspecialedition/collections/xyf1u3), used
-   out of the box, plus **FreeClimb** and **Magic Expanded** (Morrowind's spells and schools).
-4. **Our story on top**: the storyline, quests and factions designed for Argonia
-   ([story/](../story/README.md)), adapted to the world BM&V already built, with minimal tweaks: NPCs, items,
-   bosses and creatures added, removed or changed. This is the main work and runs for as long as the project does.
+2. **Our own world of Black Marsh** ("the new world" throughout the repo: `newworld/`, `tools/newworld/`): one
+   worldspace of the whole province, generated from Project Tamriel's map of Black Marsh, with its 24 regions and
+   258 places, its ground, water, plants, creatures, weather and distant view. A new game starts in it through a
+   start quest of our own, and the vanilla systems that would still fire are shut down
+   ([0012](decisions/0012-vanilla-skyrim-is-quarantined.md)).
+3. **Places carried from source places.** Each of our places has one source place in a mod we depend on (Black
+   Marsh & Valenwood, King of the Murkmire) or in Skyrim, carried whole onto our ground and adapted by hand
+   ([0041](decisions/0041-a-place-is-its-source-carried-whole-and-adapted-by-hand.md)), then edited by the owner
+   in the place studio. We make no art except music.
+4. **Soulslike combat** from the Nexus collection
+   [xyf1u3 "Soulsborne Combat"](https://www.nexusmods.com/games/skyrimspecialedition/collections/xyf1u3), plus
+   **FreeClimb**, and magic on Skyrim's five schools (what magic we add is the owner's open call, #105).
+5. **Our story**: the main quest and the faction lines ([story/](../story/README.md)), written for this world
+   inside the Morrowind-level ceiling and built as data in the one quest form.
 
-Everything the player meets is a record in our own plugin over BM&V and the mods, plus Papyrus where a record
-cannot do it. We make no art, no world, no engine code of our own.
+### A short history
 
-## 2. How we work (the whole process)
+- **2026-10-27 to 11-05:** a total conversion with its own generated world, systems, UI and test harness. It
+  failed and was thrown away (decision 0038).
+- **2026-11-05 to 11-26:** our story modded onto the world of the Black Marsh & Valenwood mod. It proved the mod
+  stack, the quest form and its blocks, the dialogue method and the skills. Its plans are in
+  [archive/](archive/README.md).
+- **2026-11-08 on:** the new world, begun beside the BM&V work and, since 2026-11-26, the whole project
+  ([0042](decisions/0042-the-new-world-is-the-project.md)).
 
-- **As light as possible.** This file is the plan; [PROGRESS.md](PROGRESS.md) is the status (one line per phase
-  and per block); decisions hold the why; [docs/research/](research/README.md) holds facts worth keeping. No chunk
-  briefs, ledgers, rounds, journeys or gates beyond `make check` (lint, unit tests, the no-assets guard).
-- **Agents do not test in game.** The owner tests. An agent proves its work off game (the plugin loads in xEdit
-  or houseCARL without errors, the script compiles, the record diff is what was intended) and then posts one
-  owner check: what to look at, where, how, in plain English (`tooling/owner_inbox.py --post`).
-- **Prove a building block once, then reuse it everywhere.** Phase 3 proves each kind of change on one example
-  (one NPC's dialogue, three ways to start a quest, the script types, a placement on existing navmesh, a faction,
-  an item, a boss). Once the owner has verified a block in game, every later use of the same block is built the
-  same way and not re-tested individually. Only a new kind of change earns a new block.
-- **The build VM is on demand and runs only while an agent works, about 8 to 10 hours a day; the play machine
-  is spot and stays spot** ([0008](decisions/0008-infrastructure-aws-london-under-100-a-month.md)). Stop the build
-  VM when done (`tooling/agent_stop.sh`); every long job resumes from where it got to after an interruption
-  ([0037](decisions/0037-work-is-interrupt-proof.md)) and runs under `tooling/job_guard.sh`.
-- **Commit straight to main** with `tooling/lane_commit.sh -m msg -- paths`; status moves in the same commit.
-- **Nothing the player does not own is committed** ([0003](decisions/0003-nothing-shipped-that-players-do-not-own.md)):
-  mods are rows in `mods/dependencies.json` and are fetched, staged and pushed by `infra/gpu-box/stack.py`.
-- **Owner rulings** that still bind are in [owner-rulings.md](owner-rulings.md); new ones are added there the
-  day they are made, and hard-to-reverse calls go to the owner as an issue first.
-- **Costs:** AWS under $150 a month (owner, 2026-11-10; [0008](decisions/0008-infrastructure-aws-london-under-100-a-month.md));
-  stop machines when idle; each check-in reports AWS month-to-date and Claude usage as a percentage of the weekly
-  allowance (1% ≈ $19). Tidy the disk and the bucket; delete rather than archive.
+## 2. How we work
+
+- **The binding rules are [CLAUDE.md](../CLAUDE.md)**, one line each. This file is the plan; PROGRESS.md is the
+  status; each phase is one file in [phases/](phases/README.md), in the owner's words, added to as it goes;
+  decisions hold the why; [research/](research/README.md) holds facts worth keeping; the owner's rulings are in
+  [owner-rulings.md](owner-rulings.md) and, for story and writing, [owner-bar](../story/design/owner-bar.md).
+- **Everything done more than once is a skill** that reads as a clean recipe: `world-build` and `world-lod` for
+  the world, `place-system` and its sub-skills for places, `quest-system` and its sub-skills for story, quests
+  and dialogue.
+- **The owner works in three windows and the game.** The [Atlas](https://claude.ai/artifact/SwMRMPndRrXfEKtTuodNsb)
+  shows the province and its places; the place studio (https://studio.jacktat-play.stream) is where he opens,
+  edits and finalises each drafted place; the story explorer is where he reads the story and leaves notes. He
+  walks the built world on the play machine. Agents do not test in game when he can: they prove work off game
+  and post one owner check.
+- **The world's ground is a fixed base.** It is never regenerated unless the owner asks; a change is a local
+  patch, and `tools/newworld/rebuild.sh` runs only the stages a change made stale. A world rebuild runs only when
+  he asks.
+- **One world, told the same everywhere** ([consistency](design/consistency.md)): place records, lore, story,
+  quests, people and drafted places agree at all times.
+- **Costs:** AWS under $150 a month; Claude usage reported as a percentage of the weekly allowance; machines
+  stopped when idle.
 
 ## 3. Machines and the play path
 
-- **Build VM** `argonia-build` (London, m7i-flex.xlarge on demand, Linux, run about 8 to 10 hours a day): runs
-  Claude Code, the Python tools, Spriggit, the stack fetch and stage; drives the play machine over SSH
-  (`infra/gpu-box/run.sh`).
-- **Play machine** `argonia-play` (g6.xlarge persistent spot, Windows, in whichever European region interrupts
-  least at a similar price; Paris so far): Skyrim, MO2 as the staging layout,
-  Sunshine + Moonlight-Web behind Cloudflare Access, the Creation Kit for the Papyrus compiler, houseCARL and
-  xEdit for load-order checks. It was terminated with its disk on 2026-11-05 and is recreated in Phase 0 from
-  `infra/gpu-box/create.sh` + `setup.ps1` + `stack.py install`; no image or snapshot of it is kept.
-- **The owner plays** at `play.<domain>`: the Worker starts the machine, Moonlight-Web streams it with our
-  touch pad (`infra/stream-client`), a Sunshine card launches the modded game, saves sync to S3 every 5 minutes
-  and on a spot notice, idle-stop after 15 minutes. Details: [infra/README.md](../infra/README.md).
+- **Build VM** `argonia-build` (London, on demand, Linux, about 8 to 10 hours a day): Claude Code, the Python
+  tools, Spriggit, the world build, the place studio's server, the stack fetch and stage; drives the play machine
+  over SSH (`infra/gpu-box/run.sh`).
+- **Play machine** `argonia-play` (g4dn.xlarge on demand, Windows;
+  [0039](decisions/0039-the-play-machine-is-a-g4dn-on-demand.md)): Skyrim, MO2, Sunshine and Moonlight-Web behind
+  Cloudflare Access, the Creation Kit for the Papyrus compiler and FaceGen, xEdit and houseCARL as checkers, the
+  LOD tools. It stops itself when idle.
+- **The owner plays** at `play.<domain>`: the Worker starts the machine, Moonlight-Web streams it, a Sunshine
+  card launches the game, saves sync to S3. Details: [infra/README.md](../infra/README.md).
 
 ## 4. The phases
 
-Each phase ends when the owner has played it and said so on its issue. Phases run in order; the blocks inside
-Phase 3 run in any order. Nothing is estimated in advance; each phase records what it measured. Each phase is one
-file in [phases/](phases/), edited as the phase goes.
+Each phase is one file in [phases/](phases/README.md) and ends when the owner says so. Status is in
+[PROGRESS.md](PROGRESS.md).
 
-| Phase | What | Ends when the owner can say |
-|---|---|---|
-| 0 (done) | the play machine is back and vanilla Skyrim streams | no owner test: the machine, Steam and the pinned game are checked by the agent; the owner tries the Vanilla card in the first walk (owner, 2026-11-05) |
-| [1](phases/1-stack-in-bmv.md) | the stack, in BM&V as the default world | "I started in Black Marsh, fought, climbed, cast a Morrowind spell and nothing from Skyrim followed me" |
-| 2 (done) | the small composable block set quests are built from | "the act reads right and the block list is enough" (read, not played) |
-| [3](phases/3-building-blocks.md) | each block proved once, plus one composite quest for the connectors (the induction) | "I saw every block and the composite work in game" |
-| 4 (superseded) | the BM&V first act's quests are retired; the main quest is the new world's ([nw-05c](phases/new-worldspace-plan/nw-05c-factions-overhaul.md)) | - |
-| [4a](phases/4a-talk-to-everyone.md) | every BM&V person outside Lilmoth gets a backstory and topics of their own (W-talk, proved on Lilmoth's 12), settlement by settlement; runs beside Phase 4 | "I can talk to anyone I meet, and what they tell me is true" |
-| 4b (after Phase 4 is accepted) | the method as skills: a set that lets an agent put a full quest system onto a new world, cut from [quests-on-a-world](design/quests-on-a-world.md) (its ten parts: the world as the game's world, census, fitting and re-authoring the system with quest-write and quest-review, light world edits, building from the proven blocks without a test quest, talk-write, quest dialogue, read-back and deploy, the owner's walks, parallel lanes); first the four quest kits and read-backs become one shared kit | "an agent with only the skills could do it again on another world" |
-| [5 and on](phases/5-scale.md) | scale | "the story is in, milestone by milestone" |
+| Phase | What |
+|---|---|
+| [nw-01](phases/nw-01-map-extraction.md) | the map extracted and researched: places, regions, cultures, roads, danger |
+| [nw-02](phases/nw-02-textures-plants-scatter-water.md) | the world textured, planted, watered, navmeshed and with LOD, walkable in game |
+| [nw-03](phases/nw-03-build-helstrom.md) | Helstrom drafted from its source, and the place studio |
+| [nw-03b](phases/nw-03b-ecology-creatures.md) | ecology: creatures, hostile people, harvestables |
+| [nw-04](phases/nw-04-mine-similar-places.md) | a source place mined and matched for every place |
+| [nw-05c](phases/nw-05c-factions-overhaul.md) | the main plot, the main quest's records and the faction plots |
+| [nw-06](phases/nw-06-build-slice-places.md) | the slice places: the opening act's places and one of each type in the opening region |
+| [nw-07](phases/nw-07-build-opening-act.md) | the opening act built |
+| [nw-08](phases/nw-08-build-slice-2-places.md) | the second slice: places and opening quests for a selection of factions |
+| [nw-09](phases/nw-09-build-quest-places.md) | the remaining major quest places |
+| [nw-10](phases/nw-10-implement-major-quests.md) | the rest of the main and faction quests |
+| [nw-11](phases/nw-11-build-everywhere-else.md) | everywhere else |
+| [nw-12](phases/nw-12-implement-remaining-quests.md) | the remaining quests |
+
+Beside the phases run two proposals awaiting the owner: magic ([research/magic/PROPOSAL.md](research/magic/PROPOSAL.md))
+and new art ([research/new-art/PROPOSAL.md](research/new-art/PROPOSAL.md)).
 
 ## 5. Risks, named
 
-- The collection's AE-era DLLs may have no 1.7.104 build; the fix is a newer equivalent mod or dropping that one
-  behaviour, decided in Phase 1 and recorded in `mods/README.md`.
-- BM&V may fight USSEP (missing masters, overridden cells); houseCARL's report and a record-conflict census decide the load order.
-- New NPCs with new faces need FaceGen from the Creation Kit; B2 avoids it with templates, and the CK route is
-  used only if a unique face is worth it.
-- Spot capacity for a g6.xlarge can be scarce; the play page waits and retries, the region is chosen by
-  interruption rate, and the owner has ruled the play machine stays spot.
+- **Scale.** 258 places, each drafted by one agent and reviewed by the owner; the slice phases exist to make the
+  recipe right before it is run widely.
+- **Rebuild cost.** A world rebuild and its LOD are long jobs on a small budget; they run once, when asked,
+  rehearsed on the small test world first.
+- **New faces** need FaceGen from the Creation Kit; templates avoid it where a unique face is not worth it.
+- **The stack on the pinned runtime**: a mod with no 1.7.104 build is swapped for an equivalent or dropped,
+  recorded in `mods/README.md`.
 
 ## 6. What is deliberately not in this plan
 
-Our own worldspace, terrain, water, vegetation or LOD; our own UI, HUD or stats system (our own SKSE plugins are allowed where no mod does the job: owner, #51); DS1
-measurement; a relational world database; agent-driven in-game journeys and the bridge; voice acting; an
-installer for other players (later, if the owner wants one).
+Art of our own other than music; our own UI, HUD or stats system (our own SKSE plugin only where no mod, record
+or script does the job); agent-driven in-game journeys; voice acting; an installer for other players (later, if
+the owner wants one).

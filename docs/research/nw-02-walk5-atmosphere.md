@@ -1,6 +1,6 @@
 # Walk 5, lane A: a warm, steamy, regional atmosphere and more low mist (research)
 
-The owner's two items (walk 5, 2026-11-10; `docs/phases/new-worldspace-plan/nw-02-walk-5-handover.md`): more and
+The owner's two items (walk 5, 2026-11-10; `docs/phases/nw-02-walk-5-handover.md`): more and
 stronger low-lying mist, "especially to the green marsh and blackwater swamp water areas and surrounds"; and light
 and air that read warm and steamy, like Borneo or southern India, different by region and by latitude. The owner's
 four steps are the four sections below: the real atmospheres (1), how games make them (2), how Skyrim does it and

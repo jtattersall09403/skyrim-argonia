@@ -503,7 +503,7 @@ added here the day they are made, with the date and the issue.
   change; the owner reports problems in the session. Goal for the session: resolve the walk, then deliver Phase 4
   with names, topics and dialogue for everyone in the places the opening act visits.
 - 2026-11-08 (new worldspace, nw-01, in session): the new worldspace runs in parallel with the BM&V work
-  (docs/phases/new-worldspace-plan/). Project Tamriel's Black Marsh map, its regions map and the Hammerfell/High Rock
+  (docs/phases/). Project Tamriel's Black Marsh map, its regions map and the Hammerfell/High Rock
   key are public domain and are kept in the repo (newworld/sources/maps/), since they are the base the world is built
   from.
 - 2026-11-08 (new worldspace, nw-02, in session): the phase is delivered including the LOD (the brief had it after
@@ -673,7 +673,7 @@ added here the day they are made, with the date and the issue.
   shows a kept invisible wall as a faint box when selecting, as it shows lights.
 - 2026-11-10 (in session, night): the walk 5 feedback on the built world is delivered by a fresh orchestrator
   session, started unattended by the nw-03 session when its own lanes have landed, from the hand-over
-  (docs/phases/new-worldspace-plan/nw-02-walk-5-handover.md).
+  (docs/phases/nw-02-walk-5-handover.md).
 - 2026-11-11 (in session, morning): the LOD is built for our worldspace only (ArgoniaBlackMarsh), never for any
   other world in the load order. Each LOD run is checked for it: xLODGen's world list, DynDOLOD's preset and the
   folders and logs each tool writes.
@@ -739,7 +739,7 @@ added here the day they are made, with the date and the issue.
   this way if we don't ship their assets directly and we make their mods dependencies for ours." Recorded on each of
   the eighteen creature mods' rows in mods/sourcing-register.json (`permission`, `permission_condition`). Before
   release the creature mods' plugins become real masters of our world file rather than record copies (owed in
-  docs/phases/5-scale.md).
+  docs/archive/5-scale.md).
 - 2026-11-12 (in session, nw-03b music and lanterns): (a) discovery sting: "Let's just use Skyrim's for now": in the
   new world discovering a place plays Skyrim's own discovery music (our discovery override removed from
   NewWorldMusic.cs and music/records.json; the slot stays in the pack unused); the death sting is ours and approved;
@@ -964,7 +964,7 @@ added here the day they are made, with the date and the issue.
   summoned, and nobody follows the player through the door.
 - 2026-11-16 (story explorer batch of 77 notes; 21 were his earlier drafts, answered on 2026-11-13; 56 new). His
   two long notes are kept word for word in
-  [nw-05c](phases/new-worldspace-plan/nw-05c-factions-overhaul.md). **The main plot:** (a) the player starts locked
+  [nw-05c](phases/nw-05c-factions-overhaul.md). **The main plot:** (a) the player starts locked
   in the barge's hold with the gang, new and on the way to the camp; someone in the hold asks their name and
   profession ("Morrowind style, choose from classes or a custom set of preferred skills ... choices alter your
   starting base skills"); then the door unlocks. (b) The strongbox is a side quest: it holds what the friend in
@@ -1138,3 +1138,13 @@ added here the day they are made, with the date and the issue.
   Levitate in the starting Magic menu "was only ever temporarily as a quick test"; he wants it in the game
   somewhere, not at the start. Mysticism is cut: "it's not a Skyrim school". The schools are Skyrim's five and
   Mysticism leaves the list of quest skills (owner-bar, quest-write and the lore page changed the same day).
+
+- **2026-11-26 (in session), the project.** "It is time to retire the BM&V experiment/version of the project, and
+  promote the 'new world' version to be 'the' project we are delivering." The repo is to read as focused on
+  delivering that project, with a short note of the history, not a patchwork; redundant things are archived; the
+  new world's phase plans keep their names and his words, and may be added to
+  ([0042](decisions/0042-the-new-world-is-the-project.md)). Calls made by the lead in doing it: the phase files
+  moved up to `docs/phases/`; the BM&V phase plans kept unedited in `docs/archive/`; BM&V stays a mod we depend on
+  for source places and pieces; the stack's owed walk checks carry over to the new world and the BM&V world's
+  walk checks are dropped; removing BM&V-only code is a later piece of work listed in PROGRESS. The rulings
+  above that speak of BM&V as the world are read with this one.

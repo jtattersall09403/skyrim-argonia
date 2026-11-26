@@ -4,9 +4,11 @@ Binding rules, one line each; the why lives in the linked record.
 
 ## Goal
 
-Elder Souls: Argonia is vanilla Skyrim SE + Black Marsh & Valenwood as the default world + the soulslike
-collection xyf1u3 + FreeClimb + Magic Expanded, with our storyline, quests and factions modded on top of BM&V's
-world with minimal tweaks ([PLAN](docs/PLAN.md), [0038](docs/decisions/0038-the-pivot-bmv-is-the-world.md)).
+Elder Souls: Argonia is vanilla Skyrim SE + our own world of the whole of Black Marsh ("the new world", generated
+from Project Tamriel's map, its places carried from source places in the mods we depend on) + the soulslike
+collection xyf1u3 + FreeClimb, with our storyline, quests and factions built in it ([PLAN](docs/PLAN.md),
+[0042](docs/decisions/0042-the-new-world-is-the-project.md)). The Black Marsh & Valenwood version is retired
+([archive](docs/archive/README.md)); never work on it.
 
 ## Session start
 

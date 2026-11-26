@@ -1,7 +1,7 @@
 # Ecology: creatures, hostile people and harvestables between places
 
 The recipe for what lives in the new world between its places, and how the rebuild puts it there. The phase is
-[nw-03b](../phases/new-worldspace-plan/nw-03b-ecology-creatures.md); danger bands are [danger](danger.md).
+[nw-03b](../phases/nw-03b-ecology-creatures.md); danger bands are [danger](danger.md).
 
 ## Sources
 

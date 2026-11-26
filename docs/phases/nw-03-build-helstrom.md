@@ -29,7 +29,7 @@ Studio Tooling: I want to access it in a browser so I can use it from my tablet.
 
 ## Agreed in the interview of 2026-11-09 (added by the agent; the owner's text above is unchanged)
 
-The rulings are recorded in [owner-rulings](../../owner-rulings.md) under 2026-11-09. They change or add to the
+The rulings are recorded in [owner-rulings](../owner-rulings.md) under 2026-11-09. They change or add to the
 text above as follows.
 
 - **No core-first trial.** The whole of this phase is built in one overnight run and delivered complete.
@@ -179,7 +179,7 @@ text above as follows.
 
 ## The work (the agent's lanes; status moves in the commit that changes it)
 
-The design and the contracts every lane builds to: [place-studio](../../design/place-studio.md). A fresh session
+The design and the contracts every lane builds to: [place-studio](../design/place-studio.md). A fresh session
 resumes from this table: a lane not `done` is relaunched with its row as the starting point.
 
 | Lane | What | Paths | Status |

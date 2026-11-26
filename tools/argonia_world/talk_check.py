@@ -5,7 +5,7 @@ no other topic is), the two greetings gated on GetRelationshipRank with the play
 Skyrim's own Hello way); a talker whose name differs from the placed base's (`known_as`) has their ref overridden to a
 base of our own carrying that name, templated on the old base; and the vendors we restock show their chest's stock.
 
-Without the ESP (`--lines-only` runs these alone), the recipe's rules (docs/phases/4a-talk-to-everyone.md, recipe v2):
+Without the ESP (`--lines-only` runs these alone), the recipe's rules (docs/archive/4a-talk-to-everyone.md, recipe v2):
 lines: every reply names only what its speaker's facts back; at most WARM_MAX warm address terms a person, none in
 the stranger greeting; both greetings written. facts: a directions fact is a talk_route route; a lore-only fact makes
 no physical claim the loaded world does not show (or contradicts); places carry the names the player sees. names

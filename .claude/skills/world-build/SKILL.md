@@ -311,7 +311,7 @@ of the file a rebuild rewrites; after step 4 the file changes only by a rebuild.
 
 - What the owner judges: look and feel in the game (relief, water, ground, plants, air, the far view, the map).
   What a file proves is never asked of the owner.
-- The walk list is `docs/phases/new-worldspace-plan/nw-02-walk.md`: one check per bullet, the place named, how to
+- The walk list is `docs/phases/nw-02-walk.md`: one check per bullet, the place named, how to
   get there, what to look for, how to reply. Each check starts with a console teleport from
   `out/newworld/plugin/map/teleports.md` (`coc ANW<Place>` for every place, `coc ANWWalk<Water>` for each kind of
   water, `coc ArgoniaNWStart`); never a cell number.

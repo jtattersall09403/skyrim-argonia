@@ -11,7 +11,7 @@
    "kind": "the detectives, at Soulrest",
    "match": ["lamp[-_ ]bearers?"],
    "rule": "The file name lamps.md and 'lamps' as things that give light stay.",
-   "source": "owner, #74 (2026-11-17); docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md 'his names (#74)'; lamps.md replaced lamp-bearers.md (commit 24d35cc5a)"},
+   "source": "owner, #74 (2026-11-17); docs/phases/nw-05c-factions-overhaul.md 'his names (#74)'; lamps.md replaced lamp-bearers.md (commit 24d35cc5a)"},
   {"id": "the-lamps", "old": "the Lamps (as the faction)", "new": "the Lampbearers",
    "kind": "the detectives, at Soulrest", "case": true,
    "match": ["\\b[Tt]he Lamps\\b"],

@@ -4,7 +4,7 @@
 (Enderal-style). §2 (the LAL addon pattern) and the LAL rows of §3's conflict list no longer apply; the BM&V start
 cells, the DLL verdicts and the BM&V vs USSEP overrides still stand.
 
-Researched 2026-11-05 for [phase 1](../../phases/1-stack-in-bmv.md). [V] = fetched or measured today, [K] = prior knowledge, unproven here.
+Researched 2026-11-05 for [phase 1](../../archive/1-stack-in-bmv.md). [V] = fetched or measured today, [K] = prior knowledge, unproven here.
 Live docs: `mods/README.md` (Combat section) says Stop On Slash and Elden Counter are "AE-era DLLs: confirm each loads"; this note
 answers that (verdicts below) and corrects `mods/dependencies.json` row `pace` (it says "PACE combat AI"; PACE is a movement-speed mod).
 Doc to edit: `mods/README.md` Combat section, plus the `check` and `runtime` fields of the rows named below. No new file.
@@ -114,4 +114,4 @@ USSEP, no LAL master**; the plugin header flag is 0 (not flagged ESM; the `.esm`
 3. Add a NAVI census to `make check` (BM, USSEP, LAL, ours) before the first walk.
 4. Archive the two rebuild zips in `~/.argonia/mods` and the private cache with the other rows (not done here; this lane did not copy them out of its scratchpad).
 
-Covered: `docs/phases/1-stack-in-bmv.md`, `mods/README.md`, `mods/dependencies.json` rows, the eight collection archives, LAL 4.2.6a archive, City Guard example, USSEP 4.3.9c esp, vault-bmv plugins, Nexus API for mods 66155 65579 27268 32996 33049 33135 31390 53528 272 85740 69944 · Skipped: Data1/Data2.rar (9.6 GB, no cell data), Nexus comment pages (403), in-game load test (no machine run), Pandora behaviour of Nemesis mod folders.
+Covered: `docs/archive/1-stack-in-bmv.md`, `mods/README.md`, `mods/dependencies.json` rows, the eight collection archives, LAL 4.2.6a archive, City Guard example, USSEP 4.3.9c esp, vault-bmv plugins, Nexus API for mods 66155 65579 27268 32996 33049 33135 31390 53528 272 85740 69944 · Skipped: Data1/Data2.rar (9.6 GB, no cell data), Nexus comment pages (403), in-game load test (no machine run), Pandora behaviour of Nemesis mod folders.

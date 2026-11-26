@@ -4,7 +4,7 @@ Researched 2026-11-08, read-only. Machine-readable catalogue: `out/newworld/rese
 
 ## 0. What the repo already documents
 
-No live doc covers flora rules. Live: `docs/phases/new-worldspace-plan/nw-02-textures-plants-scatter-water.md` (the brief), its README lessons. Superseded prior art exists only in git history (`git show d269dbf5^:docs/design/research/vegetation/rock-placement-rules.md`, `mod-vegetation-micro-siting.md`, `tools/argonia_world/vegetation/seat.py`). Doc to edit: **the nw-02 phase file** (add a "Flora rules" section pointing at this note once the owner accepts it). Of the old claims I re-measured:
+No live doc covers flora rules. Live: `docs/phases/nw-02-textures-plants-scatter-water.md` (the brief), its README lessons. Superseded prior art exists only in git history (`git show d269dbf5^:docs/design/research/vegetation/rock-placement-rules.md`, `mod-vegetation-micro-siting.md`, `tools/argonia_world/vegetation/seat.py`). Doc to edit: **the nw-02 phase file** (add a "Flora rules" section pointing at this note once the owner accepts it). Of the old claims I re-measured:
 - CONFIRMED: vanilla boulders are buried (RockL01 p25/50/75 = 69/113/158 u = 1.0/1.6/2.3 m; old doc 1.0/1.6/2.4); cliff shells sunk 4 to 16 m (old: 4 to 12); boulders tilt with slope (tilt/slope 0.85, old 0.95); cliffs tilt little (0.21; old 0.12); yaw near uniform (R 0.14 to 0.29).
 - CONFIRMED and sharpened: open backs (section 2.4).
 - PARTIAL: old "wading matrix median flooded depth 0.11 m" - my cell-water measure gives 0.34 m median for BM2 ferns (128-unit grid quantisation; direction same).

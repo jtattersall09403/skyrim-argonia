@@ -1,6 +1,6 @@
 # Action-plan weights per line (principles/actions.md, "Profiles"). One entry per `quest_line` row (key = the line
 # id's last part), `local` and `default`. Each is read from the line's plot under story/design/quests/lines/ and the
-# owner's words on its skills in docs/phases/new-worldspace-plan/nw-05c-factions-overhaul.md, cited in `from`. `families` weigh first (shared by their skills), then `skills` within them (keys of
+# owner's words on its skills in docs/phases/nw-05c-factions-overhaul.md, cited in `from`. `families` weigh first (shared by their skills), then `skills` within them (keys of
 # skill-uses.yaml; 1 = default, 3 = strong lean, 0 = never; unlisted = 1). A line's signature skills are the ones it
 # leans on most; a player should tell the faction from any three of its quests. The armour skills (`endure`) stay low:
 # a quest uses them through the fights it sends the player into. `targets` and `settings` (keys of skill-uses.yaml)

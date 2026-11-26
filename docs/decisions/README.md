@@ -19,7 +19,8 @@ decision changes. Numbers missing from this list were superseded by the pivot
 - [0034](0034-ask-how-bethesda-did-it-and-do-the-same.md) Before any rule of ours, ask how Bethesda did it
 - [0035](0035-nothing-is-levelled-against-the-player.md) Nothing is levelled against the player
 - [0037](0037-work-is-interrupt-proof.md) Work is interrupt-proof (spot machines)
-- [0038](0038-the-pivot-bmv-is-the-world.md) The pivot: BM&V is the world; we mod our story on top
+- [0038](0038-the-pivot-bmv-is-the-world.md) The pivot of 2026-11-05: BM&V is the world (superseded by 0042; kept for what it deleted and kept)
 - [0039](0039-the-play-machine-is-a-g4dn-on-demand.md) The play machine is a g4dn.xlarge on demand
 - [0040](0040-records-fit-the-story-and-the-ground.md) Place records fit the story and the ground; sources serve the record
 - [0041](0041-a-place-is-its-source-carried-whole-and-adapted-by-hand.md) A place is its source carried whole and adapted by hand
+- [0042](0042-the-new-world-is-the-project.md) The new world is the project; the BM&V version is retired

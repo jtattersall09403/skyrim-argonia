@@ -1,7 +1,7 @@
 # The new world: Project Tamriel's Black Marsh
 
-Our own worldspace, built from Project Tamriel's Black Marsh map, in parallel with the BM&V work
-([plan](../docs/phases/new-worldspace-plan/README.md)). It is laid out like the repo root, so the same tools
+Our own worldspace, built from Project Tamriel's Black Marsh map: the world the project delivers
+([plan](../docs/PLAN.md), [phases](../docs/phases/README.md)). It is laid out like the repo root, so the same tools
 load it: `db.open("newworld")` (`tools/argonia_world/db.py`) reads `story/data/schema.sql` and
 `story/data/db/*.jsonl`.
 

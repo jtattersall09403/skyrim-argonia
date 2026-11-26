@@ -16,7 +16,7 @@ Map: https://claude.ai/artifact/SwMRMPndRrXfEKtTuodNsb
 * Use Black Marsh & Valenwood mod textures (the ones that automatically generate groundcover and grass etc) as much as possible; Tropical Skyrim textures if there is something we need that BM&V doesn't have.
 * build and implement the skyrim native map such that it comes up in the map menu when you are in the new worldspace in game. (Does this depend on LOD? If so, do it after LOD below).
 * Give the owner cheat codes/console commands for flying around so I can review what you've built.
-* The earlier version of this repo did a pretty good (if imperfect) job of a lot of this. Go back through the git history and see what you can salvage. The major things it got right and struggled with are recorded in docs/phases/new-worldspace-plan/README.md. 
+* The earlier version of this repo did a pretty good (if imperfect) job of a lot of this. Go back through the git history and see what you can salvage. The major things it got right and struggled with are recorded in docs/phases/README.md. 
 
 # Trees, vegetation, ground cover, scatter
 
@@ -188,4 +188,4 @@ either: each kind's bodies and area inside the picture within 2% of the accepted
 (`newworld/sources/water_accepted.json`, on the same waterline and source water picture; `--accept` after a look
 when the classification is meant to change), and
 every owner edit on a body within 10% of its recorded area with the owner's kind. Measurements and the frame audit
-of every consumer of the grid: [research](../../research/nw-02-walk5-water-frame.md).
+of every consumer of the grid: [research](../research/nw-02-walk5-water-frame.md).

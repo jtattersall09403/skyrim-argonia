@@ -1,6 +1,7 @@
 # 0038: The pivot: Black Marsh & Valenwood is the world; we mod our story on top
 
-**Status:** decided by the owner, 2026-11-05. Supersedes 0001, 0004, 0005, 0009–0011, 0013, 0016, 0017,
+**Status:** superseded on 2026-11-26 by [0042](0042-the-new-world-is-the-project.md): the new world is the
+project and BM&V is no longer the world. Kept as the record of the pivot. Decided by the owner, 2026-11-05. Supersedes 0001, 0004, 0005, 0009–0011, 0013, 0016, 0017,
 0019–0023, 0026–0031, 0033 and 0036 (deleted; their text is in git history before this commit).
 
 ## Context
