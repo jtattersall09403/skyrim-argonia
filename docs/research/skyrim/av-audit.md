@@ -3,7 +3,7 @@
 Lane 1.3-av-audit, 2026-10-30. Level L1 (data scan). Question: which obsolete actor values (AVs) and
 `Variable01`–`Variable10` are read or written by vanilla and by the dependency stack, so the seven attributes
 (Strength, Intelligence, Willpower, Agility, Speed, Endurance, Personality) can sit in reserved AVs
-([native-map §3.5](../native-map.md), P1 carrier rule).
+([native-map §3.5](native-map.md), P1 carrier rule).
 
 ## Answer
 

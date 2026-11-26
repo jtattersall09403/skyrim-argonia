@@ -1,7 +1,7 @@
 # Lane 1.15-r3-shader: the lavender surfaces come from Black Marsh.esm's alternate texture sets
 
-Build 252db64, files only (no game machine). Inputs: [machine diagnosis](lane-1.15-r3-machine.md) §1,
-[round 2](round-2.md). Readers were throwaway scripts over the local MO2 mirror `~/.argonia/stack/MO2/mods`, the 23
+Build 252db64, files only (no game machine). Inputs: [machine diagnosis](../machines/lane-1.15-r3-machine.md) §1,
+round 2. Readers were throwaway scripts over the local MO2 mirror `~/.argonia/stack/MO2/mods`, the 23
 vanilla BSAs in `~/games/skyrimse/Data`, and `out/ArgoniaWorld.esm` and `out/Argonia.esm` as built at 04:49.
 
 ## 1. Cause: MODS overrides the NIF's texture slots, and the TXST diffuses it names are absent

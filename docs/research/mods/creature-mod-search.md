@@ -24,7 +24,7 @@ How to find a real actor for a lore creature kind the mods we hold do not cover,
 
 ## The loop
 
-The roster test (`python3 -m tools.newworld.ecology.roster_check`, [ecology](../design/ecology.md)) is the exit.
+The roster test (`python3 -m tools.newworld.ecology.roster_check`, [ecology](../../design/ecology.md)) is the exit.
 Each round: list its failures per region; re-author each kind no model fits to a creature that fills the same niche
 there (cited, or stated as extrapolation), first from the census's unused creatures; search and source for the rest;
 bind; rerun. Stop when it passes, or when two rounds add nothing.

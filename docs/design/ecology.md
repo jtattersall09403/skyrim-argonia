@@ -47,7 +47,7 @@ possible, rich and alive", and exits 1 on any failure. Per region:
 
 A kind no mod models is re-authored: another creature that fills its niche in that region, from the lore or stated
 as extrapolation, first from the census's unused creatures, then searched and sourced
-([creature-mod-search](../research/creature-mod-search.md)). Measured: 97 kinds over 24 regions, 85 actor kinds
+([creature-mod-search](../research/mods/creature-mod-search.md)). Measured: 97 kinds over 24 regions, 85 actor kinds
 against Skyrim's 38; largest overlap of two regions 0.5. The cave bat is Skyrim's own bat colony activator
 (`FXbatGroupACT`) bound as a critter (`bindings.json` `critter_kinds`, function `bats`): it carries no spawn hours, so
 the bat is always out, and it stands on the kind's rock ground at Skyrim's rate for it (two refs in Tamriel, in

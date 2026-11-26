@@ -15,7 +15,7 @@ assumed. The craft of using it is `.claude/skills/quest-write/principles/choices
   `papyrus/ARG_Effects.psc`, `tools/ArgoniaPlugin/QuestForm.cs`. [R]
 - Morrowind's mechanisms: Morrowind Scripting for Dummies, faction, reputation, disposition and crime chapters:
   https://raw.githubusercontent.com/sultan-of-rum/morrowind-scripting-for-dummies/master/MSFD9.tex [V];
-  [morrowind-level-scripting](../morrowind-level-scripting.md) [R]. UESP and Fandom refused every request (403,
+  [morrowind-level-scripting](../writing/morrowind-level-scripting.md) [R]. UESP and Fandom refused every request (403,
   402), so Morrowind's quest-by-quest examples stay [S] or [K].
 
 ## What there is to give [M]

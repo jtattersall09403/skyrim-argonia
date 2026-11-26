@@ -60,12 +60,12 @@ it is not ready to build.
 - The reference ground is `out/newworld/terrain_ref/tamriel_h.npy`; `python3 -m tools.newworld.terrain_quality`
   and `python3 -m tools.newworld.terrain_character` measure Skyrim beside ours.
 - Banks and the water's edge: the navmesh walks ground up to 45 degrees. A patch that shapes a bank keeps it within
-  that limit, against Skyrim's shores ([relief research](../../../docs/research/nw-02-walk5-relief.md): held
+  that limit, against Skyrim's shores ([relief research](../../../docs/research/world/nw-02-walk5-relief.md): held
   ground and banks).
-- Ground and roads: [ground research](../../../docs/research/nw-02-walk5-ground.md). Water's look and seams:
-  [water research](../../../docs/research/nw-02-walk5-water.md). Air and mist:
+- Ground and roads: [ground research](../../../docs/research/world/nw-02-walk5-ground.md). Water's look and seams:
+  [water research](../../../docs/research/world/nw-02-walk5-water.md). Air and mist:
   [the atmosphere design](../../../docs/design/atmosphere.md). Far view and teleports:
-  [far-view research](../../../docs/research/nw-02-walk5-L.md).
+  [far-view research](../../../docs/research/world/nw-02-walk5-L.md).
 
 ## 2. What a change may not break
 
@@ -82,7 +82,7 @@ it is not ready to build.
 - **One frame.** Every raster and position is the picture's own pixels and world units, whatever the grid's
   size: a tool finds a sample through the build's origin (`build.json`, the landcover legend, `units.Grid`),
   never by an index it kept. A new consumer of the grid gets a row and a test in the
-  [frame audit](../../../docs/research/nw-02-walk5-water-frame.md).
+  [frame audit](../../../docs/research/world/nw-02-walk5-water-frame.md).
 - **The same inputs build the same bytes.** Noise, rounding and seeds are anchored to the picture's grid, so a
   wider scope moves no ground, and a stage run twice on the same inputs writes the same output: the placement
   places the same references, a patch applied again writes the same rows. The world file comes out the same bytes

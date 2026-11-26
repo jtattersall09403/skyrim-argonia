@@ -2,7 +2,7 @@
 
 How the new world's air is made: warm, steamy and tropical, different by region and by latitude, with low mist
 drifting below eye level over the marsh and swamp water. Research and every measured number:
-`docs/research/nw-02-walk5-atmosphere.md`. Code: `tools/newworld/atmosphere.py`, `tools/newworld/world/mist.py`,
+`docs/research/world/nw-02-walk5-atmosphere.md`. Code: `tools/newworld/atmosphere.py`, `tools/newworld/world/mist.py`,
 `tools/ArgoniaPlugin/NewWorldAtmosphere.cs`, `tools/newworld/atmosphere_cs.py` (Community Shaders' height fog).
 Sources: `newworld/sources/atmosphere/` and the identity sheets, `newworld/sources/identity/regions.json`.
 

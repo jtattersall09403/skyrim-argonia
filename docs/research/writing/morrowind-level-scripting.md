@@ -3,8 +3,8 @@
 What "nothing above Morrowind level" means for an Argonia quest: how Morrowind's quests were actually built, five
 real quests taken apart, each Morrowind mechanism set beside Skyrim's matching record, a test of the ceiling in
 walk-6-quests, the essential-death message, and
-rules for the quest writer. Skyrim counts are from [quest-block-precedent](skyrim/quest-block-precedent.md)
-(Skyrim.esm, measured); block names are from [blocks](../design/blocks.md).
+rules for the quest writer. Skyrim counts are from [quest-block-precedent](../skyrim/quest-block-precedent.md)
+(Skyrim.esm, measured); block names are from [blocks](../../design/blocks.md).
 
 **What could be measured, and what could not.** Morrowind.esm is not held on any of our machines, so no Morrowind
 count below comes from the game's data. The private Morrowind dialogue corpus
@@ -218,7 +218,7 @@ main quest can no longer be finished, and a Steam thread disputes that it change
 Three candidates for Argonia, each two sentences (what is broken; load a save or go on), checked with
 `.claude/skills/dialogue-write/lint.py --race argonian` (0 hits). The root echoes the Hist's roots and the main
 quest's name, *The Eye and the Root* (`story/design/quests/30-main-quest.md`); the mood is the province's
-"melancholy and dignified" ([province-vibe](../../story/design/province-vibe.md) §1).
+"melancholy and dignified" ([province-vibe](../../../story/design/province-vibe.md) §1).
 
 1. **Recommended.** "With this death the root of what was to come is cut: the main story can no longer be
    finished. Load an earlier save to let it grow again, or go on in the marsh as it now is."

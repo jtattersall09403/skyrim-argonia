@@ -1,7 +1,7 @@
 # Lane 1.15-r3-machine: what the build VM could not see, measured on the game machine
 
-Build 7fa57b6 on argonia-play-ie, 2026-11-02 06:20-06:40 UTC, base save `argoniabase`. Inputs: [round 2](round-2.md),
-[r2 textures](lane-1.15-r2-textures.md), [weather](../2026-11-01/lane-1.15-weather.md). Machine stopped, lock released.
+Build 7fa57b6 on argonia-play-ie, 2026-11-02 06:20-06:40 UTC, base save `argoniabase`. Inputs: round 2,
+r2 textures, weather. Machine stopped, lock released.
 
 ## 1. Lavender surfaces: not a missing texture
 

@@ -18,7 +18,7 @@ the built plugin into the same form, and played on paper from that form. No ques
 generic scripts, written once and proven once, carry out every result.
 
 **The ceiling** is Morrowind's level of scripting: a journal number moved by talk and a few simple happenings, and
-talk that depends on that number ([morrowind-level-scripting](../../../docs/research/morrowind-level-scripting.md)).
+talk that depends on that number ([morrowind-level-scripting](../../../docs/research/writing/morrowind-level-scripting.md)).
 It is a closed list, and the form has no field for anything outside it:
 
 | Kind | A quest may use |

@@ -1,13 +1,13 @@
 # The native map: where each goal lives in Skyrim (1.1 §a)
 
-Dated 2026-10-29. Paper lane `1.1-sa-native-map`. For every goal in [the goals list](../design/goals.md), the
-Skyrim mechanism that carries it, in the route order of [0010](../decisions/0010-reuse-first-and-the-running-game-is-the-oracle.md)
-and in the spirit of [0026](../decisions/0026-everything-is-built-natively-the-skyrim-way.md): records and settings
-first, then the tools and mods of the [reuse audit](2026-10-29/reuse-audit.md) (whose §1 is the 0.1 §j
+Dated 2026-10-29. Paper lane `1.1-sa-native-map`. For every goal in the goals list, the
+Skyrim mechanism that carries it, in the route order of 0010
+and in the spirit of 0026: records and settings
+first, then the tools and mods of the [reuse audit](../mods/reuse-audit.md) (whose §1 is the 0.1 §j
 MorrowindRuntime audit), then our own SKSE code for what is left. Read with
-[1.1](../phases/1-core-loop/1.1-game-state-seam.md), [0005](../decisions/0005-the-morrowind-soul-contract.md),
-[0012](../decisions/0012-vanilla-skyrim-is-quarantined.md) and
-[0019](../decisions/0019-combat-maps-each-ds1-behaviour-to-a-tuned-mod-or-our-own-ds1-build.md).
+1.1, 0005,
+0012 and
+0019.
 Nothing here ports the old project's machinery or quotes decompiled code; it names engine mechanisms by their
 public names (CommonLibSSE-NG headers, the CK wiki, UESP) and carries no offsets or Address Library ids.
 
@@ -361,9 +361,9 @@ timeline; ~100, 2.W3), `boats` (ArgoniaBoats' helm and wind model; ~600, 2.15), 
 
 ## 7. Sources and what is not yet verified
 
-**Read:** CommonLibSSE-NG at `dec1be18` (the headers cited inline); [the reuse audit](2026-10-29/reuse-audit.md)
-§1–§6; [76](../design/world/76-stats-progression.md) §116–§129;
-[85](../design/quests/85-condition-vocabulary.md) §A–§B; the Part 1 briefs.
+**Read:** CommonLibSSE-NG at `dec1be18` (the headers cited inline); [the reuse audit](../mods/reuse-audit.md)
+§1–§6; 76 §116–§129;
+[85](../../../story/design/quests/85-condition-vocabulary.md) §A–§B; the Part 1 briefs.
 **Web, through search excerpts** (UESP and the CK wiki returned 403 to direct fetches):
 - [W:leveling] [UESP Skyrim:Leveling](https://en.uesp.net/wiki/Skyrim:Leveling): `fXPPerSkillRank` default 1,
   `fXPLevelUpBase` 75, `fXPLevelUpMult` 25; skill threshold `ImproveMult × level^fSkillUseCurve + ImproveOffset`,

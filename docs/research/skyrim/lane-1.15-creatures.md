@@ -1,6 +1,6 @@
 # Lane 1.15-creatures: report
 
-Brief: [briefs/1.15-creatures.md](briefs/1.15-creatures.md). Sessions 1 to 3, 2026-11-01.
+Brief: briefs/1.15-creatures.md. Sessions 1 to 3, 2026-11-01.
 
 ## The vanilla measurement
 

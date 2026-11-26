@@ -16,7 +16,7 @@ belongs to the other parts.
   trader's merchant chest at data load). **Confirmed**; it is the existing route for "who sells what".
   **Supersede nothing**; the one doc the writer of the #104 proposal should edit is the lane-1.12-magic.md "Reach in
   Black Marsh" section (or its successor design doc), not a new file.
-- [morrowind-level-scripting.md](../morrowind-level-scripting.md) says nothing on spell data (it covers quest
+- [morrowind-level-scripting.md](../writing/morrowind-level-scripting.md) says nothing on spell data (it covers quest
   scripting); only its note that GetPCIsRace is missing from the allowed conditions (lines 145, 189-191) touches
   racial conditions, and that is about dialogue lines, not spell conditions.
 - `mods/dependencies.json` rows already installed that bear on magic: `magic-expanded`, `magistrate-levitate`,
@@ -298,7 +298,7 @@ Effort words follow `docs/research/new-art/PROPOSAL.md`: small / medium / large;
    Wintersun's deity list includes Argonian deities; each SKSE DLL's version against 1.6.x.
 
 Covered: docs/research/mods (lane-1.12-magic, lane-1.12-magicpane), docs/research/new-art/PROPOSAL.md and 3 siblings
-(recolour precedent), docs/research/morrowind-level-scripting.md (grep), mods/dependencies.json (ids, spid row),
+(recolour precedent), docs/research/writing/morrowind-level-scripting.md (grep), mods/dependencies.json (ids, spid row),
 mods/sourcing-register.json (permission form, Magic Expanded and SPID rows), decision 0003; Nexus API for ~45 mods and ~70 searches ·
 Skipped: nexusmods.com pages, ck.uesp.net and archive.org (HTTP 403 or blocked, so permissions and CK text unread),
 game files (not on this machine), Nexus article pages, YouTube/Reddit.

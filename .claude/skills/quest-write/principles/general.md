@@ -5,7 +5,7 @@ Binding for `quest-write` and `quest-review`. Each principle ends with its sourc
 | Tag | Source | Section names used in tags |
 |---|---|---|
 | OB | [owner-bar](../../../../story/design/owner-bar.md): the owner's rules | `bar`, `skills` (Action and the player's skills), `vibe`, `shape` (Shape of a quest and a line), `truth` (Truth and lore), `talk` (People and talk), `made` (How the story is made) |
-| MW | [morrowind-level-scripting](../../../../docs/research/morrowind-level-scripting.md) | `§1` to `§6` and the item number |
+| MW | [morrowind-level-scripting](../../../../docs/research/writing/morrowind-level-scripting.md) | `§1` to `§6` and the item number |
 | OW | [quest-design-open-world-rpg](../../../../docs/research/writing/quest-design-open-world-rpg.md) | `P` Principles, `M` Methods (by name), `A` Anti-patterns, `R` Reviewer checklist |
 | ES | [quest-design-elder-scrolls](../../../../docs/research/writing/quest-design-elder-scrolls.md) | `P` Principles, `WS` What the sources establish, `A` Anti-patterns |
 | QL | [questline-design](../../../../docs/research/writing/questline-design.md) | `P` Principles, `F` Method fields, `A` Anti-patterns, `D` Notes for the detectives' line |

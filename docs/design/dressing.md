@@ -28,7 +28,7 @@ there and nowhere next door. Both change records only: no terrain, tree, scatter
    neighbouring regions (`newworld/sources/identity/adjacency.json`) never show the same flower colour; the share of
    land grass types two neighbours have in common (shared over union) is at most 0.6. A family no complete land
    grass carries is listed as unmet: the sourcing gap to close with a grass mod, searched as
-   [creature-mod-search](../research/creature-mod-search.md) does for creatures.
+   [creature-mod-search](../research/mods/creature-mod-search.md) does for creatures.
 
 ## Small signature things
 
@@ -86,7 +86,7 @@ there and nowhere next door. Both change records only: no terrain, tree, scatter
 
 Every living Hist of a built place has a still pool of thick amber sap at its roots (Lore:Hatching_Pools), made from
 Skyrim's own water machinery and nothing of ours but records and ground (research:
-[sap-water-bethesda](../research/sap-water-bethesda.md); records and values: `tools/places/own_bases.py`; the stage:
+[sap-water-bethesda](../research/skyrim/sap-water-bethesda.md); records and values: `tools/places/own_bases.py`; the stage:
 `tools/places/draft/sap.py`, place-dressing).
 
 - **The water.** `ArgoniaHistSapWater`: Bethesda's Eastmarch hot-spring water (DefaultVolcanicWater, as Tropical

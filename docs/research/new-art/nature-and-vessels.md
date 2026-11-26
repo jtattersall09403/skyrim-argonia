@@ -199,7 +199,7 @@ Needs (sqlite):
 - Nests/eggs: HTBM hackwing and bantam guar nests, KoTM Argonian eggs x5 colours (`gar-eggs`, `croc-nests`,
   `hist-spawn`, `hist-clutches`), 26 dressing kinds in all. Hives: only "honeycomb" is a creature drop, hive model
   not placed. Mounds: `crab-mounds` and `clay-mounds` use Riften dirt mounds (RiftenRWDirtMound01-04: a Nordic mound
-  recoloured); no termite mound. Sap pools: one vanilla puddle mesh scaled (`docs/research/sap-water-bethesda.md:36-44`).
+  recoloured); no termite mound. Sap pools: one vanilla puddle mesh scaled (`docs/research/skyrim/sap-water-bethesda.md:36-44`).
   Driftwood: not in the flora tables; dressing has `kelp-wrack` only.
 
 ## 3. Step 2: Nexus (re-run 2026-11-24 with the fixed `tooling/nexus_search.py`)
