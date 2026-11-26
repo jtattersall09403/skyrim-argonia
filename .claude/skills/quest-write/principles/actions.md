@@ -3,7 +3,7 @@
 Read for every quest, with `general.md` (which holds the source tags' key). An action is a use of one of the
 player's skills: Skyrim's eighteen (One-Handed, Two-Handed, Archery, Block, Heavy Armor, Light Armor, Smithing,
 Destruction, Restoration, Alteration, Conjuration, Illusion, Enchanting, Alchemy, Sneak, Lockpicking, Pickpocket,
-Speech) and Mysticism from Magic Expanded. Swimming and climbing are movement: they take the player somewhere and
+Speech). Swimming and climbing are movement: they take the player somewhere and
 never win a stage [OB skills]. The catalogue of uses, each one the quest form can deliver, is `skill-uses.yaml`.
 
 ## The principles

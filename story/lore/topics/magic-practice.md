@@ -11,7 +11,7 @@ Lore:Nisswo, Lore:Duskfall, Lore:Argonian, Lore:Hist, Lore:Hist Sap (via the
 existing dossiers [sithis-nisswo-shadowscales](sithis-nisswo-shadowscales.md)
 and [hist-and-sap](hist-and-sap.md), fetched 2026-08-24/28).
 
-## 1. Mysticism survives here — the schools we keep
+## 1. The schools we keep: Skyrim's five
 
 - **CANON_EXPLICIT** (Lore:Mysticism): "By 4E 201, Mysticism was no longer
   regarded as a separate school of magic **by the College of Winterhold**.
@@ -24,15 +24,12 @@ and [hist-and-sap](hist-and-sap.md), fetched 2026-08-24/28).
   have religion as it is known elsewhere in Tamriel", no Mages-Guild hall
   structure is attested in the interior in our era, and foreign institutions
   historically fail to take root in Black Marsh.
-- ⇒ **EXTRAPOLATED (project reading):** the taxonomy of a Skyrim college has no
-  authority over marsh practice, so **Mysticism survives in Argonia as a folk
-  school** — soul-trapping, detection, telekinesis, reflection and the
-  "true-name" tradition, taught hand to hand rather than by curriculum. Our six
-  schools are therefore Morrowind's six: Alteration, Conjuration, Destruction,
-  Illusion, **Mysticism**, Restoration.
-- Handling note: a foreign scholar NPC may correctly say Mysticism "was
-  dissolved"; a marsh practitioner may correctly say they have never heard of
-  such a thing. Both lines are canon-safe and the disagreement is good texture.
+- ⇒ **Project ruling (owner, 2026-11-26):** the game's schools are Skyrim's five: Alteration, Conjuration,
+  Destruction, Illusion, Restoration. Mysticism is not a school or a skill of ours. The spells Morrowind filed
+  under it (soul trap, detection, telekinesis, reflection, transport) are real in the marsh and are filed in the
+  five, as [spell-groups](../../design/quests/spell-groups.md) lists them.
+- Handling note: a foreign scholar NPC may correctly say Mysticism "was dissolved". No marsh practitioner uses the
+  word.
 
 ## 2. Magic is folk literacy, not a profession
 
@@ -87,9 +84,9 @@ earns by acting and loses by dying (module 76 §120.3), grounded in lore and
 
 - Spell vendors, spellmaking and enchanting **services** exist without a Mages
   Guild: a Nisswo, a tree-minder, a foreign fence, a Gideon chapterhouse.
-- Mysticism content (soul trap, detect, reflect, telekinesis, mark/recall-style
-  transport where quests permit) is available in the interior and *rare in
-  foreign hands*, which is a legible, diegetic distribution.
+- Soul trap, detection, reflection, telekinesis and transport spells (the old
+  Mysticism content, now filed in the five schools) are available in the interior
+  and *rare in foreign hands*, which is a legible, diegetic distribution.
 - Necromancy has a local, canonical hook (grave-stakes, bog blights) that is a
   crime against the tribe rather than against a state — feeds the Owing
   assessment model (module 76 §124) and the quest plan's crime handling.

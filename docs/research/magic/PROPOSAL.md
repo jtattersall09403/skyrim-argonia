@@ -21,7 +21,7 @@ has and what can be reused), [lore-of-marsh-magic.md](lore-of-marsh-magic.md) (t
 3. **I recommend "Communion"** (the "do more" option), begun with a pilot at one tree, Helstrom's.
 4. **Cost:** no fees, no new visual effects and no new scripts in the first three options. The cost is agent time,
    which I can only rank (section 7). The fourth option includes the plugin of our own that spellmaking needs.
-5. **One ruling is needed whatever you choose:** five schools or six (section 5).
+5. **The schools are Skyrim's five**, by your ruling of 26 November; Mysticism is cut (section 5).
 
 **Words used below.** A record: one entry in the game's data (a spell, an effect, a book). A tome: the book that
 teaches a spell. Magic Expanded: the mod in our list that adds 139 Morrowind-style spells. A power: a spell-like
@@ -81,7 +81,7 @@ Counted from the place records and the nine story lines (detail and line numbers
 - No native summoning: every Conjuration spell in the plan is an atronach or the dead.
 - Every spell keeps Skyrim's name and look, and no seller has an actual list of spells yet, only a school and a level.
 
-## 5. The shape all the options share, and one ruling
+## 5. The shape all the options share
 
 **Two traditions inside Skyrim's schools.** A spell is either *given* (it comes from a tree, a tribe or an order, by
 trust) or *bought* (a tome, from whoever sells it). This is already how the plan works; the options make it visible.
@@ -94,11 +94,9 @@ trust) or *bought* (a tome, from whoever sells it). This is already how the plan
 | Destruction | poison, as old marsh fighters used it. Fire, frost and lightning come only by quest and scroll | damage that fits the place; no seller of fire is planned and I would add none |
 | Conjuration | nothing native yet. Raising the dead is known to Argonians and breaks no Argonian law; what is hated is a soul kept from its Hist, which to them is slavery again | an ally in a hard fight |
 
-**The ruling: five schools or six.** You wrote in #104 that the schools should probably stay Skyrim's. But our lore
-page keeps six ("Mysticism survives in Argonia as a folk school"), and your list of quest skills of 6 November names
-Mysticism. The game has five skill trees; a sixth would need the perk menu rebuilt. I recommend five, with
-"Mysticism" kept as the Argonians' own word for one family of spells (souls, detection, moving things, finding the
-way) that sits in Alteration, Illusion and Conjuration, and the lore page and the skill list corrected to say so.
+**Five schools (owner, 26 November).** The schools are Skyrim's five. Mysticism is cut as a school and as a quest
+skill: it is not a Skyrim school. The spells Morrowind filed under it (souls, detection, moving things, finding the
+way) stay, in Alteration, Illusion and Conjuration. The lore page, the owner's bar and the quest skills now say so.
 
 **Balance.** A native spell is an existing spell's numbers under another name and colour, so the five levels keep
 Skyrim's costs. Sellers carry a short sheet of 12 to 20 spells (Morrowind's median is 15), which also hides Magic
@@ -111,7 +109,7 @@ effect looks are like that); this has not yet been done once in this project, so
 "teach a spell" step is proven.
 
 **Smaller calls I have made, for you to overrule.** Mark and Recall are not sold: the plan places them nowhere, and
-they would bypass the boats, coaches and the rootworm. Levitate stays as you ruled. Names of new things are plain
+they would bypass the boats, coaches and the rootworm. Levitate was only in the starting kit as a test (your word, 26 November): it leaves the kit and is placed once in the world as a late reward, where exactly being settled when the chosen option is built. Names of new things are plain
 English ("Histskin" is the model), with Argonian words kept for people, offices and places. Spells that the quests
 already name plainly (Stoneflesh, Turn Undead, Tinur's Hoptoad and the like) keep their names.
 
@@ -273,7 +271,7 @@ The second and third are settled; the others are settled with the work they belo
 - "Mark and Recall do not know our world": not checked, and the plan does not use them.
 - The creature mods' spells were to be "brought in whole": their plugins never load.
 - Spellmaking, which you asked for, was left out.
-- "The schools stay five, and the lore supports that": our own lore page and your skill list say six.
+- "The schools stay five, and the lore supports that": our own lore page and your skill list said six. You have since ruled five.
 - Two proposed names are on our list of names never to reuse (they are King of the Murkmire's own).
 
 ## 10. What is still not checked

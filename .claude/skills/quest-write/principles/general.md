@@ -57,8 +57,7 @@ player can see it, music and weather [MW §3; MW §4.4; MW §4.5]. Each dramatic
 
 1. **Every quest is something the player does with named in-game skills**, and the record names which (One-Handed,
    Two-Handed, Archery, Block, Heavy Armor, Light Armor, Smithing, Destruction, Restoration, Alteration,
-   Conjuration, Illusion, Enchanting, Alchemy, Sneak, Lockpicking, Pickpocket, Speech, and Mysticism from Magic
-   Expanded). Never talk-to-X-then-Y, never a chore. Why: using the character's skills is the fun [OB skills;
+   Conjuration, Illusion, Enchanting, Alchemy, Sneak, Lockpicking, Pickpocket, Speech). Never talk-to-X-then-Y, never a chore. Why: using the character's skills is the fun [OB skills;
    AS P4; AS A].
 2. **A main quest has at least two ways through by different skills**, each able to go wrong in its own interesting
    way, and none is the only way. Why: any build can finish the main quest [OB skills; AS P1; CD P1].

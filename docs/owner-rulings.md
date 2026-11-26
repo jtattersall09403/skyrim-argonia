@@ -1132,3 +1132,9 @@ added here the day they are made, with the date and the issue.
   the quests already name keep their names; a player of any race may be given a tree's communion as they may its
   blessing. Withdrawn: "necromancy and soul trap are foreign only" (an Argonian teaches them in House Cardruhn's line).
   Lesson for proposals: start from the plan's own records and story lines, then the built game.
+
+- **2026-11-26 (in session), magic.** His earlier rulings on magic may be overridden: "my thinking is evolving as we
+  go" (this lifts "reuse Magic Expanded rather than build magic" of 2026-10-30 as a limit on the magic proposal).
+  Levitate in the starting Magic menu "was only ever temporarily as a quick test"; he wants it in the game
+  somewhere, not at the start. Mysticism is cut: "it's not a Skyrim school". The schools are Skyrim's five and
+  Mysticism leaves the list of quest skills (owner-bar, quest-write and the lore page changed the same day).

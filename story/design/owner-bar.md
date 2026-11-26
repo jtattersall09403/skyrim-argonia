@@ -41,8 +41,8 @@ reads this first; a new ruling is added here the day it is made, as well as to o
 
 - Quests have "action" (the player's skills used, varied); no talk-to-X-then-Y quests (OR 2026-10-28).
 - Every quest uses named Skyrim skills and names which: One-Handed, Two-Handed, Archery, Block, Destruction,
-  Alteration, Illusion, Conjuration, Restoration, Alchemy, Sneak, Lockpicking, Pickpocket, Speech, Mysticism
-  (OR 2026-11-06, #50). Swimming and climbing are not skills and do not count (OR 2026-11-06, #53).
+  Alteration, Illusion, Conjuration, Restoration, Alchemy, Sneak, Lockpicking, Pickpocket, Speech
+  (OR 2026-11-06, #50). Mysticism is not a school or a skill of ours: the schools are Skyrim's five (OR 2026-11-26). Swimming and climbing are not skills and do not count (OR 2026-11-06, #53).
 - Every main quest offers at least two ways through, each with different named skills, so different builds can
   finish it (#50). "Different builds being able to complete main" (OR 2026-11-12).
 - A build is a mix of melee (of several kinds), ranged, stealth and magic, or one of them alone; stealth is always
