@@ -1,49 +1,27 @@
 # Owner rulings that still bind
 
-The owner's rulings from 2026-10-27 to 2026-11-05 that survive the pivot ([0038](decisions/0038-the-pivot-bmv-is-the-world.md)),
-in the owner's terms. Everything else the owner said before the pivot is in git history
-(`docs/owner-brief.md`, `docs/inherited-rulings.md` before this commit) and no longer binds. New rulings are
-added here the day they are made, with the date and the issue.
+These are the owner's rulings that bind, in his own terms. A new ruling is added the day it is made, with the
+date and the issue. The project is the new world, our own worldspace of the whole of Black Marsh
+([0042](decisions/0042-the-new-world-is-the-project.md)); earlier rulings that were only about the retired Black
+Marsh & Valenwood (BM&V) version of the project are in git history and no longer bind.
 
-Since 2026-11-26 the project is the new world and the Black Marsh & Valenwood (BM&V) version is retired
-([0042](decisions/0042-the-new-world-is-the-project.md); the ruling is the last entry). A ruling below that speaks
-of BM&V as the world is read with that one: what it says of the stack, quests, writing and working still binds;
-what it says of BM&V's world and people does not.
+## The goal
 
-## The goal (2026-11-05)
-
-- Vanilla Skyrim + Black Marsh & Valenwood + the collection xyf1u3 for soulslike combat, out of the box +
-  FreeClimb + Morrowind magic (Magic Expanded). BM&V is the default world: a start mod puts the player in Black
-  Marsh; the main quest, dragon attacks, the civil war, the Thieves Guild couriers and Skyrim's radiant quests are
-  stopped.
+- Our own world of Black Marsh as a new worldspace, with our places carried from source places and adapted by
+  hand, the soulslike collection xyf1u3 for combat out of the box, FreeClimb and Skyrim's five schools of magic,
+  and our storyline, quests and factions made for that world. This is the project the owner ruled on 2026-11-26
+  (the last entry of this file; [PLAN](PLAN.md) section 1).
 - A new game takes the player straight into our own authored opening, nothing via Helgen and no alternate-start
   menu, as Enderal does it (2026-11-05).
-- No owner test in Phase 0; the first walk is after Phase 1, with a Vanilla Skyrim card and the Argonia card
-  on the play page to try both at once (2026-11-05).
 - Agents verify by reading the files the game will consume (the ESP, the scripts, the DLLs, the profile) and
   loop until that read meets the bar; they never run the game themselves (2026-11-05).
-- The BM&V census into the relational story data runs in Phase 1, beside the stack (2026-11-05).
 - Write and review the first act before building any block, so the blocks are the ones the story needs; aim for
   a small set of blocks that combine into many quest dynamics, so proving each once (and their connectors once)
   proves every quest built from them, like a proof by induction; if a block is too hard, re-author the quests
   around the blocks that work (2026-11-05).
-- An offline interactive 2D map of BM&V's world, linked to the mined place records, for the owner and agents
-  (2026-11-05).
 - Decided by the agents under the owner's hand-over (2026-11-05, "gate nothing on me; full permission"): the four
   free Creation Club files' self-starting quests are stopped like vanilla's; our plugin ships `Argonia.ini` to blank
-  the race-menu bound-hands pose, as Live Another Life does; the opening marker stands on Lilmoth's pier, a dock
-  arrival; the Creation Kit EULA was accepted with the owner's OK.
-- Phase 2 adapts the entire quest system and every faction line to BM&V's world (minor world edits allowed), keeping
-  each line's spirit, designed once as a consistent whole with no clashes; minor lines adapted or dropped; a wider
-  minor-quest build-out is a Phase 5 placeholder (2026-11-05).
-- BM&V is used whole, all four plugins and every file of both ModDB parts; all of it goes through the census and the
-  map (2026-11-05).
-- The first story slice (owner, 2026-11-06): BM&V's world stays as it is (separate worldspaces, not stitched into one
-  walkable land), with only the allowed minor edits; fitted to it first are (a) the opening act of the main quest,
-  including the new-game flow and the opening scene (our Helgen), and (b) a sensible subset of non-clashing factions
-  and questlines. Get that working in the modded world for the owner to try, then decide what else to change. The
-  world-option analyses (joining the worldspaces, extending the land, interiors and places) are still posted as calls,
-  but nothing waits on them.
+  the race-menu bound-hands pose, as Live Another Life does; the Creation Kit EULA was accepted with the owner's OK.
 - The play machine signs the Administrator in automatically at boot (Sysinternals Autologon, the password stored
   encrypted), so Sunshine's cards can start after any reboot (owner, 2026-11-06).
 - An agent may launch the game to warm Community Shaders' shader cache before the owner plays (owner, 2026-11-06);
@@ -58,8 +36,6 @@ what it says of BM&V's world and people does not.
   Within a questline, earlier choices and endings do not change later quests' stages (no multiplying branches);
   only planned finale choices carry forward. The whole main quest is reviewed against these rules: keep the
   treasure hunt, the spies and its spirit, make it more Black Marsh, more exciting, less bureaucratic.
-- Then our storyline, quests and factions on top of BM&V's world, with minimal tweaks (NPCs, items, bosses,
-  creatures added, removed, changed). This is the main work, in phases.
 - Process as light as possible. Agents avoid in-game testing if at all possible; the owner tests. Test a small
   number of building blocks once, then build everything from them.
 - Delete as much as possible; this was a throwaway repo. Keep the build machine and the Paris g6.xlarge play
@@ -188,7 +164,7 @@ what it says of BM&V's world and people does not.
 - A detectives' faction, rival to the assassins and thieves (0025).
 - A creature from a mod is used as its mod designed it (2026-10-30).
 - Magic is mostly covered by Magic Expanded; reuse it rather than build magic (2026-10-30).
-- Interiors may look Nordic where a borrowed interior is all there is (2026-10-30); exteriors are BM&V's.
+- Interiors may look Nordic where a borrowed interior is all there is (2026-10-30).
 - Armour pieces stay as base Skyrim has them (2026-10-31, #21).
 - A reward is an ordinary item unless the story needs a named one: the Ashgate strongbox's ring is a plain
   enchanted ring of about the strength and use of Fargoth's ring in Morrowind (Skyrim's Ring of Minor Health), not
@@ -439,10 +415,6 @@ what it says of BM&V's world and people does not.
 - 2026-11-06: reviewers return every finding they need, no cap in any round; the 3NF story database is the single
   source of truth.
 - 2026-11-06: owner-facing writing assumes no context: every name explained, full sentences, no shorthand.
-- 2026-11-06 (#51): TrueHUD's player bars on. Add Rim Parry And Execution and Elden Parry. GameSir layout like Dark
-  Souls: B dodge/sprint, LB block, RB light attack, RT (R2) heavy/power attack, LB+RB parry then RB riposte (Rim
-  Parry And Execution), the Tween menu on d-pad left/right, LT shouts; RB pressed during a dodge queues the attack
-  for straight after the dodge.
 - 2026-11-06 (#51): TrueHUD's player bars on (done, fbdff408). Add Rim Parry And Execution and Elden Parry.
   GameSir layout like Dark Souls: B dodge and sprint, LB block, RB light attack, RT heavy or power attack, LB+RB
   parry then RB riposte (Rim Parry And Execution), LT shouts, the Tween menu on d-pad left or right; RB pressed
@@ -455,8 +427,7 @@ what it says of BM&V's world and people does not.
   Alteration, Illusion, Conjuration, Restoration, Alchemy, Sneak, Lockpicking, Pickpocket, Speech, Mysticism, plus
   climbing and swimming), and names which. Every main quest offers at least two ways through, each with different
   named skills, so different builds can finish it. Faction quests are tied to the faction's own skills ("for
-  consistency and immersion"). The opening is too slow. Every stage must make plain what to do (e.g. the dive for
-  the bronze thing). MQ05's tree climb is pointless (and tree climbing is buggy): replace it. Update the slice quests.
+  consistency and immersion").
 - 2026-11-06 (#53): you can run with a weapon drawn (Arena Movement's faster variant). Explicit permission to
   override the safety check to install the attack-queue plugin. Swimming and climbing are not skills: they do not
   count as skills in quest writing.
@@ -471,7 +442,6 @@ what it says of BM&V's world and people does not.
   not a backward roll. An attack pressed during a roll fires when the roll ends.
 - 2026-11-07: the g4dn's $0.80 an hour is fine: play is about 20 hours a month at most, not 50; the play machine
   must stop itself when the owner is not playing (its 15-minute idle stop stays on).
-- 2026-11-07: every BM&V person must be talkable, with a light backstory grounded in their place, trade and spot, and their own topics (directions, dangers, rumours that lead to quests, loot spots, ingredients, more), every fact real and true in the loaded world; do all of Lilmoth's people now, and put a phase in the plan for the rest (Phase 4a, docs/design/talk.md).
 - 2026-11-08 (walk-2 feedback, tmp/walk-2-feedback.md): TrueHUD's new-game defaults are the mod's own except display
   criteria "dynamic" for all three player bars, hide vanilla bars on, bar width 150 (minimum 50, maximum 500), scale
   bars on, player widget anchor X 0.045 and Y 0.105. The player's health does not regenerate; magicka and stamina do.
@@ -479,34 +449,25 @@ what it says of BM&V's world and people does not.
   fast walk. Elden Parry's window is widened again (hard, not impossible, over the stream). A standing dodge is one
   backstep, not two (unless that is the mod's own clip). Magistrate's Levitate (Nexus SSE 24695) goes into the stack
   and its Levitate spell into the starting Magic menu. Talk: each person needs their own personality and their own
-  knowledge, written into the speaker brief so the dialogue writer flavours their lines; every Lilmoth person is
-  talkable and named; the Looks-At-Books trader gets topics and a stock that fits a small trader. Lilmoth's walk-in
-  shell buildings count as rooms for quests and homes. Fix the windows that render as flat blue panes in Lilmoth.
-  The next walk re-tests only the blocks still unproved, not the whole test quest. The world map: investigate and
-  plan (native or 2d parchment with fog of war, whichever is easiest and most reliable); do not build it yet.
-- 2026-11-08 (after walk-2 fixes): build the world map fix now (it is small). Walk-in shells need a census of every
-  place in the story data (done: `bmv_shell`). Backstab must actually work, not be explained. The standing backstep
+  knowledge, written into the speaker brief so the dialogue writer flavours their lines. The next walk re-tests only the blocks still unproved, not the
+  whole test quest.
+- 2026-11-08 (after walk-2 fixes): Backstab must actually work, not be explained. The standing backstep
   goes about half as far: the first of its two pushes, by trimming Dynamic Dodge's clip (the owner checked its
   permissions: customising is allowed) or by a shorter backstep clip, whichever is better. A lore fact said by two
   or three people is fine. The "New Order" soldiers' lines must be consistent with our lore, as everything must.
-  Skyrim ingredient names are fine where BM&V places those ingredients.
+
 - 2026-11-08 (walk-3 feedback, tmp/walk-3-feedback.md; ticks in docs/owner-walk-checks.md, e570c531): passed: no
-  health regen, compass, drawn-weapon run, Levitate, the parry window, Lilmoth's windows, the world map in all three
-  worlds, block checks A to D. The standing backstep: cut the clip itself at the end of the first push (holding the
+  health regen, compass, drawn-weapon run, Levitate, the parry window, block checks A to D. The standing backstep: cut the clip itself at the end of the first push (holding the
   keys while the clip plays whole "looks stupid"). TrueHUD: start from the Player Widget's "Combined" preset, then
   apply the owner's tweaks (Dynamic for the three bars, hide vanilla bars, width 150, min 50, max 500, scale bars,
   anchor X 0.045, Y 0.105). "Block Test, the end" shows "completed" but is missing from the journal's completed
   list (Block Test is there; Stats count 2). Directions are Morrowind's: a route by real landmarks taken from the
   world (follow the shore, swim to the island, take the path north, on your left a ...), varied by person and
   context; paces and a compass point only where the place is close. "My friend" at most once or twice a person, and
-  friendly address only where the person's standing with the player warrants it. Every topic fact is true of BM&V's
-  world (not the old place records: Lilmoth's "lighters, no big ships" is false, a big ship docks); the old repo's
-  naming rules apply to these people; the recipe for naming people, personality and topics becomes a skill. The
+  friendly address only where the person's standing with the player warrants it. The
   backstab is Dark Souls': stand behind someone, locked on or not, and a normal attack does Rim Parry's backstab and
-  execution. Skyrim's normal game music is on for now (Argonia music later). Walk-in shells: the owner dropped the
-  walk check. Walk checks: ticked checks stay where they are as the record; add the fewest checks that prove the
-  change; the owner reports problems in the session. Goal for the session: resolve the walk, then deliver Phase 4
-  with names, topics and dialogue for everyone in the places the opening act visits.
+  execution. Skyrim's normal game music is on for now (Argonia music later). Walk checks: ticked checks stay where they are as the record; add the fewest checks that prove the
+  change; the owner reports problems in the session.
 - 2026-11-08 (new worldspace, nw-01, in session): the new worldspace runs in parallel with the BM&V work
   (docs/phases/). Project Tamriel's Black Marsh map, its regions map and the Hammerfell/High Rock
   key are public domain and are kept in the repo (newworld/sources/maps/), since they are the base the world is built
@@ -518,11 +479,7 @@ what it says of BM&V's world and people does not.
   CLAUDE.md rule on updating skills after verified feedback) are committed as written.
 - 2026-11-08 (walk-4 feedback, tmp/walk-4-feedback.md, in session): personification is banned in all dialogue (an
   inanimate thing doing a person's act: "the roll adds months", "the hold heard you"); every line we have is swept for
-  it. The opening needs more quest stages with journal entries: talk to Wuleen-Sei, go out of the hold's door, then
-  what to do next. Everyone in every place the slice quests touch talks, the opening barge's people included.
-  Buys-the-Months must let the player give a name. Mee-Tuja's height is wrong (about 12 feet). Audit every door we
-  have changed: one did nothing, another showed a room but teleported out. Many people near Lilmoth's docks lost
-  their dialogue: a regression to fix. The standing backstep becomes Skyrim's own vanilla backstep, not the truncated
+  it. The standing backstep becomes Skyrim's own vanilla backstep, not the truncated
   Dynamic Dodge clip. TrueHUD's Combined preset did not reach the game: apply it. The backstab gave the stagger but
   not the execution or its damage: make the execution play.
 - 2026-11-08 (nw-02, in session): the old pipeline never fully fixed hard texture edges (it did fix the bare pebble
@@ -634,16 +591,10 @@ what it says of BM&V's world and people does not.
   (a dangerous cellar, a sewer); no extra place, such as a whole village, sits inside a city's own extent. (2) The
   levy wears BM&V's Argonian guard armour. (3) The smith carries and sells Argonian sword and armour: Helstrom is
   the capital city and has good things. (4) The owner's statement tier ranks top, above canon.
-- 2026-11-10 (walk 5, `tmp/walk-5-feedback-2026-11-10.md`, quests in BM&V): (1) the opening is good up to leaving
-  the hold, and the skills are to be updated from it; the gang never starts moving after that: root cause and fix,
-  and the same fix everywhere the same building blocks are used or affected in the first act's quests. (2) Too
-  many people early on repeat each other (everyone in the hold, and Buys-The-Months, on months added for food): the
-  dialogue writer skill must be context aware, so that several conversations in one space are written first time
-  without repeating each other, the opening act's flow above all. (3) A Fable 5.2 agent at medium effort reviews
-  everything about how the opening act and the slice's factions and quests are implemented; bugs are fixed, the
-  approach optimised, and the skills and building blocks improved until a future agent implementing a new quest
-  gets it right first time; Phases 4 and 4a are what was aimed at. Passed in walk 5: checks 8.1, 8.2, 9.1, 9.3 to
-  9.7; 8.3 (backstab) not yet checked.
+- 2026-11-10 (walk 5, `tmp/walk-5-feedback-2026-11-10.md`): too many people early on repeat each other (everyone in
+  the hold, and Buys-The-Months, on months added for food): the dialogue writer skill must be context aware, so
+  that several conversations in one space are written first time without repeating each other, the opening act's
+  flow above all.
 - 2026-11-10 (in session, evening): Nordic pieces. "don't worry so much about the nordic elements, e.g. the
   sconces. as long as our source places are the mods + tropical skyrim we should be OK." A piece a source place
   itself uses, from its own mods or Tropical Skyrim, is accepted as it comes; it is not reviewed by look or
@@ -652,15 +603,6 @@ what it says of BM&V's world and people does not.
   both states, without shadows, so the owner can judge whether a place is lit enough and add or remove lights and
   see the effect. Notes are part of editing: the owner changes one thing or several and leaves one note for the
   agent about them, smoothly, without a separate step.
-- 2026-11-10 (in session, walk 5 follow-up): (1) confirmed in game: the gang was already standing at the dock's
-  landward end when the owner came out of the hold, and nothing happened there; the gang starts its walk only once
-  the player is outside, so the player can follow. (2) The opening is re-authored and rebuilt so its spirit is
-  kept but it happens at the place the player reaches straight after stepping off the dock: no long march to
-  Hereguard Plantation, so a new player cannot wander off before the opening completes. (3) The walking limit of
-  BM&V's ground (its navmeshes are not joined to each other) is fixed anyway where the slice's routes need it.
-- 2026-11-10 (in session): navmesh in BM&V is the agent's call, not a question for the owner: choose the most
-  sensible approach that enables the quest system generally (joining existing navmesh, or adding it where the
-  quests need ground that has none).
 - 2026-11-10 (in session, night): redrafts. A whole place is never redrafted to change one part of it. What needs
   changing is changed and the rest is kept; a whole redraft only when a narrow change truly cannot be correct.
 - 2026-11-10 (in session, night): the narrow-change rule stands for all future work, and the owner's edits made
@@ -676,9 +618,6 @@ what it says of BM&V's world and people does not.
   Owing is the playable sentence: the game's jail mechanism re-dressed as a season of work, no cell. Capital
   punishment is part of native law: a person who resists arrest is fought to the death by the guards. The studio
   shows a kept invisible wall as a faint box when selecting, as it shows lights.
-- 2026-11-10 (in session, night): the walk 5 feedback on the built world is delivered by a fresh orchestrator
-  session, started unattended by the nw-03 session when its own lanes have landed, from the hand-over
-  (docs/phases/nw-02-walk-5-handover.md).
 - 2026-11-11 (in session, morning): the LOD is built for our worldspace only (ArgoniaBlackMarsh), never for any
   other world in the load order. Each LOD run is checked for it: xLODGen's world list, DynDOLOD's preset and the
   folders and logs each tool writes.
@@ -754,8 +693,7 @@ what it says of BM&V's world and people does not.
   sting for now; the level-up sting is cut from the owner's own Overture, at about the length of Skyrim's level-up
   sting (measured, not guessed). Hist lanterns hang only near places ("they are presumably placed there by
   people"); Helstrom gets its lanterns now, and Helstrom is deployed only "after I have done my editing and feedback
-  on the draft in the studio". The flagged dialogue of the BM&V version is rewritten with the updated dialogue
-  skill (directions in words, the Morrowind find step on every run).
+  on the draft in the studio".
 - 2026-11-12 (evening, nw-03b music): the discovery sting is ours again (slot sting-discovery, recut to its first 4 s
   with a fade ending near 7 s), reversing (a) above: our override of the four discovery music types is restored. The
   level-up follows Skyrim's two parts: the UI sound UILevelUp plays our 8 s sting (sting-levelup), the level-up music
@@ -764,10 +702,6 @@ what it says of BM&V's world and people does not.
   population though don't cut it down like we have done so far, that will just make them feel weirdly empty." A lived
   place's population is now its source's residents, with no blend or clamp (empty places stay 0; never under the
   people the record names; a source counting nobody keeps the estimate).
-- 2026-11-12 (in session, dialogue): "please rewrite all the flagged dialogue in the BM&V version of our mod with the
-  new updated skill." Every line the B13 lint and talk_check flag (a count of paces, yards or metres) is rewritten whole
-  through the dialogue skills with the Morrowind find step: directions by landmarks, compass words and distance
-  words, never a number.
 - 2026-11-12 (walk 6, the quests; tmp/walk-6-quests-feedback.md):
   the opening and the start of the main quest were "a complete mess". "Let's have nothing more complicated than
   Morrowind-level scripting for all of our quests, and do much less world-editing for each quest." The barge is
@@ -782,13 +716,6 @@ what it says of BM&V's world and people does not.
   you kill someone necessary for a minor side quest it should just close the quest as failed or something with a
   journal update." The message shows for a person the main quest or a faction's quest line cannot go on without;
   a minor side quest whose person dies ends as failed with a journal entry and no message.
-- 2026-11-12 (in session, walk 6, what follows it): "Once you have delivered everything from your original goal,
-  learned all the lessons along the way, and updated all the relevant skills - please *then* also own and deliver
-  the new world phase that is about the first pass of fitting our authored quests to the new world (using
-  everything you've learned and the newly updated skills). The brief for it is very minimal from me currently so
-  you'll need to build it out in the phase plan." The walk 6 planner session owns that phase after walk 6 is
-  delivered: it builds out the phase's plan (the owner's own words in the phase file are kept as written, detail
-  appended below them) and delivers it.
 - 2026-11-12 (in session, the new world's first pass of fitting quests, nw-05): "I don't want the quests and story
   to feel like they're patched or shoehorned into that world, I want them to feel really naturally and deeply
   integrated with it, whilst keeping the overall factions and spirit of the original. You have creative license to
@@ -1151,5 +1078,4 @@ what it says of BM&V's world and people does not.
   ([0042](decisions/0042-the-new-world-is-the-project.md)). Calls made by the lead in doing it: the phase files
   moved up to `docs/phases/`; the BM&V phase plans kept unedited in `docs/archive/`; BM&V stays a mod we depend on
   for source places and pieces; the stack's owed walk checks carry over to the new world and the BM&V world's
-  walk checks are dropped; removing BM&V-only code is a later piece of work listed in PROGRESS. The rulings
-  above that speak of BM&V as the world are read with this one.
+  walk checks are dropped; removing BM&V-only code is a later piece of work listed in PROGRESS.
