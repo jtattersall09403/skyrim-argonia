@@ -27,7 +27,7 @@ dependencies, made of:
 ### A short history
 
 - **2026-10-27 to 11-05:** a total conversion with its own generated world, systems, UI and test harness. It
-  failed and was thrown away (decision 0038).
+  failed and was thrown away (see [0042](decisions/0042-the-new-world-is-the-project.md)).
 - **2026-11-05 to 11-26:** our story modded onto the world of the Black Marsh & Valenwood mod. It proved the mod
   stack, the quest form and its blocks, the dialogue method and the skills. Its plans are in
   [archive/](archive/README.md).

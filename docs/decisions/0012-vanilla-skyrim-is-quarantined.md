@@ -1,8 +1,7 @@
 # 0012: Vanilla Skyrim is quarantined: its world, quests and Nordic systems never reach the player
 
-**Status:** decided 2026-10-27; after the pivot (0038) this is the specification of PLAN Phase 1 "the shutdown": the
-list in §Context and points 2 and 3 of the decision bind; point 1 binds as written: our own start quest
-takes a new game straight into our opening in Black Marsh, no alternate-start mod (owner, 2026-11-05); point 4's dialogue path is Skyrim's own with Fuz Ro D-oh; point 5's inventory is dropped.
+**Status:** decided 2026-10-27; applies to the new world ([0042](0042-the-new-world-is-the-project.md)). Owner,
+2026-11-05: a new game starts in our own opening, with no alternate-start mod.
 
 ## Context
 
@@ -15,24 +14,21 @@ constellation menu, loading screens, the main menu, Skyrim's world map and the T
 
 ## Decision
 
-1. **New game starts in Argonia** through our own start quest (the Enderal / alternate-start pattern): the
-   vanilla intro (`MQ101`) never runs; the player never sees Tamriel's worldspace or Helgen.
+1. **A new game starts in our world** through our own start quest: the vanilla intro (`MQ101`) never runs; the
+   player never sees Tamriel's worldspace or Helgen.
 2. **Vanilla quests and story managers are stopped or prevented** by data (start-game-enabled flags off in an
-   override, story manager branch conditions) and checked by a bridge test that lists running quests after a
-   new game and after 1, 10 and 50 in-game days; the list must equal our allow-list.
-3. **Dragons, shouts, word walls, Dragonborn, Sovngarde, the civil war, standing stones** do not exist for the
-   player (removed from spawns, menus and text). The Shout key/menu is unbound or repurposed (Hist communion
-   powers, old 0042, can use the power slot).
-4. **Voice:** Argonia is unvoiced text dialogue (old 0139/0143); NPCs use voice types without Nordic barks:
-   generic combat/idle barks are filtered to an allow-list or silenced. Text-only lines that go through the
-   vanilla dialogue path need silent voice files of the right length (Fuz Ro D-oh pattern) unless the PrismaUI
-   dialogue view handles timing.
-5. **The immersion inventory (0006) includes every vanilla system above** with a verdict and a check.
-6. **Vanilla content may be borrowed, not banned** (owner, 2026-10-29: "we aren't shipping them, just using them
-   from the base game"): a vanilla interior, mesh or record the player's own install provides may host or furnish our
-   places when its review passes: what the player sees (architecture, props, signage), any displayed name, and what
-   comes placed with it. Invisible identifiers (EditorIDs, FormIDs) need no review. A Nordic-looking shell fails
-   unless re-dressed until it passes.
+   override, story manager branch conditions) and checked by listing the running quests after a new game and
+   after 1, 10 and 50 in-game days; the list must equal our allow-list.
+3. **Dragons, shouts, word walls, Dragonborn, Sovngarde, the civil war and standing stones** do not exist for the
+   player (removed from spawns, menus and text).
+4. **Voice:** our talk is unvoiced text dialogue; NPCs use voice types without Nordic barks, and generic combat
+   and idle barks are filtered to an allow-list or silenced. Text-only lines on the vanilla dialogue path use the
+   Fuz Ro D-oh pattern for silent timing.
+5. **Vanilla content may be borrowed, not banned** (owner, 2026-10-29: "we aren't shipping them, just using them
+   from the base game"): a vanilla interior, mesh or record the player's own install provides may host or furnish
+   our places when it reads as Black Marsh: what the player sees (architecture, props, signage), any displayed
+   name, and what comes placed with it. Invisible identifiers (EditorIDs, FormIDs) need no review. A
+   Nordic-looking shell is judged as [0006](0006-black-marsh-immersion-nothing-we-add-is-nordic.md) says.
 
 ## Consequences
 

@@ -33,7 +33,7 @@ and Solstheim is the exact case of a separate land over the sea.
 
 - Generated terrain, water and LOD passed every off-game check and still looked wrong in game: 20,165 water planes
   hovering or black, 674 cells overflowing VHGT's slope limit, swathes of one texture. Six rounds over eight days
-  (340 commits in the world tools alone) ended in "that experiment failed" (0038).
+  (340 commits in the world tools alone) ended in "that experiment failed" (the pivot of 2026-11-05).
 - LOD has no headless mode (xLODGen, TexGen, DynDOLOD are GUI only; the CK's own LOD crashes on large worlds); the
   owner-in-game loop is the only real test, and it is slow.
 - Moving cells means rewriting every NVNM and the NAVI index; a NAVM missing from NAVI is silently ignored.

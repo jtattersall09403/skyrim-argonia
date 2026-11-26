@@ -1,55 +1,39 @@
 # 0014: Anything derived from game or mod files is made at runtime or on the player's machine, never shipped
 
-**Status:** decided 2026-10-27 (from the independent plan audit; follows from 0003).
+**Status:** decided 2026-10-27 (from the independent plan audit; follows from [0003](0003-nothing-shipped-that-players-do-not-own.md)).
 
 ## Context
 
-Several techniques the plan needs produce files *derived* from Bethesda or mod files: FaceGen heads and tints
-for new NPCs, distant LOD meshes and texture atlases (xLODGen/DynDOLOD), behaviour files (Pandora), re-timed or
-re-annotated animations (annotations live inside `.hkx`), silent voice files for text-only lines, restyled
-vanilla menus (Scaleform `.swf`), and a font library built into Skyrim's font SWF format. Decision 0003 forbids
-shipping any of these; the no-assets guard refuses their extensions. Morroblivion's installer ("deploys
-converted material from the user's own games") is the community precedent: tolerated, not licensed.
+Several techniques we need produce files derived from Bethesda or mod files: FaceGen heads and tints for new NPCs,
+distant LOD meshes and texture atlases (xLODGen, DynDOLOD), behaviour files (Pandora), re-timed or re-annotated
+animations, silent voice files for text-only lines, and restyled vanilla menus. Decision 0003 forbids shipping any
+of these; the no-assets guard refuses their extensions.
 
 ## Decision
 
 1. **Order of preference for every derived need:** (a) avoid the file entirely (runtime behaviour, data, or a
    dependency mod that does it at runtime); (b) author our own original file from scratch (allowlisted, our
-   copyright); (c) generate it on the player's machine with the installer from their own files; never (d) ship
-   a derived file.
-2. **Animation timing (2.7):** (a) runtime: our SKSE plugin scales playback speed inside measured windows (graph
-   variables, Payload Interpreter/AMR, animation-event-driven speed changes) and opens/closes our own timing
-   windows from animation events, so DS1 timings are met without editing clips; (c) if a window cannot be met at
-   runtime, an **install-time patcher** applies our annotation/timing deltas (a small diff we author) to the
-   player's own copy of the clip. Proven in gate 2.7 §e (0.2) on one roll, one attack and one parry.
-3. **FaceGen (0.4, 2.4, 4.2).** Skyrim's engine does draw faces itself, but for NPCs it draws them from FaceGen files
-   the Creation Kit pre-bakes per NPC (a head mesh and a tint texture); an NPC without them gets the "dark face"
-   bug. Only the player's face is built live (the race menu). So: (a) **template NPCs** (TPLT) that reuse the
-   faces Skyrim and our dependency mods already ship (no new files: the default for most of Argonia's cast);
-   (c) for unique faces, an installer step that generates heads from the player's own head parts. Chosen in G4.
-4. **LOD (2.W4).** Skyrim's engine draws distant land and objects itself, but from pre-generated LOD files
-   per worldspace; a new worldspace has none, so its distance would be empty. **Terrain LOD meshes** are built
-   only from our own heightfield, so they are our data and may ship; **terrain LOD textures** are made from land
-   textures (Tropical Skyrim, mods, vanilla), so the installer generates them with xLODGen (light). Object/tree LOD: the
-   installer runs DynDOLOD or ships only our own LOD *settings*, with documented RAM/time; for the owner's GPU box
-   we run it there. If player-side object LOD is too heavy, ship without object LOD and record the visual loss.
-   Measured in 2.W4.
-5. **Behaviours:** Pandora runs on the player's machine (already the plan).
-6. **Silent voice lines:** (a) the PrismaUI dialogue view shows text without audio; for any line still on the
-   vanilla path, the **Fuz Ro D-oh** dependency (runtime silent-line timing) instead of generated files.
-7. **Menus and fonts:** every major screen and the HUD are our own original PrismaUI views (decision 0017). For
-   any remaining vanilla screen, in this order: (a) a PrismaUI replacement; (b) our own original SWF written
-   from scratch (allowlisted) and injected through Infinity UI or loaded as a replacement menu file of our own
-   making; (c) an installer-time patch of the player's SWF. The **font library** (Pelagiad compiled into our own
-   `fonts_*.swf` plus our own `fontconfig.txt`) is our file (OFL font, our build): allowlisted. Tooling: JPEXS
-   FFDec (Java, Linux) to inspect vanilla SWFs and build our own; acceptance for any SWF is an L4 screenshot sweep.
-8. **UI symbols from Skyrim** (sneak eye, map pins, button glyphs): extracted by the installer from the player's
-   own `Skyrim - Interface.bsa` (decision 0017 §5).
-9. **The guard** stays strict: only allowlisted files of our own making pass; release file lists are checked
-   (3.4); installer outputs never enter the repo or a release.
+   copyright); (c) generate it on the player's machine with the installer from their own files; never (d) ship a
+   derived file.
+2. **FaceGen.** Skyrim draws an NPC's face from FaceGen files the Creation Kit pre-bakes per NPC; an NPC without
+   them gets the "dark face" bug. So: (a) template NPCs (TPLT) that reuse the faces Skyrim and our dependency mods
+   already ship, the default for most of our cast; (c) for unique faces, an installer step that generates heads
+   from the player's own head parts.
+3. **LOD.** A new worldspace has no pre-generated LOD, so its distance would be empty. Terrain LOD meshes are
+   built only from our own heightfield, so they are our data and may ship. Terrain LOD textures are made from land
+   textures (Tropical Skyrim, mods, vanilla), so the installer generates them with xLODGen. Object and tree LOD:
+   the installer runs DynDOLOD, or ships only our own LOD settings; on the play machine we run it ourselves
+   (`world-lod`). If player-side object LOD is too heavy, we ship without it and record the visual loss.
+4. **Behaviours:** Pandora runs on the player's machine.
+5. **Silent voice lines:** for any line on the vanilla dialogue path, the Fuz Ro D-oh dependency (runtime
+   silent-line timing) instead of generated files.
+6. **Menus and fonts:** the font library (Pelagiad compiled into our own `fonts_*.swf` plus our own
+   `fontconfig.txt`) is our file (OFL font, our build) and is allowlisted. Any other vanilla menu change is our own
+   original file written from scratch, or an installer-time patch of the player's own file.
+7. **The guard** stays strict: only allowlisted files of our own making pass; release file lists are checked;
+   installer outputs never enter the repo or a release.
 
 ## Consequences
 
-- The installer (0.3, 3.4) grows steps: FaceGen (if needed), LOD, behaviours, animation patcher (if
-  needed), SWF patches (if any). Each is a scripted, logged, re-runnable step on the player's machine.
-- The owner's GPU box is installed by the same installer, so it exercises the player path.
+- The installer grows steps: FaceGen (if needed), LOD, behaviours, SWF patches (if any). Each is a scripted,
+  logged, re-runnable step on the player's machine.

@@ -9,7 +9,7 @@ only, Spriggit refused it), Tropical Skyrim (races only), Shroom Beetles/Medusa/
 ## 0. Live docs, and the one to edit
 - `docs/research/mods/lane-1.12-magic.md` and `lane-1.12-magicpane.md` (2026-10-31): their Magic.esp counts are CONFIRMED (152 SPEL, 191 MGEF,
   19 hidden, 140 BOOK, 55 SCRL, 40 WEAP, 10 ARMO, 4 PERK, 1 QUST, 23 scripts; MGEF skills Alt 39, Con 25, Des 43, Ill 25, Res 46, none 13).
-  Their WIRING is SUPERSEDED: the pivot (0038) deleted ArgoniaCore, the PrismaUI magic pane and `trade_class_mod_stock`
+  Their WIRING is SUPERSEDED: the pivot of 2026-11-05 deleted ArgoniaCore, the PrismaUI magic pane and `trade_class_mod_stock`
   (`git ls-files skse` holds only ArgoniaDodgeBuffer; no `ui/views/magic`). Today no vendor sells Magic Expanded tomes (section 3).
   `story/data/db/mod_form.jsonl` and `trade_class_mod_stock.jsonl` are dead data of that build.
 - `story/lore/topics/magic-effects.md` (1,122 lines, Morrowind catalogue for `packages/magic`) and `spell-sellers.md` are pre-pivot design;

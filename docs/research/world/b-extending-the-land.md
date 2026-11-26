@@ -33,7 +33,7 @@ auto-generate, then regenerate LOD with xLODGen or DynDOLOD on the play machine 
    of 21k loose files killed every launch (5a31e186). Each land change means a LOD rerun on the play machine.
 3. **Navmesh** generated off game was never proven in the engine; a NAVM absent from NAVI is ignored.
 4. **The process cost more than the tools:** eight days, three designs, six rounds, 340 commits in the world tools,
-   34 owner findings in one playtest, then the pivot (0038).
+   34 owner findings in one playtest, then the pivot of 2026-11-05.
 
 The difference now: hand CK work on a small patch beside BM&V's own land, in BM&V's own textures and kit, is not a
 generator. But it is still "making a world", which PLAN §6 excludes, and the look is judged only by the owner.
@@ -53,7 +53,7 @@ generator. But it is still "making a world", which PLAN §6 excludes, and the lo
 | **B1** no new land | BM&V as it is; Archon and others stay talk-only | allocation unchanged | none |
 | **B2** sites only, on existing land | new built places on BM&V's land (ties to C) | adds homes for talk-only places, re-seats a line if wanted | a Phase 3 block ("a built place"), reused in Phase 5 |
 | **B3** one patch, as a world track after Phase 4 | one new coastal patch for the most-wanted missing city | the allocation gains a home; the ledger, census and map are rerun | a world track beside Phase 5, owner looks gated, needs CK on the play machine |
-| **B4** a region before Phase 3 | fill out the province first | the whole allocation is redone | delays every story phase by months; repeats 0038's failure |
+| **B4** a region before Phase 3 | fill out the province first | the whole allocation is redone | delays every story phase by months; repeats the first week's failure |
 
 Cross-system costs of any new land: the census and the map rerun (tools exist); LOD rerun per touched world;
 navmesh for every walkable new cell; performance unknown until played; BM&V updates may move cells we abut.
